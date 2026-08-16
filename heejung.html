@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
-    <!-- Google Sites iframe 임베드 설정 -->
+    <title>김희정 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -31,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -84,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen (높이를 320px로 확장 및 상단 풀스크린 바로가기 오버레이) */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -173,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">김</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>김희정 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 1학년 2반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html">3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html">2학년 3반 신세영</option>
+                    <option value="jiwoo.html">2학년 4반 임지우</option>
+                    <option value="heejung.html" selected>1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html">3학년 2반 이아연</option>
+                    <option value="hayoon.html">3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -205,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">1학년 2반 김희정 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -258,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -273,12 +179,912 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-quiz">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중1 국어 기말고사 대비 평가 - 품사 마스터</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">중학교 1학년 국어</span>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold mt-1">1학기 기말고사 최고난도 평가</h1>
+                    <p class="text-blue-100 text-sm mt-1">대단원: 품사의 종류와 특성 (형태·기능·의미)</p>
+                </div>
+                <div class="hidden sm:block text-right">
+                    <span class="text-xs text-blue-200 block">문항 수</span>
+                    <span class="text-2xl font-bold">20문항</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <!-- Intro Card -->
+        <div id="intro-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-6">
+            <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-4">
+                <i data-lucide="info" class="text-blue-600 w-6 h-6"></i>
+                선생님의 격려 편지
+            </h2>
+            <div class="prose text-slate-600 space-y-3 text-sm sm:text-base leading-relaxed">
+                <p>사랑하는 중학교 1학년 학생 여러분! 기말고사가 다가오고 있네요. 이번 모의평가는 품사의 분류 기준인 <strong>형태(가변어/불변어)</strong>, <strong>기능(체언/수식언/관계언/독립언/용언)</strong>, <strong>의미(9품사)</strong>를 깊이 있게 다루는 <strong>고급 난이도</strong>의 시험지입니다.</p>
+                <p class="font-medium text-slate-800">특히 학생들이 가장 많이 헷갈려하는 다음 주제들이 포함되어 있습니다:</p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                    <li>동사와 형용사의 구분 규칙</li>
+                    <li>수사와 수관형사의 구별 방식</li>
+                    <li>지시대명사와 지시관형사의 구분</li>
+                    <li>조사의 다양한 결합 양상과 문장 성분</li>
+                </ul>
+                <p>문제를 푼 직후 바로 상세한 오답 풀이와 품사 기준 분석이 제공되니, 틀린 문제는 반드시 복습하여 기말고사에서 100점을 맞을 수 있도록 합시다. 화이팅!</p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="startExam()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition duration-200 flex items-center gap-2 text-base">
+                    시험 시작하기
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Exam Workspace (Hidden initially) -->
+        <div id="exam-workspace" class="hidden space-y-6">
+            
+            <!-- Progress & Stats Banner -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-semibold text-slate-500">진행도:</span>
+                    <div class="w-48 sm:w-64 bg-slate-100 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-blue-600 h-full transition-all duration-300" style="width: 5%"></div>
+                    </div>
+                    <span id="progress-text" class="text-sm font-bold text-blue-600">1 / 20</span>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium">
+                    <span class="text-slate-500">남은 시간: <span id="timer" class="font-mono text-slate-800 text-base font-bold ml-1">40:00</span></span>
+                    <button onclick="confirmSubmit()" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+                        시험 조기 종료
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 transition-all duration-300">
+                <div class="flex justify-between items-start gap-4 mb-4">
+                    <span class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-lg">문제 <span id="question-num">1</span></span>
+                    <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded-lg">난이도: 상</span>
+                </div>
+                
+                <!-- Question Text -->
+                <h3 id="question-text" class="text-lg sm:text-xl font-bold text-slate-900 leading-snug mb-6">
+                    질문 내용이 이곳에 표시됩니다.
+                </h3>
+
+                <!-- Question Box (Optional text box in question) -->
+                <div id="question-box" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r-lg font-mono text-sm leading-relaxed text-slate-700">
+                    제시문 내용
+                </div>
+
+                <!-- Options -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic option buttons go here -->
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold py-2 px-5 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 text-sm">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> 이전 문제
+                </button>
+                <div class="flex gap-2">
+                    <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-lg transition flex items-center gap-1.5 text-sm">
+                        다음 문제 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                    <button id="submit-btn" onclick="submitExam()" class="hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition shadow-sm text-sm">
+                        답안지 제출하기
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Navigation Grid -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4">
+                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">문항 바로가기</h4>
+                <div id="nav-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                    <!-- Navigation buttons will be rendered here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Section (Hidden initially) -->
+        <div id="result-section" class="hidden space-y-6">
+            <!-- Score Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 text-center">
+                <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-blue-50 text-blue-600 mb-4">
+                    <i data-lucide="award" class="w-12 h-12"></i>
+                </div>
+                <h2 class="text-3xl font-black text-slate-900 mb-1">시험 결과 분석</h2>
+                <p class="text-slate-500 mb-6">기말고사 대비 품사 단원 고급 모의고사</p>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <span class="text-xs text-slate-400 block mb-1">내 점수</span>
+                        <span id="result-score" class="text-2xl sm:text-3xl font-extrabold text-blue-600">0 / 100</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <span class="text-xs text-slate-400 block mb-1">맞춘 문항수</span>
+                        <span id="result-correct" class="text-2xl sm:text-3xl font-extrabold text-emerald-600">0 / 20</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <span class="text-xs text-slate-400 block mb-1">소요 시간</span>
+                        <span id="result-time" class="text-2xl sm:text-3xl font-extrabold text-slate-700">0분 0초</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <span class="text-xs text-slate-400 block mb-1">평가 등급</span>
+                        <span id="result-grade" class="text-2xl sm:text-3xl font-extrabold text-purple-600">A</span>
+                    </div>
+                </div>
+
+                <div id="grade-comment" class="max-w-xl mx-auto bg-blue-50 text-blue-800 text-sm p-4 rounded-xl leading-relaxed mb-6">
+                    선생님의 피드백이 출력됩니다.
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="restartExam()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow flex items-center gap-2 text-sm">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i> 다시 풀기
+                    </button>
+                    <a href="#detailed-analysis" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-6 rounded-lg transition text-sm">
+                        상세 오답 피드백 보기
+                    </a>
+                </div>
+            </div>
+
+            <!-- Detailed Feedback Header -->
+            <div id="detailed-analysis" class="space-y-4">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="book-open" class="text-blue-600"></i>
+                    문항별 상세 피드백 (품사 분석기)
+                </h3>
+                <p class="text-sm text-slate-500">각 문제의 품사적 특성(형태·기능·의미)에 의거한 상세한 정답 및 오답 해설입니다.</p>
+                
+                <div id="feedback-container" class="space-y-6">
+                    <!-- Dynamic feedback cards go here -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>© 중학교 1학년 국어 기말고사 학습 보조 시스템 - 품사 완전 정복</p>
+            <p class="mt-1">품사의 세 가지 기준: 형태(가변어/불변어), 기능(체언/수식언/관계언/독립언/용언), 의미(명사/대명사/수사/관형사/부사/조사/감탄사/동사/형용사)</p>
+        </div>
+    </footer>
+
+    <!-- Custom Modal (Alternative to alert) -->
+    <div id="modal-container" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-200 animate-in fade-in zoom-in duration-200">
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-2">알림</h3>
+            <p id="modal-text" class="text-slate-600 text-sm leading-relaxed mb-6">설명 내용</p>
+            <div id="modal-actions" class="flex justify-end gap-3">
+                <!-- Action buttons -->
+            </div>
+        </div>
     </div>
 
+    <!-- Questions Data & Application Script -->
     <script>
+        // 20 High quality Questions on Korean Parts of Speech (품사)
+        const questions = [
+            {
+                id: 1,
+                question: "다음 중 단어의 품사를 분류하는 세 가지 기준에 대한 설명으로 가장 옳지 않은 것은 무엇인가요?",
+                box: "품사의 분류 기준:\n1. 형태: 단어의 형태가 변하는가(가변어/불변어)\n2. 기능: 문장 내에서 어떤 역할을 하는가(체언/수식언/관계언/독립언/용언)\n3. 의미: 단어가 나타내는 성질이 무엇인가(9품사)",
+                options: [
+                    "형태에 따라 단어를 분류할 때, '가변어'에 속하는 품사는 동사, 형용사뿐이다.",
+                    "기능에 따라 단어를 분류할 때, 체언은 문장에서 주로 주어, 목적어, 보어 등의 자리에 쓰인다.",
+                    "의미에 따라 단어를 분류한 결과가 우리가 흔히 말하는 '9품사' 체계이다.",
+                    "하나의 단어는 형태, 기능, 의미라는 세 가지 분류 단계를 모두 거치게 된다."
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: '가변어'는 형태가 변하는 단어로, 동사·형용사(용언) 외에도 서술격 조사 '이다'가 가변어에 속합니다.",
+                    func: "기능: '체언'은 관계언과 결합하여 주어, 목적어, 보어 등 문장의 핵심 뼈대를 형성하는 기능을 합니다.",
+                    mean: "의미: 개별 단어의 공통적인 의미 성질에 따라 분류한 9품사(명사, 대명사, 수사, 관형사, 부사, 조사, 감탄사, 동사, 형용사)에 해당합니다.",
+                    wrongReason: "서술격 조사 '이다'는 조사(관계언)에 속하지만, '이고, 이니, 이면'과 같이 형태가 변하는 유일한 가변어 조사입니다. 따라서 가변어에 용언(동사, 형용사)만 있다는 1번 설명은 오답입니다."
+                }
+            },
+            {
+                id: 2,
+                question: "밑줄 친 단어 중 '가변어'이면서 문장에서 '용언'의 기능을 담당하는 단어로만 묶인 것은 무엇인가요?",
+                box: "문장 예시:\nㄱ. 하늘이 매우 <u>푸르다</u>.\nㄴ. 나는 학생<u>이다</u>.\nㄷ. 영수가 책을 <u>읽는다</u>.\nㄹ. 그 책은 <u>새</u> 책이다.",
+                options: [
+                    "ㄱ, ㄴ",
+                    "ㄱ, ㄷ",
+                    "ㄴ, ㄷ",
+                    "ㄷ, ㄹ"
+                ],
+                correctIndex: 1,
+                explanation: {
+                    morph: "형태: '푸르다'(푸르고, 푸르니)와 '읽는다'(읽고, 읽으니), '이다'(이고, 이니) 모두 형태가 변하는 가변어입니다.",
+                    func: "기능: '용언'은 가변어 중 문장에서 서술어 역할을 하는 '동사'와 '형용사'만을 지칭합니다.",
+                    mean: "의미: '푸르다'는 상태를 나타내는 형용사, '읽는다'는 주체의 움직임을 나타내는 동사입니다. '이다'는 서술격 조사입니다.",
+                    wrongReason: "ㄴ의 서술격 조사 '이다'는 가변어에는 속하지만, 기능상 '관계언'에 해당합니다. ㄹ의 '새'는 형태가 변하지 않는 불변어이며 기능상 '수식언'(관형사)입니다. 따라서 가변어이면서 용언인 것은 ㄱ(형용사)과 ㄷ(동사)뿐입니다."
+                }
+            },
+            {
+                id: 3,
+                question: "다음 밑줄 친 '수'의 개념을 나타내는 단어들의 품사를 올바르게 식별한 것은 무엇인가요?",
+                box: "문장 예시:\nㄱ. 사과 <u>하나</u>가 나무에서 떨어졌다.\nㄴ. <u>한</u> 사람이 길을 건너가고 있다.",
+                options: [
+                    "ㄱ: 수사, ㄴ: 수관형사",
+                    "ㄱ: 수관형사, ㄴ: 수사",
+                    "ㄱ: 명사, ㄴ: 수사",
+                    "ㄱ: 수사, ㄴ: 형용사"
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 수사는 불변어(체언)이고 수관형사 역시 불변어(수식언)입니다.",
+                    func: "기능: '하나'는 뒤에 격조사 '가'가 붙어 체언 역할을 하며, '한'은 조사와 결합하지 않고 뒤의 명사 '사람'을 수식하는 수식언 역할을 합니다.",
+                    mean: "의미: '하나'는 사물의 수량을 가리키는 대상을 지칭하는 수사이고, '한'은 뒤의 명사를 한정하여 수량을 지정하는 수관형사입니다.",
+                    wrongReason: "수사(체언)는 뒤에 조사가 결합할 수 있지만, 수관형사(수식언)는 조사가 절대 결합할 수 없으며 오직 체언만을 수식합니다. ㄱ은 조사 '가'와 결합했으므로 수사이고, ㄴ은 명사 '사람'을 꾸미고 있으므로 수관형사입니다."
+                }
+            },
+            {
+                id: 4,
+                question: "밑줄 친 단어의 품사가 '동사'인 문장만을 고른 것은 무엇인가요?",
+                box: "문장 예시:\nㄱ. 예쁜 꽃이 길가에 <u>피었다</u>.\nㄴ. 오늘 날씨가 참 <u>맑다</u>.\nㄷ. 우리는 내일 일찍 <u>떠난다</u>.\nㄹ. 영수는 키가 아주 <u>크다</u>.",
+                options: [
+                    "ㄱ, ㄴ",
+                    "ㄱ, ㄷ",
+                    "ㄴ, ㄹ",
+                    "ㄷ, ㄹ"
+                ],
+                correctIndex: 1,
+                explanation: {
+                    morph: "형태: 피었다(동사), 맑다(형용사), 떠난다(동사), 크다(형용사) 모두 활용을 하는 가변어입니다.",
+                    func: "기능: 네 단어 모두 주어의 행위나 상태를 서술하는 서술어로, 기능상 '용언'에 해당합니다.",
+                    mean: "의미: 동사는 주체의 동작이나 과정, 형용사는 주체의 성질이나 상태를 나타냅니다.",
+                    wrongReason: "동사와 형용사를 구분하는 가장 확실한 방법은 현재형 어미 '-ㄴ다/-는다'나 청유형 어미 '-자', 명령형 어미 '-어라/-아라'와의 결합 여부입니다. ㄱ('피다' -> '핀다' 가능), ㄷ('떠나다' -> '떠난다' 가능)은 동사입니다. ㄴ('맑는다' 불가능 -> 형용사), ㄹ(형용사 '크다'는 상태를 나타내어 현재형 '크는다' 불가. 단, 자라나는 과정일 땐 동사이나 여기선 단순 키가 큰 상태이므로 형용사)은 형용사입니다."
+                }
+            },
+            {
+                id: 5,
+                question: "다음 중 품사가머무르는 자리에 따른 분류인 '체언'에 속하는 단어로만 묶인 것은 무엇인가요?",
+                box: "단어 목록:\n바다, 그것, 우리, 둘째, 매우, 새, 그리고",
+                options: [
+                    "바다, 그것, 우리, 둘째",
+                    "바다, 그것, 매우, 새",
+                    "그것, 우리, 둘째, 새",
+                    "우리, 둘째, 매우, 그리고"
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 체언에 속하는 명사, 대명사, 수사는 모두 형태가 변하지 않는 불변어입니다.",
+                    func: "기능: 체언은 문장에서 조사가 붙어 주어, 목적어 등으로 활약할 수 있는 몸통 역할을 합니다.",
+                    mean: "의미: '바다'(명사), '그것'(대명사), '우리'(대명사), '둘째'(수사)는 체언입니다.",
+                    wrongReason: "'매우'는 부사(수식언), '새'는 관형사(수식언), '그리고'는 부사(문장부사/수식언)입니다. 따라서 체언(명사, 대명사, 수사)으로만 묶인 것은 1번입니다."
+                }
+            },
+            {
+                id: 6,
+                question: "밑줄 친 '다섯' 중 품사가 '수사'가 아닌 것을 고르세요.",
+                options: [
+                    "교실에 학생이 <u>다섯</u>이 앉아 있다.",
+                    "연필 <u>다섯</u> 자루를 친구에게 주었다.",
+                    "우리 집 식구는 모두 <u>다섯</u>이다.",
+                    "<u>다섯</u>에 다섯을 더하면 열이 된다."
+                ],
+                correctIndex: 1,
+                explanation: {
+                    morph: "형태: 수사와 수관형사 모두 불변어입니다.",
+                    func: "기능: '다섯' 뒤에 격조사나 서술격 조사가 올 수 있으면 수사(체언)이고, 조사 없이 의존명사 '자루'를 수식하면 수관형사(수식언)입니다.",
+                    mean: "의미: 2번의 '다섯'은 단위성 의존 명사 '자루'를 한정 수식하는 수관형사입니다.",
+                    wrongReason: "1번('다섯+이(조사)'), 3번('다섯+이다(조사)'), 4번('다섯+에(조사)')은 조사와 직접 결합했으므로 수사(체언)입니다. 반면 2번의 '다섯'은 단위성 의존 명사인 '자루'를 직접 꾸며주고 있으며 어떠한 조사도 결합할 수 없으므로 '수관형사'입니다."
+                }
+            },
+            {
+                id: 7,
+                question: "다음 예문에서 밑줄 친 '그'의 품사를 순서대로 바르게 말한 것은 무엇인가요?",
+                box: "문장 예시:\nㄱ. <u>그</u>가 어제 나에게 선물을 주었다.\nㄴ. <u>그</u> 책은 내가 가장 아끼는 책이다.",
+                options: [
+                    "ㄱ: 대명사, ㄴ: 관형사",
+                    "ㄱ: 관형사, ㄴ: 대명사",
+                    "ㄱ: 대명사, ㄴ: 부사",
+                    "ㄱ: 명사, ㄴ: 관형사"
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 대명사와 관형사 모두 불변어입니다.",
+                    func: "기능: ㄱ의 '그'는 주격조사 '가'와 결합하여 주어(체언)역할을 하고, ㄴ의 '그'는 명사 '책'을 지시하여 수식하는 역할(수식언)을 합니다.",
+                    mean: "의미: ㄱ의 '그'는 삼인칭 대명사(지시대명사), ㄴ의 '그'는 지시관형사입니다.",
+                    wrongReason: "ㄱ의 '그'는 뒤에 조사 '가'가 결합하였으므로 대명사입니다. 관형사는 뒤에 조사가 전혀 붙을 수 없습니다. ㄴ의 '그'는 뒤에 있는 명사 '책'을 수식하는 지시관형사입니다."
+                }
+            },
+            {
+                id: 8,
+                question: "형태, 기능, 의미의 세 가지 기준으로 분류했을 때, 품사의 속성 기술이 잘못된 것은 무엇인가요?",
+                options: [
+                    "명사 — 불변어 / 체언 / 사물이나 사람의 이름을 나타냄",
+                    "부사 — 불변어 / 수식언 / 주로 용언을 꾸며 줌",
+                    "감탄사 — 가변어 / 독립언 / 놀람, 느낌, 대답을 나타냄",
+                    "동사 — 가변어 / 용언 / 주체의 움직임이나 작용을 나타냄"
+                ],
+                correctIndex: 2,
+                explanation: {
+                    morph: "형태: 감탄사 '아하, 어머나, 예' 등은 형태가 변하지 않는 불변어입니다.",
+                    func: "기능: 감탄사는 문장의 다른 성분과 얽매이지 않는 독립언 역할을 합니다.",
+                    mean: "의미: 기쁨, 슬픔, 놀람이나 대답을 나타내는 감탄사입니다.",
+                    wrongReason: "감탄사는 문장에서 활용(형태가 변하는 현상)을 하지 않는 '불변어'입니다. 따라서 감탄사를 '가변어'라고 설명한 3번은 잘못되었습니다."
+                }
+            },
+            {
+                id: 9,
+                question: "조사(관계언)에 대한 설명 중 가장 옳지 않은 것은 무엇인가요?",
+                options: [
+                    "조사는 자립성이 없어서 단어로 인정되지 않는다.",
+                    "주로 체언 뒤에 붙어서 다른 말과의 문법적 관계를 나타내거나 특별한 뜻을 더해준다.",
+                    "서술격 조사 '이다'를 제외한 모든 조사는 형태가 고정되어 있는 불변어이다.",
+                    "조사는 드물게 체언이 아닌 부사나 다른 조사 뒤에도 결합할 수 있다."
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 서술격 조사 '이다'만 활용을 하여 형태가 변하는 가변어이고, 격조사나 보조사 등은 불변어입니다.",
+                    func: "기능: 문장에서 체언 뒤에 붙어 자격을 부여하는 관계언입니다.",
+                    mean: "의미: 조사에 해당합니다. 자립성은 없으나 문법적 의미를 지니며 분리성이 있어 단어로 간주합니다.",
+                    wrongReason: "학교 문법(한글 맞춤법 및 표준 국어 대사전 기준)에서 조사는 자립성은 비록 없으나, 체언 뒤에 결합하여 쉽게 분리될 수 있는 '분리성'을 가져 하나의 독립된 '단어'로 인정합니다. 따라서 1번은 틀린 설명입니다."
+                }
+            },
+            {
+                id: 10,
+                question: "밑줄 친 조사의 종류 중 성격이 다른 하나를 고르세요.",
+                options: [
+                    "철수<u>가</u> 마침내 해냈다.",
+                    "동생이 사과<u>를</u> 맛있게 먹었다.",
+                    "영희는 우리 반의 반장<u>이다</u>.",
+                    "인생은 짧고, 예술<u>은</u> 길다."
+                ],
+                correctIndex: 3,
+                explanation: {
+                    morph: "형태: '가, 를, 은'은 형태가 고정된 불변 격조사/보조사이나, '이다'는 가변어인 서술격 조사입니다.",
+                    func: "기능: 모두 문법적 기능이나 특별한 의미를 제공하는 '관계언'입니다.",
+                    mean: "의미: 주격 조사('가'), 목적격 조사('를'), 서술격 조사('이다')는 앞 단어의 문법적 자격을 부여하는 '격조사'인 반면, '은/는'은 대조나 강조의 특별한 뜻을 더해주는 '보조사'입니다.",
+                    wrongReason: "1번('가' - 주격 조사), 2번('를' - 목적격 조사), 3번('이다' - 서술격 조사)은 모두 문장 안에서의 문법적 자격을 나타내 주는 '격조사'입니다. 반면 4번의 '은'은 주격 조사가 아니라 문장에 대조나 화제의 뜻을 더해주는 '보조사'입니다."
+                }
+            },
+            {
+                id: 11,
+                question: "다음 밑줄 친 단어의 품사 구분이 올바르게 짝지어진 것은 무엇인가요?",
+                box: "문장 예시:\nㄱ. 오늘은 날씨가 매우 <u>밝구나</u>.\nㄴ. 아침 햇살이 창가를 <u>밝힌다</u>.",
+                options: [
+                    "ㄱ: 형용사, ㄴ: 동사",
+                    "ㄱ: 동사, ㄴ: 형용사",
+                    "ㄱ: 형용사, ㄴ: 형용사",
+                    "ㄱ: 동사, ㄴ: 동사"
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 두 단어 모두 형태가 변하는 용언(가변어)입니다.",
+                    func: "기능: 서술어의 역할을 수행하는 용언입니다.",
+                    mean: "의미: ㄱ의 '밝다'는 상태를 나타내므로 형용사이고, ㄴ의 '밝히다'는 어둠을 밝게 만드는 주체의 행동이므로 동사입니다.",
+                    wrongReason: "ㄱ의 '밝다'는 빛의 상태나 명도를 뜻하므로 형용사입니다('밝는다' 불가능). ㄴ의 '밝히다'는 사동사(남으로 하여금 행하게 함)로서 '밝힌다'와 같이 현재형 어미 '-ㄴ다'가 아주 자연스럽게 결합할 수 있는 '동사'입니다."
+                }
+            },
+            {
+                id: 12,
+                question: "다음 중 '수식언'에 대한 설명으로 가장 옳지 않은 것은 무엇인가요?",
+                options: [
+                    "문장 안에서 다른 단어를 꾸며주는 역할을 하는 품사 무리이다.",
+                    "수식언에 속하는 모든 단어는 형태가 변하지 않는 불변어이다.",
+                    "수식언에는 체언을 꾸미는 '관형사'와 주로 용언을 꾸미는 '부사'가 있다.",
+                    "부사는 주로 용언을 수식하므로, 문장 전체나 다른 부사는 꾸밀 수 없다."
+                ],
+                correctIndex: 3,
+                explanation: {
+                    morph: "형태: 관형사와 부사는 형태가 고정되어 있는 '불변어'입니다.",
+                    func: "기능: 다른 말을 뒤에서 수식하는 '수식언' 기능입니다.",
+                    mean: "의미: 관형사와 부사에 해당합니다.",
+                    wrongReason: "부사는 주로 용언(동사, 형용사)을 꾸미지만, 그 외에도 다른 부사('가장 매우'), 관형사('아주 새'), 문장 전체('과연 그가 올까?') 등을 꾸밀 수 있어 수식의 범위가 매우 넓습니다. 따라서 4번은 잘못된 진술입니다."
+                }
+            },
+            {
+                id: 13,
+                question: "밑줄 친 관형사의 종류 중 지시하는 성격이 아닌 '성질이나 상태'를 나타내는 '성상 관형사'를 고르세요.",
+                options: [
+                    "영수는 <u>새</u> 신발을 신고 밖으로 나갔다.",
+                    "나에게 <u>그</u> 책을 보여줄 수 있겠니?",
+                    "<u>무슨</u> 일 때문에 그렇게 울고 있니?",
+                    "<u>이</u> 사람은 나와 같은 반 친구이다."
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 제시된 관형사 모두 불변어입니다.",
+                    func: "기능: 명사나 체언을 앞자리에서 수식하는 '수식언'입니다.",
+                    mean: "의미: '새'는 성질이나 상태를 지시하는 성상관형사, '그'와 '이'는 대상을 지시하는 지시관형사, '무슨'은 정해지지 않은 속성을 질문하는 의문/지시 관련 관형사입니다.",
+                    wrongReason: "'새'는 뒤에 오는 '신발'의 성질이나 상태를 꾸며 주는 '성상 관형사'입니다. '이', '그'는 특정한 사물이나 사람의 위치를 가리키는 '지시 관형사'이며, '무슨' 역시 대상을 지목하거나 질문하는 성격의 지시 계열 관형사입니다."
+                }
+            },
+            {
+                id: 14,
+                question: "다음 문장에서 밑줄 친 '잘'의 품사는 무엇인가요?",
+                box: "문장 예시:\n그녀는 노래를 아주 <u>잘</u> 부른다.",
+                options: [
+                    "형용사",
+                    "관형사",
+                    "부사",
+                    "명사"
+                ],
+                correctIndex: 2,
+                explanation: {
+                    morph: "형태: 형태 변화가 일어나지 않는 불변어입니다.",
+                    func: "기능: '부른다'(동사/용언)를 꾸며 주는 '수식언'의 일종입니다.",
+                    mean: "의미: 행동의 능숙한 상태를 나타내는 성분 부사(양태/성상부사)입니다.",
+                    wrongReason: "‘잘’은 형태가 변하지 않는 불변어이며, 뒤에 오는 용언인 '부른다'를 한정하여 꾸며주므로 수식언 중에서도 '부사'에 해당합니다."
+                }
+            },
+            {
+                id: 15,
+                question: "밑줄 친 용언 중 품사가 '형용사'가 아닌 것을 고르세요.",
+                options: [
+                    "뒷산에 소나무가 참 <u>푸르다</u>.",
+                    "선생님, 건강하게 <u>늙으십시오</u>.",
+                    "새로 산 옷이 참 <u>마음에 든다(예쁘다)</u>.",
+                    "오늘따라 하늘이 아주 <u>높다</u>."
+                ],
+                correctIndex: 1,
+                explanation: {
+                    morph: "형태: 모두 형태가 활용되는 가변어(용언)입니다.",
+                    func: "기능: 주어의 움직임 혹은 속성을 나타내는 서술어(용언)입니다.",
+                    mean: "의미: 성질/상태는 형용사, 동작/과정은 동사입니다.",
+                    wrongReason: "'늙다'는 시간이 지남에 따라 세포나 신체가 쇠퇴하는 '과정'을 담고 있는 단어로, 국어학적으로는 **동사**에 해당합니다. 또한 '늙으십시오'처럼 명령형/청유형 어미인 '-으십시오'나 '-자', 현재형 '-는다'('늙는다')와의 결합이 가능하기 때문에 확실히 동사입니다. '푸르다', '예쁘다', '높다'는 상태를 나타내는 형용사입니다."
+                }
+            },
+            {
+                id: 16,
+                question: "다음 중 감탄사(독립언)에 대한 설명으로 옳은 것을 모두 고른 것은 무엇인가요?",
+                box: "보기:\nㄱ. 문장 안에서 다른 성분과 관계를 맺지 않고 독립적으로 쓰인다.\nㄴ. 놀람, 느낌, 부름, 대답 등을 나타낸다.\nㄷ. 조사와 활발하게 결합하여 문장의 핵심 주어로 자주 활약한다.\nㄹ. 말하는 이의 감정에 따라 형태가 다양하게 어미 변화(활용)를 겪는다.",
+                options: [
+                    "ㄱ, ㄴ",
+                    "ㄱ, ㄷ",
+                    "ㄴ, ㄹ",
+                    "ㄷ, ㄹ"
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: 감탄사는 변하지 않는 불변어입니다.",
+                    func: "기능: 다른 성분과 아무 연관 없이 독립적으로 사용되는 독립언입니다.",
+                    mean: "의미: 화자의 정서적 감탄, 호응, 대답 등을 나타냅니다.",
+                    wrongReason: "ㄱ, ㄴ은 감탄사의 기능적, 의미적 성격을 바르게 파악한 지문입니다. ㄷ은 조사와 결합할 수 없고 독립적으로 쓰이므로 틀렸으며, ㄹ은 불변어이므로 활용할 수 없습니다. 따라서 옳은 것은 ㄱ과 ㄴ입니다."
+                }
+            },
+            {
+                id: 17,
+                question: "밑줄 친 단어의 품사가 '대명사'가 아닌 문장은 무엇인가요?",
+                options: [
+                    "<u>누구</u>에게 물어보아야 할지 모르겠네.",
+                    "<u>저기</u> 있는 산이 바로 설악산이란다.",
+                    "<u>어느</u> 나라에서 오셨습니까?",
+                    "<u>나</u>는 국어 공부가 참 재미있다."
+                ],
+                correctIndex: 2,
+                explanation: {
+                    morph: "형태: 대명사와 관형사 모두 불변어입니다.",
+                    func: "기능: 1, 2, 4번은 뒤에 조사가 결합하여 체언 역할을 하나, 3번 '어느'는 조사가 올 수 없고 뒤의 명사 '나라'를 수식합니다.",
+                    mean: "의미: 대상의 이름을 대신하는 대명사와 대상을 지정해 수식하는 관형사입니다.",
+                    wrongReason: "3번의 '어느'는 대명사가 아니라, 뒤에 오는 명사인 '나라'를 한정적으로 꾸며주고 있는 '관형사(지시 관형사)'입니다. 1번('누구' - 인칭대명사), 2번('저기' - 지시대명사), 4번('나' - 인칭대명사)은 모두 대명사입니다."
+                }
+            },
+            {
+                id: 18,
+                question: "다음 예문에서 밑줄 친 '아니요'와 '아니'의 품사를 바르게 설명한 것은 무엇인가요?",
+                box: "문장 예시:\n영수: 너 혹시 밥 먹었니?\n철수: <u>아니요</u>, 아직 안 먹었어요. 그건 <u>아니</u>예요.",
+                options: [
+                    "'아니요'는 감탄사이고, '아니(예요)'는 형용사 '아니다'의 활용형이다.",
+                    "둘 다 감탄사이다.",
+                    "'아니요'는 부사이고, '아니'는 대명사이다.",
+                    "둘 다 형용사이다."
+                ],
+                correctIndex: 0,
+                explanation: {
+                    morph: "형태: '아니요'는 불변인 감탄사이고, '아니(예요)'는 형용사 '아니다'의 어간 '아니-'에 서술격 조사 성격이나 어미가 결합한 활용어입니다.",
+                    func: "기능: '아니요'는 독립언이고, '아니예요'의 '아니'는 서술어(용언)의 핵심 어간입니다.",
+                    mean: "의미: '아니요'는 부정의 응답을 나타내는 감탄사, '아니다'는 주어가 보어의 지위를 부정하는 상태 형용사입니다.",
+                    wrongReason: "철수의 대답 중 독립적으로 쓰인 대답인 '아니요'는 윗사람에게 응답하는 독립언 '감탄사'입니다. 반면 뒷문장의 '아니예요'의 '아니-'는 주어의 사실을 부인하는 형용사 '아니다'의 어간에 어미가 붙어 서술어로 쓰인 것입니다. 따라서 1번이 정확합니다."
+                }
+            },
+            {
+                id: 19,
+                question: "다음 예문에서 밑줄 친 단어 '다섯'의 품사를 형태, 기능, 의미의 기준으로 완벽하게 기술한 것을 찾으세요.",
+                box: "문장 예시:\n그는 책 <u>다섯</u> 권을 가방에 고이 담았다.",
+                options: [
+                    "불변어 — 체언 — 수사",
+                    "불변어 — 수식언 — 관형사",
+                    "가변어 — 용언 — 형용사",
+                    "불변어 — 수식언 — 부사"
+                ],
+                correctIndex: 1,
+                explanation: {
+                    morph: "형태: 형태가 변하지 않는 불변어입니다.",
+                    func: "기능: 뒤에 오는 의존 명사 '권'을 앞서서 꾸며 주는 '수식언'의 역할을 담당합니다.",
+                    mean: "의미: 수량을 한정하여 수식하는 의미인 '관형사'(더 자세하게는 수관형사)에 해당합니다.",
+                    wrongReason: "본 예문에서 '다섯'은 뒤의 단위성 의존 명사인 '권'을 수식하고 있습니다. 격조사 '이, 을' 등이 결합할 수 없는 상태이므로 품사는 수사가 아닌 '수관형사'입니다. 수관형사는 형태상 '불변어', 기능상 '수식언', 의미상 '관형사'에 해당합니다."
+                }
+            },
+            {
+                id: 20,
+                question: "다음 중 '동사'와 '형용사'의 구별 특징을 올바르게 서술하지 못한 학생은 누구인가요?",
+                options: [
+                    "민지: 현재 시제 선어말어미 '-ㄴ다/-는다'를 붙여보아서 말이 되면 동사, 말이 되지 않으면 형용사야.",
+                    "찬우: 명령형 어미 '-어라/-아라'나 청유형 어미 '-자'와 결합할 수 있는 것은 동사뿐이야.",
+                    "수아: 의도를 나타내는 연결어미 '-려/-려고'는 동사와 형용사 모두에 아주 자유롭게 붙을 수 있어.",
+                    "준우: 목적을 뜻하는 연결어미 '-러'는 동사와만 결합하고 형용사와는 결합할 수 없어."
+                ],
+                correctIndex: 2,
+                explanation: {
+                    morph: "형태: 어미 활용에 따른 동사와 형용사의 결합적 제약 규칙입니다.",
+                    func: "기능: 모두 문장의 주어를 서술하는 용언 기능입니다.",
+                    mean: "의미: 동사(움직임)와 형용사(성질/상태)의 구별법입니다.",
+                    wrongReason: "의도를 나타내는 연결어미 '-려/-려고'는 주체의 '의지'나 '움직임'을 내포하므로, 성질과 상태를 뜻하는 형용사(예: '높으려고', '예쁘려고' 등)에는 붙을 수 없고, 동사(예: '읽으려고', '먹으려고')와만 결합할 수 있습니다. 수아의 발언이 틀렸습니다."
+                }
+            }
+        ];
+
+        // State variables
+        let currentQuestionIdx = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let examStartTime = null;
+        let examTimer = null;
+        const totalDuration = 40 * 60; // 40 minutes in seconds
+        let secondsRemaining = totalDuration;
+
+        // Initialize application on load
+        window.onload = function() {
+            lucide.createIcons();
+            renderNavGrid();
+        };
+
+        // Create navigation grid buttons
+        function renderNavGrid() {
+            const grid = document.getElementById('nav-grid');
+            grid.innerHTML = '';
+            for(let i = 0; i < questions.length; i++) {
+                const btn = document.createElement('button');
+                btn.id = `nav-btn-${i}`;
+                btn.className = `h-10 w-10 text-xs font-bold rounded-lg border transition ${getNavBtnClass(i)}`;
+                btn.textContent = i + 1;
+                btn.onclick = () => jumpToQuestion(i);
+                grid.appendChild(btn);
+            }
+        }
+
+        // Color coding for navigation grid buttons based on state
+        function getNavBtnClass(idx) {
+            if (currentQuestionIdx === idx) {
+                return 'bg-blue-600 border-blue-600 text-white shadow-sm';
+            }
+            if (userAnswers[idx] !== null) {
+                return 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100';
+            }
+            return 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50';
+        }
+
+        // Helper to trigger custom modal
+        function showModal(title, text, actionsHtml) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-text').innerHTML = text;
+            document.getElementById('modal-actions').innerHTML = actionsHtml;
+            document.getElementById('modal-container').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-container').classList.add('hidden');
+        }
+
+        // Start the exam
+        function startExam() {
+            document.getElementById('intro-card').classList.add('hidden');
+            document.getElementById('exam-workspace').classList.remove('hidden');
+            
+            examStartTime = new Date();
+            secondsRemaining = totalDuration;
+            startTimer();
+            
+            loadQuestion(0);
+        }
+
+        // Timer implementation
+        function startTimer() {
+            clearInterval(examTimer);
+            examTimer = setInterval(() => {
+                secondsRemaining--;
+                if (secondsRemaining <= 0) {
+                    clearInterval(examTimer);
+                    submitExam(true); // Auto-submit when time's up
+                } else {
+                    const mins = Math.floor(secondsRemaining / 60);
+                    const secs = secondsRemaining % 60;
+                    document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        // Load targeted question
+        function loadQuestion(idx) {
+            currentQuestionIdx = idx;
+            const q = questions[idx];
+            
+            // Render text
+            document.getElementById('question-num').textContent = q.id;
+            document.getElementById('question-text').textContent = q.question;
+            
+            // Set Box
+            const boxEl = document.getElementById('question-box');
+            if (q.box) {
+                boxEl.textContent = q.box;
+                boxEl.classList.remove('hidden');
+            } else {
+                boxEl.classList.add('hidden');
+            }
+
+            // Render Options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            
+            q.options.forEach((opt, oIdx) => {
+                const isSelected = userAnswers[idx] === oIdx;
+                const optBtn = document.createElement('button');
+                optBtn.className = `w-full text-left p-4 rounded-xl border-2 transition duration-150 flex items-start gap-3 ${
+                    isSelected 
+                    ? 'border-blue-600 bg-blue-50/50 text-blue-900 font-medium' 
+                    : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
+                }`;
+                
+                // Visual indicators for selection
+                const circleClass = isSelected ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-300 text-slate-400';
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold shrink-0 ${circleClass}">
+                        ${oIdx + 1}
+                    </span>
+                    <span class="text-sm sm:text-base leading-snug">${escapeHtml(opt)}</span>
+                `;
+                optBtn.onclick = () => selectOption(oIdx);
+                container.appendChild(optBtn);
+            });
+
+            // Adjust navigation control buttons
+            document.getElementById('prev-btn').disabled = idx === 0;
+            if (idx === questions.length - 1) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            }
+
+            // Update Progress
+            updateProgress();
+            renderNavGrid();
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // Handle option selection
+        function selectOption(optIdx) {
+            userAnswers[currentQuestionIdx] = optIdx;
+            loadQuestion(currentQuestionIdx); // Redraw with new selection
+        }
+
+        // Question jumping & navigation
+        function jumpToQuestion(idx) {
+            loadQuestion(idx);
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                loadQuestion(currentQuestionIdx - 1);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIdx < questions.length - 1) {
+                loadQuestion(currentQuestionIdx + 1);
+            }
+        }
+
+        function updateProgress() {
+            const pct = ((currentQuestionIdx + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${pct}%`;
+            document.getElementById('progress-text').textContent = `${currentQuestionIdx + 1} / ${questions.length}`;
+        }
+
+        // Early warning before submitting
+        function confirmSubmit() {
+            const unanswered = userAnswers.filter(ans => ans === null).length;
+            let text = "정말 시험을 종료하고 답안지를 제출하시겠습니까?";
+            if (unanswered > 0) {
+                text += `<br/><span class="text-red-500 font-bold">주의: 아직 풀지 않은 문제가 ${unanswered}개 있습니다.</span>`;
+            }
+            
+            const actions = `
+                <button onclick="closeModal()" class="px-4 py-2 border border-slate-200 text-slate-600 rounded-lg hover:bg-slate-50 transition font-bold text-sm">계속 풀기</button>
+                <button onclick="closeModal(); forceSubmit();" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition font-bold text-sm">제출하기</button>
+            `;
+            showModal("시험 제출 확인", text, actions);
+        }
+
+        function forceSubmit() {
+            submitExam(false);
+        }
+
+        // Calculate and Show Results
+        function submitExam(isAuto = false) {
+            clearInterval(examTimer);
+            
+            if (isAuto) {
+                showModal("시험 시간 종료", "제한시간 40분이 지나 답안지가 자동으로 임시 저장 및 제출되었습니다.", `
+                    <button onclick="closeModal(); processScore();" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-bold text-sm">결과 확인</button>
+                `);
+            } else {
+                processScore();
+            }
+        }
+
+        function processScore() {
+            document.getElementById('exam-workspace').classList.add('hidden');
+            document.getElementById('result-section').classList.remove('hidden');
+
+            // Compute score
+            let correctCount = 0;
+            questions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correctIndex) {
+                    correctCount++;
+                }
+            });
+
+            const score = (correctCount / questions.length) * 100;
+            const elapsed = totalDuration - secondsRemaining;
+            const elapsedMins = Math.floor(elapsed / 60);
+            const elapsedSecs = elapsed % 60;
+
+            // Render stats
+            document.getElementById('result-score').textContent = `${score}점`;
+            document.getElementById('result-correct').textContent = `${correctCount} / ${questions.length}개`;
+            document.getElementById('result-time').textContent = `${elapsedMins}분 ${elapsedSecs}초`;
+
+            // Grade logic & Teacher Comment
+            let grade = 'F';
+            let comment = '';
+            
+            if (score >= 90) {
+                grade = 'A';
+                comment = "💡 <strong>경축! 완벽한 품사 마스터!</strong> 최고난도 수준의 문법 문제를 90점 이상으로 통과하셨군요! 형태, 기능, 의미의 삼단 품사 분류 시스템을 아주 명확하게 꿰뚫고 있어요. 기말고사는 100점 따놓은 당상입니다!";
+            } else if (score >= 75) {
+                grade = 'B';
+                comment = "👍 <strong>아주 훌륭해요!</strong> 품사의 전반적인 체계를 든든하게 이해하고 있습니다. 다만 수사 vs 수관형사, 동사 vs 형용사의 미묘한 예외 규칙 몇 가지만 해설을 보고 보완한다면 완벽한 상위권에 도달할 수 있습니다.";
+            } else if (score >= 60) {
+                grade = 'C';
+                comment = "✍️ <strong>조금 더 집중해볼까요?</strong> 기본 개념은 잡혀 있으나 복잡한 활용 문제나 품사 통용 문제에서 실수가 나왔네요. 아래에 제공된 선생님의 1대1 피드백 카드를 꼼꼼히 정독해보세요.";
+            } else {
+                grade = 'D';
+                comment = "🔥 <strong>포기하기엔 이릅니다!</strong> 9품사의 기준인 '형태, 기능, 의미'를 머릿속으로 다시 한번 백지에 적어가며 복습할 때입니다. 아래의 세밀한 오답 해설을 보며 개념의 틈을 차근차근 메꿔봅시다.";
+            }
+
+            document.getElementById('result-grade').textContent = grade;
+            document.getElementById('grade-comment').innerHTML = comment;
+
+            // Render detailed list of questions with answers and detailed grammar breakdown
+            renderDetailedFeedback();
+            
+            // Re-bind Lucide icons
+            setTimeout(() => {
+                lucide.createIcons();
+            }, 100);
+        }
+
+        function renderDetailedFeedback() {
+            const container = document.getElementById('feedback-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                const isCorrect = userAns === q.correctIndex;
+                
+                const card = document.createElement('div');
+                card.className = `bg-white rounded-2xl shadow-sm border p-6 ${
+                    isCorrect ? 'border-emerald-200' : 'border-rose-200'
+                }`;
+
+                // Header info
+                let headerBadge = isCorrect 
+                    ? `<span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full"><i data-lucide="check" class="w-3.5 h-3.5"></i> 정답</span>`
+                    : `<span class="inline-flex items-center gap-1 bg-rose-50 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-full"><i data-lucide="x" class="w-3.5 h-3.5"></i> 오답</span>`;
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm font-bold text-slate-400">문항 ${q.id}</span>
+                        ${headerBadge}
+                    </div>
+                    <h4 class="font-bold text-slate-950 mb-3">${escapeHtml(q.question)}</h4>
+                    ${q.box ? `<div class="bg-slate-50 border-l-2 border-indigo-400 p-3 mb-3 text-xs font-mono text-slate-600 rounded-r">${q.box.replace(/\n/g, '<br/>')}</div>` : ''}
+                    
+                    <div class="space-y-2 mb-4 text-sm">
+                        <p class="text-slate-600">
+                            <strong>학생 선택:</strong> <span class="${isCorrect ? 'text-emerald-700 font-semibold' : 'text-rose-600 font-semibold'}">${userAns !== null ? `(${userAns + 1}) ${escapeHtml(q.options[userAns])}` : '선택하지 않음'}</span>
+                        </p>
+                        <p class="text-slate-700">
+                            <strong>실제 정답:</strong> <span class="text-emerald-700 font-semibold">(${q.correctIndex + 1}) ${escapeHtml(q.options[q.correctIndex])}</span>
+                        </p>
+                    </div>
+
+                    <!-- Grammar Analysis Board (형태, 기능, 의미) -->
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/60 mt-4">
+                        <h5 class="text-xs font-extrabold text-blue-700 uppercase tracking-widest mb-3 flex items-center gap-1">
+                            <i data-lucide="layers" class="w-3.5 h-3.5"></i> 품사 판별 분석표 (형태 · 기능 · 의미)
+                        </h5>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-3">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                <span class="text-slate-400 font-semibold block mb-0.5">① 형태 (Morphology)</span>
+                                <span class="text-slate-800 font-medium">${escapeHtml(q.explanation.morph)}</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                <span class="text-slate-400 font-semibold block mb-0.5">② 기능 (Syntax)</span>
+                                <span class="text-slate-800 font-medium">${escapeHtml(q.explanation.func)}</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                <span class="text-slate-400 font-semibold block mb-0.5">③ 의미 (Semantics)</span>
+                                <span class="text-slate-800 font-medium">${escapeHtml(q.explanation.mean)}</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-700 bg-blue-50/50 p-3 rounded-lg border border-blue-100 leading-relaxed">
+                            <strong class="text-blue-800 block mb-1">💡 선생님의 최종 족집게 풀이</strong>
+                            ${escapeHtml(q.explanation.wrongReason)}
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Restart exam cleanly
+        function restartExam() {
+            userAnswers = Array(questions.length).fill(null);
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('exam-workspace').classList.remove('hidden');
+            
+            examStartTime = new Date();
+            secondsRemaining = totalDuration;
+            startTimer();
+            loadQuestion(0);
+        }
+    </script>
+</body>
+</html>
+    </template>
+    <script>
+        const STUDENT_INFO = { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -290,46 +1096,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS.find(function(s) { return s.name === '김희정'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -338,70 +1112,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
-                // Built-in Genuine Student Projects
-        const DEFAULT_STUDENT_DATA = {
-            's_3_6_chaeyeon': {
-                'quiz': {
-                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                },
-                'meal-app': {
-                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                }
-            }
-        };
-
-        const DEFAULT_STUDENT_DATA = {
-  "quiz": {
-    "title": "중1 국어 기말고사 대비 평가 - 품사 마스터",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>중1 국어 기말고사 대비 평가 - 품사 마스터</title>\n    <!-- Tailwind CSS -->\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <!-- Lucide Icons -->\n    <script src=\"https://unpkg.com/lucide@latest\"></script>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');\n        body {\n            font-family: 'Noto Sans KR', sans-serif;\n        }\n    </style>\n</head>\n<body class=\"bg-slate-50 text-slate-800 min-h-screen flex flex-col\">\n\n    <!-- Header -->\n    <header class=\"bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md\">\n        <div class=\"max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8\">\n            <div class=\"flex items-center justify-between\">\n                <div>\n                    <span class=\"bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider\">중학교 1학년 국어</span>\n                    <h1 class=\"text-2xl sm:text-3xl font-extrabold mt-1\">1학기 기말고사 최고난도 평가</h1>\n                    <p class=\"text-blue-100 text-sm mt-1\">대단원: 품사의 종류와 특성 (형태·기능·의미)</p>\n                </div>\n                <div class=\"hidden sm:block text-right\">\n                    <span class=\"text-xs text-blue-200 block\">문항 수</span>\n                    <span class=\"text-2xl font-bold\">20문항</span>\n                </div>\n            </div>\n        </div>\n    </header>\n\n    <!-- Main Content -->\n    <main class=\"flex-grow max-w-4xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8\">\n        \n        <!-- Intro Card -->\n        <div id=\"intro-card\" class=\"bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-6\">\n            <h2 class=\"text-xl font-bold text-slate-900 flex items-center gap-2 mb-4\">\n                <i data-lucide=\"info\" class=\"text-blue-600 w-6 h-6\"></i>\n                선생님의 격려 편지\n            </h2>\n            <div class=\"prose text-slate-600 space-y-3 text-sm sm:text-base leading-relaxed\">\n                <p>사랑하는 중학교 1학년 학생 여러분! 기말고사가 다가오고 있네요. 이번 모의평가는 품사의 분류 기준인 <strong>형태(가변어/불변어)</strong>, <strong>기능(체언/수식언/관계언/독립언/용언)</strong>, <strong>의미(9품사)</strong>를 깊이 있게 다루는 <strong>고급 난이도</strong>의 시험지입니다.</p>\n                <p class=\"font-medium text-slate-800\">특히 학생들이 가장 많이 헷갈려하는 다음 주제들이 포함되어 있습니다:</p>\n                <ul class=\"list-disc pl-5 space-y-1 text-slate-600\">\n                    <li>동사와 형용사의 구분 규칙</li>\n                    <li>수사와 수관형사의 구별 방식</li>\n                    <li>지시대명사와 지시관형사의 구분</li>\n                    <li>조사의 다양한 결합 양상과 문장 성분</li>\n                </ul>\n                <p>문제를 푼 직후 바로 상세한 오답 풀이와 품사 기준 분석이 제공되니, 틀린 문제는 반드시 복습하여 기말고사에서 100점을 맞을 수 있도록 합시다. 화이팅!</p>\n            </div>\n            <div class=\"mt-6 flex justify-end\">\n                <button onclick=\"startExam()\" class=\"bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition duration-200 flex items-center gap-2 text-base\">\n                    시험 시작하기\n                    <i data-lucide=\"arrow-right\" class=\"w-5 h-5\"></i>\n                </button>\n            </div>\n        </div>\n\n        <!-- Exam Workspace (Hidden initially) -->\n        <div id=\"exam-workspace\" class=\"hidden space-y-6\">\n            \n            <!-- Progress & Stats Banner -->\n            <div class=\"bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-4\">\n                <div class=\"flex items-center gap-4\">\n                    <span class=\"text-sm font-semibold text-slate-500\">진행도:</span>\n                    <div class=\"w-48 sm:w-64 bg-slate-100 rounded-full h-3 overflow-hidden\">\n                        <div id=\"progress-bar\" class=\"bg-blue-600 h-full transition-all duration-300\" style=\"width: 5%\"></div>\n                    </div>\n                    <span id=\"progress-text\" class=\"text-sm font-bold text-blue-600\">1 / 20</span>\n                </div>\n                <div class=\"flex items-center gap-4 text-sm font-medium\">\n                    <span class=\"text-slate-500\">남은 시간: <span id=\"timer\" class=\"font-mono text-slate-800 text-base font-bold ml-1\">40:00</span></span>\n                    <button onclick=\"confirmSubmit()\" class=\"bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-3 py-1.5 rounded-lg text-xs font-bold transition\">\n                        시험 조기 종료\n                    </button>\n                </div>\n            </div>\n\n            <!-- Question Card -->\n            <div id=\"question-card\" class=\"bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 transition-all duration-300\">\n                <div class=\"flex justify-between items-start gap-4 mb-4\">\n                    <span class=\"bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-lg\">문제 <span id=\"question-num\">1</span></span>\n                    <span class=\"bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded-lg\">난이도: 상</span>\n                </div>\n                \n                <!-- Question Text -->\n                <h3 id=\"question-text\" class=\"text-lg sm:text-xl font-bold text-slate-900 leading-snug mb-6\">\n                    질문 내용이 이곳에 표시됩니다.\n                </h3>\n\n                <!-- Question Box (Optional text box in question) -->\n                <div id=\"question-box\" class=\"hidden bg-slate-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r-lg font-mono text-sm leading-relaxed text-slate-700\">\n                    제시문 내용\n                </div>\n\n                <!-- Options -->\n                <div id=\"options-container\" class=\"space-y-3\">\n                    <!-- Dynamic option buttons go here -->\n                </div>\n            </div>\n\n            <!-- Navigation Buttons -->\n            <div class=\"flex justify-between items-center\">\n                <button id=\"prev-btn\" onclick=\"prevQuestion()\" class=\"bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold py-2 px-5 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 text-sm\">\n                    <i data-lucide=\"chevron-left\" class=\"w-4 h-4\"></i> 이전 문제\n                </button>\n                <div class=\"flex gap-2\">\n                    <button id=\"next-btn\" onclick=\"nextQuestion()\" class=\"bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-lg transition flex items-center gap-1.5 text-sm\">\n                        다음 문제 <i data-lucide=\"chevron-right\" class=\"w-4 h-4\"></i>\n                    </button>\n                    <button id=\"submit-btn\" onclick=\"submitExam()\" class=\"hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition shadow-sm text-sm\">\n                        답안지 제출하기\n                    </button>\n                </div>\n            </div>\n\n            <!-- Question Navigation Grid -->\n            <div class=\"bg-white rounded-xl shadow-sm border border-slate-200 p-4\">\n                <h4 class=\"text-xs font-bold text-slate-400 uppercase tracking-wider mb-3\">문항 바로가기</h4>\n                <div id=\"nav-grid\" class=\"grid grid-cols-5 sm:grid-cols-10 gap-2\">\n                    <!-- Navigation buttons will be rendered here -->\n                </div>\n            </div>\n        </div>\n\n        <!-- Result Section (Hidden initially) -->\n        <div id=\"result-section\" class=\"hidden space-y-6\">\n            <!-- Score Card -->\n            <div class=\"bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 text-center\">\n                <div class=\"inline-flex items-center justify-center w-24 h-24 rounded-full bg-blue-50 text-blue-600 mb-4\">\n                    <i data-lucide=\"award\" class=\"w-12 h-12\"></i>\n                </div>\n                <h2 class=\"text-3xl font-black text-slate-900 mb-1\">시험 결과 분석</h2>\n                <p class=\"text-slate-500 mb-6\">기말고사 대비 품사 단원 고급 모의고사</p>\n                \n                <div class=\"grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8\">\n                    <div class=\"bg-slate-50 rounded-xl p-4 border border-slate-100\">\n                        <span class=\"text-xs text-slate-400 block mb-1\">내 점수</span>\n                        <span id=\"result-score\" class=\"text-2xl sm:text-3xl font-extrabold text-blue-600\">0 / 100</span>\n                    </div>\n                    <div class=\"bg-slate-50 rounded-xl p-4 border border-slate-100\">\n                        <span class=\"text-xs text-slate-400 block mb-1\">맞춘 문항수</span>\n                        <span id=\"result-correct\" class=\"text-2xl sm:text-3xl font-extrabold text-emerald-600\">0 / 20</span>\n                    </div>\n                    <div class=\"bg-slate-50 rounded-xl p-4 border border-slate-100\">\n                        <span class=\"text-xs text-slate-400 block mb-1\">소요 시간</span>\n                        <span id=\"result-time\" class=\"text-2xl sm:text-3xl font-extrabold text-slate-700\">0분 0초</span>\n                    </div>\n                    <div class=\"bg-slate-50 rounded-xl p-4 border border-slate-100\">\n                        <span class=\"text-xs text-slate-400 block mb-1\">평가 등급</span>\n                        <span id=\"result-grade\" class=\"text-2xl sm:text-3xl font-extrabold text-purple-600\">A</span>\n                    </div>\n                </div>\n\n                <div id=\"grade-comment\" class=\"max-w-xl mx-auto bg-blue-50 text-blue-800 text-sm p-4 rounded-xl leading-relaxed mb-6\">\n                    선생님의 피드백이 출력됩니다.\n                </div>\n\n                <div class=\"flex flex-wrap justify-center gap-3\">\n                    <button onclick=\"restartExam()\" class=\"bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow flex items-center gap-2 text-sm\">\n                        <i data-lucide=\"refresh-cw\" class=\"w-4 h-4\"></i> 다시 풀기\n                    </button>\n                    <a href=\"#detailed-analysis\" class=\"bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-6 rounded-lg transition text-sm\">\n                        상세 오답 피드백 보기\n                    </a>\n                </div>\n            </div>\n\n            <!-- Detailed Feedback Header -->\n            <div id=\"detailed-analysis\" class=\"space-y-4\">\n                <h3 class=\"text-xl font-bold text-slate-900 flex items-center gap-2\">\n                    <i data-lucide=\"book-open\" class=\"text-blue-600\"></i>\n                    문항별 상세 피드백 (품사 분석기)\n                </h3>\n                <p class=\"text-sm text-slate-500\">각 문제의 품사적 특성(형태·기능·의미)에 의거한 상세한 정답 및 오답 해설입니다.</p>\n                \n                <div id=\"feedback-container\" class=\"space-y-6\">\n                    <!-- Dynamic feedback cards go here -->\n                </div>\n            </div>\n        </div>\n\n    </main>\n\n    <!-- Footer -->\n    <footer class=\"bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400\">\n        <div class=\"max-w-4xl mx-auto px-4\">\n            <p>© 중학교 1학년 국어 기말고사 학습 보조 시스템 - 품사 완전 정복</p>\n            <p class=\"mt-1\">품사의 세 가지 기준: 형태(가변어/불변어), 기능(체언/수식언/관계언/독립언/용언), 의미(명사/대명사/수사/관형사/부사/조사/감탄사/동사/형용사)</p>\n        </div>\n    </footer>\n\n    <!-- Custom Modal (Alternative to alert) -->\n    <div id=\"modal-container\" class=\"fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4\">\n        <div class=\"bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-200 animate-in fade-in zoom-in duration-200\">\n            <h3 id=\"modal-title\" class=\"text-lg font-bold text-slate-900 mb-2\">알림</h3>\n            <p id=\"modal-text\" class=\"text-slate-600 text-sm leading-relaxed mb-6\">설명 내용</p>\n            <div id=\"modal-actions\" class=\"flex justify-end gap-3\">\n                <!-- Action buttons -->\n            </div>\n        </div>\n    </div>\n\n    <!-- Questions Data & Application Script -->\n    <script>\n        // 20 High quality Questions on Korean Parts of Speech (품사)\n        const questions = [\n            {\n                id: 1,\n                question: \"다음 중 단어의 품사를 분류하는 세 가지 기준에 대한 설명으로 가장 옳지 않은 것은 무엇인가요?\",\n                box: \"품사의 분류 기준:\\n1. 형태: 단어의 형태가 변하는가(가변어/불변어)\\n2. 기능: 문장 내에서 어떤 역할을 하는가(체언/수식언/관계언/독립언/용언)\\n3. 의미: 단어가 나타내는 성질이 무엇인가(9품사)\",\n                options: [\n                    \"형태에 따라 단어를 분류할 때, '가변어'에 속하는 품사는 동사, 형용사뿐이다.\",\n                    \"기능에 따라 단어를 분류할 때, 체언은 문장에서 주로 주어, 목적어, 보어 등의 자리에 쓰인다.\",\n                    \"의미에 따라 단어를 분류한 결과가 우리가 흔히 말하는 '9품사' 체계이다.\",\n                    \"하나의 단어는 형태, 기능, 의미라는 세 가지 분류 단계를 모두 거치게 된다.\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: '가변어'는 형태가 변하는 단어로, 동사·형용사(용언) 외에도 서술격 조사 '이다'가 가변어에 속합니다.\",\n                    func: \"기능: '체언'은 관계언과 결합하여 주어, 목적어, 보어 등 문장의 핵심 뼈대를 형성하는 기능을 합니다.\",\n                    mean: \"의미: 개별 단어의 공통적인 의미 성질에 따라 분류한 9품사(명사, 대명사, 수사, 관형사, 부사, 조사, 감탄사, 동사, 형용사)에 해당합니다.\",\n                    wrongReason: \"서술격 조사 '이다'는 조사(관계언)에 속하지만, '이고, 이니, 이면'과 같이 형태가 변하는 유일한 가변어 조사입니다. 따라서 가변어에 용언(동사, 형용사)만 있다는 1번 설명은 오답입니다.\"\n                }\n            },\n            {\n                id: 2,\n                question: \"밑줄 친 단어 중 '가변어'이면서 문장에서 '용언'의 기능을 담당하는 단어로만 묶인 것은 무엇인가요?\",\n                box: \"문장 예시:\\nㄱ. 하늘이 매우 <u>푸르다</u>.\\nㄴ. 나는 학생<u>이다</u>.\\nㄷ. 영수가 책을 <u>읽는다</u>.\\nㄹ. 그 책은 <u>새</u> 책이다.\",\n                options: [\n                    \"ㄱ, ㄴ\",\n                    \"ㄱ, ㄷ\",\n                    \"ㄴ, ㄷ\",\n                    \"ㄷ, ㄹ\"\n                ],\n                correctIndex: 1,\n                explanation: {\n                    morph: \"형태: '푸르다'(푸르고, 푸르니)와 '읽는다'(읽고, 읽으니), '이다'(이고, 이니) 모두 형태가 변하는 가변어입니다.\",\n                    func: \"기능: '용언'은 가변어 중 문장에서 서술어 역할을 하는 '동사'와 '형용사'만을 지칭합니다.\",\n                    mean: \"의미: '푸르다'는 상태를 나타내는 형용사, '읽는다'는 주체의 움직임을 나타내는 동사입니다. '이다'는 서술격 조사입니다.\",\n                    wrongReason: \"ㄴ의 서술격 조사 '이다'는 가변어에는 속하지만, 기능상 '관계언'에 해당합니다. ㄹ의 '새'는 형태가 변하지 않는 불변어이며 기능상 '수식언'(관형사)입니다. 따라서 가변어이면서 용언인 것은 ㄱ(형용사)과 ㄷ(동사)뿐입니다.\"\n                }\n            },\n            {\n                id: 3,\n                question: \"다음 밑줄 친 '수'의 개념을 나타내는 단어들의 품사를 올바르게 식별한 것은 무엇인가요?\",\n                box: \"문장 예시:\\nㄱ. 사과 <u>하나</u>가 나무에서 떨어졌다.\\nㄴ. <u>한</u> 사람이 길을 건너가고 있다.\",\n                options: [\n                    \"ㄱ: 수사, ㄴ: 수관형사\",\n                    \"ㄱ: 수관형사, ㄴ: 수사\",\n                    \"ㄱ: 명사, ㄴ: 수사\",\n                    \"ㄱ: 수사, ㄴ: 형용사\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 수사는 불변어(체언)이고 수관형사 역시 불변어(수식언)입니다.\",\n                    func: \"기능: '하나'는 뒤에 격조사 '가'가 붙어 체언 역할을 하며, '한'은 조사와 결합하지 않고 뒤의 명사 '사람'을 수식하는 수식언 역할을 합니다.\",\n                    mean: \"의미: '하나'는 사물의 수량을 가리키는 대상을 지칭하는 수사이고, '한'은 뒤의 명사를 한정하여 수량을 지정하는 수관형사입니다.\",\n                    wrongReason: \"수사(체언)는 뒤에 조사가 결합할 수 있지만, 수관형사(수식언)는 조사가 절대 결합할 수 없으며 오직 체언만을 수식합니다. ㄱ은 조사 '가'와 결합했으므로 수사이고, ㄴ은 명사 '사람'을 꾸미고 있으므로 수관형사입니다.\"\n                }\n            },\n            {\n                id: 4,\n                question: \"밑줄 친 단어의 품사가 '동사'인 문장만을 고른 것은 무엇인가요?\",\n                box: \"문장 예시:\\nㄱ. 예쁜 꽃이 길가에 <u>피었다</u>.\\nㄴ. 오늘 날씨가 참 <u>맑다</u>.\\nㄷ. 우리는 내일 일찍 <u>떠난다</u>.\\nㄹ. 영수는 키가 아주 <u>크다</u>.\",\n                options: [\n                    \"ㄱ, ㄴ\",\n                    \"ㄱ, ㄷ\",\n                    \"ㄴ, ㄹ\",\n                    \"ㄷ, ㄹ\"\n                ],\n                correctIndex: 1,\n                explanation: {\n                    morph: \"형태: 피었다(동사), 맑다(형용사), 떠난다(동사), 크다(형용사) 모두 활용을 하는 가변어입니다.\",\n                    func: \"기능: 네 단어 모두 주어의 행위나 상태를 서술하는 서술어로, 기능상 '용언'에 해당합니다.\",\n                    mean: \"의미: 동사는 주체의 동작이나 과정, 형용사는 주체의 성질이나 상태를 나타냅니다.\",\n                    wrongReason: \"동사와 형용사를 구분하는 가장 확실한 방법은 현재형 어미 '-ㄴ다/-는다'나 청유형 어미 '-자', 명령형 어미 '-어라/-아라'와의 결합 여부입니다. ㄱ('피다' -> '핀다' 가능), ㄷ('떠나다' -> '떠난다' 가능)은 동사입니다. ㄴ('맑는다' 불가능 -> 형용사), ㄹ(형용사 '크다'는 상태를 나타내어 현재형 '크는다' 불가. 단, 자라나는 과정일 땐 동사이나 여기선 단순 키가 큰 상태이므로 형용사)은 형용사입니다.\"\n                }\n            },\n            {\n                id: 5,\n                question: \"다음 중 품사가머무르는 자리에 따른 분류인 '체언'에 속하는 단어로만 묶인 것은 무엇인가요?\",\n                box: \"단어 목록:\\n바다, 그것, 우리, 둘째, 매우, 새, 그리고\",\n                options: [\n                    \"바다, 그것, 우리, 둘째\",\n                    \"바다, 그것, 매우, 새\",\n                    \"그것, 우리, 둘째, 새\",\n                    \"우리, 둘째, 매우, 그리고\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 체언에 속하는 명사, 대명사, 수사는 모두 형태가 변하지 않는 불변어입니다.\",\n                    func: \"기능: 체언은 문장에서 조사가 붙어 주어, 목적어 등으로 활약할 수 있는 몸통 역할을 합니다.\",\n                    mean: \"의미: '바다'(명사), '그것'(대명사), '우리'(대명사), '둘째'(수사)는 체언입니다.\",\n                    wrongReason: \"'매우'는 부사(수식언), '새'는 관형사(수식언), '그리고'는 부사(문장부사/수식언)입니다. 따라서 체언(명사, 대명사, 수사)으로만 묶인 것은 1번입니다.\"\n                }\n            },\n            {\n                id: 6,\n                question: \"밑줄 친 '다섯' 중 품사가 '수사'가 아닌 것을 고르세요.\",\n                options: [\n                    \"교실에 학생이 <u>다섯</u>이 앉아 있다.\",\n                    \"연필 <u>다섯</u> 자루를 친구에게 주었다.\",\n                    \"우리 집 식구는 모두 <u>다섯</u>이다.\",\n                    \"<u>다섯</u>에 다섯을 더하면 열이 된다.\"\n                ],\n                correctIndex: 1,\n                explanation: {\n                    morph: \"형태: 수사와 수관형사 모두 불변어입니다.\",\n                    func: \"기능: '다섯' 뒤에 격조사나 서술격 조사가 올 수 있으면 수사(체언)이고, 조사 없이 의존명사 '자루'를 수식하면 수관형사(수식언)입니다.\",\n                    mean: \"의미: 2번의 '다섯'은 단위성 의존 명사 '자루'를 한정 수식하는 수관형사입니다.\",\n                    wrongReason: \"1번('다섯+이(조사)'), 3번('다섯+이다(조사)'), 4번('다섯+에(조사)')은 조사와 직접 결합했으므로 수사(체언)입니다. 반면 2번의 '다섯'은 단위성 의존 명사인 '자루'를 직접 꾸며주고 있으며 어떠한 조사도 결합할 수 없으므로 '수관형사'입니다.\"\n                }\n            },\n            {\n                id: 7,\n                question: \"다음 예문에서 밑줄 친 '그'의 품사를 순서대로 바르게 말한 것은 무엇인가요?\",\n                box: \"문장 예시:\\nㄱ. <u>그</u>가 어제 나에게 선물을 주었다.\\nㄴ. <u>그</u> 책은 내가 가장 아끼는 책이다.\",\n                options: [\n                    \"ㄱ: 대명사, ㄴ: 관형사\",\n                    \"ㄱ: 관형사, ㄴ: 대명사\",\n                    \"ㄱ: 대명사, ㄴ: 부사\",\n                    \"ㄱ: 명사, ㄴ: 관형사\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 대명사와 관형사 모두 불변어입니다.\",\n                    func: \"기능: ㄱ의 '그'는 주격조사 '가'와 결합하여 주어(체언)역할을 하고, ㄴ의 '그'는 명사 '책'을 지시하여 수식하는 역할(수식언)을 합니다.\",\n                    mean: \"의미: ㄱ의 '그'는 삼인칭 대명사(지시대명사), ㄴ의 '그'는 지시관형사입니다.\",\n                    wrongReason: \"ㄱ의 '그'는 뒤에 조사 '가'가 결합하였으므로 대명사입니다. 관형사는 뒤에 조사가 전혀 붙을 수 없습니다. ㄴ의 '그'는 뒤에 있는 명사 '책'을 수식하는 지시관형사입니다.\"\n                }\n            },\n            {\n                id: 8,\n                question: \"형태, 기능, 의미의 세 가지 기준으로 분류했을 때, 품사의 속성 기술이 잘못된 것은 무엇인가요?\",\n                options: [\n                    \"명사 — 불변어 / 체언 / 사물이나 사람의 이름을 나타냄\",\n                    \"부사 — 불변어 / 수식언 / 주로 용언을 꾸며 줌\",\n                    \"감탄사 — 가변어 / 독립언 / 놀람, 느낌, 대답을 나타냄\",\n                    \"동사 — 가변어 / 용언 / 주체의 움직임이나 작용을 나타냄\"\n                ],\n                correctIndex: 2,\n                explanation: {\n                    morph: \"형태: 감탄사 '아하, 어머나, 예' 등은 형태가 변하지 않는 불변어입니다.\",\n                    func: \"기능: 감탄사는 문장의 다른 성분과 얽매이지 않는 독립언 역할을 합니다.\",\n                    mean: \"의미: 기쁨, 슬픔, 놀람이나 대답을 나타내는 감탄사입니다.\",\n                    wrongReason: \"감탄사는 문장에서 활용(형태가 변하는 현상)을 하지 않는 '불변어'입니다. 따라서 감탄사를 '가변어'라고 설명한 3번은 잘못되었습니다.\"\n                }\n            },\n            {\n                id: 9,\n                question: \"조사(관계언)에 대한 설명 중 가장 옳지 않은 것은 무엇인가요?\",\n                options: [\n                    \"조사는 자립성이 없어서 단어로 인정되지 않는다.\",\n                    \"주로 체언 뒤에 붙어서 다른 말과의 문법적 관계를 나타내거나 특별한 뜻을 더해준다.\",\n                    \"서술격 조사 '이다'를 제외한 모든 조사는 형태가 고정되어 있는 불변어이다.\",\n                    \"조사는 드물게 체언이 아닌 부사나 다른 조사 뒤에도 결합할 수 있다.\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 서술격 조사 '이다'만 활용을 하여 형태가 변하는 가변어이고, 격조사나 보조사 등은 불변어입니다.\",\n                    func: \"기능: 문장에서 체언 뒤에 붙어 자격을 부여하는 관계언입니다.\",\n                    mean: \"의미: 조사에 해당합니다. 자립성은 없으나 문법적 의미를 지니며 분리성이 있어 단어로 간주합니다.\",\n                    wrongReason: \"학교 문법(한글 맞춤법 및 표준 국어 대사전 기준)에서 조사는 자립성은 비록 없으나, 체언 뒤에 결합하여 쉽게 분리될 수 있는 '분리성'을 가져 하나의 독립된 '단어'로 인정합니다. 따라서 1번은 틀린 설명입니다.\"\n                }\n            },\n            {\n                id: 10,\n                question: \"밑줄 친 조사의 종류 중 성격이 다른 하나를 고르세요.\",\n                options: [\n                    \"철수<u>가</u> 마침내 해냈다.\",\n                    \"동생이 사과<u>를</u> 맛있게 먹었다.\",\n                    \"영희는 우리 반의 반장<u>이다</u>.\",\n                    \"인생은 짧고, 예술<u>은</u> 길다.\"\n                ],\n                correctIndex: 3,\n                explanation: {\n                    morph: \"형태: '가, 를, 은'은 형태가 고정된 불변 격조사/보조사이나, '이다'는 가변어인 서술격 조사입니다.\",\n                    func: \"기능: 모두 문법적 기능이나 특별한 의미를 제공하는 '관계언'입니다.\",\n                    mean: \"의미: 주격 조사('가'), 목적격 조사('를'), 서술격 조사('이다')는 앞 단어의 문법적 자격을 부여하는 '격조사'인 반면, '은/는'은 대조나 강조의 특별한 뜻을 더해주는 '보조사'입니다.\",\n                    wrongReason: \"1번('가' - 주격 조사), 2번('를' - 목적격 조사), 3번('이다' - 서술격 조사)은 모두 문장 안에서의 문법적 자격을 나타내 주는 '격조사'입니다. 반면 4번의 '은'은 주격 조사가 아니라 문장에 대조나 화제의 뜻을 더해주는 '보조사'입니다.\"\n                }\n            },\n            {\n                id: 11,\n                question: \"다음 밑줄 친 단어의 품사 구분이 올바르게 짝지어진 것은 무엇인가요?\",\n                box: \"문장 예시:\\nㄱ. 오늘은 날씨가 매우 <u>밝구나</u>.\\nㄴ. 아침 햇살이 창가를 <u>밝힌다</u>.\",\n                options: [\n                    \"ㄱ: 형용사, ㄴ: 동사\",\n                    \"ㄱ: 동사, ㄴ: 형용사\",\n                    \"ㄱ: 형용사, ㄴ: 형용사\",\n                    \"ㄱ: 동사, ㄴ: 동사\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 두 단어 모두 형태가 변하는 용언(가변어)입니다.\",\n                    func: \"기능: 서술어의 역할을 수행하는 용언입니다.\",\n                    mean: \"의미: ㄱ의 '밝다'는 상태를 나타내므로 형용사이고, ㄴ의 '밝히다'는 어둠을 밝게 만드는 주체의 행동이므로 동사입니다.\",\n                    wrongReason: \"ㄱ의 '밝다'는 빛의 상태나 명도를 뜻하므로 형용사입니다('밝는다' 불가능). ㄴ의 '밝히다'는 사동사(남으로 하여금 행하게 함)로서 '밝힌다'와 같이 현재형 어미 '-ㄴ다'가 아주 자연스럽게 결합할 수 있는 '동사'입니다.\"\n                }\n            },\n            {\n                id: 12,\n                question: \"다음 중 '수식언'에 대한 설명으로 가장 옳지 않은 것은 무엇인가요?\",\n                options: [\n                    \"문장 안에서 다른 단어를 꾸며주는 역할을 하는 품사 무리이다.\",\n                    \"수식언에 속하는 모든 단어는 형태가 변하지 않는 불변어이다.\",\n                    \"수식언에는 체언을 꾸미는 '관형사'와 주로 용언을 꾸미는 '부사'가 있다.\",\n                    \"부사는 주로 용언을 수식하므로, 문장 전체나 다른 부사는 꾸밀 수 없다.\"\n                ],\n                correctIndex: 3,\n                explanation: {\n                    morph: \"형태: 관형사와 부사는 형태가 고정되어 있는 '불변어'입니다.\",\n                    func: \"기능: 다른 말을 뒤에서 수식하는 '수식언' 기능입니다.\",\n                    mean: \"의미: 관형사와 부사에 해당합니다.\",\n                    wrongReason: \"부사는 주로 용언(동사, 형용사)을 꾸미지만, 그 외에도 다른 부사('가장 매우'), 관형사('아주 새'), 문장 전체('과연 그가 올까?') 등을 꾸밀 수 있어 수식의 범위가 매우 넓습니다. 따라서 4번은 잘못된 진술입니다.\"\n                }\n            },\n            {\n                id: 13,\n                question: \"밑줄 친 관형사의 종류 중 지시하는 성격이 아닌 '성질이나 상태'를 나타내는 '성상 관형사'를 고르세요.\",\n                options: [\n                    \"영수는 <u>새</u> 신발을 신고 밖으로 나갔다.\",\n                    \"나에게 <u>그</u> 책을 보여줄 수 있겠니?\",\n                    \"<u>무슨</u> 일 때문에 그렇게 울고 있니?\",\n                    \"<u>이</u> 사람은 나와 같은 반 친구이다.\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 제시된 관형사 모두 불변어입니다.\",\n                    func: \"기능: 명사나 체언을 앞자리에서 수식하는 '수식언'입니다.\",\n                    mean: \"의미: '새'는 성질이나 상태를 지시하는 성상관형사, '그'와 '이'는 대상을 지시하는 지시관형사, '무슨'은 정해지지 않은 속성을 질문하는 의문/지시 관련 관형사입니다.\",\n                    wrongReason: \"'새'는 뒤에 오는 '신발'의 성질이나 상태를 꾸며 주는 '성상 관형사'입니다. '이', '그'는 특정한 사물이나 사람의 위치를 가리키는 '지시 관형사'이며, '무슨' 역시 대상을 지목하거나 질문하는 성격의 지시 계열 관형사입니다.\"\n                }\n            },\n            {\n                id: 14,\n                question: \"다음 문장에서 밑줄 친 '잘'의 품사는 무엇인가요?\",\n                box: \"문장 예시:\\n그녀는 노래를 아주 <u>잘</u> 부른다.\",\n                options: [\n                    \"형용사\",\n                    \"관형사\",\n                    \"부사\",\n                    \"명사\"\n                ],\n                correctIndex: 2,\n                explanation: {\n                    morph: \"형태: 형태 변화가 일어나지 않는 불변어입니다.\",\n                    func: \"기능: '부른다'(동사/용언)를 꾸며 주는 '수식언'의 일종입니다.\",\n                    mean: \"의미: 행동의 능숙한 상태를 나타내는 성분 부사(양태/성상부사)입니다.\",\n                    wrongReason: \"‘잘’은 형태가 변하지 않는 불변어이며, 뒤에 오는 용언인 '부른다'를 한정하여 꾸며주므로 수식언 중에서도 '부사'에 해당합니다.\"\n                }\n            },\n            {\n                id: 15,\n                question: \"밑줄 친 용언 중 품사가 '형용사'가 아닌 것을 고르세요.\",\n                options: [\n                    \"뒷산에 소나무가 참 <u>푸르다</u>.\",\n                    \"선생님, 건강하게 <u>늙으십시오</u>.\",\n                    \"새로 산 옷이 참 <u>마음에 든다(예쁘다)</u>.\",\n                    \"오늘따라 하늘이 아주 <u>높다</u>.\"\n                ],\n                correctIndex: 1,\n                explanation: {\n                    morph: \"형태: 모두 형태가 활용되는 가변어(용언)입니다.\",\n                    func: \"기능: 주어의 움직임 혹은 속성을 나타내는 서술어(용언)입니다.\",\n                    mean: \"의미: 성질/상태는 형용사, 동작/과정은 동사입니다.\",\n                    wrongReason: \"'늙다'는 시간이 지남에 따라 세포나 신체가 쇠퇴하는 '과정'을 담고 있는 단어로, 국어학적으로는 **동사**에 해당합니다. 또한 '늙으십시오'처럼 명령형/청유형 어미인 '-으십시오'나 '-자', 현재형 '-는다'('늙는다')와의 결합이 가능하기 때문에 확실히 동사입니다. '푸르다', '예쁘다', '높다'는 상태를 나타내는 형용사입니다.\"\n                }\n            },\n            {\n                id: 16,\n                question: \"다음 중 감탄사(독립언)에 대한 설명으로 옳은 것을 모두 고른 것은 무엇인가요?\",\n                box: \"보기:\\nㄱ. 문장 안에서 다른 성분과 관계를 맺지 않고 독립적으로 쓰인다.\\nㄴ. 놀람, 느낌, 부름, 대답 등을 나타낸다.\\nㄷ. 조사와 활발하게 결합하여 문장의 핵심 주어로 자주 활약한다.\\nㄹ. 말하는 이의 감정에 따라 형태가 다양하게 어미 변화(활용)를 겪는다.\",\n                options: [\n                    \"ㄱ, ㄴ\",\n                    \"ㄱ, ㄷ\",\n                    \"ㄴ, ㄹ\",\n                    \"ㄷ, ㄹ\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: 감탄사는 변하지 않는 불변어입니다.\",\n                    func: \"기능: 다른 성분과 아무 연관 없이 독립적으로 사용되는 독립언입니다.\",\n                    mean: \"의미: 화자의 정서적 감탄, 호응, 대답 등을 나타냅니다.\",\n                    wrongReason: \"ㄱ, ㄴ은 감탄사의 기능적, 의미적 성격을 바르게 파악한 지문입니다. ㄷ은 조사와 결합할 수 없고 독립적으로 쓰이므로 틀렸으며, ㄹ은 불변어이므로 활용할 수 없습니다. 따라서 옳은 것은 ㄱ과 ㄴ입니다.\"\n                }\n            },\n            {\n                id: 17,\n                question: \"밑줄 친 단어의 품사가 '대명사'가 아닌 문장은 무엇인가요?\",\n                options: [\n                    \"<u>누구</u>에게 물어보아야 할지 모르겠네.\",\n                    \"<u>저기</u> 있는 산이 바로 설악산이란다.\",\n                    \"<u>어느</u> 나라에서 오셨습니까?\",\n                    \"<u>나</u>는 국어 공부가 참 재미있다.\"\n                ],\n                correctIndex: 2,\n                explanation: {\n                    morph: \"형태: 대명사와 관형사 모두 불변어입니다.\",\n                    func: \"기능: 1, 2, 4번은 뒤에 조사가 결합하여 체언 역할을 하나, 3번 '어느'는 조사가 올 수 없고 뒤의 명사 '나라'를 수식합니다.\",\n                    mean: \"의미: 대상의 이름을 대신하는 대명사와 대상을 지정해 수식하는 관형사입니다.\",\n                    wrongReason: \"3번의 '어느'는 대명사가 아니라, 뒤에 오는 명사인 '나라'를 한정적으로 꾸며주고 있는 '관형사(지시 관형사)'입니다. 1번('누구' - 인칭대명사), 2번('저기' - 지시대명사), 4번('나' - 인칭대명사)은 모두 대명사입니다.\"\n                }\n            },\n            {\n                id: 18,\n                question: \"다음 예문에서 밑줄 친 '아니요'와 '아니'의 품사를 바르게 설명한 것은 무엇인가요?\",\n                box: \"문장 예시:\\n영수: 너 혹시 밥 먹었니?\\n철수: <u>아니요</u>, 아직 안 먹었어요. 그건 <u>아니</u>예요.\",\n                options: [\n                    \"'아니요'는 감탄사이고, '아니(예요)'는 형용사 '아니다'의 활용형이다.\",\n                    \"둘 다 감탄사이다.\",\n                    \"'아니요'는 부사이고, '아니'는 대명사이다.\",\n                    \"둘 다 형용사이다.\"\n                ],\n                correctIndex: 0,\n                explanation: {\n                    morph: \"형태: '아니요'는 불변인 감탄사이고, '아니(예요)'는 형용사 '아니다'의 어간 '아니-'에 서술격 조사 성격이나 어미가 결합한 활용어입니다.\",\n                    func: \"기능: '아니요'는 독립언이고, '아니예요'의 '아니'는 서술어(용언)의 핵심 어간입니다.\",\n                    mean: \"의미: '아니요'는 부정의 응답을 나타내는 감탄사, '아니다'는 주어가 보어의 지위를 부정하는 상태 형용사입니다.\",\n                    wrongReason: \"철수의 대답 중 독립적으로 쓰인 대답인 '아니요'는 윗사람에게 응답하는 독립언 '감탄사'입니다. 반면 뒷문장의 '아니예요'의 '아니-'는 주어의 사실을 부인하는 형용사 '아니다'의 어간에 어미가 붙어 서술어로 쓰인 것입니다. 따라서 1번이 정확합니다.\"\n                }\n            },\n            {\n                id: 19,\n                question: \"다음 예문에서 밑줄 친 단어 '다섯'의 품사를 형태, 기능, 의미의 기준으로 완벽하게 기술한 것을 찾으세요.\",\n                box: \"문장 예시:\\n그는 책 <u>다섯</u> 권을 가방에 고이 담았다.\",\n                options: [\n                    \"불변어 — 체언 — 수사\",\n                    \"불변어 — 수식언 — 관형사\",\n                    \"가변어 — 용언 — 형용사\",\n                    \"불변어 — 수식언 — 부사\"\n                ],\n                correctIndex: 1,\n                explanation: {\n                    morph: \"형태: 형태가 변하지 않는 불변어입니다.\",\n                    func: \"기능: 뒤에 오는 의존 명사 '권'을 앞서서 꾸며 주는 '수식언'의 역할을 담당합니다.\",\n                    mean: \"의미: 수량을 한정하여 수식하는 의미인 '관형사'(더 자세하게는 수관형사)에 해당합니다.\",\n                    wrongReason: \"본 예문에서 '다섯'은 뒤의 단위성 의존 명사인 '권'을 수식하고 있습니다. 격조사 '이, 을' 등이 결합할 수 없는 상태이므로 품사는 수사가 아닌 '수관형사'입니다. 수관형사는 형태상 '불변어', 기능상 '수식언', 의미상 '관형사'에 해당합니다.\"\n                }\n            },\n            {\n                id: 20,\n                question: \"다음 중 '동사'와 '형용사'의 구별 특징을 올바르게 서술하지 못한 학생은 누구인가요?\",\n                options: [\n                    \"민지: 현재 시제 선어말어미 '-ㄴ다/-는다'를 붙여보아서 말이 되면 동사, 말이 되지 않으면 형용사야.\",\n                    \"찬우: 명령형 어미 '-어라/-아라'나 청유형 어미 '-자'와 결합할 수 있는 것은 동사뿐이야.\",\n                    \"수아: 의도를 나타내는 연결어미 '-려/-려고'는 동사와 형용사 모두에 아주 자유롭게 붙을 수 있어.\",\n                    \"준우: 목적을 뜻하는 연결어미 '-러'는 동사와만 결합하고 형용사와는 결합할 수 없어.\"\n                ],\n                correctIndex: 2,\n                explanation: {\n                    morph: \"형태: 어미 활용에 따른 동사와 형용사의 결합적 제약 규칙입니다.\",\n                    func: \"기능: 모두 문장의 주어를 서술하는 용언 기능입니다.\",\n                    mean: \"의미: 동사(움직임)와 형용사(성질/상태)의 구별법입니다.\",\n                    wrongReason: \"의도를 나타내는 연결어미 '-려/-려고'는 주체의 '의지'나 '움직임'을 내포하므로, 성질과 상태를 뜻하는 형용사(예: '높으려고', '예쁘려고' 등)에는 붙을 수 없고, 동사(예: '읽으려고', '먹으려고')와만 결합할 수 있습니다. 수아의 발언이 틀렸습니다.\"\n                }\n            }\n        ];\n\n        // State variables\n        let currentQuestionIdx = 0;\n        let userAnswers = Array(questions.length).fill(null);\n        let examStartTime = null;\n        let examTimer = null;\n        const totalDuration = 40 * 60; // 40 minutes in seconds\n        let secondsRemaining = totalDuration;\n\n        // Initialize application on load\n        window.onload = function() {\n            lucide.createIcons();\n            renderNavGrid();\n        };\n\n        // Create navigation grid buttons\n        function renderNavGrid() {\n            const grid = document.getElementById('nav-grid');\n            grid.innerHTML = '';\n            for(let i = 0; i < questions.length; i++) {\n                const btn = document.createElement('button');\n                btn.id = `nav-btn-${i}`;\n                btn.className = `h-10 w-10 text-xs font-bold rounded-lg border transition ${getNavBtnClass(i)}`;\n                btn.textContent = i + 1;\n                btn.onclick = () => jumpToQuestion(i);\n                grid.appendChild(btn);\n            }\n        }\n\n        // Color coding for navigation grid buttons based on state\n        function getNavBtnClass(idx) {\n            if (currentQuestionIdx === idx) {\n                return 'bg-blue-600 border-blue-600 text-white shadow-sm';\n            }\n            if (userAnswers[idx] !== null) {\n                return 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100';\n            }\n            return 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50';\n        }\n\n        // Helper to trigger custom modal\n        function showModal(title, text, actionsHtml) {\n            document.getElementById('modal-title').textContent = title;\n            document.getElementById('modal-text').innerHTML = text;\n            document.getElementById('modal-actions').innerHTML = actionsHtml;\n            document.getElementById('modal-container').classList.remove('hidden');\n        }\n\n        function closeModal() {\n            document.getElementById('modal-container').classList.add('hidden');\n        }\n\n        // Start the exam\n        function startExam() {\n            document.getElementById('intro-card').classList.add('hidden');\n            document.getElementById('exam-workspace').classList.remove('hidden');\n            \n            examStartTime = new Date();\n            secondsRemaining = totalDuration;\n            startTimer();\n            \n            loadQuestion(0);\n        }\n\n        // Timer implementation\n        function startTimer() {\n            clearInterval(examTimer);\n            examTimer = setInterval(() => {\n                secondsRemaining--;\n                if (secondsRemaining <= 0) {\n                    clearInterval(examTimer);\n                    submitExam(true); // Auto-submit when time's up\n                } else {\n                    const mins = Math.floor(secondsRemaining / 60);\n                    const secs = secondsRemaining % 60;\n                    document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;\n                }\n            }, 1000);\n        }\n\n        // Load targeted question\n        function loadQuestion(idx) {\n            currentQuestionIdx = idx;\n            const q = questions[idx];\n            \n            // Render text\n            document.getElementById('question-num').textContent = q.id;\n            document.getElementById('question-text').textContent = q.question;\n            \n            // Set Box\n            const boxEl = document.getElementById('question-box');\n            if (q.box) {\n                boxEl.textContent = q.box;\n                boxEl.classList.remove('hidden');\n            } else {\n                boxEl.classList.add('hidden');\n            }\n\n            // Render Options\n            const container = document.getElementById('options-container');\n            container.innerHTML = '';\n            \n            q.options.forEach((opt, oIdx) => {\n                const isSelected = userAnswers[idx] === oIdx;\n                const optBtn = document.createElement('button');\n                optBtn.className = `w-full text-left p-4 rounded-xl border-2 transition duration-150 flex items-start gap-3 ${\n                    isSelected \n                    ? 'border-blue-600 bg-blue-50/50 text-blue-900 font-medium' \n                    : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'\n                }`;\n                \n                // Visual indicators for selection\n                const circleClass = isSelected ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-300 text-slate-400';\n                optBtn.innerHTML = `\n                    <span class=\"w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold shrink-0 ${circleClass}\">\n                        ${oIdx + 1}\n                    </span>\n                    <span class=\"text-sm sm:text-base leading-snug\">${escapeHtml(opt)}</span>\n                `;\n                optBtn.onclick = () => selectOption(oIdx);\n                container.appendChild(optBtn);\n            });\n\n            // Adjust navigation control buttons\n            document.getElementById('prev-btn').disabled = idx === 0;\n            if (idx === questions.length - 1) {\n                document.getElementById('next-btn').classList.add('hidden');\n                document.getElementById('submit-btn').classList.remove('hidden');\n            } else {\n                document.getElementById('next-btn').classList.remove('hidden');\n                document.getElementById('submit-btn').classList.add('hidden');\n            }\n\n            // Update Progress\n            updateProgress();\n            renderNavGrid();\n        }\n\n        function escapeHtml(str) {\n            return str.replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\").replace(/>/g, \"&gt;\");\n        }\n\n        // Handle option selection\n        function selectOption(optIdx) {\n            userAnswers[currentQuestionIdx] = optIdx;\n            loadQuestion(currentQuestionIdx); // Redraw with new selection\n        }\n\n        // Question jumping & navigation\n        function jumpToQuestion(idx) {\n            loadQuestion(idx);\n        }\n\n        function prevQuestion() {\n            if (currentQuestionIdx > 0) {\n                loadQuestion(currentQuestionIdx - 1);\n            }\n        }\n\n        function nextQuestion() {\n            if (currentQuestionIdx < questions.length - 1) {\n                loadQuestion(currentQuestionIdx + 1);\n            }\n        }\n\n        function updateProgress() {\n            const pct = ((currentQuestionIdx + 1) / questions.length) * 100;\n            document.getElementById('progress-bar').style.width = `${pct}%`;\n            document.getElementById('progress-text').textContent = `${currentQuestionIdx + 1} / ${questions.length}`;\n        }\n\n        // Early warning before submitting\n        function confirmSubmit() {\n            const unanswered = userAnswers.filter(ans => ans === null).length;\n            let text = \"정말 시험을 종료하고 답안지를 제출하시겠습니까?\";\n            if (unanswered > 0) {\n                text += `<br/><span class=\"text-red-500 font-bold\">주의: 아직 풀지 않은 문제가 ${unanswered}개 있습니다.</span>`;\n            }\n            \n            const actions = `\n                <button onclick=\"closeModal()\" class=\"px-4 py-2 border border-slate-200 text-slate-600 rounded-lg hover:bg-slate-50 transition font-bold text-sm\">계속 풀기</button>\n                <button onclick=\"closeModal(); forceSubmit();\" class=\"px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition font-bold text-sm\">제출하기</button>\n            `;\n            showModal(\"시험 제출 확인\", text, actions);\n        }\n\n        function forceSubmit() {\n            submitExam(false);\n        }\n\n        // Calculate and Show Results\n        function submitExam(isAuto = false) {\n            clearInterval(examTimer);\n            \n            if (isAuto) {\n                showModal(\"시험 시간 종료\", \"제한시간 40분이 지나 답안지가 자동으로 임시 저장 및 제출되었습니다.\", `\n                    <button onclick=\"closeModal(); processScore();\" class=\"px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-bold text-sm\">결과 확인</button>\n                `);\n            } else {\n                processScore();\n            }\n        }\n\n        function processScore() {\n            document.getElementById('exam-workspace').classList.add('hidden');\n            document.getElementById('result-section').classList.remove('hidden');\n\n            // Compute score\n            let correctCount = 0;\n            questions.forEach((q, idx) => {\n                if (userAnswers[idx] === q.correctIndex) {\n                    correctCount++;\n                }\n            });\n\n            const score = (correctCount / questions.length) * 100;\n            const elapsed = totalDuration - secondsRemaining;\n            const elapsedMins = Math.floor(elapsed / 60);\n            const elapsedSecs = elapsed % 60;\n\n            // Render stats\n            document.getElementById('result-score').textContent = `${score}점`;\n            document.getElementById('result-correct').textContent = `${correctCount} / ${questions.length}개`;\n            document.getElementById('result-time').textContent = `${elapsedMins}분 ${elapsedSecs}초`;\n\n            // Grade logic & Teacher Comment\n            let grade = 'F';\n            let comment = '';\n            \n            if (score >= 90) {\n                grade = 'A';\n                comment = \"💡 <strong>경축! 완벽한 품사 마스터!</strong> 최고난도 수준의 문법 문제를 90점 이상으로 통과하셨군요! 형태, 기능, 의미의 삼단 품사 분류 시스템을 아주 명확하게 꿰뚫고 있어요. 기말고사는 100점 따놓은 당상입니다!\";\n            } else if (score >= 75) {\n                grade = 'B';\n                comment = \"👍 <strong>아주 훌륭해요!</strong> 품사의 전반적인 체계를 든든하게 이해하고 있습니다. 다만 수사 vs 수관형사, 동사 vs 형용사의 미묘한 예외 규칙 몇 가지만 해설을 보고 보완한다면 완벽한 상위권에 도달할 수 있습니다.\";\n            } else if (score >= 60) {\n                grade = 'C';\n                comment = \"✍️ <strong>조금 더 집중해볼까요?</strong> 기본 개념은 잡혀 있으나 복잡한 활용 문제나 품사 통용 문제에서 실수가 나왔네요. 아래에 제공된 선생님의 1대1 피드백 카드를 꼼꼼히 정독해보세요.\";\n            } else {\n                grade = 'D';\n                comment = \"🔥 <strong>포기하기엔 이릅니다!</strong> 9품사의 기준인 '형태, 기능, 의미'를 머릿속으로 다시 한번 백지에 적어가며 복습할 때입니다. 아래의 세밀한 오답 해설을 보며 개념의 틈을 차근차근 메꿔봅시다.\";\n            }\n\n            document.getElementById('result-grade').textContent = grade;\n            document.getElementById('grade-comment').innerHTML = comment;\n\n            // Render detailed list of questions with answers and detailed grammar breakdown\n            renderDetailedFeedback();\n            \n            // Re-bind Lucide icons\n            setTimeout(() => {\n                lucide.createIcons();\n            }, 100);\n        }\n\n        function renderDetailedFeedback() {\n            const container = document.getElementById('feedback-container');\n            container.innerHTML = '';\n\n            questions.forEach((q, idx) => {\n                const userAns = userAnswers[idx];\n                const isCorrect = userAns === q.correctIndex;\n                \n                const card = document.createElement('div');\n                card.className = `bg-white rounded-2xl shadow-sm border p-6 ${\n                    isCorrect ? 'border-emerald-200' : 'border-rose-200'\n                }`;\n\n                // Header info\n                let headerBadge = isCorrect \n                    ? `<span class=\"inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full\"><i data-lucide=\"check\" class=\"w-3.5 h-3.5\"></i> 정답</span>`\n                    : `<span class=\"inline-flex items-center gap-1 bg-rose-50 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-full\"><i data-lucide=\"x\" class=\"w-3.5 h-3.5\"></i> 오답</span>`;\n\n                card.innerHTML = `\n                    <div class=\"flex items-center justify-between mb-3\">\n                        <span class=\"text-sm font-bold text-slate-400\">문항 ${q.id}</span>\n                        ${headerBadge}\n                    </div>\n                    <h4 class=\"font-bold text-slate-950 mb-3\">${escapeHtml(q.question)}</h4>\n                    ${q.box ? `<div class=\"bg-slate-50 border-l-2 border-indigo-400 p-3 mb-3 text-xs font-mono text-slate-600 rounded-r\">${q.box.replace(/\\n/g, '<br/>')}</div>` : ''}\n                    \n                    <div class=\"space-y-2 mb-4 text-sm\">\n                        <p class=\"text-slate-600\">\n                            <strong>학생 선택:</strong> <span class=\"${isCorrect ? 'text-emerald-700 font-semibold' : 'text-rose-600 font-semibold'}\">${userAns !== null ? `(${userAns + 1}) ${escapeHtml(q.options[userAns])}` : '선택하지 않음'}</span>\n                        </p>\n                        <p class=\"text-slate-700\">\n                            <strong>실제 정답:</strong> <span class=\"text-emerald-700 font-semibold\">(${q.correctIndex + 1}) ${escapeHtml(q.options[q.correctIndex])}</span>\n                        </p>\n                    </div>\n\n                    <!-- Grammar Analysis Board (형태, 기능, 의미) -->\n                    <div class=\"bg-slate-50 rounded-xl p-4 border border-slate-200/60 mt-4\">\n                        <h5 class=\"text-xs font-extrabold text-blue-700 uppercase tracking-widest mb-3 flex items-center gap-1\">\n                            <i data-lucide=\"layers\" class=\"w-3.5 h-3.5\"></i> 품사 판별 분석표 (형태 · 기능 · 의미)\n                        </h5>\n                        <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-3\">\n                            <div class=\"bg-white p-2.5 rounded-lg border border-slate-100\">\n                                <span class=\"text-slate-400 font-semibold block mb-0.5\">① 형태 (Morphology)</span>\n                                <span class=\"text-slate-800 font-medium\">${escapeHtml(q.explanation.morph)}</span>\n                            </div>\n                            <div class=\"bg-white p-2.5 rounded-lg border border-slate-100\">\n                                <span class=\"text-slate-400 font-semibold block mb-0.5\">② 기능 (Syntax)</span>\n                                <span class=\"text-slate-800 font-medium\">${escapeHtml(q.explanation.func)}</span>\n                            </div>\n                            <div class=\"bg-white p-2.5 rounded-lg border border-slate-100\">\n                                <span class=\"text-slate-400 font-semibold block mb-0.5\">③ 의미 (Semantics)</span>\n                                <span class=\"text-slate-800 font-medium\">${escapeHtml(q.explanation.mean)}</span>\n                            </div>\n                        </div>\n                        <div class=\"text-xs text-slate-700 bg-blue-50/50 p-3 rounded-lg border border-blue-100 leading-relaxed\">\n                            <strong class=\"text-blue-800 block mb-1\">💡 선생님의 최종 족집게 풀이</strong>\n                            ${escapeHtml(q.explanation.wrongReason)}\n                        </div>\n                    </div>\n                `;\n\n                container.appendChild(card);\n            });\n        }\n\n        // Restart exam cleanly\n        function restartExam() {\n            userAnswers = Array(questions.length).fill(null);\n            document.getElementById('result-section').classList.add('hidden');\n            document.getElementById('exam-workspace').classList.remove('hidden');\n            \n            examStartTime = new Date();\n            secondsRemaining = totalDuration;\n            startTimer();\n            loadQuestion(0);\n        }\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  }
-};
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -411,15 +1123,23 @@
                     }
                 } catch (e) {}
             }
-            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
+
+            studentProjectsMap = {};
+            const tmpl_quiz = document.getElementById('tmpl-quiz');
+            if (tmpl_quiz) {
+                studentProjectsMap['quiz'] = {
+                    title: "중1 국어 기말고사 대비 평가 - 품사 마스터",
+                    sourceCode: tmpl_quiz.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -438,7 +1158,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -449,11 +1168,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -466,9 +1183,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -504,7 +1219,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -517,19 +1231,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -542,18 +1253,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -577,14 +1278,13 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
 </html>
-
