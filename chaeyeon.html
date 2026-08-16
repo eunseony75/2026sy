@@ -314,7 +314,7 @@
             { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
         ];
 
-        let currentStudent = STUDENTS.find(s => s.name === '박채연') || STUDENTS[0];
+        let currentStudent = STUDENTS.find(s => s.name === '諛뺤콈??) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
@@ -376,15 +376,40 @@
             document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
         }
 
+                // Built-in Genuine Student Projects
+        const DEFAULT_STUDENT_DATA = {
+            's_3_6_chaeyeon': {
+                'quiz': {
+                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                },
+                'meal-app': {
+                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                }
+            }
+        };
+
         function loadStudentProjects() {
             const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
             if (saved) {
                 try {
-                    studentProjectsMap = JSON.parse(saved);
-                    return;
+                    const parsed = JSON.parse(saved);
+                    if (Object.keys(parsed).length > 0) {
+                        studentProjectsMap = parsed;
+                        return;
+                    }
                 } catch (e) {}
             }
-            studentProjectsMap = {};
+            
+            // Fallback to builtin real data
+            if (DEFAULT_STUDENT_DATA[currentStudent.id]) {
+                studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA[currentStudent.id]));
+            } else {
+                studentProjectsMap = {};
+            }
         }
 
         function saveStudentProjects() {
@@ -560,3 +585,4 @@
     </script>
 </body>
 </html>
+
