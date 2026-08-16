@@ -1,0 +1,6 @@
+﻿name = "2026sy"
+main = "worker.js"
+compatibility_date = "2026-08-17"
+
+[vars]
+NEIS_API_KEY = "fa321714b05546ad82fc4bf29b3a20ef"
