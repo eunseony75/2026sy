@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
-    <!-- Google Sites iframe 임베드 설정 -->
+    <title>인하윤 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -31,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -84,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen (높이를 320px로 확장 및 상단 풀스크린 바로가기 오버레이) */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -173,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">인</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>인하윤 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 3학년 3반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html">3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html">2학년 3반 신세영</option>
+                    <option value="jiwoo.html">2학년 4반 임지우</option>
+                    <option value="heejung.html">1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html">3학년 2반 이아연</option>
+                    <option value="hayoon.html" selected>3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -205,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">3학년 3반 인하윤 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -258,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -273,12 +179,1026 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-game">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>파스텔 테트리스</title>
+    <style>
+        /* 기본 스타일 및 배경 */
+        body {
+            background-color: #FAF6F0; /* 따뜻한 크림톤 */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        h1 {
+            color: #6C5B7B;
+            margin: 5px 0;
+            font-size: 1.8rem;
+        }
+
+        /* 게임 컨테이너 */
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #FFFFFF;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(142, 154, 175, 0.15);
+        }
+
+        /* 스코어보드 */
+        .score-board {
+            font-size: 1.2rem;
+            color: #C06C84;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* 캔버스 (게임판) */
+        canvas {
+            border: 4px solid #F8B195;
+            border-radius: 10px;
+            background-color: #FFFDF9;
+        }
+
+        /* 태블릿/모바일 터치 컨트롤러 */
+        .touch-controller {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 240px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            background-color: #F8B195;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 4px 0 #E59A7D;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: transform 0.1s;
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        /* 버튼 배치 조정 */
+        .btn-left { grid-column: 1; }
+        .btn-rotate { grid-column: 2; }
+        .btn-right { grid-column: 3; }
+        .btn-down { grid-column: 2; }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Pastel Tetris</h1>
+        <div class="score-board">SCORE: <span id="score">0</span></div>
+        <canvas id="tetris" width="240" height="480"></canvas>
+        
+        <div class="touch-controller">
+            <button class="btn btn-left" id="leftBtn">◀</button>
+            <button class="btn btn-rotate" id="rotateBtn">↻</button>
+            <button class="btn btn-right" id="rightBtn">▶</button>
+            <button class="btn btn-down" id="downBtn">▼</button>
+        </div>
+    </div>
+
+<script>
+const canvas = document.getElementById('tetris');
+const context = canvas.getContext('2d');
+const scoreElement = document.getElementById('score');
+
+// 블록 크기 및 그리드 설정 (10x20)
+const ROW = 20;
+const COL = 10;
+const SQ = 24; 
+context.scale(1, 1);
+
+// 아기자기한 파스텔톤 블록 색상 세트
+const COLORS = [
+    null,
+    '#FFB7B2', // Pastel Pink (I)
+    '#FFDAC1', // Pastel Orange (O)
+    '#E2F0CB', // Pastel Green (T)
+    '#B5EAD7', // Pastel Mint (S)
+    '#C7CEEA', // Pastel Purple (Z)
+    '#FF9AA2', // Pastel Rose (J)
+    '#E8C48E'  // Pastel Yellow (L)
+];
+
+// 테트리스 블록(미노) 형태 정의
+const SHAPES = [
+    [],
+    [[1,1,1,1]],
+    [[2,2],[2,2]],
+    [[0,3,0],[3,3,3]],
+    [[0,4,4],[4,4,0]],
+    [[5,5,0],[0,5,5]],
+    [[6,0,0],[6,6,6]],
+    [[0,0,7],[7,7,7]]
+];
+
+// 게임판 초기화
+let board = [];
+for(let r = 0; r < ROW; r++){
+    board[r] = [];
+    for(let c = 0; c < COL; c++){
+        board[r][c] = 0;
+    }
+}
+
+// 블록 객체 생성자
+function Piece(shape, colorIndex) {
+    this.shape = shape;
+    this.colorIndex = colorIndex;
+    this.x = 3;
+    this.y = -2;
+}
+
+// 화면에 사각형 그리기 (둥근 모서리 느낌 효과 포함)
+function drawSquare(x, y, colorIndex) {
+    context.fillStyle = COLORS[colorIndex];
+    context.fillRect(x * SQ, y * SQ, SQ, SQ);
+    
+    // 파스텔톤 감성을 살리기 위한 은은한 테두리
+    context.strokeStyle = '#FFFFFF';
+    context.lineWidth = 1.5;
+    context.strokeRect(x * SQ, y * SQ, SQ, SQ);
+}
+
+// 게임판 그리기
+function drawBoard() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    for(let r = 0; r < ROW; r++){
+        for(let c = 0; c < COL; c++){
+            if(board[r][c]) {
+                drawSquare(c, r, board[r][c]);
+            }
+        }
+    }
+}
+
+// 움직이는 블록 그리기
+Piece.prototype.draw = function() {
+    for(let r = 0; r < this.shape.length; r++){
+        for(let c = 0; c < this.shape[r].length; c++){
+            if(this.shape[r][c]){
+                if(this.y + r >= 0) {
+                    drawSquare(this.x + c, this.y + r, this.colorIndex);
+                }
+            }
+        }
+    }
+}
+
+// 충돌 감지 함수
+Piece.prototype.collision = function(x, y, piece) {
+    for(let r = 0; r < piece.length; r++){
+        for(let c = 0; c < piece[r].length; c++){
+            if(!piece[r][c]){
+                continue;
+            }
+            let newX = this.x + c + x;
+            let newY = this.y + r + y;
+            
+            if(newX < 0 || newX >= COL || newY >= ROW){
+                return true;
+            }
+            if(newY < 0){
+                continue;
+            }
+            if(board[newY][newX]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// 조작 메서드들
+Piece.prototype.moveLeft = function() {
+    if(!this.collision(-1, 0, this.shape)){
+        this.x--;
+    }
+}
+
+Piece.prototype.moveRight = function() {
+    if(!this.collision(1, 0, this.shape)){
+        this.x++;
+    }
+}
+
+Piece.prototype.rotate = function() {
+    let nextPattern = [];
+    for(let c = 0; c < this.shape[0].length; c++) {
+        let row = [];
+        for(let r = this.shape.length - 1; r >= 0; r--) {
+            row.push(this.shape[r][c]);
+        }
+        nextPattern.push(row);
+    }
+    
+    if(!this.collision(0, 0, nextPattern)){
+        this.shape = nextPattern;
+    }
+}
+
+let score = 0;
+Piece.prototype.moveDown = function() {
+    if(!this.collision(0, 1, this.shape)){
+        this.y++;
+    } else {
+        // 바닥이나 다른 블록에 고정됨
+        this.lock();
+        generateNextPiece();
+    }
+}
+
+// 블록 고정 및 줄 삭제
+Piece.prototype.lock = function() {
+    for(let r = 0; r < this.shape.length; r++){
+        for(let c = 0; c < this.shape[r].length; c++){
+            if(!this.shape[r][c]){
+                continue;
+            }
+            if(this.y + r < 0){
+                alert("Game Over! 다시 시작합니다.");
+                resetGame();
+                return;
+            }
+            board[this.y + r][this.x + c] = this.colorIndex;
+        }
+    }
+    
+    // 꽉 찬 줄 제거
+    for(let r = 0; r < ROW; r++){
+        let isRowFull = true;
+        for(let c = 0; c < COL; c++){
+            if(board[r][c] == 0){
+                isRowFull = false;
+                break;
+            }
+        }
+        if(isRowFull){
+            for(let y = r; y > 1; y--){
+                board[y] = [...board[y-1]];
+            }
+            board[0] = Array(COL).fill(0);
+            score += 10;
+            scoreElement.innerText = score;
+        }
+    }
+}
+
+// 새로운 블록 생성
+function randomPiece() {
+    let r = Math.floor(Math.random() * (SHAPES.length - 1)) + 1;
+    return new Piece(SHAPES[r], r);
+}
+
+let p = randomPiece();
+function generateNextPiece() {
+    p = randomPiece();
+}
+
+// 게임 리셋
+function resetGame() {
+    board = board.map(row => row.fill(0));
+    score = 0;
+    scoreElement.innerText = score;
+    p = randomPiece();
+}
+
+// 매 프레임 업데이트 (하강 속도 조정)
+let dropStart = Date.now();
+function update() {
+    let now = Date.now();
+    let delta = now - dropStart;
+    if(delta > 1000){ // 1초마다 한 칸씩 다운
+        p.moveDown();
+        dropStart = Date.now();
+    }
+    drawBoard();
+    p.draw();
+    requestAnimationFrame(update);
+}
+
+// 키보드 조작 (PC 테스트용)
+document.addEventListener("keydown", event => {
+    if(event.keyCode == 37) p.moveLeft();
+    else if(event.keyCode == 38) p.rotate();
+    else if(event.keyCode == 39) p.moveRight();
+    else if(event.keyCode == 40) p.moveDown();
+});
+
+// 태블릿/모바일 터치 버튼 이벤트 바인딩
+document.getElementById('leftBtn').addEventListener('pointerdown', () => p.moveLeft());
+document.getElementById('rightBtn').addEventListener('pointerdown', () => p.moveRight());
+document.getElementById('rotateBtn').addEventListener('pointerdown', () => p.rotate());
+document.getElementById('downBtn').addEventListener('pointerdown', () => p.moveDown());
+
+// 게임 시작
+update();
+</script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-quiz">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보이지 않는 가짜: AI 이미지와 사회적 위협</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #0b0f19;
+            overflow-x: hidden;
+        }
+        .slide-transition {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-in-out;
+        }
+        .scanner-line {
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(255, 94, 58, 0.15);
+        }
+    </style>
+</head>
+<body class="text-slate-100 flex flex-col justify-between min-h-screen selection:bg-orange-500 selection:text-white">
+
+    <!-- Top Navigation & Progress Bar -->
+    <header class="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 p-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-orange-500 animate-pulse"></span>
+                <span class="font-bold tracking-wider text-sm text-slate-300 uppercase">AI Ethics & Safety Education</span>
+            </div>
+            <div class="text-xs text-slate-400 font-semibold bg-slate-800 px-3 py-1.5 rounded-full" id="slide-counter">
+                Slide 1 / 7
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-500 to-teal-400 transition-all duration-500" id="progress-bar" style="width: 14.28%;"></div>
+    </header>
+
+    <!-- Main Presentation Container -->
+    <main class="flex-grow flex items-center justify-center p-4 relative overflow-hidden">
+        <div class="w-full max-w-6xl aspect-[16/10] bg-slate-900/40 border border-slate-800 rounded-2xl relative shadow-2xl overflow-hidden flex flex-col justify-between p-6 md:p-10 glow-effect">
+            
+            <!-- Slide Container -->
+            <div class="relative flex-grow flex flex-col justify-center overflow-y-auto">
+                
+                <!-- SLIDE 1: Title (Cover) -->
+                <div class="slide slide-transition opacity-100 scale-100 flex flex-col md:flex-row items-center justify-between gap-8 h-full" id="slide-1">
+                    <div class="flex-1 space-y-6 text-left">
+                        <span class="inline-block bg-orange-500/10 text-orange-500 text-xs font-bold px-3 py-1 rounded-full border border-orange-500/20">디지털 윤리 프레젠테이션</span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                            보이지 않는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">가짜</span>
+                        </h1>
+                        <p class="text-slate-400 text-base md:text-lg max-w-lg leading-relaxed">
+                            AI 생성 이미지 기술의 고도화와 진짜 사진의 경계 붕괴가 초래하는 범죄적 위협과 우리의 안전 가이드라인.
+                        </p>
+                        <div class="flex items-center space-x-3 text-sm text-slate-400 pt-2">
+                            <i data-lucide="shield-alert" class="text-orange-500 w-5 h-5"></i>
+                            <span>눈으로 보는 신뢰의 유통기한이 끝났습니다.</span>
+                        </div>
+                    </div>
+                    <!-- Creative Hero SVG Graph -->
+                    <div class="flex-1 w-full max-w-md h-64 md:h-80 relative flex items-center justify-center bg-slate-950/50 rounded-xl border border-slate-800 overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-white/[0.02]"></div>
+                        <!-- Scanner Effect -->
+                        <div class="absolute left-0 w-full h-1 bg-orange-500/50 scanner-line z-10 shadow-[0_0_15px_#ff5e3a]"></div>
+                        
+                        <svg class="w-48 h-48 text-slate-500 opacity-80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Real Face Half -->
+                            <path d="M100,30 C60,30 40,70 40,110 C40,150 70,170 100,170" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                            <!-- AI Face Half (Glitch/Digital) -->
+                            <path d="M100,30 C140,30 160,70 160,110 C160,150 130,170 100,170" stroke="#f97316" stroke-width="4" stroke-dasharray="8 6" stroke-linecap="round"/>
+                            <!-- Central Scan Line division -->
+                            <line x1="100" y1="20" x2="100" y2="180" stroke="#14b8a6" stroke-width="2" stroke-dasharray="4 4" />
+                            <!-- AI target indicators -->
+                            <circle cx="140" cy="90" r="6" fill="#f97316" />
+                            <line x1="140" y1="90" x2="170" y2="90" stroke="#f97316" stroke-width="2" />
+                            <text x="175" y="93" fill="#f97316" font-size="10" font-family="monospace">AI_98%</text>
+                        </svg>
+                        <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 p-3 rounded border border-slate-800 text-center">
+                            <span class="text-xs text-teal-400 font-mono tracking-widest">REALITY VERIFICATION OVERRIDE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: Interactive Intro Mini-Game -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col h-full justify-center space-y-6" id="slide-2">
+                    <div class="text-center max-w-2xl mx-auto space-y-2">
+                        <span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Interactive Test</span>
+                        <h2 class="text-3xl font-extrabold text-white">직접 구분할 수 있으신가요?</h2>
+                        <p class="text-slate-400 text-sm">아래의 두 인물 묘사 카드 중 하나는 AI가 오차 없이 생성해낸 완전히 가상의 인물입니다.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto w-full pt-4">
+                        <!-- Option A Card -->
+                        <div onclick="guessReal(1)" id="card-1" class="cursor-pointer group bg-slate-950/40 p-6 rounded-xl border-2 border-slate-800 hover:border-orange-500/50 transition-all duration-300 flex flex-col items-center space-y-4">
+                            <div class="w-24 h-24 rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
+                                <svg class="w-16 h-16 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-lg font-bold text-slate-200">인물 A</h3>
+                                <p class="text-xs text-slate-400 mt-1">자연스러운 눈동자 대칭, 섬세한 머리칼 반사광, 옷깃의 미세한 보풀 먼지 재현.</p>
+                            </div>
+                            <div class="text-xs font-semibold px-3 py-1 rounded bg-slate-800 text-slate-300 group-hover:bg-orange-500/20 group-hover:text-orange-400">선택하기</div>
+                        </div>
+
+                        <!-- Option B Card -->
+                        <div onclick="guessReal(2)" id="card-2" class="cursor-pointer group bg-slate-950/40 p-6 rounded-xl border-2 border-slate-800 hover:border-orange-500/50 transition-all duration-300 flex flex-col items-center space-y-4">
+                            <div class="w-24 h-24 rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
+                                <svg class="w-16 h-16 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-lg font-bold text-slate-200">인물 B</h3>
+                                <p class="text-xs text-slate-400 mt-1">안경 프레임의 완벽한 굴절률, 자연스러운 피부 모공 질감, 비대칭적인 눈가 주름 표현.</p>
+                            </div>
+                            <div class="text-xs font-semibold px-3 py-1 rounded bg-slate-800 text-slate-300 group-hover:bg-orange-500/20 group-hover:text-orange-400">선택하기</div>
+                        </div>
+                    </div>
+
+                    <!-- Answer Reveal Box (Hidden initially) -->
+                    <div id="quiz-result" class="hidden max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-xl p-4 text-center text-sm">
+                        <!-- Content dynamic from JS -->
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Crime 1 (Digital Identity Theft) -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full" id="slide-3">
+                    <div class="flex-1 space-y-5 text-left">
+                        <div class="inline-flex items-center space-x-2 bg-red-500/10 text-red-400 text-xs font-bold px-3 py-1 rounded-full border border-red-500/20">
+                            <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                            <span>인격적 침해 범죄</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white">초상권 무단 침해와<br/><span class="text-orange-500">디지털 신원 위조</span></h2>
+                        <ul class="space-y-3 text-slate-300 text-sm md:text-base">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-orange-500 font-bold mr-1">•</span>
+                                <span><strong>일반인 신원 도용:</strong> SNS 사진을 불법 수집하여 AI 페르소나를 개설한 후 조작된 가설 및 사기용 계정 운영.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-orange-500 font-bold mr-1">•</span>
+                                <span><strong>비동의 얼굴 합성(딥페이크):</strong> 지인 또는 불특정 피해자의 사진을 사용해 모욕적이고 불쾌한 합성물 무단 유포.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-orange-500 font-bold mr-1">•</span>
+                                <span><strong>무력화된 증거 능력:</strong> 디지털 증거로 신용받던 사진들이 법정 및 공적 신원 확인에서 효력을 잃는 위협 도래.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl flex flex-col justify-center space-y-4">
+                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider">주목해야 할 통계 수치</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                                <span class="block text-3xl font-extrabold text-orange-500">80%+</span>
+                                <span class="text-xs text-slate-400 mt-1 block">딥페이크 피해자 중<br/>일반인 비중 증가세</span>
+                            </div>
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                                <span class="block text-3xl font-extrabold text-teal-400">0원</span>
+                                <span class="text-xs text-slate-400 mt-1 block">대중화된 도구로 인한<br/>제작 단가의 제로화</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed text-center">
+                            "누구나 원클릭으로 가짜 인생을 만들어 유포할 수 있는 초접근성 기술 오남용의 결과입니다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4: Crime 2 (Advanced Phishing) -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full" id="slide-4">
+                    <div class="flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl flex flex-col justify-between h-full max-h-[350px]">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2 text-orange-500">
+                                <i data-lucide="shield-question" class="w-5 h-5"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider">Social Engineering</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-200">어느 부모님의 증언</h3>
+                            <p class="text-sm text-slate-400 italic leading-relaxed">
+                                "출장 간 아이가 낯선 유선 번호로 납치 전화를 걸어오더니, 실제 묶여서 울고 있는 얼굴 사진을 보내왔습니다. 의심의 여지 없는 내 아들의 얼굴이었는데... 나중에 알고 보니 SNS에서 아들 얼굴을 추출해 순식간에 합성한 AI 가짜 사진이었습니다."
+                            </p>
+                        </div>
+                        <div class="border-t border-slate-800 pt-3 text-xs text-slate-500">
+                            ※ 이처럼 시각 증명 단계를 완벽히 통과하는 신종 피싱이 급격히 증가하고 있습니다.
+                        </div>
+                    </div>
+                    <div class="flex-1 space-y-5 text-left">
+                        <div class="inline-flex items-center space-x-2 bg-amber-500/10 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20">
+                            <i data-lucide="phone-off" class="w-3.5 h-3.5"></i>
+                            <span>진화형 금융 사기</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white">시각 검증을 무력화하는<br/><span class="text-orange-500">하이브리드 메신저 피싱</span></h2>
+                        <ul class="space-y-3 text-slate-300 text-sm">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-teal-400 font-bold mr-1">✓</span>
+                                <span><strong>인질 상황 조작:</strong> 납치 조작, 사고 조작 사진을 초고화질로 전송하여 이성적 판단 시간을 극도로 제약.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-teal-400 font-bold mr-1">✓</span>
+                                <span><strong>신원 신뢰 강화:</strong> 믿을 수 있는 해외 바이어나 상사의 얼굴을 모방한 프로필 사진으로 송금 지시 우회.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-teal-400 font-bold mr-1">✓</span>
+                                <span><strong>로맨스 스캠의 고도화:</strong> 타인의 일상을 도용하지 않고, 아예 존재하지 않는 가상의 절친 파트너를 기획해 장기 금융 피해 야기.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SLIDE 5: Crime 3 (Weapons of Misinformation) -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full" id="slide-5">
+                    <div class="flex-1 space-y-5 text-left">
+                        <div class="inline-flex items-center space-x-2 bg-amber-500/10 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20">
+                            <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                            <span>사회적 여론 분열</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white">보이지 않는 가짜 뉴스,<br/><span class="text-red-500">미디어 신뢰 구조 마비</span></h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            합성된 재난 사진과 조작된 정치인들의 현장 이미지들은 여론을 무기화하는 도구로 진화했습니다.
+                        </p>
+                        <div class="space-y-2 border-l-2 border-orange-500 pl-4 py-1 text-sm text-slate-300">
+                            <p><strong>주요 파괴적 영향:</strong></p>
+                            <p class="text-xs text-slate-400">선거철 가짜 현장 및 지지/반대 상황을 연출한 정교한 합성 사진 배포로 유권자 오판 유도.</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl space-y-4">
+                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider">라이어스 디비던드 (Liar's Dividend) 효과</h4>
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 space-y-2 text-sm text-slate-300">
+                            <p class="font-bold text-orange-400">"모든 것이 가짜일 수 있으므로, 진짜조차 가짜라고 주장한다"</p>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                범죄를 저지른 정치인이나 기업인이 실제 자신의 범죄 현장 증거 사진을 보고 "이것은 AI 딥페이크 위조"라고 일축하며 정당한 조사를 회피하는 변명 기술로 전락했습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 6: Solutions (Defense) -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full" id="slide-6">
+                    <div class="flex-1 space-y-5 text-left">
+                        <div class="inline-flex items-center space-x-2 bg-teal-500/10 text-teal-400 text-xs font-bold px-3 py-1 rounded-full border border-teal-500/20">
+                            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                            <span>대응 방안과 방패</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white">가짜에 맞서는<br/><span class="text-teal-400">입체적 방어망</span></h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            기술적 한계를 극복하기 위해 기술적 대응책과 제도적 규제, 그리고 개개인의 보안 수칙이 삼위일체로 작동해야 합니다.
+                        </p>
+                    </div>
+                    <div class="flex-1 w-full grid grid-cols-1 gap-4">
+                        <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3">
+                            <div class="p-2 bg-teal-500/10 rounded-lg text-teal-400">
+                                <i data-lucide="binary" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-200">디지털 워터마킹 (C2PA) 표준</h4>
+                                <p class="text-xs text-slate-400 mt-1">글로벌 규격으로 창작 시점의 메타데이터와 변조 흐름을 원천 블록체인 및 서명으로 자동 추적하는 보호막 탑재.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3">
+                            <div class="p-2 bg-orange-500/10 rounded-lg text-orange-400">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-200">AI 판별 소프트웨어 (Detection Tool)</h4>
+                                <p class="text-xs text-slate-400 mt-1">사람이 보지 못하는 픽셀 배열 밀도, 오차 반사각 등 고주파 성분을 통계적으로 검출하는 진단 시스템 활성화.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3">
+                            <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
+                                <i data-lucide="users" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-200">청소년 스마트 미디어 교육</h4>
+                                <p class="text-xs text-slate-400 mt-1">출처가 부적절한 온라인 자극적 시각물에 대한 의심 프로세스(Cross-Check) 습관화 교육 권장.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 7: Conclusion & Pledge -->
+                <div class="slide slide-transition hidden opacity-0 scale-95 flex flex-col items-center justify-center text-center space-y-6 h-full" id="slide-7">
+                    <div class="max-w-2xl space-y-4">
+                        <span class="text-orange-500 text-xs font-bold uppercase tracking-widest">Our Final Mission</span>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white">우리는 무엇을 믿을 것인가?</h2>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            기술의 가파른 질주가 이어지는 동안, 우리의 가장 강력한 브레이크와 수호 수단은 <br class="hidden md:inline"/>
+                            바로 스스로 생각하고 상호 검증하는 <span class="text-orange-400 font-bold">"비판적 의구심"</span>입니다.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-lg bg-slate-950/50 p-6 rounded-xl border border-slate-800 space-y-3 text-left">
+                        <h4 class="text-sm font-bold text-slate-200 text-center border-b border-slate-800 pb-2">안전한 스마트 디지털 세상을 만드는 수칙</h4>
+                        <div class="flex items-start space-x-2 text-xs text-slate-300">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
+                            <span>타인의 얼굴이 포함된 사진이나 영상을 본인의 허가 없이 장난으로라도 합성하지 않기</span>
+                        </div>
+                        <div class="flex items-start space-x-2 text-xs text-slate-300">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
+                            <span>자극적인 사진 자료를 메신저로 받았을 때, 타 뉴스나 팩트체크 채널로 이중 검색해 보기</span>
+                        </div>
+                        <div class="flex items-start space-x-2 text-xs text-slate-300">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5"></i>
+                            <span>소중한 나의 디지털 신원(프로필, SNS 게시물)은 무단 수집되지 않도록 공개 범위 설정하기</span>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-slate-500 mt-4">
+                        Thank you for listening. 안전하고 윤리적인 미래 AI 생태계를 꿈꿉니다.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slide Navigation Footer Inside Card -->
+            <div class="flex justify-between items-center border-t border-slate-800/80 pt-6 mt-6">
+                <button onclick="prevSlide()" class="flex items-center space-x-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 text-sm font-semibold rounded-lg transition-all duration-200">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>이전 슬라이드</span>
+                </button>
+                <div class="flex space-x-1.5" id="bullet-indicators">
+                    <!-- Dots generated by JS -->
+                </div>
+                <button onclick="nextSlide()" class="flex items-center space-x-2 px-4 py-2 bg-orange-600 hover:bg-orange-500 active:scale-95 text-white text-sm font-semibold rounded-lg transition-all duration-200">
+                    <span>다음 슬라이드</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Keyboards Instruction Footer -->
+    <footer class="w-full text-center py-4 text-xs text-slate-500 border-t border-slate-900">
+        <span>키보드 좌우 화살표키(←, →) 혹은 모바일 터치 스와이프로 슬라이드를 전환할 수 있습니다.</span>
+    </footer>
+
+    <!-- Script Blocks -->
+    <script>
+        // Slides and States Init
+        let currentSlide = 1;
+        const totalSlides = 7;
+        let swipeStartX = 0;
+        let swipeEndX = 0;
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize Dots Indicator
+        const bulletContainer = document.getElementById('bullet-indicators');
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 1 ? 'bg-orange-500 w-5' : 'bg-slate-700'}`;
+            dot.id = `bullet-dot-${i}`;
+            bulletContainer.appendChild(dot);
+        }
+
+        // Functions to Update Navigation & Progress
+        function updateSlideUI() {
+            // Hide all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                const s = document.getElementById(`slide-${i}`);
+                s.classList.add('hidden', 'opacity-0', 'scale-95');
+                s.classList.remove('opacity-100', 'scale-100');
+            }
+
+            // Show current active slide
+            const activeSlide = document.getElementById(`slide-${currentSlide}`);
+            activeSlide.classList.remove('hidden');
+            setTimeout(() => {
+                activeSlide.classList.add('opacity-100', 'scale-100');
+                activeSlide.classList.remove('opacity-0', 'scale-95');
+            }, 50);
+
+            // Update Counter
+            document.getElementById('slide-counter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+
+            // Update Progress Bar Percentage
+            const percent = (currentSlide / totalSlides) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+
+            // Update Dots indicator
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.getElementById(`bullet-dot-${i}`);
+                if (i === currentSlide) {
+                    dot.className = 'w-5 h-2 rounded-full bg-orange-500 transition-all duration-300';
+                } else {
+                    dot.className = 'w-2 h-2 rounded-full bg-slate-700 transition-all duration-300';
+                }
+            }
+        }
+
+        // Core Next/Prev Slide Control
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideUI();
+            } else {
+                // Loop back to start
+                currentSlide = 1;
+                updateSlideUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideUI();
+            } else {
+                // Loop back to end
+                currentSlide = totalSlides;
+                updateSlideUI();
+            }
+        }
+
+        // Keyboard Arrow Navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Touch swipe gesture controls
+        window.addEventListener('touchstart', (e) => {
+            swipeStartX = e.changedTouches[0].screenX;
+        });
+
+        window.addEventListener('touchend', (e) => {
+            swipeEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const threshold = 50; // minimum distance in px
+            if (swipeStartX - swipeEndX > threshold) {
+                nextSlide(); // Swiped Left
+            } else if (swipeEndX - swipeStartX > threshold) {
+                prevSlide(); // Swiped Right
+            }
+        }
+
+        // Slide 2: AI Guessing Game Interactive Logic
+        function guessReal(optionSelected) {
+            const resultBox = document.getElementById('quiz-result');
+            const card1 = document.getElementById('card-1');
+            const card2 = document.getElementById('card-2');
+            
+            resultBox.classList.remove('hidden');
+            
+            // Highlight selected card and dim other
+            if (optionSelected === 1) {
+                card1.className = "cursor-default bg-orange-950/30 p-6 rounded-xl border-2 border-orange-500 transition-all duration-300 flex flex-col items-center space-y-4";
+                card2.className = "opacity-40 bg-slate-950/40 p-6 rounded-xl border border-slate-800 transition-all duration-300 flex flex-col items-center space-y-4 pointer-events-none";
+                
+                resultBox.innerHTML = `
+                    <p class="text-orange-400 font-bold mb-1">🔍 오답입니다! 하지만 전혀 이상하지 않습니다.</p>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        실제 정답은 <strong>인물 B</strong>가 AI 합성 이미지였습니다. 안경 렌즈의 완벽한 반사율은 최신 물리 엔진 기술을 통해 조작된 결과였습니다. 전문가들도 기계 분석기 없이 육안으로 두 카드를 구분할 확률은 50% 미만입니다.
+                    </p>
+                `;
+            } else {
+                card2.className = "cursor-default bg-emerald-950/30 p-6 rounded-xl border-2 border-emerald-500 transition-all duration-300 flex flex-col items-center space-y-4";
+                card1.className = "opacity-40 bg-slate-950/40 p-6 rounded-xl border border-slate-800 transition-all duration-300 flex flex-col items-center space-y-4 pointer-events-none";
+                
+                resultBox.innerHTML = `
+                    <p class="text-teal-400 font-bold mb-1">🎉 정답입니다! 예리한 직관을 갖고 계시군요!</p>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        정답은 <strong>인물 B</strong>가 가상의 인물이었습니다. 하지만 AI가 무작위로 복제 생성한 사람의 안구 정보는 이제 실제 고화질 카메라 원본 품질과 차이가 전혀 없기 때문에, 직관만으로는 범죄용 위장 카드를 완벽히 가려낼 수 없습니다.
+                    </p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-meal-app">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숭의여자중학교 오늘의 급식</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 중요 규칙: 메뉴 안의 줄바꿈 문자(\n)가 웹 화면에서 제대로 보이도록 설정 */
+        .menu-pre-line {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body class="bg-orange-50/60 min-h-screen flex items-center justify-center p-4 antialiased font-sans">
+
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-orange-100 p-6 space-y-6">
+        
+        <div class="text-center space-y-1">
+            <h1 class="text-2xl font-black text-slate-800 tracking-tight leading-snug">
+                🏫 숭의여자중학교<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-teal-400 text-3xl">오늘의 급식</span>
+            </h1>
+            <p class="text-xs text-slate-400 font-medium tracking-wide">오늘 우리 학교 맛있는 메뉴는 무엇일까? ✨</p>
+        </div>
+
+        <div class="flex gap-2 bg-teal-50/50 p-2 rounded-2xl border border-teal-100/60">
+            <input type="date" id="lunch-date" 
+                   class="flex-1 bg-white text-slate-700 font-semibold px-3 py-2.5 rounded-xl border border-slate-200 outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-100 transition-all text-sm">
+            <button id="search-btn" 
+                    class="bg-teal-400 hover:bg-teal-500 active:scale-95 text-white font-black px-5 py-2.5 rounded-xl shadow-md shadow-teal-200 transition-all text-sm whitespace-nowrap">
+                급식 조회
+            </button>
+        </div>
+
+        <div id="result-card" class="bg-orange-50/40 rounded-2xl p-5 border border-orange-100/60 min-h-[220px] flex flex-col justify-between transition-all">
+            
+            <div id="status-message" class="text-center text-slate-400 my-auto py-10 font-medium text-sm">
+                급식 식단을 불러오는 중입니다... 🕒
+            </div>
+
+            <div id="lunch-content" class="hidden space-y-5">
+                <div>
+                    <span class="inline-block bg-orange-100 text-orange-600 text-xs font-black px-3 py-1 rounded-full mb-3 shadow-sm shadow-orange-100">
+                        Today's Menu 🍱
+                    </span>
+                    <p id="menu-list" class="menu-pre-line text-slate-700 font-bold leading-relaxed text-base pl-1"></p>
+                </div>
+                
+                <div class="border-t border-dashed border-orange-200 pt-3.5 flex justify-between items-center text-sm">
+                    <span class="text-slate-400 font-semibold">총 칼로리</span>
+                    <span id="calories-info" class="text-teal-600 font-black text-base bg-teal-50 px-3 py-1 rounded-lg border border-teal-100/60"></span>
+                </div>
+            </div>
+
+            <div id="error-content" class="hidden text-center my-auto py-10 px-4 space-y-2">
+                <span class="text-3xl">🥞</span>
+                <p id="error-message" class="text-red-500 font-bold text-sm leading-relaxed"></p>
+            </div>
+        </div>
+
     </div>
 
     <script>
+        const API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
+        const API_KEY = "fa321714b05546ad82fc4bf29b3a20ef";
+        const EDUCATION_OFFICE_CODE = "B10";
+        const SCHOOL_CODE = "7132148";
+
+        // HTML DOM 엘리먼트 참조 구하기
+        const dateInput = document.getElementById('lunch-date');
+        const searchBtn = document.getElementById('search-btn');
+        const statusMessage = document.getElementById('status-message');
+        const lunchContent = document.getElementById('lunch-content');
+        const menuList = document.getElementById('menu-list');
+        const caloriesInfo = document.getElementById('calories-info');
+        const errorContent = document.getElementById('error-content');
+        const errorMessage = document.getElementById('error-message');
+
+        // 처음 웹페이지가 열렸을 때 자동 실행
+        window.addEventListener('DOMContentLoaded', () => {
+            // 오늘 날짜 구하기 (KST 기준 형식 맞춤)
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            
+            // <input type="date">의 기본 포맷은 YYYY-MM-DD
+            const todayStr = `${year}-${month}-${day}`;
+            dateInput.value = todayStr;
+
+            // 규칙 4: 처음 페이지 열렸을 때 자동으로 오늘 날짜 급식 즉시 요청
+            fetchLunchData(todayStr);
+        });
+
+        // 조회 버튼 클릭했을 때 동작
+        searchBtn.addEventListener('click', () => {
+            fetchLunchData(dateInput.value);
+        });
+
+        // 사용자가 달력 날짜를 수동으로 바꿨을 때도 자동으로 조회
+        dateInput.addEventListener('change', () => {
+            fetchLunchData(dateInput.value);
+        });
+
+        // API 비동기 통신 및 데이터 렌더링 함수
+        function fetchLunchData(dateString) {
+            if (!dateString) {
+                alert("날짜를 정확히 선택해 주세요!");
+                return;
+            }
+
+            // 새로운 데이터를 조회하기 위해 기존 뷰 상태 초기화
+            statusMessage.classList.remove('hidden');
+            lunchContent.classList.add('hidden');
+            errorContent.classList.add('hidden');
+            statusMessage.textContent = "급식 정보를 불러오고 있어요... 🥣";
+
+            // 규칙 2: 하이픈(-)을 제거하고 8자리 'YYYYMMDD' 형식으로 변환
+            const formattedDate = dateString.replace(/-/g, '');
+
+            // API 최종 주소 조립
+            const params = new URLSearchParams({
+                KEY: API_KEY,
+                Type: "json",
+                pIndex: "1",
+                pSize: "10",
+                ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
+                SD_SCHUL_CODE: SCHOOL_CODE,
+                MLSV_YMD: formattedDate
+            });
+            const requestUrl = `${API_URL}?${params.toString()}`;
+
+            // API 호출 실행
+            fetch(requestUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("네트워크 응답 및 서버 상에 문제가 발생했습니다.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 성공/실패 여부를 판단하므로 로딩 텍스트는 숨김
+                    statusMessage.classList.add('hidden');
+
+                    const mealRows = data.mealServiceDietInfo?.[1]?.row;
+
+                    if (Array.isArray(mealRows) && mealRows.length > 0) {
+                        const meal = mealRows.find(item => String(item.MMEAL_SC_CODE) === "2") || mealRows[0];
+                        const cleanMenu = (meal.DDISH_NM || "")
+                            .replace(/<br\s*\/?\s*>/gi, "\n")
+                            .replace(/&amp;/g, "&")
+                            .replace(/&lt;/g, "<")
+                            .replace(/&gt;/g, ">");
+                        // 규칙 3 - 성공 케이스 매핑
+                        menuList.textContent = cleanMenu;
+                        caloriesInfo.textContent = meal.CAL_INFO || "0 Kcal";
+                        
+                        lunchContent.classList.remove('hidden');
+                    } else {
+                        // 규칙 3 - 실패 케이스 매핑 (주말, 공휴일, 에러 등)
+                        errorMessage.textContent = data.RESULT?.MESSAGE || "오늘은 급식이 없습니다.";
+                        errorContent.classList.remove('hidden');
+                    }
+                })
+                .catch(error => {
+                    // 주소 오류, 연결 차단, 서버 전원 오프 등의 예외 예방 처리
+                    statusMessage.classList.add('hidden');
+                    errorMessage.textContent = "급식 정보를 불러오지 못했습니다. 잠시 후 다시 조회해 주세요.";
+                    errorContent.classList.remove('hidden');
+                    console.error("Fetch Error:", error);
+                });
+        }
+    </script>
+</body>
+</html>
+    </template>
+    <script>
+        const STUDENT_INFO = { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -290,46 +1210,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS.find(function(s) { return s.name === '인하윤'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -338,80 +1226,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
-                // Built-in Genuine Student Projects
-        const DEFAULT_STUDENT_DATA = {
-            's_3_6_chaeyeon': {
-                'quiz': {
-                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                },
-                'meal-app': {
-                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                }
-            }
-        };
-
-        const DEFAULT_STUDENT_DATA = {
-  "game": {
-    "title": "파스텔 테트리스",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n    <title>파스텔 테트리스</title>\n    <style>\n        /* 기본 스타일 및 배경 */\n        body {\n            background-color: #FAF6F0; /* 따뜻한 크림톤 */\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n            margin: 0;\n            height: 100vh;\n            overflow: hidden;\n            touch-action: manipulation;\n        }\n\n        h1 {\n            color: #6C5B7B;\n            margin: 5px 0;\n            font-size: 1.8rem;\n        }\n\n        /* 게임 컨테이너 */\n        .game-container {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            background: #FFFFFF;\n            padding: 15px;\n            border-radius: 20px;\n            box-shadow: 0 8px 24px rgba(142, 154, 175, 0.15);\n        }\n\n        /* 스코어보드 */\n        .score-board {\n            font-size: 1.2rem;\n            color: #C06C84;\n            font-weight: bold;\n            margin-bottom: 10px;\n        }\n\n        /* 캔버스 (게임판) */\n        canvas {\n            border: 4px solid #F8B195;\n            border-radius: 10px;\n            background-color: #FFFDF9;\n        }\n\n        /* 태블릿/모바일 터치 컨트롤러 */\n        .touch-controller {\n            display: grid;\n            grid-template-columns: repeat(3, 1fr);\n            gap: 10px;\n            width: 240px;\n            margin-top: 15px;\n        }\n\n        .btn {\n            background-color: #F8B195;\n            color: white;\n            border: none;\n            padding: 15px;\n            font-size: 1.2rem;\n            font-weight: bold;\n            border-radius: 12px;\n            box-shadow: 0 4px 0 #E59A7D;\n            cursor: pointer;\n            user-select: none;\n            -webkit-user-select: none;\n            transition: transform 0.1s;\n        }\n\n        .btn:active {\n            transform: translateY(4px);\n            box-shadow: none;\n        }\n\n        /* 버튼 배치 조정 */\n        .btn-left { grid-column: 1; }\n        .btn-rotate { grid-column: 2; }\n        .btn-right { grid-column: 3; }\n        .btn-down { grid-column: 2; }\n    </style>\n</head>\n<body>\n\n    <div class=\"game-container\">\n        <h1>Pastel Tetris</h1>\n        <div class=\"score-board\">SCORE: <span id=\"score\">0</span></div>\n        <canvas id=\"tetris\" width=\"240\" height=\"480\"></canvas>\n        \n        <div class=\"touch-controller\">\n            <button class=\"btn btn-left\" id=\"leftBtn\">◀</button>\n            <button class=\"btn btn-rotate\" id=\"rotateBtn\">↻</button>\n            <button class=\"btn btn-right\" id=\"rightBtn\">▶</button>\n            <button class=\"btn btn-down\" id=\"downBtn\">▼</button>\n        </div>\n    </div>\n\n<script>\nconst canvas = document.getElementById('tetris');\nconst context = canvas.getContext('2d');\nconst scoreElement = document.getElementById('score');\n\n// 블록 크기 및 그리드 설정 (10x20)\nconst ROW = 20;\nconst COL = 10;\nconst SQ = 24; \ncontext.scale(1, 1);\n\n// 아기자기한 파스텔톤 블록 색상 세트\nconst COLORS = [\n    null,\n    '#FFB7B2', // Pastel Pink (I)\n    '#FFDAC1', // Pastel Orange (O)\n    '#E2F0CB', // Pastel Green (T)\n    '#B5EAD7', // Pastel Mint (S)\n    '#C7CEEA', // Pastel Purple (Z)\n    '#FF9AA2', // Pastel Rose (J)\n    '#E8C48E'  // Pastel Yellow (L)\n];\n\n// 테트리스 블록(미노) 형태 정의\nconst SHAPES = [\n    [],\n    [[1,1,1,1]],\n    [[2,2],[2,2]],\n    [[0,3,0],[3,3,3]],\n    [[0,4,4],[4,4,0]],\n    [[5,5,0],[0,5,5]],\n    [[6,0,0],[6,6,6]],\n    [[0,0,7],[7,7,7]]\n];\n\n// 게임판 초기화\nlet board = [];\nfor(let r = 0; r < ROW; r++){\n    board[r] = [];\n    for(let c = 0; c < COL; c++){\n        board[r][c] = 0;\n    }\n}\n\n// 블록 객체 생성자\nfunction Piece(shape, colorIndex) {\n    this.shape = shape;\n    this.colorIndex = colorIndex;\n    this.x = 3;\n    this.y = -2;\n}\n\n// 화면에 사각형 그리기 (둥근 모서리 느낌 효과 포함)\nfunction drawSquare(x, y, colorIndex) {\n    context.fillStyle = COLORS[colorIndex];\n    context.fillRect(x * SQ, y * SQ, SQ, SQ);\n    \n    // 파스텔톤 감성을 살리기 위한 은은한 테두리\n    context.strokeStyle = '#FFFFFF';\n    context.lineWidth = 1.5;\n    context.strokeRect(x * SQ, y * SQ, SQ, SQ);\n}\n\n// 게임판 그리기\nfunction drawBoard() {\n    context.clearRect(0, 0, canvas.width, canvas.height);\n    for(let r = 0; r < ROW; r++){\n        for(let c = 0; c < COL; c++){\n            if(board[r][c]) {\n                drawSquare(c, r, board[r][c]);\n            }\n        }\n    }\n}\n\n// 움직이는 블록 그리기\nPiece.prototype.draw = function() {\n    for(let r = 0; r < this.shape.length; r++){\n        for(let c = 0; c < this.shape[r].length; c++){\n            if(this.shape[r][c]){\n                if(this.y + r >= 0) {\n                    drawSquare(this.x + c, this.y + r, this.colorIndex);\n                }\n            }\n        }\n    }\n}\n\n// 충돌 감지 함수\nPiece.prototype.collision = function(x, y, piece) {\n    for(let r = 0; r < piece.length; r++){\n        for(let c = 0; c < piece[r].length; c++){\n            if(!piece[r][c]){\n                continue;\n            }\n            let newX = this.x + c + x;\n            let newY = this.y + r + y;\n            \n            if(newX < 0 || newX >= COL || newY >= ROW){\n                return true;\n            }\n            if(newY < 0){\n                continue;\n            }\n            if(board[newY][newX]){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n\n// 조작 메서드들\nPiece.prototype.moveLeft = function() {\n    if(!this.collision(-1, 0, this.shape)){\n        this.x--;\n    }\n}\n\nPiece.prototype.moveRight = function() {\n    if(!this.collision(1, 0, this.shape)){\n        this.x++;\n    }\n}\n\nPiece.prototype.rotate = function() {\n    let nextPattern = [];\n    for(let c = 0; c < this.shape[0].length; c++) {\n        let row = [];\n        for(let r = this.shape.length - 1; r >= 0; r--) {\n            row.push(this.shape[r][c]);\n        }\n        nextPattern.push(row);\n    }\n    \n    if(!this.collision(0, 0, nextPattern)){\n        this.shape = nextPattern;\n    }\n}\n\nlet score = 0;\nPiece.prototype.moveDown = function() {\n    if(!this.collision(0, 1, this.shape)){\n        this.y++;\n    } else {\n        // 바닥이나 다른 블록에 고정됨\n        this.lock();\n        generateNextPiece();\n    }\n}\n\n// 블록 고정 및 줄 삭제\nPiece.prototype.lock = function() {\n    for(let r = 0; r < this.shape.length; r++){\n        for(let c = 0; c < this.shape[r].length; c++){\n            if(!this.shape[r][c]){\n                continue;\n            }\n            if(this.y + r < 0){\n                alert(\"Game Over! 다시 시작합니다.\");\n                resetGame();\n                return;\n            }\n            board[this.y + r][this.x + c] = this.colorIndex;\n        }\n    }\n    \n    // 꽉 찬 줄 제거\n    for(let r = 0; r < ROW; r++){\n        let isRowFull = true;\n        for(let c = 0; c < COL; c++){\n            if(board[r][c] == 0){\n                isRowFull = false;\n                break;\n            }\n        }\n        if(isRowFull){\n            for(let y = r; y > 1; y--){\n                board[y] = [...board[y-1]];\n            }\n            board[0] = Array(COL).fill(0);\n            score += 10;\n            scoreElement.innerText = score;\n        }\n    }\n}\n\n// 새로운 블록 생성\nfunction randomPiece() {\n    let r = Math.floor(Math.random() * (SHAPES.length - 1)) + 1;\n    return new Piece(SHAPES[r], r);\n}\n\nlet p = randomPiece();\nfunction generateNextPiece() {\n    p = randomPiece();\n}\n\n// 게임 리셋\nfunction resetGame() {\n    board = board.map(row => row.fill(0));\n    score = 0;\n    scoreElement.innerText = score;\n    p = randomPiece();\n}\n\n// 매 프레임 업데이트 (하강 속도 조정)\nlet dropStart = Date.now();\nfunction update() {\n    let now = Date.now();\n    let delta = now - dropStart;\n    if(delta > 1000){ // 1초마다 한 칸씩 다운\n        p.moveDown();\n        dropStart = Date.now();\n    }\n    drawBoard();\n    p.draw();\n    requestAnimationFrame(update);\n}\n\n// 키보드 조작 (PC 테스트용)\ndocument.addEventListener(\"keydown\", event => {\n    if(event.keyCode == 37) p.moveLeft();\n    else if(event.keyCode == 38) p.rotate();\n    else if(event.keyCode == 39) p.moveRight();\n    else if(event.keyCode == 40) p.moveDown();\n});\n\n// 태블릿/모바일 터치 버튼 이벤트 바인딩\ndocument.getElementById('leftBtn').addEventListener('pointerdown', () => p.moveLeft());\ndocument.getElementById('rightBtn').addEventListener('pointerdown', () => p.moveRight());\ndocument.getElementById('rotateBtn').addEventListener('pointerdown', () => p.rotate());\ndocument.getElementById('downBtn').addEventListener('pointerdown', () => p.moveDown());\n\n// 게임 시작\nupdate();\n</script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  },
-  "quiz": {
-    "title": "보이지 않는 가짜: AI 이미지와 사회적 위협",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>보이지 않는 가짜: AI 이미지와 사회적 위협</title>\n    <!-- Tailwind CSS CDN -->\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <!-- Lucide Icons -->\n    <script src=\"https://unpkg.com/lucide@latest\"></script>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');\n        body {\n            font-family: 'Pretendard', sans-serif;\n            background-color: #0b0f19;\n            overflow-x: hidden;\n        }\n        .slide-transition {\n            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-in-out;\n        }\n        .scanner-line {\n            animation: scan 3s linear infinite;\n        }\n        @keyframes scan {\n            0% { top: 0%; }\n            50% { top: 100%; }\n            100% { top: 0%; }\n        }\n        .glow-effect {\n            box-shadow: 0 0 20px rgba(255, 94, 58, 0.15);\n        }\n    </style>\n</head>\n<body class=\"text-slate-100 flex flex-col justify-between min-h-screen selection:bg-orange-500 selection:text-white\">\n\n    <!-- Top Navigation & Progress Bar -->\n    <header class=\"w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 p-4 sticky top-0 z-50\">\n        <div class=\"max-w-7xl mx-auto flex justify-between items-center px-4\">\n            <div class=\"flex items-center space-x-2\">\n                <span class=\"w-3 h-3 rounded-full bg-orange-500 animate-pulse\"></span>\n                <span class=\"font-bold tracking-wider text-sm text-slate-300 uppercase\">AI Ethics & Safety Education</span>\n            </div>\n            <div class=\"text-xs text-slate-400 font-semibold bg-slate-800 px-3 py-1.5 rounded-full\" id=\"slide-counter\">\n                Slide 1 / 7\n            </div>\n        </div>\n        <!-- Progress Bar -->\n        <div class=\"absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-500 to-teal-400 transition-all duration-500\" id=\"progress-bar\" style=\"width: 14.28%;\"></div>\n    </header>\n\n    <!-- Main Presentation Container -->\n    <main class=\"flex-grow flex items-center justify-center p-4 relative overflow-hidden\">\n        <div class=\"w-full max-w-6xl aspect-[16/10] bg-slate-900/40 border border-slate-800 rounded-2xl relative shadow-2xl overflow-hidden flex flex-col justify-between p-6 md:p-10 glow-effect\">\n            \n            <!-- Slide Container -->\n            <div class=\"relative flex-grow flex flex-col justify-center overflow-y-auto\">\n                \n                <!-- SLIDE 1: Title (Cover) -->\n                <div class=\"slide slide-transition opacity-100 scale-100 flex flex-col md:flex-row items-center justify-between gap-8 h-full\" id=\"slide-1\">\n                    <div class=\"flex-1 space-y-6 text-left\">\n                        <span class=\"inline-block bg-orange-500/10 text-orange-500 text-xs font-bold px-3 py-1 rounded-full border border-orange-500/20\">디지털 윤리 프레젠테이션</span>\n                        <h1 class=\"text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white\">\n                            보이지 않는 <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400\">가짜</span>\n                        </h1>\n                        <p class=\"text-slate-400 text-base md:text-lg max-w-lg leading-relaxed\">\n                            AI 생성 이미지 기술의 고도화와 진짜 사진의 경계 붕괴가 초래하는 범죄적 위협과 우리의 안전 가이드라인.\n                        </p>\n                        <div class=\"flex items-center space-x-3 text-sm text-slate-400 pt-2\">\n                            <i data-lucide=\"shield-alert\" class=\"text-orange-500 w-5 h-5\"></i>\n                            <span>눈으로 보는 신뢰의 유통기한이 끝났습니다.</span>\n                        </div>\n                    </div>\n                    <!-- Creative Hero SVG Graph -->\n                    <div class=\"flex-1 w-full max-w-md h-64 md:h-80 relative flex items-center justify-center bg-slate-950/50 rounded-xl border border-slate-800 overflow-hidden\">\n                        <div class=\"absolute inset-0 bg-grid-white/[0.02]\"></div>\n                        <!-- Scanner Effect -->\n                        <div class=\"absolute left-0 w-full h-1 bg-orange-500/50 scanner-line z-10 shadow-[0_0_15px_#ff5e3a]\"></div>\n                        \n                        <svg class=\"w-48 h-48 text-slate-500 opacity-80\" viewBox=\"0 0 200 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                            <!-- Real Face Half -->\n                            <path d=\"M100,30 C60,30 40,70 40,110 C40,150 70,170 100,170\" stroke=\"currentColor\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n                            <!-- AI Face Half (Glitch/Digital) -->\n                            <path d=\"M100,30 C140,30 160,70 160,110 C160,150 130,170 100,170\" stroke=\"#f97316\" stroke-width=\"4\" stroke-dasharray=\"8 6\" stroke-linecap=\"round\"/>\n                            <!-- Central Scan Line division -->\n                            <line x1=\"100\" y1=\"20\" x2=\"100\" y2=\"180\" stroke=\"#14b8a6\" stroke-width=\"2\" stroke-dasharray=\"4 4\" />\n                            <!-- AI target indicators -->\n                            <circle cx=\"140\" cy=\"90\" r=\"6\" fill=\"#f97316\" />\n                            <line x1=\"140\" y1=\"90\" x2=\"170\" y2=\"90\" stroke=\"#f97316\" stroke-width=\"2\" />\n                            <text x=\"175\" y=\"93\" fill=\"#f97316\" font-size=\"10\" font-family=\"monospace\">AI_98%</text>\n                        </svg>\n                        <div class=\"absolute bottom-4 left-4 right-4 bg-slate-900/90 p-3 rounded border border-slate-800 text-center\">\n                            <span class=\"text-xs text-teal-400 font-mono tracking-widest\">REALITY VERIFICATION OVERRIDE</span>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- SLIDE 2: Interactive Intro Mini-Game -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col h-full justify-center space-y-6\" id=\"slide-2\">\n                    <div class=\"text-center max-w-2xl mx-auto space-y-2\">\n                        <span class=\"text-teal-400 text-xs font-bold uppercase tracking-wider\">Interactive Test</span>\n                        <h2 class=\"text-3xl font-extrabold text-white\">직접 구분할 수 있으신가요?</h2>\n                        <p class=\"text-slate-400 text-sm\">아래의 두 인물 묘사 카드 중 하나는 AI가 오차 없이 생성해낸 완전히 가상의 인물입니다.</p>\n                    </div>\n\n                    <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto w-full pt-4\">\n                        <!-- Option A Card -->\n                        <div onclick=\"guessReal(1)\" id=\"card-1\" class=\"cursor-pointer group bg-slate-950/40 p-6 rounded-xl border-2 border-slate-800 hover:border-orange-500/50 transition-all duration-300 flex flex-col items-center space-y-4\">\n                            <div class=\"w-24 h-24 rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform\">\n                                <svg class=\"w-16 h-16 text-slate-400\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n                                    <path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\" />\n                                    <circle cx=\"12\" cy=\"7\" r=\"4\" />\n                                </svg>\n                            </div>\n                            <div class=\"text-center\">\n                                <h3 class=\"text-lg font-bold text-slate-200\">인물 A</h3>\n                                <p class=\"text-xs text-slate-400 mt-1\">자연스러운 눈동자 대칭, 섬세한 머리칼 반사광, 옷깃의 미세한 보풀 먼지 재현.</p>\n                            </div>\n                            <div class=\"text-xs font-semibold px-3 py-1 rounded bg-slate-800 text-slate-300 group-hover:bg-orange-500/20 group-hover:text-orange-400\">선택하기</div>\n                        </div>\n\n                        <!-- Option B Card -->\n                        <div onclick=\"guessReal(2)\" id=\"card-2\" class=\"cursor-pointer group bg-slate-950/40 p-6 rounded-xl border-2 border-slate-800 hover:border-orange-500/50 transition-all duration-300 flex flex-col items-center space-y-4\">\n                            <div class=\"w-24 h-24 rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform\">\n                                <svg class=\"w-16 h-16 text-slate-400\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n                                    <path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\" />\n                                    <circle cx=\"12\" cy=\"7\" r=\"4\" />\n                                </svg>\n                            </div>\n                            <div class=\"text-center\">\n                                <h3 class=\"text-lg font-bold text-slate-200\">인물 B</h3>\n                                <p class=\"text-xs text-slate-400 mt-1\">안경 프레임의 완벽한 굴절률, 자연스러운 피부 모공 질감, 비대칭적인 눈가 주름 표현.</p>\n                            </div>\n                            <div class=\"text-xs font-semibold px-3 py-1 rounded bg-slate-800 text-slate-300 group-hover:bg-orange-500/20 group-hover:text-orange-400\">선택하기</div>\n                        </div>\n                    </div>\n\n                    <!-- Answer Reveal Box (Hidden initially) -->\n                    <div id=\"quiz-result\" class=\"hidden max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-xl p-4 text-center text-sm\">\n                        <!-- Content dynamic from JS -->\n                    </div>\n                </div>\n\n                <!-- SLIDE 3: Crime 1 (Digital Identity Theft) -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full\" id=\"slide-3\">\n                    <div class=\"flex-1 space-y-5 text-left\">\n                        <div class=\"inline-flex items-center space-x-2 bg-red-500/10 text-red-400 text-xs font-bold px-3 py-1 rounded-full border border-red-500/20\">\n                            <i data-lucide=\"shield-alert\" class=\"w-3.5 h-3.5\"></i>\n                            <span>인격적 침해 범죄</span>\n                        </div>\n                        <h2 class=\"text-3xl md:text-4xl font-extrabold text-white\">초상권 무단 침해와<br/><span class=\"text-orange-500\">디지털 신원 위조</span></h2>\n                        <ul class=\"space-y-3 text-slate-300 text-sm md:text-base\">\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-orange-500 font-bold mr-1\">•</span>\n                                <span><strong>일반인 신원 도용:</strong> SNS 사진을 불법 수집하여 AI 페르소나를 개설한 후 조작된 가설 및 사기용 계정 운영.</span>\n                            </li>\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-orange-500 font-bold mr-1\">•</span>\n                                <span><strong>비동의 얼굴 합성(딥페이크):</strong> 지인 또는 불특정 피해자의 사진을 사용해 모욕적이고 불쾌한 합성물 무단 유포.</span>\n                            </li>\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-orange-500 font-bold mr-1\">•</span>\n                                <span><strong>무력화된 증거 능력:</strong> 디지털 증거로 신용받던 사진들이 법정 및 공적 신원 확인에서 효력을 잃는 위협 도래.</span>\n                            </li>\n                        </ul>\n                    </div>\n                    <div class=\"flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl flex flex-col justify-center space-y-4\">\n                        <h4 class=\"text-xs font-bold uppercase text-slate-400 tracking-wider\">주목해야 할 통계 수치</h4>\n                        <div class=\"grid grid-cols-2 gap-4\">\n                            <div class=\"p-4 bg-slate-900 rounded-lg border border-slate-800 text-center\">\n                                <span class=\"block text-3xl font-extrabold text-orange-500\">80%+</span>\n                                <span class=\"text-xs text-slate-400 mt-1 block\">딥페이크 피해자 중<br/>일반인 비중 증가세</span>\n                            </div>\n                            <div class=\"p-4 bg-slate-900 rounded-lg border border-slate-800 text-center\">\n                                <span class=\"block text-3xl font-extrabold text-teal-400\">0원</span>\n                                <span class=\"text-xs text-slate-400 mt-1 block\">대중화된 도구로 인한<br/>제작 단가의 제로화</span>\n                            </div>\n                        </div>\n                        <p class=\"text-xs text-slate-500 leading-relaxed text-center\">\n                            \"누구나 원클릭으로 가짜 인생을 만들어 유포할 수 있는 초접근성 기술 오남용의 결과입니다.\"\n                        </p>\n                    </div>\n                </div>\n\n                <!-- SLIDE 4: Crime 2 (Advanced Phishing) -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full\" id=\"slide-4\">\n                    <div class=\"flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl flex flex-col justify-between h-full max-h-[350px]\">\n                        <div class=\"space-y-4\">\n                            <div class=\"flex items-center space-x-2 text-orange-500\">\n                                <i data-lucide=\"shield-question\" class=\"w-5 h-5\"></i>\n                                <span class=\"text-xs font-bold uppercase tracking-wider\">Social Engineering</span>\n                            </div>\n                            <h3 class=\"text-lg font-bold text-slate-200\">어느 부모님의 증언</h3>\n                            <p class=\"text-sm text-slate-400 italic leading-relaxed\">\n                                \"출장 간 아이가 낯선 유선 번호로 납치 전화를 걸어오더니, 실제 묶여서 울고 있는 얼굴 사진을 보내왔습니다. 의심의 여지 없는 내 아들의 얼굴이었는데... 나중에 알고 보니 SNS에서 아들 얼굴을 추출해 순식간에 합성한 AI 가짜 사진이었습니다.\"\n                            </p>\n                        </div>\n                        <div class=\"border-t border-slate-800 pt-3 text-xs text-slate-500\">\n                            ※ 이처럼 시각 증명 단계를 완벽히 통과하는 신종 피싱이 급격히 증가하고 있습니다.\n                        </div>\n                    </div>\n                    <div class=\"flex-1 space-y-5 text-left\">\n                        <div class=\"inline-flex items-center space-x-2 bg-amber-500/10 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20\">\n                            <i data-lucide=\"phone-off\" class=\"w-3.5 h-3.5\"></i>\n                            <span>진화형 금융 사기</span>\n                        </div>\n                        <h2 class=\"text-3xl md:text-4xl font-extrabold text-white\">시각 검증을 무력화하는<br/><span class=\"text-orange-500\">하이브리드 메신저 피싱</span></h2>\n                        <ul class=\"space-y-3 text-slate-300 text-sm\">\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-teal-400 font-bold mr-1\">✓</span>\n                                <span><strong>인질 상황 조작:</strong> 납치 조작, 사고 조작 사진을 초고화질로 전송하여 이성적 판단 시간을 극도로 제약.</span>\n                            </li>\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-teal-400 font-bold mr-1\">✓</span>\n                                <span><strong>신원 신뢰 강화:</strong> 믿을 수 있는 해외 바이어나 상사의 얼굴을 모방한 프로필 사진으로 송금 지시 우회.</span>\n                            </li>\n                            <li class=\"flex items-start space-x-2\">\n                                <span class=\"text-teal-400 font-bold mr-1\">✓</span>\n                                <span><strong>로맨스 스캠의 고도화:</strong> 타인의 일상을 도용하지 않고, 아예 존재하지 않는 가상의 절친 파트너를 기획해 장기 금융 피해 야기.</span>\n                            </li>\n                        </ul>\n                    </div>\n                </div>\n\n                <!-- SLIDE 5: Crime 3 (Weapons of Misinformation) -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full\" id=\"slide-5\">\n                    <div class=\"flex-1 space-y-5 text-left\">\n                        <div class=\"inline-flex items-center space-x-2 bg-amber-500/10 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20\">\n                            <i data-lucide=\"globe\" class=\"w-3.5 h-3.5\"></i>\n                            <span>사회적 여론 분열</span>\n                        </div>\n                        <h2 class=\"text-3xl md:text-4xl font-extrabold text-white\">보이지 않는 가짜 뉴스,<br/><span class=\"text-red-500\">미디어 신뢰 구조 마비</span></h2>\n                        <p class=\"text-slate-400 text-sm leading-relaxed\">\n                            합성된 재난 사진과 조작된 정치인들의 현장 이미지들은 여론을 무기화하는 도구로 진화했습니다.\n                        </p>\n                        <div class=\"space-y-2 border-l-2 border-orange-500 pl-4 py-1 text-sm text-slate-300\">\n                            <p><strong>주요 파괴적 영향:</strong></p>\n                            <p class=\"text-xs text-slate-400\">선거철 가짜 현장 및 지지/반대 상황을 연출한 정교한 합성 사진 배포로 유권자 오판 유도.</p>\n                        </div>\n                    </div>\n                    <div class=\"flex-1 w-full bg-slate-950/40 border border-slate-800 p-6 rounded-xl space-y-4\">\n                        <h4 class=\"text-xs font-bold uppercase text-slate-400 tracking-wider\">라이어스 디비던드 (Liar's Dividend) 효과</h4>\n                        <div class=\"bg-slate-900 p-4 rounded-lg border border-slate-800 space-y-2 text-sm text-slate-300\">\n                            <p class=\"font-bold text-orange-400\">\"모든 것이 가짜일 수 있으므로, 진짜조차 가짜라고 주장한다\"</p>\n                            <p class=\"text-xs text-slate-400 leading-relaxed\">\n                                범죄를 저지른 정치인이나 기업인이 실제 자신의 범죄 현장 증거 사진을 보고 \"이것은 AI 딥페이크 위조\"라고 일축하며 정당한 조사를 회피하는 변명 기술로 전락했습니다.\n                            </p>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- SLIDE 6: Solutions (Defense) -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col md:flex-row items-center gap-8 h-full\" id=\"slide-6\">\n                    <div class=\"flex-1 space-y-5 text-left\">\n                        <div class=\"inline-flex items-center space-x-2 bg-teal-500/10 text-teal-400 text-xs font-bold px-3 py-1 rounded-full border border-teal-500/20\">\n                            <i data-lucide=\"shield-check\" class=\"w-3.5 h-3.5\"></i>\n                            <span>대응 방안과 방패</span>\n                        </div>\n                        <h2 class=\"text-3xl md:text-4xl font-extrabold text-white\">가짜에 맞서는<br/><span class=\"text-teal-400\">입체적 방어망</span></h2>\n                        <p class=\"text-slate-400 text-sm leading-relaxed\">\n                            기술적 한계를 극복하기 위해 기술적 대응책과 제도적 규제, 그리고 개개인의 보안 수칙이 삼위일체로 작동해야 합니다.\n                        </p>\n                    </div>\n                    <div class=\"flex-1 w-full grid grid-cols-1 gap-4\">\n                        <div class=\"p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3\">\n                            <div class=\"p-2 bg-teal-500/10 rounded-lg text-teal-400\">\n                                <i data-lucide=\"binary\" class=\"w-5 h-5\"></i>\n                            </div>\n                            <div>\n                                <h4 class=\"text-sm font-bold text-slate-200\">디지털 워터마킹 (C2PA) 표준</h4>\n                                <p class=\"text-xs text-slate-400 mt-1\">글로벌 규격으로 창작 시점의 메타데이터와 변조 흐름을 원천 블록체인 및 서명으로 자동 추적하는 보호막 탑재.</p>\n                            </div>\n                        </div>\n                        <div class=\"p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3\">\n                            <div class=\"p-2 bg-orange-500/10 rounded-lg text-orange-400\">\n                                <i data-lucide=\"eye\" class=\"w-5 h-5\"></i>\n                            </div>\n                            <div>\n                                <h4 class=\"text-sm font-bold text-slate-200\">AI 판별 소프트웨어 (Detection Tool)</h4>\n                                <p class=\"text-xs text-slate-400 mt-1\">사람이 보지 못하는 픽셀 배열 밀도, 오차 반사각 등 고주파 성분을 통계적으로 검출하는 진단 시스템 활성화.</p>\n                            </div>\n                        </div>\n                        <div class=\"p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start space-x-3\">\n                            <div class=\"p-2 bg-indigo-500/10 rounded-lg text-indigo-400\">\n                                <i data-lucide=\"users\" class=\"w-5 h-5\"></i>\n                            </div>\n                            <div>\n                                <h4 class=\"text-sm font-bold text-slate-200\">청소년 스마트 미디어 교육</h4>\n                                <p class=\"text-xs text-slate-400 mt-1\">출처가 부적절한 온라인 자극적 시각물에 대한 의심 프로세스(Cross-Check) 습관화 교육 권장.</p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- SLIDE 7: Conclusion & Pledge -->\n                <div class=\"slide slide-transition hidden opacity-0 scale-95 flex flex-col items-center justify-center text-center space-y-6 h-full\" id=\"slide-7\">\n                    <div class=\"max-w-2xl space-y-4\">\n                        <span class=\"text-orange-500 text-xs font-bold uppercase tracking-widest\">Our Final Mission</span>\n                        <h2 class=\"text-3xl md:text-5xl font-extrabold text-white\">우리는 무엇을 믿을 것인가?</h2>\n                        <p class=\"text-slate-400 text-sm md:text-base leading-relaxed\">\n                            기술의 가파른 질주가 이어지는 동안, 우리의 가장 강력한 브레이크와 수호 수단은 <br class=\"hidden md:inline\"/>\n                            바로 스스로 생각하고 상호 검증하는 <span class=\"text-orange-400 font-bold\">\"비판적 의구심\"</span>입니다.\n                        </p>\n                    </div>\n\n                    <div class=\"w-full max-w-lg bg-slate-950/50 p-6 rounded-xl border border-slate-800 space-y-3 text-left\">\n                        <h4 class=\"text-sm font-bold text-slate-200 text-center border-b border-slate-800 pb-2\">안전한 스마트 디지털 세상을 만드는 수칙</h4>\n                        <div class=\"flex items-start space-x-2 text-xs text-slate-300\">\n                            <i data-lucide=\"check-circle-2\" class=\"w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5\"></i>\n                            <span>타인의 얼굴이 포함된 사진이나 영상을 본인의 허가 없이 장난으로라도 합성하지 않기</span>\n                        </div>\n                        <div class=\"flex items-start space-x-2 text-xs text-slate-300\">\n                            <i data-lucide=\"check-circle-2\" class=\"w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5\"></i>\n                            <span>자극적인 사진 자료를 메신저로 받았을 때, 타 뉴스나 팩트체크 채널로 이중 검색해 보기</span>\n                        </div>\n                        <div class=\"flex items-start space-x-2 text-xs text-slate-300\">\n                            <i data-lucide=\"check-circle-2\" class=\"w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5\"></i>\n                            <span>소중한 나의 디지털 신원(프로필, SNS 게시물)은 무단 수집되지 않도록 공개 범위 설정하기</span>\n                        </div>\n                    </div>\n\n                    <div class=\"text-xs text-slate-500 mt-4\">\n                        Thank you for listening. 안전하고 윤리적인 미래 AI 생태계를 꿈꿉니다.\n                    </div>\n                </div>\n\n            </div>\n\n            <!-- Slide Navigation Footer Inside Card -->\n            <div class=\"flex justify-between items-center border-t border-slate-800/80 pt-6 mt-6\">\n                <button onclick=\"prevSlide()\" class=\"flex items-center space-x-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 text-sm font-semibold rounded-lg transition-all duration-200\">\n                    <i data-lucide=\"arrow-left\" class=\"w-4 h-4\"></i>\n                    <span>이전 슬라이드</span>\n                </button>\n                <div class=\"flex space-x-1.5\" id=\"bullet-indicators\">\n                    <!-- Dots generated by JS -->\n                </div>\n                <button onclick=\"nextSlide()\" class=\"flex items-center space-x-2 px-4 py-2 bg-orange-600 hover:bg-orange-500 active:scale-95 text-white text-sm font-semibold rounded-lg transition-all duration-200\">\n                    <span>다음 슬라이드</span>\n                    <i data-lucide=\"arrow-right\" class=\"w-4 h-4\"></i>\n                </button>\n            </div>\n\n        </div>\n    </main>\n\n    <!-- Global Keyboards Instruction Footer -->\n    <footer class=\"w-full text-center py-4 text-xs text-slate-500 border-t border-slate-900\">\n        <span>키보드 좌우 화살표키(←, →) 혹은 모바일 터치 스와이프로 슬라이드를 전환할 수 있습니다.</span>\n    </footer>\n\n    <!-- Script Blocks -->\n    <script>\n        // Slides and States Init\n        let currentSlide = 1;\n        const totalSlides = 7;\n        let swipeStartX = 0;\n        let swipeEndX = 0;\n\n        // Initialize Lucide Icons\n        lucide.createIcons();\n\n        // Initialize Dots Indicator\n        const bulletContainer = document.getElementById('bullet-indicators');\n        for (let i = 1; i <= totalSlides; i++) {\n            const dot = document.createElement('div');\n            dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 1 ? 'bg-orange-500 w-5' : 'bg-slate-700'}`;\n            dot.id = `bullet-dot-${i}`;\n            bulletContainer.appendChild(dot);\n        }\n\n        // Functions to Update Navigation & Progress\n        function updateSlideUI() {\n            // Hide all slides\n            for (let i = 1; i <= totalSlides; i++) {\n                const s = document.getElementById(`slide-${i}`);\n                s.classList.add('hidden', 'opacity-0', 'scale-95');\n                s.classList.remove('opacity-100', 'scale-100');\n            }\n\n            // Show current active slide\n            const activeSlide = document.getElementById(`slide-${currentSlide}`);\n            activeSlide.classList.remove('hidden');\n            setTimeout(() => {\n                activeSlide.classList.add('opacity-100', 'scale-100');\n                activeSlide.classList.remove('opacity-0', 'scale-95');\n            }, 50);\n\n            // Update Counter\n            document.getElementById('slide-counter').textContent = `Slide ${currentSlide} / ${totalSlides}`;\n\n            // Update Progress Bar Percentage\n            const percent = (currentSlide / totalSlides) * 100;\n            document.getElementById('progress-bar').style.width = `${percent}%`;\n\n            // Update Dots indicator\n            for (let i = 1; i <= totalSlides; i++) {\n                const dot = document.getElementById(`bullet-dot-${i}`);\n                if (i === currentSlide) {\n                    dot.className = 'w-5 h-2 rounded-full bg-orange-500 transition-all duration-300';\n                } else {\n                    dot.className = 'w-2 h-2 rounded-full bg-slate-700 transition-all duration-300';\n                }\n            }\n        }\n\n        // Core Next/Prev Slide Control\n        function nextSlide() {\n            if (currentSlide < totalSlides) {\n                currentSlide++;\n                updateSlideUI();\n            } else {\n                // Loop back to start\n                currentSlide = 1;\n                updateSlideUI();\n            }\n        }\n\n        function prevSlide() {\n            if (currentSlide > 1) {\n                currentSlide--;\n                updateSlideUI();\n            } else {\n                // Loop back to end\n                currentSlide = totalSlides;\n                updateSlideUI();\n            }\n        }\n\n        // Keyboard Arrow Navigation\n        window.addEventListener('keydown', (e) => {\n            if (e.key === 'ArrowRight') {\n                nextSlide();\n            } else if (e.key === 'ArrowLeft') {\n                prevSlide();\n            }\n        });\n\n        // Touch swipe gesture controls\n        window.addEventListener('touchstart', (e) => {\n            swipeStartX = e.changedTouches[0].screenX;\n        });\n\n        window.addEventListener('touchend', (e) => {\n            swipeEndX = e.changedTouches[0].screenX;\n            handleSwipe();\n        });\n\n        function handleSwipe() {\n            const threshold = 50; // minimum distance in px\n            if (swipeStartX - swipeEndX > threshold) {\n                nextSlide(); // Swiped Left\n            } else if (swipeEndX - swipeStartX > threshold) {\n                prevSlide(); // Swiped Right\n            }\n        }\n\n        // Slide 2: AI Guessing Game Interactive Logic\n        function guessReal(optionSelected) {\n            const resultBox = document.getElementById('quiz-result');\n            const card1 = document.getElementById('card-1');\n            const card2 = document.getElementById('card-2');\n            \n            resultBox.classList.remove('hidden');\n            \n            // Highlight selected card and dim other\n            if (optionSelected === 1) {\n                card1.className = \"cursor-default bg-orange-950/30 p-6 rounded-xl border-2 border-orange-500 transition-all duration-300 flex flex-col items-center space-y-4\";\n                card2.className = \"opacity-40 bg-slate-950/40 p-6 rounded-xl border border-slate-800 transition-all duration-300 flex flex-col items-center space-y-4 pointer-events-none\";\n                \n                resultBox.innerHTML = `\n                    <p class=\"text-orange-400 font-bold mb-1\">🔍 오답입니다! 하지만 전혀 이상하지 않습니다.</p>\n                    <p class=\"text-slate-300 text-xs leading-relaxed\">\n                        실제 정답은 <strong>인물 B</strong>가 AI 합성 이미지였습니다. 안경 렌즈의 완벽한 반사율은 최신 물리 엔진 기술을 통해 조작된 결과였습니다. 전문가들도 기계 분석기 없이 육안으로 두 카드를 구분할 확률은 50% 미만입니다.\n                    </p>\n                `;\n            } else {\n                card2.className = \"cursor-default bg-emerald-950/30 p-6 rounded-xl border-2 border-emerald-500 transition-all duration-300 flex flex-col items-center space-y-4\";\n                card1.className = \"opacity-40 bg-slate-950/40 p-6 rounded-xl border border-slate-800 transition-all duration-300 flex flex-col items-center space-y-4 pointer-events-none\";\n                \n                resultBox.innerHTML = `\n                    <p class=\"text-teal-400 font-bold mb-1\">🎉 정답입니다! 예리한 직관을 갖고 계시군요!</p>\n                    <p class=\"text-slate-300 text-xs leading-relaxed\">\n                        정답은 <strong>인물 B</strong>가 가상의 인물이었습니다. 하지만 AI가 무작위로 복제 생성한 사람의 안구 정보는 이제 실제 고화질 카메라 원본 품질과 차이가 전혀 없기 때문에, 직관만으로는 범죄용 위장 카드를 완벽히 가려낼 수 없습니다.\n                    </p>\n                `;\n            }\n        }\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  },
-  "meal-app": {
-    "title": "숭의여자중학교 오늘의 급식",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>숭의여자중학교 오늘의 급식</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <style>\n        /* 중요 규칙: 메뉴 안의 줄바꿈 문자(\\n)가 웹 화면에서 제대로 보이도록 설정 */\n        .menu-pre-line {\n            white-space: pre-line;\n        }\n    </style>\n</head>\n<body class=\"bg-orange-50/60 min-h-screen flex items-center justify-center p-4 antialiased font-sans\">\n\n    <div class=\"w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-orange-100 p-6 space-y-6\">\n        \n        <div class=\"text-center space-y-1\">\n            <h1 class=\"text-2xl font-black text-slate-800 tracking-tight leading-snug\">\n                🏫 숭의여자중학교<br>\n                <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-teal-400 text-3xl\">오늘의 급식</span>\n            </h1>\n            <p class=\"text-xs text-slate-400 font-medium tracking-wide\">오늘 우리 학교 맛있는 메뉴는 무엇일까? ✨</p>\n        </div>\n\n        <div class=\"flex gap-2 bg-teal-50/50 p-2 rounded-2xl border border-teal-100/60\">\n            <input type=\"date\" id=\"lunch-date\" \n                   class=\"flex-1 bg-white text-slate-700 font-semibold px-3 py-2.5 rounded-xl border border-slate-200 outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-100 transition-all text-sm\">\n            <button id=\"search-btn\" \n                    class=\"bg-teal-400 hover:bg-teal-500 active:scale-95 text-white font-black px-5 py-2.5 rounded-xl shadow-md shadow-teal-200 transition-all text-sm whitespace-nowrap\">\n                급식 조회\n            </button>\n        </div>\n\n        <div id=\"result-card\" class=\"bg-orange-50/40 rounded-2xl p-5 border border-orange-100/60 min-h-[220px] flex flex-col justify-between transition-all\">\n            \n            <div id=\"status-message\" class=\"text-center text-slate-400 my-auto py-10 font-medium text-sm\">\n                급식 식단을 불러오는 중입니다... 🕒\n            </div>\n\n            <div id=\"lunch-content\" class=\"hidden space-y-5\">\n                <div>\n                    <span class=\"inline-block bg-orange-100 text-orange-600 text-xs font-black px-3 py-1 rounded-full mb-3 shadow-sm shadow-orange-100\">\n                        Today's Menu 🍱\n                    </span>\n                    <p id=\"menu-list\" class=\"menu-pre-line text-slate-700 font-bold leading-relaxed text-base pl-1\"></p>\n                </div>\n                \n                <div class=\"border-t border-dashed border-orange-200 pt-3.5 flex justify-between items-center text-sm\">\n                    <span class=\"text-slate-400 font-semibold\">총 칼로리</span>\n                    <span id=\"calories-info\" class=\"text-teal-600 font-black text-base bg-teal-50 px-3 py-1 rounded-lg border border-teal-100/60\"></span>\n                </div>\n            </div>\n\n            <div id=\"error-content\" class=\"hidden text-center my-auto py-10 px-4 space-y-2\">\n                <span class=\"text-3xl\">🥞</span>\n                <p id=\"error-message\" class=\"text-red-500 font-bold text-sm leading-relaxed\"></p>\n            </div>\n        </div>\n\n    </div>\n\n    <script>\n        const API_URL = \"https://open.neis.go.kr/hub/mealServiceDietInfo\";\n        const API_KEY = \"fa321714b05546ad82fc4bf29b3a20ef\";\n        const EDUCATION_OFFICE_CODE = \"B10\";\n        const SCHOOL_CODE = \"7132148\";\n\n        // HTML DOM 엘리먼트 참조 구하기\n        const dateInput = document.getElementById('lunch-date');\n        const searchBtn = document.getElementById('search-btn');\n        const statusMessage = document.getElementById('status-message');\n        const lunchContent = document.getElementById('lunch-content');\n        const menuList = document.getElementById('menu-list');\n        const caloriesInfo = document.getElementById('calories-info');\n        const errorContent = document.getElementById('error-content');\n        const errorMessage = document.getElementById('error-message');\n\n        // 처음 웹페이지가 열렸을 때 자동 실행\n        window.addEventListener('DOMContentLoaded', () => {\n            // 오늘 날짜 구하기 (KST 기준 형식 맞춤)\n            const today = new Date();\n            const year = today.getFullYear();\n            const month = String(today.getMonth() + 1).padStart(2, '0');\n            const day = String(today.getDate()).padStart(2, '0');\n            \n            // <input type=\"date\">의 기본 포맷은 YYYY-MM-DD\n            const todayStr = `${year}-${month}-${day}`;\n            dateInput.value = todayStr;\n\n            // 규칙 4: 처음 페이지 열렸을 때 자동으로 오늘 날짜 급식 즉시 요청\n            fetchLunchData(todayStr);\n        });\n\n        // 조회 버튼 클릭했을 때 동작\n        searchBtn.addEventListener('click', () => {\n            fetchLunchData(dateInput.value);\n        });\n\n        // 사용자가 달력 날짜를 수동으로 바꿨을 때도 자동으로 조회\n        dateInput.addEventListener('change', () => {\n            fetchLunchData(dateInput.value);\n        });\n\n        // API 비동기 통신 및 데이터 렌더링 함수\n        function fetchLunchData(dateString) {\n            if (!dateString) {\n                alert(\"날짜를 정확히 선택해 주세요!\");\n                return;\n            }\n\n            // 새로운 데이터를 조회하기 위해 기존 뷰 상태 초기화\n            statusMessage.classList.remove('hidden');\n            lunchContent.classList.add('hidden');\n            errorContent.classList.add('hidden');\n            statusMessage.textContent = \"급식 정보를 불러오고 있어요... 🥣\";\n\n            // 규칙 2: 하이픈(-)을 제거하고 8자리 'YYYYMMDD' 형식으로 변환\n            const formattedDate = dateString.replace(/-/g, '');\n\n            // API 최종 주소 조립\n            const params = new URLSearchParams({\n                KEY: API_KEY,\n                Type: \"json\",\n                pIndex: \"1\",\n                pSize: \"10\",\n                ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,\n                SD_SCHUL_CODE: SCHOOL_CODE,\n                MLSV_YMD: formattedDate\n            });\n            const requestUrl = `${API_URL}?${params.toString()}`;\n\n            // API 호출 실행\n            fetch(requestUrl)\n                .then(response => {\n                    if (!response.ok) {\n                        throw new Error(\"네트워크 응답 및 서버 상에 문제가 발생했습니다.\");\n                    }\n                    return response.json();\n                })\n                .then(data => {\n                    // 성공/실패 여부를 판단하므로 로딩 텍스트는 숨김\n                    statusMessage.classList.add('hidden');\n\n                    const mealRows = data.mealServiceDietInfo?.[1]?.row;\n\n                    if (Array.isArray(mealRows) && mealRows.length > 0) {\n                        const meal = mealRows.find(item => String(item.MMEAL_SC_CODE) === \"2\") || mealRows[0];\n                        const cleanMenu = (meal.DDISH_NM || \"\")\n                            .replace(/<br\\s*\\/?\\s*>/gi, \"\\n\")\n                            .replace(/&amp;/g, \"&\")\n                            .replace(/&lt;/g, \"<\")\n                            .replace(/&gt;/g, \">\");\n                        // 규칙 3 - 성공 케이스 매핑\n                        menuList.textContent = cleanMenu;\n                        caloriesInfo.textContent = meal.CAL_INFO || \"0 Kcal\";\n                        \n                        lunchContent.classList.remove('hidden');\n                    } else {\n                        // 규칙 3 - 실패 케이스 매핑 (주말, 공휴일, 에러 등)\n                        errorMessage.textContent = data.RESULT?.MESSAGE || \"오늘은 급식이 없습니다.\";\n                        errorContent.classList.remove('hidden');\n                    }\n                })\n                .catch(error => {\n                    // 주소 오류, 연결 차단, 서버 전원 오프 등의 예외 예방 처리\n                    statusMessage.classList.add('hidden');\n                    errorMessage.textContent = \"급식 정보를 불러오지 못했습니다. 잠시 후 다시 조회해 주세요.\";\n                    errorContent.classList.remove('hidden');\n                    console.error(\"Fetch Error:\", error);\n                });\n        }\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  }
-};
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -421,15 +1237,39 @@
                     }
                 } catch (e) {}
             }
-            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
+
+            studentProjectsMap = {};
+            const tmpl_game = document.getElementById('tmpl-game');
+            if (tmpl_game) {
+                studentProjectsMap['game'] = {
+                    title: "파스텔 테트리스",
+                    sourceCode: tmpl_game.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_quiz = document.getElementById('tmpl-quiz');
+            if (tmpl_quiz) {
+                studentProjectsMap['quiz'] = {
+                    title: "보이지 않는 가짜: AI 이미지와 사회적 위협",
+                    sourceCode: tmpl_quiz.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_meal_app = document.getElementById('tmpl-meal-app');
+            if (tmpl_meal_app) {
+                studentProjectsMap['meal-app'] = {
+                    title: "숭의여자중학교 오늘의 급식",
+                    sourceCode: tmpl_meal_app.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -448,7 +1288,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -459,11 +1298,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -476,9 +1313,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -514,7 +1349,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -527,19 +1361,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -552,18 +1383,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -587,14 +1408,13 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
 </html>
-
