@@ -1,27 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
+    <title>김민솔 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -30,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -83,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -172,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">김</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>김민솔 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 3학년 1반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html" selected>3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html">2학년 3반 신세영</option>
+                    <option value="jiwoo.html">2학년 4반 임지우</option>
+                    <option value="heejung.html">1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html">3학년 2반 이아연</option>
+                    <option value="hayoon.html">3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -204,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">3학년 1반 김민솔 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -257,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -272,91 +179,2520 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-quiz">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중학교 환경 기말고사 완벽 대비 모의고사</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts (Noto Sans KR) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-emerald-600 text-white shadow-md">
+    <div class="max-w-4xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <!-- Leaf Icon (SVG) -->
+        <svg class="w-8 h-8 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+        </svg>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-tight">환경 교과 기말고사 완벽 대비</h1>
+          <p class="text-xs md:text-sm text-emerald-100 mt-0.5">핵심 개념 정리 및 인터랙티브 20문항 모의고사</p>
+        </div>
+      </div>
+      <!-- Tab Buttons -->
+      <div class="flex bg-emerald-700 p-1 rounded-lg">
+        <button id="tab-quiz-btn" onclick="switchTab('quiz')" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-white text-emerald-800 shadow">
+          모의고사 풀기
+        </button>
+        <button id="tab-study-btn" onclick="switchTab('study')" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-white hover:bg-emerald-600">
+          전체 보기 & 학습
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+
+    <!-- TAB 1: INTERACTIVE QUIZ MODE -->
+    <div id="quiz-tab" class="space-y-6">
+      
+      <!-- Progress and Score Area -->
+      <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex-grow">
+          <div class="flex justify-between text-sm font-medium text-slate-500 mb-2">
+            <span>진행률: <strong id="current-index-txt" class="text-emerald-600">1</strong> / 20</span>
+            <span id="quiz-progress-percent">5%</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-2.5">
+            <div id="progress-bar" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+          </div>
+        </div>
+        <div class="flex gap-4 items-center justify-between sm:justify-end border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
+          <div class="text-center px-4 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-medium">
+            맞은 개수: <span id="score-txt" class="font-bold text-base">0</span>
+          </div>
+          <button onclick="resetQuiz()" class="text-xs text-slate-400 hover:text-rose-500 underline transition-colors">
+            다시 풀기
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+        <!-- Question Number and Hint Tag -->
+        <div class="flex items-center justify-between">
+          <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Q. <span id="q-number">1</span></span>
+          <button onclick="toggleHint()" class="text-xs font-medium text-emerald-600 hover:text-emerald-700 flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            힌트 보기
+          </button>
+        </div>
+
+        <!-- Hint Text Box (Hidden by default) -->
+        <div id="hint-box" class="hidden p-4 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg text-sm text-amber-800 leading-relaxed">
+          💡 <span id="hint-text"></span>
+        </div>
+
+        <!-- Question Title -->
+        <h2 id="question-title" class="text-base md:text-lg font-bold text-slate-800 leading-relaxed whitespace-pre-line">
+          질문 로딩 중...
+        </h2>
+
+        <!-- Options Container -->
+        <div id="options-container" class="grid grid-cols-1 gap-3">
+          <!-- Options will be dynamically loaded here -->
+        </div>
+
+        <!-- Detailed Feedback & Explanation Panel -->
+        <div id="explanation-panel" class="hidden space-y-4 pt-4 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span id="explanation-badge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
+            <h3 class="font-bold text-slate-800">선택지 상세 분석</h3>
+          </div>
+          <div id="rationales-list" class="space-y-3 text-sm leading-relaxed">
+            <!-- Rationale for each option loaded here -->
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between items-center pt-2">
+          <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-medium rounded-xl transition-colors disabled:opacity-50" disabled>
+            이전 문제
+          </button>
+          <button id="next-btn" onclick="nextQuestion()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition-all shadow-sm">
+            다음 문제
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Completed View (Hidden by default) -->
+      <div id="quiz-complete-card" class="hidden bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center space-y-6">
+        <div class="inline-flex p-4 bg-emerald-50 rounded-full text-emerald-600">
+          <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-2xl font-extrabold text-slate-800">수고하셨습니다!</h2>
+          <p class="text-slate-500">중학교 환경 모의고사를 모두 마치셨습니다.</p>
+        </div>
+        <div class="max-w-xs mx-auto p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <span class="text-sm text-slate-500 font-medium block">최종 점수</span>
+          <span class="text-4xl font-black text-emerald-600"><span id="final-score">0</span> / 20</span>
+          <p id="grade-comment" class="text-xs font-semibold mt-2 text-slate-600"></p>
+        </div>
+        <button onclick="resetQuiz()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-all shadow">
+          처음부터 다시 풀기
+        </button>
+      </div>
+
     </div>
 
-    <!-- [안전한 원본 소스코드 템플릿 보관소] -->
-    <template id="tmpl-chaeyeon-quiz">
+    <!-- TAB 2: STUDY ALL MODE (Scrollable list with detailed solutions) -->
+    <div id="study-tab" class="hidden space-y-8">
+      <div class="bg-emerald-50 border border-emerald-100 p-5 rounded-2xl text-emerald-900">
+        <h3 class="font-bold text-lg mb-1">📖 전체 내용 한눈에 요약 학습하기</h3>
+        <p class="text-sm opacity-90 leading-relaxed">
+          시험 전, 혹은 틀린 문제를 빠르게 복습하기 위한 공간입니다. 20문제의 정답과 각 보기가 오답/정답인 상세한 과학적 이유를 편리하게 읽을 수 있습니다.
+        </p>
+      </div>
+
+      <div id="study-list-container" class="space-y-6">
+        <!-- Study cards will be dynamically injected here -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-xs">
+    <div class="max-w-4xl mx-auto px-4 space-y-1">
+      <p>중학교 환경 교과 기말고사 모의고사 프로그램</p>
+      <p class="opacity-75">&copy; 2026. All rights reserved. 본 프로그램은 교육용 자료입니다.</p>
+    </div>
+  </footer>
+
+  <!-- Script for Quiz Data and Logic -->
+  <script>
+    // 20 Questions Data
+    const quizData = [
+      {
+        questionNumber: 1,
+        question: "다음 중 생태계의 구성 요소와 그 역할에 대한 설명으로 가장 적절하지 않은 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "식물은 광합성을 통해 무기물을 유기물로 전환하는 생산자 역할을 한다.",
+            rationale: "식물은 태양의 빛에너지를 이용해 물과 이산화 탄소(무기물)로 포도당(유기물)을 스스로 합성하는 생산자이므로 올바른 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text: "버섯과 곰팡이는 유기물을 분해하여 무기물로 되돌리는 분해자이다.",
+            rationale: "버섯, 곰팡이, 세균 등은 사체나 배설물 속에 있는 유기물을 분해하여 무기물로 자연계에 되돌려 보내는 분해자이므로 올바른 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text: "소비자는 다른 생물을 섭취하여 에너지를 얻는 생물로, 먹이 단계에 따라 1차, 2차 등으로 나뉜다.",
+            rationale: "소비자는 스스로 영양분을 생산하지 못하며, 식물을 먹는 1차 소비자, 동물을 먹는 2차 소비자 등으로 구성되어 올바른 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text: "지렁이와 플랑크톤은 빛, 온도, 토양과 같은 비생물적 요인에 해당한다.",
+            rationale: "지렁이와 플랑크톤은 살아있는 생명체이므로 '생물적 요인'에 해당합니다. 비생물적 요인은 빛, 온도, 물, 토양처럼 생물이 살아갈 수 있도록 터전을 제공하는 자연환경 요인입니다.",
+            isCorrect: true
+          }
+        ],
+        hint: "지렁이와 플랑크톤은 살아있는 생명체이므로 생물적 요인에 속합니다."
+      },
+      {
+        questionNumber: 2,
+        question: "지구 온난화로 인해 전 세계 평균 기온이 상승하면서 발생하는 현상으로 가장 적절한 설명을 보기에서 모두 고른 것은 무엇인가요?\n\n[보기]\nㄱ. 해수면 상승\nㄴ. 고산 지대 빙하의 면적 증가\nㄷ. 열대성 질병의 발생 지역 확산\nㄹ. 극지방 생물의 서식지 확대",
+        answerOptions: [
+          {
+            text: "ㄱ, ㄴ",
+            rationale: "지구 온난화로 기온이 오르면 고산 지대의 빙하는 녹아 면적이 급격히 감소하므로 ㄴ은 틀린 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text: "ㄱ, ㄷ",
+            rationale": "빙하가 녹아내려 해수가 팽창함으로써 해수면이 상승(ㄱ)하며, 따뜻해진 한반도나 고위도 지역으로 모기 등 열대성 질병 매개 동물이 번식해 열대성 질병이 확산(ㄷ)되므로 올바른 내용입니다.",
+            isCorrect: true
+          },
+          {
+            text: "ㄴ, ㄹ",
+            rationale": "빙하는 감소하며, 추운 기후에 적응해 살아온 북극곰, 펭귄 같은 극지방 생물은 서식 빙하가 소멸되어 생존 서식지가 축소되므로 ㄴ, ㄹ 모두 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text: "ㄷ, ㄹ",
+            rationale": "ㄹ은 서식지가 축소 및 파괴되는 것이 지구 온난화의 정형적인 영향이므로 오답입니다.",
+            isCorrect: false
+          }
+        ],
+        hint: "따뜻해진 지구에서 빙하는 녹아내리고, 따뜻한 곳을 좋아하는 생물과 질병은 더 넓은 위도로 뻗어나갑니다."
+      },
+      {
+        questionNumber: 3,
+        question: "다음 중 미세 먼지(PM-10, PM-2.5)에 대한 설명으로 옳은 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "PM-2.5는 머리카락 굵기보다 굵어서 인체의 코털과 기관지 점막에서 대부분 걸러진다.",
+            rationale": "PM-2.5는 초미세 먼지로 머리카락 굵기의 수십분의 일 수준으로 매우 조밀하여 인간의 신체 필터(코털 등)를 그냥 통과해 폐 깊숙이 침투하므로 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text: "미세 먼지는 주로 식물의 호흡과 광합성 과정에서 자연적으로 다량 발생한다.",
+            rationale": "미세 먼지는 식물 활동이 아니라 화석 연료의 연소, 공장 굴뚝 매연, 자동차 엔진 배기가스 등에서 발생하는 인위적 산물입니다.",
+            isCorrect: false
+          },
+          {
+            text: "입자의 크기가 작을수록 호흡기 깊숙이 침투하여 인체에 더 치명적인 영향을 준다.",
+            rationale": "먼지의 크기(지름)가 작을수록 신체 호흡 기관을 자유롭게 지나쳐 폐포나 심장, 뇌혈관 속까지 스며들어 치명적인 질환을 발생시킵니다.",
+            isCorrect: true
+          },
+          {
+            text: "미세 먼지는 단순한 먼지 입자일 뿐이며 산성비의 원인 물질은 포함하지 않는다.",
+            rationale": "미세 먼지 속에는 산성비의 원인이 되는 황산염, 질산염 및 유독 중금속이 다량 엉켜 있어 오답입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "먼지 지름의 크기가 미세하면 미세할수록 신체 방어벽을 쉽게 뚫고 들어갑니다."
+      },
+      {
+        questionNumber: 4,
+        question: "자원 순환과 환경 보전을 위한 기본 수칙인 '3R 운동'에 해당하지 않는 단어는 무엇인가요?",
+        answerOptions: [
+          {
+            text: "Reduce (감량)",
+            rationale": "Reduce는 불필요한 일회용품 등의 소비 자체를 원천적으로 절감해 쓰레기를 줄이는 3R의 제1원칙입니다.",
+            isCorrect: false
+          },
+          {
+            text: "Reuse (재사용)",
+            rationale": "Reuse는 망가지지 않은 물건을 깨끗이 씻거나 다듬어 원래 용도로 반복하여 사용하는 친환경적 실천 방법입니다.",
+            isCorrect: false
+          },
+          {
+            text: "Recycle (재활용)",
+            rationale": "Recycle은 쓰레기를 분리수거하여 공장에서 다시 원료 물질 상태로 녹여 새 상품으로 환원시키는 과정입니다.",
+            isCorrect: false
+          },
+          {
+            text: "Replace (대체)",
+            rationale": "Replace(대체하기)는 일상생활에서 환경 보호를 위한 유용한 방법이지만, 역사적으로 명문화되어 내려온 자원 순환 기본 '3R'에는 포함되지 않습니다.",
+            isCorrect: true
+          }
+        ],
+        hint": "3R은 쓰레기를 줄이고(Reduce), 버리기 전에 다시 쓰고(Reuse), 분리수거해 원료화(Recycle)하는 세 과정입니다."
+      },
+      {
+        questionNumber: 5,
+        question: "생물 다양성은 지구 생태계를 유지하는 핵심 가치입니다. 생물 다양성을 구성하는 세 가지 기본 층위에 속하지 않는 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "유전적 다양성",
+            rationale": "유전적 다양성은 같은 생물 종이라도 개체마다 가지고 있는 유전 정보가 다채로운 성격을 갖는 3대 층위 중 하나입니다.",
+            isCorrect: false
+          },
+          {
+            text: "종 다양성",
+            rationale": "종 다양성은 정해진 지역 환경 내에 서식하는 생물 종류의 수가 많고 골고루 살고 있는 비율을 나타내는 층위입니다.",
+            isCorrect: false
+          },
+          {
+            text: "생태계 다양성",
+            rationale": "생태계 다양성은 사막, 삼림, 호수, 습지, 갯벌 등 지구상에 서식 구조가 고루 분포한 수준을 명시하는 층위입니다.",
+            isCorrect: false
+          },
+          {
+            text: "개체수 다양성",
+            rationale": "생물 다양성의 3대 층위는 '유전적 다양성', '종 다양성', '생태계 다양성'입니다. 특정 종의 절대적인 개체수가 많이 밀집되어 있다는 것은 다양성을 가리키는 정식 층위에 해당하지 않습니다.",
+            isCorrect: true
+          }
+        ],
+        hint": "생물 다양성은 유전자(미시), 생물 종류(중시), 서식 환경인 생태계(거시)의 3가지 범주로 구성됩니다."
+      },
+      {
+        questionNumber: 6,
+        question: "비료나 생활 하수가 유입되어 물속의 영양 물질이 과다해지는 '부영양화' 현상이 수중 생태계에 미치는 영향으로 가장 옳은 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "물속에 유입된 비료 성분이 감소해 녹색 수생 생물이 멸종한다.",
+            rationale": "부영양화는 비료 성분인 질소와 인 등이 지나치게 늘어나는 병리 현상이므로 수생 식물 오염이 폭증해 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text: "용존 산소량이 급격히 증가하여 깨끗한 상류 어종이 대거 밀집한다.",
+            rationale": "플랑크톤이 대거 썩으면서 산소를 소모하고 햇빛을 차단하여, 물속 산소 농도가 최악으로 고갈되므로 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text: "식물 플랑크톤이 폭발적으로 증식하여 물속 산소를 고갈시키고 수생 생물을 질식사하게 만든다.",
+            rationale": "영양분의 과다 유입으로 식물 플랑크톤이 대량 번식(녹조·적조)합니다. 이들이 죽은 후 박테리아가 사체를 분해하면서 물속 산소를 다 써버려 물고기가 숨을 쉬지 못해 떼죽음을 당합니다.",
+            isCorrect: true
+          },
+          {
+            text": "자연 자체의 정화 능력이 극대화되어 탁한 하수가 수정처럼 맑게 변한다.",
+            rationale": "조류의 번식으로 물이 탁해지고 악취가 발생해 강의 자연 정화 능력이 완전히 파괴되므로 틀린 설명입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "물이 너무 과도한 영양분을 얻으면 플랑크톤만 폭증해 호수가 썩어 들어갑니다."
+      },
+      {
+        questionNumber: 7,
+        question: "다음 중 '지속 가능한 발전(Sustainable Development)'의 핵심 개념을 가장 바르게 서술한 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "미래 세대의 필요를 충족시킬 능력을 저해하지 않으면서 현 세대의 필요를 충족하는 발전",
+            rationale": "지속 가능한 발전의 약속된 정의로, 환경을 지키면서도 미래 아이들이 살아갈 수 있는 터전을 보장하는 선에서의 경제적 성장을 지향합니다.",
+            isCorrect: true
+          },
+          {
+            text: "완벽한 환경 보호를 실현하기 위해 모든 인류 문명 발전과 산업 경제 성장을 영원히 봉쇄하는 것",
+            rationale": "이것은 성장의 단절(원시 회귀)을 뜻할 뿐 경제, 환경, 사회가 조화를 이루어 전진한다는 통합적 실천 모델에는 어긋납니다.",
+            isCorrect: false
+          },
+          {
+            text: "현 세대의 이익과 즐거운 여가를 극대화하기 위해 천연자원을 가장 빠르고 아낌없이 소비하는 개발",
+            rationale": "현대인의 편안함을 위해 모든 자원을 다 써버리면 다음 세대의 생존을 파괴하므로 반환경적인 개발 방식입니다.",
+            isCorrect: false
+          },
+          {
+            text: "에너지가 풍부한 선진국들 위주로 첨단 친환경 기술 인프라를 한정해 독점 전수하는 성장 구조",
+            rationale": "지속 가능한 성장은 전 세계 인류의 가난 탈피, 빈부 격차 해소 등 보편적 정의와 형평성을 핵심축으로 삼습니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "지금 사는 우리가 지구 자원을 모두 고갈시키지 않고, 미래 세대에게 안전하게 물려주며 살아가는 균형을 강조합니다."
+      },
+      {
+        questionNumber: 8,
+        question: "토양 오염이 가지는 고유한 물리·환경적 특징과 피해 상황에 대한 설명으로 가장 적절한 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "오염 물질의 유동 속도가 빨라 다른 환경 피해 영역보다 신속한 정화가 가능하다.",
+            rationale": "토양은 고정되어 있어 오염 물질이 대단히 천천히 퍼집니다. 이 때문에 오염된 사실을 수년 후에나 발견하게 되어 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text": "토양 오염 물질은 지하수로 스며들지 못하므로 식수 오염의 원인이 되지 않는다.",
+            rationale": "토양에 박힌 독성 물질은 비가 내리면 지하에 용해되어 스며들어 지하수를 강력하게 훼손하기에 틀린 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text: "한 번 오염되면 복구하는 데 매우 오랜 시간과 막대한 자본이 필요하며 피해가 만성적으로 지속된다.",
+            rationale": "토양은 오염 물질을 축적하고 입자에 흡착하는 성질이 강해 스스로 정화되려면 막대한 세월이 필요하며, 인위적 세척에도 엄 청난 예산이 낭비됩니다.",
+            isCorrect: true
+          },
+          {
+            text: "가벼운 흙입자의 여과 기작 덕분에 인체에 유해한 농산물 전이가 아예 원천 봉쇄된다.",
+            rationale": "중금속 등 유독 성분을 머금은 대지에서 생장한 뿌리 식물은 유독 물질을 빨아들여 결국 사람이 섭취하게 되므로 오답입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "흙은 유동성이 적기 때문에, 해로운 물질이 유입되면 그 자리에 고여 만성적인 오염의 요람이 됩니다."
+      },
+      {
+        questionNumber: 9,
+        question: "대기 중 온실 효과가 일어나는 과학적 원리와 지구 온난화 현상에 대한 설명으로 옳은 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "온실 효과는 인류 생존에 유해하므로 대기 중 온실가스를 원천 배출 0%로 완전히 없애야 한다.",
+            rationale": "자연적인 온실가스가 대기에 전혀 없다면 지구는 밤에 영하 수십 도로 추워져 얼음 행성이 되고 생명체가 살지 못하므로 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text": "대기 중 이산화 탄소, 메탄 같은 온실가스가 지표면에서 방출되는 적외선 열에너지를 흡수해 대기를 따뜻하게 유지한다.",
+            rationale": "태양에서 공급되는 짧은 파장의 가시광선은 무사 통과시키고, 지표면이 달궈진 후 나가는 긴 파장의 적외선 열기는 대기 가스에 포획되는 온실 효과의 과학적 본질을 보여줍니다.",
+            isCorrect: true
+          },
+          {
+            text": "지구 대기를 가득 메운 산소($O_2$)와 질소($N_2$)가 온난화를 촉진시키는 절대적 주범 가스이다.",
+            rationale": "대기의 대부분을 점유하는 질소와 산소 분자는 온실 기체로서 열을 포획하는 흡수력을 지니고 있지 않습니다.",
+            isCorrect: false
+          },
+          {
+            text": "하늘 위 오존 홀이 크게 벌어져 그 틈으로 유해 자외선이 쏟아져 온도가 폭발적으로 상승하는 현상이다.",
+            rationale": "자외선 과도 유입은 피부암을 부르는 오존층 훼손 이슈이고, 온실 효과는 나가는 적외선 열기를 대기가 붙잡아 더워지는 열 정체 현상입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "대기층의 온실가스는 지구의 따뜻한 열기(적외선)가 우주로 쉽게 날아가지 못하게 가두는 담요 역할을 합니다."
+      },
+      {
+        questionNumber: 10,
+        question: "중금속인 수은, 카드뮴이나 쉽게 분해되지 않는 화학 물질이 먹이 사슬 상위 단계의 포식자 몸속으로 이동할수록 농축 농도가 급속히 증대하는 현상을 무엇이라고 부르나요?",
+        answerOptions: [
+          {
+            text: "생물 농축",
+            rationale": "생물 체외로 쉽게 배출되지 않고 분해도 거의 이루어지지 않는 중금속, 미세 플라스틱 등이 먹이 사슬 구조를 타고 상위 육식 동물일수록 수만 배 고농도로 쌓이는 위험한 현상입니다.",
+            isCorrect: true
+          },
+          {
+            text: "수계 부영양화",
+            rationale": "부영양화는 비료염 영양소 과잉 유입에 의해 조류가 호수에서 비정상적으로 늘어나는 수질 피해로 별개의 개념입니다.",
+            isCorrect: false
+          },
+          {
+            text": "열섬 환경 변이",
+            rationale": "열섬 현상은 포식자 영양 이동 축적과는 전혀 무관한, 도심의 기온이 상향 정체되는 물리적 대기 오염 현상입니다.",
+            isCorrect: false
+          },
+          {
+            text": "산성 수소화",
+            rationale": "산성 물질 낙하로 pH 농도가 산성 쪽으로 기울어 대지가 황폐화되는 개념으로, 농축 물질 이동과는 직접적 거리가 멉니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "상위 포식자일수록 무수히 많은 하위 단계 생물을 사냥하여 그들의 몸에 깃든 오염 성분을 압축하여 받게 됩니다."
+      },
+      {
+        questionNumber: 11,
+        question: "다음 중 친환경 신재생 에너지에 대한 설명으로 가장 적절하지 않은 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text: "태양광 에너지는 이산화 탄소를 내놓지 않으나, 일조 조건과 밤낮 주기에 따라 가동 효율 기복이 심하다.",
+            rationale": "태양광 발전은 친환경적이지만 자연의 햇빛 상황에 출력량이 묶여 있는 기후적 한계가 상존해 맞는 설명입니다.",
+            isCorrect: false
+          },
+          {
+            text": "풍력 발전은 청정 발전을 하지만, 세찬 회전 소음과 철새의 충돌 위협 같은 단점이 존재한다.",
+            rationale": "날개 마찰 소음으로 인근 주민이 고충을 겪고 조류 충돌이 빚어지는 것 등은 해결해야 할 단점들이 맞습니다.",
+            isCorrect: false
+          },
+          {
+            text": "바이오 에너지는 식물성 기름이나 유기물 폐기물을 연소 가동하므로 실제 연소 시 이산화 탄소를 배출하지 않는다.",
+            rationale": "바이오매스는 나무나 찌꺼기를 직접 연소하기 때문에 실제로 온실가스인 이산화 탄소($CO_2$)를 배출합니다. 다만 성장할 때 대기 중 이산화 탄소를 흡수했던 유기물이므로 배출량을 가감했을 때 최종 합계가 '탄소 제로(탄소 중립)'가 되는 성질일 뿐, 연소 시 배출 자체가 0g인 것은 아닙니다.",
+            isCorrect: true
+          },
+          {
+            text": "수소 발전은 기동할 때 부산물로 유독 기체나 검댕 대신 깨끗한 수증기(물)만 생성해낸다.",
+            rationale": "수소와 산소의 전기 화학 반응 결과물은 매연이 아닌 고순도 무색 무취의 수증기뿐이어서 가장 청정합니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "바이오 연료도 나무나 식물 기름의 연소 원리에 바탕을 두므로 연소 연기 속에 이산화 탄소가 실제 함유되어 있습니다."
+      },
+      {
+        questionNumber: 12,
+        question: "소비 지역 근처에서 경작된 농작물을 이용하자는 '로컬 푸드 운동'이 지구 기후 환경에 실질적으로 보탬을 주는 이유는 무엇인가요?",
+        answerOptions: [
+          {
+            text: "식품의 이동 거리(푸드 마일리지)를 현격히 줄여 대형 운송 수단이 배출하는 이산화 탄소 등 탄소를 획기적으로 감축시킨다.",
+            rationale": "해외 대형 벌크선이나 항공 수송 트럭의 가동 거리가 단축되어 기후 변화의 원인인 탄소 오염원의 방출을 직접적으로 줄여줍니다.",
+            isCorrect: true
+          },
+          {
+            text": "머나먼 이국땅의 이국적 수입 농작물을 훨씬 값싸게 공수하는 기쁨을 가져다준다.",
+            rationale": "수입 운송 과정을 억제하고 반경 내 지역 우리 농가를 돕는 활동이므로 머나먼 유통 활성화와는 무관합니다.",
+            isCorrect: false
+          },
+          {
+            text": "식자재 보존을 오래 유지하기 위한 과량의 화학 방부 물질 도포 기술 개발을 촉진시킨다.",
+            rationale": "운송 거리가 짧아 화학 방부제나 왁스 코팅 등 변질 예방 목적의 가혹 가공을 할 필요가 없게 만들어 줍니다.",
+            isCorrect: false
+          },
+          {
+            text": "식품의 외관을 돋보이게 하는 호화 비닐 및 플라스틱 가열 실링 포장을 널리 유도한다.",
+            rationale": "불필요한 과대 가구 포장을 생략하고 간편 종이 백이나 벌크 형태 친환경 배송을 권고하므로 오답입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "외국산 과일이나 야채가 수만 킬로미터를 비행기나 배로 타고 건너올 때 내뿜는 수송선 매연가스를 줄이려는 실천 방식입니다."
+      },
+      {
+        questionNumber: 13,
+        question: "석탄·석유 등 화석 연료 연소 시 배출되는 대기 가스인 '황산화물($SO_x$)'과 '질산화물($NO_x$)'이 비에 섞여 내릴 때 발생하는 대표적인 환경 문제는 무엇인가요?",
+        answerOptions: [
+          {
+            text": "강과 숲을 죽이고 석조 건축물과 금속 교량을 녹여 부식시키는 산성비 현상",
+            rationale": "황산화물과 질산화물이 대기 수증기와 접촉하면 강한 황산, 질산 성분으로 빗물을 독하게 산성화(pH 5.6 미만)하여 생태와 유물을 녹여 버립니다.",
+            isCorrect: true
+          },
+          {
+            text": "오존층이 급격히 소멸하여 뜨거운 적도 지표 온난화 현상 유발",
+            rationale": "오존층 붕괴의 일등 공신은 염소 촉매 물질인 프레온 가스로, 화석 연료 유래 황·질소 가스와는 메커니즘이 구별됩니다.",
+            isCorrect: false
+          },
+          {
+            text": "사막의 모래폭풍과 극심한 가뭄을 초래해 도심 물 부족 심화",
+            rationale": "사막화는 식생 훼손과 장기 가뭄에 의한 토양 유실 기작으로, 대기 가스 용해 낙하 산성비 효과와는 독립적 변수입니다.",
+            isCorrect: false
+          },
+          {
+            text": "지반을 약화시켜 도심 도처에 씽크홀 발생률 폭증",
+            rationale": "씽크홀은 지반 지하 동공 형성 붕괴 현상이며 대기 산성 기체 비의 물리 낙하 문제와는 관계가 없습니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "이 가스들이 수증기와 합성되면 강한 산성을 띠어 지상의 대리석 건축물을 갉아 먹고 나무를 앙상하게 말려 죽입니다."
+      },
+      {
+        questionNumber: 14,
+        question": "인류를 유해 자외선으로부터 안전하게 감싸 보호하는 대기 오존층을 방어하기 위해, 프레온가스의 전면적 제한을 이룩한 국제적 협정명은 무엇인가요?",
+        answerOptions: [
+          {
+            text": "람사르 협약",
+            rationale": "람사르 협약은 철새 거점인 글로벌 연안 습지와 내륙 늪지 보존을 약조한 맹약이므로 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text": "몬트리올 의정서",
+            rationale": "오존 분자를 촉매 분해하는 염화불화탄소(CFCs, 프레온 가스) 냉매를 친환경 냉매로 완전 금지 대체하게 합의해 지구 환경 방벽을 지켜낸 획기적인 약정서입니다.",
+            isCorrect: true
+          },
+          {
+            text": "바젤 안전 협약",
+            rationale": "바젤 협약은 유독 중금속 유해 폐기물을 규제가 약한 개발도상국 땅에 마구 밀수해 버리는 국가 간 불법 매립을 억제하는 조약입니다.",
+            isCorrect: false
+          },
+          {
+            text": "교토 기후 조약",
+            rationale": "교토 의정서는 온실가스 감축 이행 의무를 선진국들에 최초로 분담시킨 지구 온난화 방지 의정서입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "오존층을 지킨 도시 이름으로 명명된 가장 모범적으로 성공한 국제적 환경 보호 선언 조약입니다."
+      },
+      {
+        questionNumber: 15,
+        question": "생태계 속에서 원소 등의 물질은 무한히 돌며 순환하지만, '에너지'는 순환하지 않고 우주로 방출됩니다. 생태 피라미드의 높은 위로 진입할수록 총 가용 에너지가 크게 줄어드는 이유는 무엇인가요?",
+        answerOptions: [
+          {
+            text": "상위 소비자들이 육식성 식단만을 애용해 몸 전체의 크기가 점진적으로 줄어들기 때문이다.",
+            rationale": "최상위 포식자일수록 맹수로 체형이 오히려 크며, 크기의 성질로 에너지 총량이 우주로 유실되지는 않습니다.",
+            isCorrect: false
+          },
+          {
+            text": "전 단계 하위 동물의 생체 에너지 100%가 상실감 없이 다음 단계 먹이에게 남김없이 축적되기 때문이다.",
+            rationale": "100% 고스란히 이식 저장된다면 상위 포식자가 가져갈 에너지가 축소되지 않으므로 논리적 오류입니다.",
+            isCorrect: false
+          },
+          {
+            text": "각 단계 생물이 호흡, 사냥, 체온 유지 등 자신의 생명 활동에 많은 에너지를 태워 쓰고 열의 형태로 무질서하게 흩뿌려버리기 때문이다.",
+            rationale": "먹이 섭취로 입수한 에너지 중 약 10% 전후의 제한된 에너지만 다음 포식자에게 이식됩니다. 나머지 90%에 해당하는 가용 에너지 대부분은 살아가기 위한 호흡이나 열 방출 등으로 소비되어 우주로 날아갑니다.",
+            isCorrect: true
+          },
+          {
+            text": "에너지가 상층 위로 가는 과정에서 가시광선 빛으로 변환되어 스스로 자체 광합성을 추진하기 때문이다.",
+            rationale": "소비자인 맹수 등은 광합성 엽록체 능력이 결여되어 있어 애초에 부합하지 않는 생물학적 서술입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "생명체는 끊임없이 체온을 유지하고 움직이기 위해, 섭취한 열량을 매일 숨(호흡)과 열기 형태로 소모하여 우주 밖으로 방출합니다."
+      },
+      {
+        questionNumber: 16,
+        question": "다음 중 대도시 중심지의 기온이 시골 녹지 대지보다 뜨겁게 오르는 '열섬 현상(Heat Island Effect)'을 부채질하는 요인과 가장 먼 것은 무엇인가요?",
+        answerOptions: [
+          {
+            text": "아스팔트 포장 면과 우뚝 솟은 건물들이 낮 동안 복사열을 엄청나게 품고 가두는 열 흡수 작용",
+            rationale": "인공 자재들은 낮에 햇빛 열기를 지체 없이 흡수 저장해 머금은 뒤 밤에 온종일 방출해 도심 열대야를 악화시킵니다.",
+            isCorrect: false
+          },
+          {
+            text": "빌딩 벽들 사이에 신바람 통풍 경로를 생성하는 도심 습지 숲길과 대규모 건물 옥상 녹색 식생 배치",
+            rationale": "도심 옥상 녹화나 인공 습지, 바람 통로는 기후 온도를 식혀 주는 '열섬 차단 대책'이므로 이를 무분별하게 과다 조성한 것이 열섬의 유발 원인이라 볼 수 없어 오답입니다.",
+            isCorrect: true
+          },
+          {
+            text": "바람이 지나갈 가로를 철벽 방어막처럼 철저히 장벽 차단해 버리는 초고층 빌딩 숲 구조",
+            rationale": "빌딩숲은 풍력 순환을 차단하여 데워진 열기가 외곽으로 빠져나가지 못하고 도심 중앙에 침전하게 만듭니다.",
+            isCorrect: false
+          },
+          {
+            text": "수많은 차량 배기열, 에어컨 컴프레서 실외기 방출열, 보일러 연료 연소열 등의 과다 인공 열에너지",
+            rationale": "도심 속 인류 편의를 위해 소모하는 전기와 연료 연소 에너지는 고스란히 물리적 배기열로 대기 온도를 올리는 일차 주원인입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "열섬을 식히고 순환시켜 줄 수 있는 친환경 완화 시설(숲, 연못)은 열섬 현상의 원인이 아니라 해결사입니다."
+      },
+      {
+        questionNumber: 17,
+        question": "우거진 숲의 산소 공급, 갯벌의 수생 오염물 자연 정화, 청정 자연림이 인간에게 제공하는 정서적 안정감 등 생태계가 우리 사회에 베푸는 일체의 혜택을 지칭하는 용어는 무엇인가요?",
+        answerOptions: [
+          {
+            text: "생태계 서비스",
+            rationale": "자연 환경이 아무 대가 없이 인류 공익 수자원과 복지, 기후 평형을 지켜 선사하는 물질·조절·문화 혜택을 학술적으로 아우르는 정확한 지칭입니다.",
+            isCorrect: true
+          },
+          {
+            text": "환경 가식 위장 (그린 워싱)",
+            rationale": "그린 워싱은 무늬만 생태적인 가식 홍보를 일컫는 사기 기법으로, 생태 혜택과는 정반대 선상에 놓인 부도덕 지칭입니다.",
+            isCorrect: false
+          },
+          {
+            text": "탄소 흔적 인덱스",
+            rationale": "제품 일련 과정에서 가동 방출된 순수 탄소 방출 합산 무게를 환산 측정하는 탄소발자국 지표이므로 오답입니다.",
+            isCorrect: false
+          },
+          {
+            text": "에너지 순환 보존 기술",
+            rationale": "생태계 자연의 무료 자정 능력이 아닌 인간의 보존 역량 기술을 뜻하는 명칭이므로 틀린 보기입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "자연을 보존하면 인간이 돈을 들이지 않아도 깨끗한 물, 기후 안정, 휴식 공간 등을 자연으로부터 무상으로 선물 받습니다."
+      },
+      {
+        questionNumber: 18,
+        question": "다음 중 진정한 친환경 '업사이클링(Upcycling, 새활용)'의 바른 가치 행위로 합당한 실천은 무엇인가요?",
+        answerOptions: [
+          {
+            text": "소비한 생수 페트병을 온전히 뜨거운 물로 소독만 마친 채 본 용도 그대로 물을 채워 넣어 다닌다.",
+            rationale": "재료나 가치의 질적 변화 없이 원래 상태대로 병의 원 기능만 반복 소모하는 행동은 단순한 '재사용(Reuse)'입니다.",
+            isCorrect: false
+          },
+          {
+            text": "다 쓰고 버려진 군용 가죽 텐트 천막이나 안전벨트 줄을 수거 가공해 개성적이고 튼튼한 고급 패션 가방으로 창조해낸다.",
+            rationale": "쓰레기로 썩을 뻔한 낡은 폐자재에 디자이너의 독창성과 가치를 더해, 버려진 상태보다 월등히 실용적이고 고부가가치 신제품으로 완전히 다른 가치로 승격(Up)시킨 참된 새활용입니다.",
+            isCorrect: true
+          },
+          {
+            text": "인쇄 가동 후 버리려던 문서 이면지를 묶어 구석을 철하고 낙서장 대용으로 야무지게 사용한다.",
+            rationale": "종이 상태 원형을 깨뜨림 없이 다시 메모지의 본 기능을 활용해 이면지를 알뜰히 아껴 쓰는 전형적인 '재사용' 실천입니다.",
+            isCorrect: false
+          },
+          {
+            text": "캔, 빈 병, 택배 박스들을 단지 종류별로 깨끗이 씻어 아파트 전용 분리 배출함에 넣어 집하한다.",
+            rationale": "다시 공장 용광로 가공 단계로 보내 원료 물질로 복원하려는 정석적 '재활용(Recycle)'의 일차 선별 작업일 뿐입니다.",
+            isCorrect: false
+          }
+        ],
+        hint": "단순히 아껴서 다시 쓰는 재사용(Reuse)과 구별되며, 폐기 자원에 창의성과 예술성을 입혀 고가의 제품으로 격상시키는 것입니다."
+      },
+      {
+        questionNumber: 19,
+        question": "지구 해양 수자원 곳곳을 눈에 보이지 않게 교란하며 파괴하고 있는 '미세 플라스틱'에 관한 보기의 내용 중 올바른 설명만을 취합한 것은 무엇인가요?\n\n[보기]\nㄱ. 입자의 크기가 5mm 미만으로 파쇄된 모든 초미세 플라스틱 가루를 총칭한다.\nㄴ. 페트병이나 비닐 자재들이 야외의 태양 자외선과 마찰 파도로 닳고 깨지며 파생된다.\nㄷ. 현재의 우수한 국내 하수 종말 처리 기술로 단 1%의 누설 없이 전량 100% 필터 여과하여 보호된다.\nㄹ. 동물성 플랑크톤과 조개, 작은 치어가 먹이로 착각 섭취하여 먹이 사슬 상부의 인간 밥상에 누적된다.",
+      answerOptions: [
+        {
+          "text": "ㄱ, ㄴ, ㄷ",
+          "rationale": "미세 플라스틱 가루는 필터 크기보다 너무나 조밀하여 정수 하수 처리 거름 필터를 유유히 통과해 강으로 방출되므로 ㄷ은 명백히 오답입니다.",
+          "isCorrect": false
+        },
+        {
+          "text": "ㄱ, ㄴ, ㄹ",
+          "rationale": "미세 플라스틱의 과학적 직경 크기 정의(ㄱ), 풍화 변형 기작(ㄴ), 상부 생물 사슬 이동 및 인체 생물농축 파장(ㄹ)은 모두 가혹하고 입증된 참된 환경 문제 설명이 맞습니다.",
+          "isCorrect": true
+        },
+        {
+          "text": "ㄴ, ㄷ, ㄹ",
+          "rationale": "현대 정수 하수 처리 기술로도 전량 여과 여과가 힘들어 누수량이 대단하므로 ㄷ이 속한 본 보기는 성립하지 않습니다.",
+          "isCorrect": false
+        },
+        {
+          "text": "ㄱ, ㄹ",
+          "rationale": "ㄴ의 발생 야외 마모 원인은 이차 미세 플라스틱 공급의 거대한 발생 주범이므로 함께 정답군에 병합되어야 올바릅니다.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "미세 플라스틱은 지극히 작아 하수 처리장에서 다 여과해 주지 못해 강으로 방출되고 물고기를 통해 우리 몸에 쌓입니다."
+    },
+    {
+      "questionNumber": 20,
+      "question": "각 산업체나 국가가 온실 배출 한도 쿼터를 부여받고, 감축 성공 및 초과 배출 격차분을 자본주의 주식 장터 거래 형식을 통해 과부족 배출권을 유료로 통제 조정하는 탄소 시장 제도는 무엇인가요?",
+      "answerOptions": [
+        {
+          "text": "탄소 흔적 표시 표기제",
+          "rationale": "탄소 발자국 표기제는 판매 상품이 태어나 소멸하기까지 뿜어낸 총 가스 무거움을 알림 스티커로 붙여 소통하는 제도입니다.",
+          "isCorrect": false
+        },
+        {
+          "text": "탄소 배출권 거래제",
+          "rationale": "정부가 배출 총량을 제한해 기업별 쿼터 배출 자격을 배정한 후, 기술이 우수해 탄소를 남들보다 덜 내보내고 지분이 남는 우수 기업이 배출량이 남아돈 벌금을 물어야 하는 과다 오염 기업에 이 권리를 유료 증권 시장 형식으로 매매할 수 있도록 한 경제적 탄소 제한 장치입니다.",
+          "isCorrect": true
+        },
+        {
+          "text": "친환경 에너지 효율 별점 공시제",
+          "rationale": "전기 소비 가전 기기에 전력 아낌 별점을 1~5 수치로 보여 주어 에너지 효율 구입을 유인하는 행정 장치입니다.",
+          "isCorrect": false
+        },
+        {
+          "text": "녹색 가치 순환 중재 장치",
+          "rationale": "친환경 순환 메커니즘을 가리키는 유사한 조어일 뿐, 탄소 할당 시장 정식 법정 명칭과는 거리가 있습니다.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "할당받은 온실가스 배출 허용 권리를 다른 기업과 시장에서 주식처럼 거래할 수 있게 한 시장 중심 제도입니다."
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let userAnswers = Array(quizData.length).fill(null);
+  let score = 0;
+
+  // Initialize App
+  window.onload = function() {
+    loadQuizQuestion();
+    renderStudyAll();
+  }
+
+  // Switch between Interactive Quiz and Study All tabs
+  function switchTab(tab) {
+    const quizTab = document.getElementById('quiz-tab');
+    const studyTab = document.getElementById('study-tab');
+    const quizBtn = document.getElementById('tab-quiz-btn');
+    const studyBtn = document.getElementById('tab-study-btn');
+
+    if (tab === 'quiz') {
+      quizTab.classList.remove('hidden');
+      studyTab.classList.add('hidden');
+      quizBtn.className = "px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-white text-emerald-800 shadow";
+      studyBtn.className = "px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-white hover:bg-emerald-600";
+    } else {
+      quizTab.classList.add('hidden');
+      studyTab.classList.remove('hidden');
+      quizBtn.className = "px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-white hover:bg-emerald-600";
+      studyBtn.className = "px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-white text-emerald-800 shadow";
+    }
+  }
+
+  // Toggle Hint Visibility
+  function toggleHint() {
+    const hintBox = document.getElementById('hint-box');
+    hintBox.classList.toggle('hidden');
+  }
+
+  // Load Single Question in Quiz Mode
+  function loadQuizQuestion() {
+    const q = quizData[currentQuestionIndex];
+    
+    // Hide hint by default
+    document.getElementById('hint-box').classList.add('hidden');
+    document.getElementById('hint-text').innerText = q.hint;
+
+    // Set text
+    document.getElementById('q-number').innerText = q.questionNumber;
+    document.getElementById('current-index-txt').innerText = currentQuestionIndex + 1;
+    document.getElementById('question-title').innerText = q.question;
+    
+    // Update progress bar
+    const progressPercent = Math.round(((currentQuestionIndex + 1) / quizData.length) * 100);
+    document.getElementById('quiz-progress-percent').innerText = `${progressPercent}%`;
+    document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+    // Render Options
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+
+    const savedAnswer = userAnswers[currentQuestionIndex];
+
+    q.answerOptions.forEach((option, idx) => {
+      const button = document.createElement('button');
+      button.className = "w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3 text-sm md:text-base ";
+      
+      // Option Badge (A, B, C, D)
+      const badge = document.createElement('span');
+      badge.className = "inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-600 font-bold text-xs flex-shrink-0 mt-0.5";
+      badge.innerText = String.fromCharCode(65 + idx); // A, B, C, D...
+      
+      const textSpan = document.createElement('span');
+      textSpan.innerText = option.text;
+      textSpan.className = "text-slate-700 font-medium";
+
+      button.appendChild(badge);
+      button.appendChild(textSpan);
+
+      // If user has already answered this question
+      if (savedAnswer !== null) {
+        button.disabled = true;
+        // Highlight correct and incorrect choices
+        if (option.isCorrect) {
+          button.className += " bg-emerald-50 border-emerald-300 text-emerald-900";
+          badge.className = "inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white font-bold text-xs flex-shrink-0 mt-0.5";
+        } else if (savedAnswer === idx) {
+          button.className += " bg-rose-50 border-rose-300 text-rose-900";
+          badge.className = "inline-flex items-center justify-center w-6 h-6 rounded-full bg-rose-500 text-white font-bold text-xs flex-shrink-0 mt-0.5";
+        } else {
+          button.className += " bg-white border-slate-100 opacity-60";
+        }
+      } else {
+        // Active hover states before answering
+        button.className += " bg-white border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/20 active:bg-emerald-50 cursor-pointer";
+        button.onclick = () => selectOption(idx);
+      }
+
+      optionsContainer.appendChild(button);
+    });
+
+    // Control Next/Prev button states
+    document.getElementById('prev-btn').disabled = (currentQuestionIndex === 0);
+    
+    // Hide or show explanation panel
+    const explanationPanel = document.getElementById('explanation-panel');
+    if (savedAnswer !== null) {
+      explanationPanel.classList.remove('hidden');
+      renderRationales(q, savedAnswer);
+    } else {
+      explanationPanel.classList.add('hidden');
+    }
+  }
+
+  // Handle Option Click
+  function selectOption(selectedIdx) {
+    userAnswers[currentQuestionIndex] = selectedIdx;
+    
+    // Calculate Score if correct
+    if (quizData[currentQuestionIndex].answerOptions[selectedIdx].isCorrect) {
+      score++;
+      document.getElementById('score-txt').innerText = score;
+    }
+
+    // Refresh layout to reveal answers & explanation
+    loadQuizQuestion();
+  }
+
+  // Render Detailed Rationale Breakdown
+  function renderRationales(q, userSelectIdx) {
+    const isUserCorrect = q.answerOptions[userSelectIdx].isCorrect;
+    const badge = document.getElementById('explanation-badge');
+    
+    if (isUserCorrect) {
+      badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800";
+      badge.innerText = "정답입니다!";
+    } else {
+      badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800";
+      badge.innerText = "오답입니다!";
+    }
+
+    const rationalesList = document.getElementById('rationales-list');
+    rationalesList.innerHTML = '';
+
+    q.answerOptions.forEach((option, idx) => {
+      const div = document.createElement('div');
+      div.className = `p-3 rounded-xl border ${option.isCorrect ? 'bg-emerald-50 border-emerald-100 text-emerald-950' : 'bg-slate-50 border-slate-100 text-slate-600'}`;
+      
+      const optionTitle = document.createElement('p');
+      optionTitle.className = "font-semibold mb-1 flex items-center gap-1.5 text-xs md:text-sm";
+      
+      const dot = document.createElement('span');
+      dot.className = `inline-block w-2.5 h-2.5 rounded-full ${option.isCorrect ? 'bg-emerald-500' : 'bg-slate-400'}`;
+      
+      optionTitle.appendChild(dot);
+      optionTitle.append(`보기 ${String.fromCharCode(65 + idx)}`);
+      
+      const optionDesc = document.createElement('p');
+      optionDesc.className = "text-xs md:text-sm pl-4 leading-relaxed";
+      optionDesc.innerHTML = `<strong class="text-slate-800">${option.text}</strong><br><span class="text-slate-500 mt-1 block">${option.rationale}</span>`;
+
+      div.appendChild(optionTitle);
+      div.appendChild(optionDesc);
+      rationalesList.appendChild(div);
+    });
+  }
+
+  // Next Question or End Quiz
+  function nextQuestion() {
+    if (userAnswers[currentQuestionIndex] === null) {
+      alert("문제를 푼 뒤에 다음으로 넘어갈 수 있습니다.");
+      return;
+    }
+
+    if (currentQuestionIndex < quizData.length - 1) {
+      currentQuestionIndex++;
+      loadQuizQuestion();
+    } else {
+      // Quiz complete
+      showQuizComplete();
+    }
+  }
+
+  // Previous Question
+  function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      loadQuizQuestion();
+    }
+  }
+
+  // Show Quiz Results Card
+  function showQuizComplete() {
+    document.getElementById('quiz-complete-card').classList.remove('hidden');
+    document.getElementById('options-container').parentElement.classList.add('hidden');
+    document.getElementById('prev-btn').parentElement.classList.add('hidden');
+    
+    document.getElementById('final-score').innerText = score;
+
+    // Custom feedback based on score
+    let comment = "";
+    if (score === 20) {
+      comment = "🏆 대단해요! 완벽한 환경 전문가이시군요! 시험 만점은 따놓은 당상입니다.";
+    } else if (score >= 16) {
+      comment = "👍 훌륭합니다! 교과 핵심 환경 개념을 튼튼하게 확립하고 계시네요.";
+    } else if (score >= 10) {
+      comment = "⭐ 괜찮은 점수예요! 오답 노트를 한 번 훑어보며 부족한 내용을 보강해 보세요.";
+    } else {
+      comment = "✏️ 기말고사 전 복습이 조금 필요할 수 있어요. '전체 보기 & 학습' 탭을 활용해 복습해 보세요!";
+    }
+    document.getElementById('grade-comment').innerText = comment;
+  }
+
+  // Restart Quiz
+  function resetQuiz() {
+    currentQuestionIndex = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    score = 0;
+    document.getElementById('score-txt').innerText = "0";
+
+    // Show normal quiz block
+    document.getElementById('quiz-complete-card').classList.add('hidden');
+    document.getElementById('options-container').parentElement.classList.remove('hidden');
+    document.getElementById('prev-btn').parentElement.classList.remove('hidden');
+
+    loadQuizQuestion();
+  }
+
+  // TAB 2 Render: Generate Scrollable Detailed Study Guide
+  function renderStudyAll() {
+    const container = document.getElementById('study-list-container');
+    container.innerHTML = '';
+
+    quizData.forEach((q, qIdx) => {
+      const card = document.createElement('div');
+      card.className = "bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4";
+
+      // Card Header
+      const header = document.createElement('div');
+      header.className = "flex items-center justify-between border-b border-slate-100 pb-3";
+      
+      const badge = document.createElement('span');
+      badge.className = "px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg";
+      badge.innerText = `기말고사 완벽 대비 문제 ${q.questionNumber}`;
+
+      header.appendChild(badge);
+      card.appendChild(header);
+
+      // Question Title
+      const title = document.createElement('h3');
+      title.className = "font-bold text-slate-800 text-base leading-relaxed whitespace-pre-line";
+      title.innerText = q.question;
+      card.appendChild(title);
+
+      // Solutions Box
+      const solBox = document.createElement('div');
+      solBox.className = "space-y-3 mt-4";
+
+      q.answerOptions.forEach((option, idx) => {
+        const item = document.createElement('div');
+        item.className = `p-4 rounded-xl border text-sm ${option.isCorrect ? 'bg-emerald-50/70 border-emerald-200 text-emerald-950' : 'bg-slate-50 border-slate-100 text-slate-600'}`;
+        
+        const label = document.createElement('p');
+        label.className = "font-bold mb-1 flex items-center gap-2 text-xs md:text-sm";
+        
+        const mark = document.createElement('span');
+        if (option.isCorrect) {
+          mark.className = "px-2 py-0.5 bg-emerald-500 text-white font-black text-2xs rounded-md";
+          mark.innerText = "정답";
+        } else {
+          mark.className = "px-2 py-0.5 bg-slate-300 text-slate-600 font-bold text-2xs rounded-md";
+          mark.innerText = "오답";
+        }
+
+        label.appendChild(mark);
+        label.append(`보기 ${String.fromCharCode(65 + idx)}: ${option.text}`);
+
+        const rationalText = document.createElement('p');
+        rationalText.className = "text-xs md:text-sm text-slate-500 mt-1 pl-1 leading-relaxed";
+        rationalText.innerText = option.rationale;
+
+        item.appendChild(label);
+        item.appendChild(rationalText);
+        solBox.appendChild(item);
+      });
+
+      card.appendChild(solBox);
+      container.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-game">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>파스텔 테트리스 🧸</title>
+    <style>
+        /* 기본 레이아웃 및 파스텔톤 감성 디자인 (CSS 변수 활용) */
+        :root {
+            /* 라이트 모드 테마 */
+            --bg-color: #F6F5F2;
+            --main-panel: #FFFFFF;
+            --text-color: #7E7C73;
+            --text-light: #A7BBC7;
+            --accent-pink: #FFB7B2;
+            --accent-yellow: #FFF1C5;
+            --border-color: #ECEAE4;
+            --btn-bg: #EAECE9;
+            --btn-shadow: #D4D6D2;
+            --btn-text: #6B7A8F;
+            --rotate-btn-bg: #FFFFFF;
+            --rotate-btn-shadow: #E2E4E0;
+        }
+
+        /* 다크 모드 테마 (차분하고 포근한 라벤더 밤하늘 분위기) */
+        [data-theme="dark"] {
+            --bg-color: #2A2830;
+            --main-panel: #35323D;
+            --text-color: #ECE9F2;
+            --text-light: #9B97A5;
+            --accent-pink: #FF9AA2;
+            --accent-yellow: #FFE5B4;
+            --border-color: #484454;
+            --btn-bg: #484454;
+            --btn-shadow: #211F27;
+            --btn-text: #C3C0CD;
+            --rotate-btn-bg: #534F60;
+            --rotate-btn-shadow: #211F27;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Nanum Gothic', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 화면 위쪽부터 배치 */
+            margin: 0;
+            padding: 15px 10px 30px 10px; /* 버튼 가려짐 방지 여유 공간 */
+            min-height: 100vh;
+            box-sizing: border-box;
+            touch-action: manipulation; /* 핀치줌 제한 */
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-y: auto; /* 화면 작을 때 부드러운 스크롤 */
+            transition: background-color 0.3s ease;
+        }
+
+        /* 헤더 영역 (타이틀 & 다크 모드 토글 버튼) */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 340px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            color: var(--text-color);
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        /* 다크모드 토글 버튼 */
+        .theme-toggle {
+            background: var(--main-panel);
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.9);
+        }
+
+        /* 메인 게임 영역 레이아웃 */
+        #game-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        #game-container {
+            position: relative;
+            background-color: var(--main-panel);
+            border: 6px solid var(--border-color);
+            border-radius: 18px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        canvas {
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 오른쪽 사이드 패널 */
+        #side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 88px;
+        }
+
+        .info-box {
+            background: var(--main-panel);
+            border: 3px solid var(--border-color);
+            border-radius: 14px;
+            padding: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-title {
+            font-size: 10px;
+            color: var(--text-light);
+            font-weight: 800;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 800;
+            transition: color 0.3s ease;
+        }
+
+        /* 팔레트 선택 드롭다운 스타일 */
+        .palette-select {
+            width: 100%;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 4px 2px;
+            background: var(--main-panel);
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 11px;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 태블릿 전용 고감도 터치 컨트롤러 */
+        #controls {
+            width: 100%;
+            max-width: 340px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 14px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 var(--btn-shadow);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.05s ease, box-shadow 0.05s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            touch-action: manipulation;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 var(--btn-shadow);
+        }
+
+        .btn-left { grid-column: 1; }
+        .btn-rotate { grid-column: 2; background-color: var(--rotate-btn-bg); box-shadow: 0 4px 0 var(--rotate-btn-shadow); }
+        .btn-right { grid-column: 3; }
+        
+        .btn-pause { 
+            grid-column: 1; 
+            background-color: #FFE6E6; 
+            box-shadow: 0 4px 0 #E5CFCF; 
+            color: #D87070; 
+            font-size: 14px; 
+        }
+        [data-theme="dark"] .btn-pause {
+            background-color: #4D3838;
+            box-shadow: 0 4px 0 #2D1F1F;
+            color: #FF9A9A;
+        }
+
+        .btn-down { grid-column: 2; }
+        
+        .btn-drop { 
+            grid-column: 3; 
+            background-color: #F2E5D5; 
+            box-shadow: 0 4px 0 #DDD0C1; 
+            color: #8F7D6B; 
+            font-size: 14px; 
+        }
+        [data-theme="dark"] .btn-drop {
+            background-color: #4E443B;
+            box-shadow: 0 4px 0 #2A231E;
+            color: #E2CFBE;
+        }
+
+        /* 게임 종료 버튼 (3칸 가로 전체 차지) */
+        .btn-exit {
+            grid-column: span 3;
+            background-color: #E8D3D3;
+            box-shadow: 0 4px 0 #CBB3B3;
+            color: #8C5353;
+            font-size: 14px;
+        }
+        [data-theme="dark"] .btn-exit {
+            background-color: #5C3D3D;
+            box-shadow: 0 4px 0 #3C2424;
+            color: #FFA3A3;
+        }
+
+        /* 커스텀 팝업 모달 */
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: var(--main-panel);
+            border: 6px solid var(--border-color);
+            border-radius: 24px;
+            padding: 25px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        #modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .modal-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+
+        /* 모달 버튼 패널 */
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .modal-btn {
+            border: none;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 800;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.1s;
+        }
+
+        /* 주 확인 버튼 */
+        #modalBtn {
+            background-color: var(--accent-pink);
+            color: white;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+        }
+
+        #modalBtn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.15);
+        }
+
+        /* 보조 취소 버튼 (테마 연동) */
+        #modalCancelBtn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            box-shadow: 0 4px 0 var(--btn-shadow);
+        }
+
+        #modalCancelBtn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 var(--btn-shadow);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pastel Tetris 🧸</h1>
+        <!-- 다크 모드 토글 버튼 -->
+        <button class="theme-toggle" id="themeToggleBtn" title="테마 변경">☀️</button>
+    </header>
+
+    <div id="game-layout">
+        <!-- 게임 보드 -->
+        <div id="game-container">
+            <canvas id="tetris" width="240" height="480"></canvas>
+        </div>
+
+        <!-- 서브 정보창 (점수, 다음 블록, 색상 변경) -->
+        <div id="side-panel">
+            <div class="info-box">
+                <div class="info-title">SCORE</div>
+                <div id="score" class="info-value">0</div>
+            </div>
+            <div class="info-box">
+                <div class="info-title">NEXT</div>
+                <canvas id="next" width="70" height="70" style="border-radius:10px; border: 2px solid var(--border-color); display:block; margin: 5px auto 0; transition: border-color 0.3s ease;"></canvas>
+            </div>
+            <!-- 색상 테마 변경 박스 -->
+            <div class="info-box">
+                <div class="info-title">PALETTE</div>
+                <select id="paletteSelect" class="palette-select">
+                    <option value="classic">기본 파스텔 🧸</option>
+                    <option value="cotton">달콤 솜사탕 🍭</option>
+                    <option value="fruit">상큼 과일 🍓</option>
+                    <option value="forest">숲속 요정 🌿</option>
+                    <option value="sea">푸른 바다 🌊</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- 터치 최적화 버튼 패널 -->
+    <div id="controls">
+        <button class="btn btn-left" id="leftBtn">◀</button>
+        <button class="btn btn-rotate" id="rotateBtn">↻</button>
+        <button class="btn btn-right" id="rightBtn">▶</button>
+        <button class="btn btn-pause" id="pauseBtn">Pause</button>
+        <button class="btn btn-down" id="downBtn">▼</button>
+        <button class="btn btn-drop" id="dropBtn">Drop</button>
+        <!-- 게임 종료 버튼 -->
+        <button class="btn btn-exit" id="exitBtn">Exit (게임 종료)</button>
+    </div>
+
+    <!-- 브라우저 alert 대체용 커스텀 파스텔 모달 -->
+    <div id="modal-overlay" class="active">
+        <div class="modal">
+            <div id="modalTitle" class="modal-title">웰컴! 🧸</div>
+            <div id="modalDesc" class="modal-desc">아기자기한 파스텔 테트리스입니다.<br>준비가 되셨으면 시작하세요!</div>
+            <div class="modal-buttons">
+                <button id="modalBtn" class="modal-btn">시작하기</button>
+                <button id="modalCancelBtn" class="modal-btn" style="display: none;">취소</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // 캔버스 및 디바이스 환경 셋업
+    const canvas = document.getElementById('tetris');
+    const context = canvas.getContext('2d');
+    const nextCanvas = document.getElementById('next');
+    const nextContext = nextCanvas.getContext('2d');
+    const scoreElement = document.getElementById('score');
+    
+    const ROW = 20;
+    const COL = 10;
+    const SQ = 24; // 메인 보드 블록 격자 크기
+
+    // 모달 제어 관련 엘리먼트
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalBtn = document.getElementById('modalBtn');
+    const modalCancelBtn = document.getElementById('modalCancelBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const paletteSelect = document.getElementById('paletteSelect');
+
+    // 테마 상태값 정의 ('light' | 'dark')
+    let currentTheme = 'light';
+
+    // 각 테마별 Canvas 드로잉 색상 정의
+    const themeCanvasColors = {
+        light: {
+            background: '#FAF9F6',
+            gridLine: '#F1F0EA'
+        },
+        dark: {
+            background: '#232128',
+            gridLine: '#2C2933'
+        }
+    };
+
+    // 준비된 파스텔톤 블록 색상 팔레트 모음
+    const PALETTES = {
+        classic: [
+            null,
+            '#FFB7B2', // Z (파스텔 핑크)
+            '#FFDAC1', // S (파스텔 피치)
+            '#E2F0CB', // T (파스텔 연두)
+            '#B5EAD7', // O (파스텔 민트)
+            '#C7CEEA', // L (파스텔 연보라)
+            '#FF9AA2', // J (딥 파스텔 로즈)
+            '#B3C5FF'  // I (파스텔 소라)
+        ],
+        cotton: [
+            null,
+            '#FFC6FF', // Z (바닐라 핑크)
+            '#BDB2FF', // S (솜사탕 퍼플)
+            '#9BF6FF', // T (캔디 블루)
+            '#CAFFBF', // O (라임 그린)
+            '#FDFFB6', // L (레몬 옐로우)
+            '#FFADAD', // J (밀크 스트로베리)
+            '#FFD6A5'  // I (밀크 오렌지)
+        ],
+        fruit: [
+            null,
+            '#FF85A1', // Z (체리 레드)
+            '#FFAAA6', // S (복숭아 살구)
+            '#FFD3B6', // T (상큼 자몽)
+            '#FFF5BA', // O (달콤 바나나)
+            '#A8E6CF', // L (풋사과 그린)
+            '#DED2F9', // J (라벤더 블루베리)
+            '#98DDCA'  // I (싱그러운 멜론)
+        ],
+        forest: [
+            null,
+            '#D4A373', // Z (따뜻한 나무)
+            '#FAEDCD', // S (포근한 베이지)
+            '#FEFAE0', // T (크림 버터)
+            '#E9EDC6', // O (어린 새싹)
+            '#ADC178', // L (초록 올리브)
+            '#DDE5B6', // J (연한 잎사귀)
+            '#A98467'  // I (가을 도토리)
+        ],
+        sea: [
+            null,
+            '#A2D2FF', // Z (시원한 하늘바다)
+            '#BDE0FE', // S (부드러운 물결 블루)
+            '#FFC8DD', // T (산호초 핑크)
+            '#FFAFCC', // O (조개껍데기 퍼플핑크)
+            '#98DDCA', // J (청량한 얕은바다 민트)
+            '#8ECAE6', // L (햇살비친 바다 에메랄드)
+            '#4EA8DE'  // I (깊고 푸른 바다 블루)
+        ]
+    };
+
+    // 현재 사용 중인 블록 색상 배열
+    let COLORS = PALETTES.classic;
+
+    // 테트로미노 형태 
+    const SHAPES = [
+        [],
+        [[1,1,0],[0,1,1],[0,0,0]], // Z
+        [[0,2,2],[2,2,0],[0,0,0]], // S
+        [[0,3,0],[3,3,3],[0,0,0]], // T
+        [[4,4],[4,4]],             // O
+        [[5,0,0],[5,5,5],[0,0,0]], // L
+        [[0,0,6],[6,6,6],[0,0,0]], // J
+        [[0,0,0,0],[7,7,7,7],[0,0,0,0],[0,0,0,0]] // I
+    ];
+
+    let board = [];
+    let score = 0;
+    let isGameOver = false;
+    let isPaused = true; // 대기 상태로 시작
+    let gameLoopId = null;
+
+    let currentPiece = null;
+    let nextPiece = null;
+
+    // 콜백 연동용 내부 변수
+    let onModalPrimaryClick = null;
+    let onModalSecondaryClick = null;
+
+    // 배경색을 테마와 팔레트 조합에 따라 업데이트하는 함수
+    function updateBackgroundColor() {
+        const selectedValue = paletteSelect.value;
+        if (selectedValue === 'sea') {
+            if (currentTheme === 'light') {
+                document.documentElement.style.setProperty('--bg-color', '#E4F1F5'); // 해변 색상
+            } else {
+                document.documentElement.style.setProperty('--bg-color', '#1C242B'); // 밤의 심해 색상
+            }
+        } else {
+            // 다른 테마는 원래 기본값 복구
+            if (currentTheme === 'light') {
+                document.documentElement.style.setProperty('--bg-color', '#F6F5F2');
+            } else {
+                document.documentElement.style.setProperty('--bg-color', '#2A2830');
+            }
+        }
+    }
+
+    // 테마 변경 토글 이벤트 핸들러
+    themeToggleBtn.addEventListener('click', () => {
+        if (currentTheme === 'light') {
+            currentTheme = 'dark';
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggleBtn.innerText = '🌙';
+        } else {
+            currentTheme = 'light';
+            document.documentElement.removeAttribute('data-theme');
+            themeToggleBtn.innerText = '☀️';
+        }
+        
+        updateBackgroundColor();
+
+        // 화면 다시 그리기
+        if (currentPiece) {
+            drawBoard();
+            drawNextPreview();
+            drawCurrentPiece();
+        }
+    });
+
+    // 팔레트 변경 드롭다운 이벤트 핸들러
+    paletteSelect.addEventListener('change', (e) => {
+        const selectedValue = e.target.value;
+        if (PALETTES[selectedValue]) {
+            COLORS = PALETTES[selectedValue];
+            
+            updateBackgroundColor();
+
+            // 실시간으로 화면의 모든 블록 색상 갱신
+            if (currentPiece) {
+                drawBoard();
+                drawNextPreview();
+                drawCurrentPiece();
+            }
+        }
+    });
+
+    // 게임 보드 생성 및 초기화
+    function initBoard() {
+        board = [];
+        for(let r = 0; r < ROW; r++){
+            board[r] = [];
+            for(let c = 0; c < COL; c++){
+                board[r][c] = 0;
+            }
+        }
+    }
+
+    // 메인 그리드 및 낙하된 블록 그리기
+    function drawBoard() {
+        for(let r=0; r<ROW; r++) {
+            for(let c=0; c<COL; c++) {
+                drawSquare(context, c, r, board[r][c], SQ);
+            }
+        }
+    }
+
+    // 블록 1칸 렌더링 시스템 (둥근 가장자리 & 부드러운 하이라이팅)
+    function drawSquare(ctx, x, y, colorIndex, size) {
+        if(colorIndex === 0) {
+            // 현재 활성화된 테마의 배경색과 그리드 라인 색상 사용
+            ctx.fillStyle = themeCanvasColors[currentTheme].background;
+            ctx.fillRect(x*size, y*size, size, size);
+            ctx.strokeStyle = themeCanvasColors[currentTheme].gridLine;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x*size, y*size, size, size);
+        } else {
+            // 메인 색상 채우기
+            ctx.fillStyle = COLORS[colorIndex];
+            ctx.fillRect(x*size, y*size, size, size);
+            
+            // 입체감을 살리는 파스텔 하이라이트 라인 생성
+            ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x*size + 1, y*size + 1, size - 2, size - 2);
+
+            // 어두운 테두리 경계선
+            ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x*size, y*size, size, size);
+        }
+    }
+
+    // 랜덤 블록 생성 객체
+    function generatePiece() {
+        let r = Math.floor(Math.random() * (SHAPES.length - 1)) + 1;
+        return {
+            shape: SHAPES[r],
+            colorIndex: r,
+            x: 3,
+            y: -2
+        };
+    }
+
+    // 다음 미리보기 블록 패널 그리기
+    function drawNextPreview() {
+        nextContext.fillStyle = themeCanvasColors[currentTheme].background;
+        nextContext.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
+        
+        if (!nextPiece) return;
+
+        const shape = nextPiece.shape;
+        const colorIndex = nextPiece.colorIndex;
+        
+        // 정렬을 위한 그리드 보정 계산
+        const blockGridSize = 14; 
+        const offsetLeft = (nextCanvas.width - (shape[0].length * blockGridSize)) / 2;
+        const offsetTop = (nextCanvas.height - (shape.length * blockGridSize)) / 2;
+
+        for (let r = 0; r < shape.length; r++) {
+            for (let c = 0; c < shape[r].length; c++) {
+                if (shape[r][c]) {
+                    nextContext.fillStyle = COLORS[colorIndex];
+                    nextContext.fillRect(offsetLeft + c*blockGridSize, offsetTop + r*blockGridSize, blockGridSize, blockGridSize);
+                    
+                    nextContext.strokeStyle = 'rgba(255,255,255,0.5)';
+                    nextContext.lineWidth = 1.5;
+                    nextContext.strokeRect(offsetLeft + c*blockGridSize + 1, offsetTop + r*blockGridSize + 1, blockGridSize - 2, blockGridSize - 2);
+                }
+            }
+        }
+    }
+
+    // 현재 플레이어가 움직이는 피스 렌더링
+    function drawCurrentPiece() {
+        for(let r=0; r<currentPiece.shape.length; r++) {
+            for(let c=0; c<currentPiece.shape[r].length; c++) {
+                if(currentPiece.shape[r][c]) {
+                    if (currentPiece.y + r >= 0) {
+                        drawSquare(context, currentPiece.x + c, currentPiece.y + r, currentPiece.colorIndex, SQ);
+                    }
+                }
+            }
+        }
+    }
+
+    // 움직이기 전 이전 좌표 잔상 지우기
+    function eraseCurrentPiece() {
+        for(let r=0; r<currentPiece.shape.length; r++) {
+            for(let c=0; c<currentPiece.shape[r].length; c++) {
+                if(currentPiece.shape[r][c] && currentPiece.y + r >= 0) {
+                    drawSquare(context, currentPiece.x + c, currentPiece.y + r, 0, SQ);
+                }
+            }
+        }
+    }
+
+    // 벽 및 고정 블록 충돌 계산 감지
+    function hasCollision(x, y, proposedShape) {
+        for(let r=0; r<proposedShape.length; r++) {
+            for(let c=0; c<proposedShape[r].length; c++) {
+                if(!proposedShape[r][c]) continue;
+                
+                let checkX = x + c;
+                let checkY = y + r;
+                
+                if(checkX < 0 || checkX >= COL || checkY >= ROW) return true;
+                if(checkY < 0) continue; // 보드 천장 위 공간은 통과 허용
+                if(board[checkY][checkX] !== 0) return true;
+            }
+        }
+        return false;
+    }
+
+    // 아래로 이동
+    function moveDown() {
+        if(isPaused || isGameOver) return;
+        eraseCurrentPiece();
+        if(!hasCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+            currentPiece.y++;
+            drawCurrentPiece();
+        } else {
+            lockPiece();
+        }
+    }
+
+    // 좌측 이동
+    function moveLeft() {
+        if(isPaused || isGameOver) return;
+        eraseCurrentPiece();
+        if(!hasCollision(currentPiece.x - 1, currentPiece.y, currentPiece.shape)) {
+            currentPiece.x--;
+        }
+        drawCurrentPiece();
+    }
+
+    // 우측 이동
+    function moveRight() {
+        if(isPaused || isGameOver) return;
+        eraseCurrentPiece();
+        if(!hasCollision(currentPiece.x + 1, currentPiece.y, currentPiece.shape)) {
+            currentPiece.x++;
+        }
+        drawCurrentPiece();
+    }
+
+    // 시계방향 블록 회전 (Wall Kick 보완 설계)
+    function rotate() {
+        if(isPaused || isGameOver) return;
+        eraseCurrentPiece();
+        
+        // 90도 전치 회전 배열 연산
+        let nextShape = [];
+        for(let c=0; c<currentPiece.shape[0].length; c++) {
+            let row = [];
+            for(let r=currentPiece.shape.length-1; r>=0; r--) {
+                row.push(currentPiece.shape[r][c]);
+            }
+            nextShape.push(row);
+        }
+        
+        let kick = 0;
+        // 회전 후 보드 영역 이탈 시 1칸씩 킥 튕김 보정
+        if(hasCollision(currentPiece.x, currentPiece.y, nextShape)) {
+            if(currentPiece.x > COL / 2) {
+                kick = -1; // 우측 벽 킥
+                if (hasCollision(currentPiece.x + kick, currentPiece.y, nextShape)) kick = -2; // I블록용 2칸 킥
+            } else {
+                kick = 1; // 좌측 벽 킥
+                if (hasCollision(currentPiece.x + kick, currentPiece.y, nextShape)) kick = 2;
+            }
+        }
+        
+        if(!hasCollision(currentPiece.x + kick, currentPiece.y, nextShape)) {
+            currentPiece.x += kick;
+            currentPiece.shape = nextShape;
+        }
+        drawCurrentPiece();
+    }
+
+    // 한방 낙하 (Space / Drop 버튼)
+    function hardDrop() {
+        if(isPaused || isGameOver) return;
+        eraseCurrentPiece();
+        while(!hasCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+            currentPiece.y++;
+        }
+        lockPiece();
+    }
+
+    // 내려앉은 조각 잠금 및 전체 가로줄 소거 처리
+    function lockPiece() {
+        for(let r=0; r<currentPiece.shape.length; r++) {
+            for(let c=0; c<currentPiece.shape[r].length; c++) {
+                if(!currentPiece.shape[r][c]) continue;
+                
+                // 천장에 닿아서 잠기면 게임오버 트리거
+                if(currentPiece.y + r < 0) {
+                    gameOver();
+                    return;
+                }
+                board[currentPiece.y + r][currentPiece.x + c] = currentPiece.colorIndex;
+            }
+        }
+        
+        // 완성된 행 체크 후 밀어내기
+        let clearedLines = 0;
+        for(let r=0; r<ROW; r++) {
+            if(board[r].every(cellValue => cellValue !== 0)) {
+                board.splice(r, 1);
+                board.unshift(new Array(COL).fill(0));
+                clearedLines++;
+            }
+        }
+
+        if(clearedLines > 0) {
+            score += clearedLines * 10;
+            scoreElement.innerText = score;
+        }
+        
+        drawBoard();
+        
+        // 다음 준비된 피스 넘기기
+        currentPiece = nextPiece;
+        nextPiece = generatePiece();
+        drawNextPreview();
+        drawCurrentPiece();
+    }
+
+    // 게임 시작 및 재시작 시스템
+    function startNewGame() {
+        initBoard();
+        score = 0;
+        scoreElement.innerText = score;
+        isGameOver = false;
+        isPaused = false;
+        
+        currentPiece = generatePiece();
+        nextPiece = generatePiece();
+        
+        drawBoard();
+        drawNextPreview();
+        drawCurrentPiece();
+        
+        // 일시정지 버튼 원상복구
+        updatePauseButtonUI(false);
+        closeModal();
+    }
+
+    // 일시정지 버튼 스타일 갱신 보조
+    function updatePauseButtonUI(paused) {
+        const pauseBtn = document.getElementById('pauseBtn');
+        if (paused) {
+            pauseBtn.innerText = "Resume";
+            pauseBtn.style.backgroundColor = currentTheme === 'dark' ? "#3D503D" : "#E2F0CB";
+            pauseBtn.style.boxShadow = currentTheme === 'dark' ? "0 4px 0 #212D21" : "0 4px 0 #CAD8B3";
+            pauseBtn.style.color = currentTheme === 'dark' ? "#A8D8A8" : "#5D733E";
+        } else {
+            pauseBtn.innerText = "Pause";
+            if (currentTheme === 'dark') {
+                pauseBtn.style.backgroundColor = "#4D3838";
+                pauseBtn.style.boxShadow = "0 4px 0 #2D1F1F";
+                pauseBtn.style.color = "#FF9A9A";
+            } else {
+                pauseBtn.style.backgroundColor = "#FFE6E6";
+                pauseBtn.style.boxShadow = "0 4px 0 #E5CFCF";
+                pauseBtn.style.color = "#D87070";
+            }
+        }
+    }
+
+    // 일시정지 스위칭
+    function togglePause() {
+        if (isGameOver) return;
+        isPaused = !isPaused;
+        updatePauseButtonUI(isPaused);
+
+        if (isPaused) {
+            showModal(
+                "일시 정지 ⏸", 
+                "잠시 한숨을 돌리고 있어요.", 
+                "게임 계속하기", 
+                null,
+                () => { togglePause(); }
+            );
+        } else {
+            closeModal();
+        }
+    }
+
+    // 게임 종료 (Exit) 트리거 수동 작동
+    function triggerExit() {
+        if (isGameOver) return;
+        
+        // 작동 중이었다면 임시 일시정지
+        if (!isPaused) {
+            isPaused = true;
+            updatePauseButtonUI(true);
+        }
+
+        showModal(
+            "게임 종료 🚪",
+            "정말 현재 게임을 끝내시겠어요?<br>지금까지 얻은 점수는 보존되지 않습니다.",
+            "예 (종료하기)",
+            "아니오 (계속하기)",
+            () => {
+                gameOver(); // 게임 종료 화면으로 전환
+            },
+            () => {
+                togglePause(); // 다시 게임 재개
+            }
+        );
+    }
+
+    // 게임 종료 트리거
+    function gameOver() {
+        isGameOver = true;
+        isPaused = true;
+        showModal(
+            "Game Over 😭", 
+            `아쉽게 머리가 꽉 찼네요!<br>최종 점수: <strong>${score}점</strong>`, 
+            "다시 도전하기",
+            null,
+            () => { startNewGame(); }
+        );
+    }
+
+    // 공용 모달창 표시 연동 (취소 버튼 지원 추가)
+    function showModal(title, description, btnText, cancelBtnText = null, onPrimary = null, onCancel = null) {
+        modalTitle.innerHTML = title;
+        modalDesc.innerHTML = description;
+        modalBtn.innerText = btnText;
+        
+        onModalPrimaryClick = onPrimary;
+        onModalSecondaryClick = onCancel;
+
+        if (cancelBtnText) {
+            modalCancelBtn.innerText = cancelBtnText;
+            modalCancelBtn.style.display = "block";
+        } else {
+            modalCancelBtn.style.display = "none";
+        }
+
+        modalOverlay.classList.add('active');
+    }
+
+    function closeModal() {
+        modalOverlay.classList.remove('active');
+        onModalPrimaryClick = null;
+        onModalSecondaryClick = null;
+    }
+
+    // 모달 주 버튼 클릭 바인딩
+    modalBtn.addEventListener('click', () => {
+        if (onModalPrimaryClick) {
+            onModalPrimaryClick();
+        } else {
+            // 기본 동작
+            if (isGameOver || (isPaused && score === 0)) {
+                startNewGame();
+            } else {
+                togglePause();
+            }
+        }
+    });
+
+    // 모달 취소 버튼 클릭 바인딩
+    modalCancelBtn.addEventListener('click', () => {
+        if (onModalSecondaryClick) {
+            onModalSecondaryClick();
+        } else {
+            closeModal();
+        }
+    });
+
+    // 태블릿/모바일 터치용 이벤트 핸들러 바인딩 (지연 없이 즉시 실행하도록 세팅)
+    const touchMap = {
+        'leftBtn': moveLeft,
+        'rightBtn': moveRight,
+        'rotateBtn': rotate,
+        'downBtn': moveDown,
+        'dropBtn': hardDrop,
+        'pauseBtn': togglePause,
+        'exitBtn': triggerExit
+    };
+
+    // 모든 버튼 터치 이벤트 및 방지 설정 추가
+    Object.keys(touchMap).forEach(btnId => {
+        const btnElement = document.getElementById(btnId);
+        btnElement.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // 더블탭 줌 방지 등
+            touchMap[btnId]();
+        }, { passive: false });
+        
+        // 마우스 클릭도 같이 보조 호환
+        btnElement.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    });
+
+    // 키보드 키 제어 연동 (PC 지원 보조)
+    document.addEventListener('keydown', event => {
+        if (isPaused || isGameOver) {
+            if (event.keyCode === 32 || event.keyCode === 13) { // 스페이스바 혹은 엔터로 모달 제어
+                if(modalOverlay.classList.contains('active')) {
+                    modalBtn.click();
+                }
+            }
+            return;
+        }
+        switch (event.keyCode) {
+            case 37: // Left Arrow
+                moveLeft();
+                break;
+            case 38: // Up Arrow
+                rotate();
+                break;
+            case 39: // Right Arrow
+                moveRight();
+                break;
+            case 40: // Down Arrow
+                moveDown();
+                break;
+            case 32: // Space
+                hardDrop();
+                break;
+            case 27: // ESC
+                triggerExit(); // 종료 팝업 호출
+                break;
+        }
+    });
+
+    // 첫 실행 초기 모달 연결
+    showModal(
+        "웰컴! 🧸", 
+        "아기자기한 파스텔 테트리스입니다.<br>준비가 되셨으면 시작하세요!", 
+        "시작하기",
+        null,
+        () => { startNewGame(); }
+    );
+
+    // 게임 주기 가속 하강 속도 제어기 (1초 마다 자동 낙하)
+    let dropStart = Date.now();
+    function gameLoop() {
+        let now = Date.now();
+        let delta = now - dropStart;
+        if(delta > 1000) { 
+            moveDown();
+            dropStart = Date.now();
+        }
+        gameLoopId = requestAnimationFrame(gameLoop);
+    }
+
+    // 루프 애니메이션 시작
+    gameLoop();
+</script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-meal-app">
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>중3 과학 [운동과 에너지] 기말고사 대비 모의고사</title>
+    <title>숭의여자중학교 오늘의 급식</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: sans-serif; }
-    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        peach: {
+                            50: "#FFF5F0",
+                            100: "#FFE8D9",
+                            200: "#FFD0B5",
+                            300: "#FFB088",
+                            400: "#FF8A55",
+                            500: "#FF6B2B"
+                        }
+                    }
+                }
+            }
+        };
+    </script>
 </head>
-<body class="bg-slate-50 text-slate-800 p-4">
-    <div class="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 font-bold rounded-full text-xs">박채연 대표작</span>
-            <h2 class="text-lg font-bold text-slate-900">중3 과학 [운동과 에너지] 20제 모의고사</h2>
+
+<body class="bg-peach-50 min-h-screen text-gray-800 font-sans flex items-center justify-center p-4">
+
+    <div class="w-full max-w-md bg-white rounded-[2rem] shadow-2xl border border-peach-100 overflow-hidden flex flex-col my-auto relative">
+
+        <div class="bg-gradient-to-r from-peach-400 to-peach-500 p-6 text-center text-white relative shadow-sm">
+            <h1 id="mainTitle" class="text-xl md:text-2xl font-extrabold tracking-tight drop-shadow-md flex items-center justify-center gap-2">
+                🏫 숭의여자중학교 오늘의 급식
+            </h1>
+
+            <p class="text-sm font-medium opacity-90 mt-2">
+                오늘의 따뜻하고 맛있는 한 끼 🍱
+            </p>
         </div>
-        <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-            속력과 방향 변화, 등속 운동과 자유 낙하 운동, 일과 에너지 전환, 역학적 에너지 보존 법칙까지 완벽 분석! 실전처럼 풀고 오답노트까지 한 번에 정리해 보세요.
-        </p>
-        <div id="q-box" class="space-y-4">
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span class="text-xs font-bold text-blue-600">문제 1 (등속 운동)</span>
-                <p class="text-sm font-semibold mt-1">어떤 물체가 일정한 방향으로 일정한 속력으로 움직이고 있다. 이 물체의 운동 상태에 대한 설명으로 옳은 것은?</p>
-                <div class="mt-3 space-y-2">
-                    <button class="w-full text-left p-2.5 bg-white border border-slate-200 rounded-lg text-xs hover:bg-blue-50" onclick="showAns(1, false)">① 물체의 속력이 시간에 비례하여 증가한다.</button>
-                    <button class="w-full text-left p-2.5 bg-white border border-slate-200 rounded-lg text-xs hover:bg-blue-50" onclick="showAns(1, true)">② 물체에 작용하는 알짜힘(합력)은 0이다. (정답)</button>
-                    <button class="w-full text-left p-2.5 bg-white border border-slate-200 rounded-lg text-xs hover:bg-blue-50" onclick="showAns(1, false)">③ 물체의 운동 방향이 매 순간 변한다.</button>
-                    <button class="w-full text-left p-2.5 bg-white border border-slate-200 rounded-lg text-xs hover:bg-blue-50" onclick="showAns(1, false)">④ 시간-이동 거리 그래프에서 기울기는 점점 완만해진다.</button>
+
+        <div class="p-5 space-y-5 flex-1 overflow-y-auto">
+
+            <div class="bg-peach-50 rounded-2xl p-4 border border-peach-100 flex flex-col gap-3 shadow-inner">
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="lunchDate" class="text-xs font-bold text-peach-500 px-1">
+                        조회 날짜 선택
+                    </label>
+
+                    <input
+                        type="date"
+                        id="lunchDate"
+                        class="w-full px-4 py-3 rounded-xl border border-peach-200 focus:outline-none focus:ring-2 focus:ring-peach-400 text-gray-700 bg-white shadow-sm font-medium"
+                    >
                 </div>
-                <div id="ans-1" class="hidden mt-3 p-3 bg-emerald-50 text-emerald-800 rounded-lg text-xs font-medium">
-                    🎉 <strong>정답입니다!</strong> 등속 직선 운동을 하는 물체는 외력이 작용하지 않거나 알짜힘이 0일 때 유지됩니다.
+
+                <button
+                    id="searchButton"
+                    class="w-full bg-gradient-to-r from-peach-400 to-peach-500 hover:opacity-90 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition duration-200 active:scale-[0.98]"
+                >
+                    급식 조회하기 🔍
+                </button>
+            </div>
+
+            <div class="bg-white rounded-2xl border-2 border-dashed border-peach-300 p-5 min-h-[260px] flex flex-col justify-between shadow-sm relative">
+
+                <div>
+                    <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2 border-peach-100 flex items-center gap-2">
+                        🍽️ 오늘의 메뉴
+                    </h2>
+
+                    <div
+                        id="menuDisplay"
+                        class="text-[15px] text-gray-700 leading-relaxed font-medium"
+                        style="white-space: pre-line;"
+                    >
+                        메뉴를 불러오는 중이에요... ⏳
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-3 border-t border-peach-100 flex justify-between items-center bg-peach-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
+
+                    <span class="text-sm font-bold text-gray-500">
+                        총 칼로리
+                    </span>
+
+                    <span id="caloriesDisplay" class="text-lg font-extrabold text-peach-500">
+                        -
+                    </span>
+                </div>
+            </div>
+
+            <div class="border border-orange-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+
+                <button
+                    id="settingsButton"
+                    class="w-full px-4 py-3.5 bg-orange-50 hover:bg-orange-100 flex justify-between items-center text-sm font-bold text-orange-600 transition"
+                >
+                    <span class="flex items-center gap-2">
+                        ⚙️ 오프라인 백업 설정
+                    </span>
+
+                    <span id="settingsArrow" class="transform transition-transform duration-200">
+                        ▼
+                    </span>
+                </button>
+
+                <div id="settingsPanel" class="hidden p-4 space-y-4 border-t border-orange-100 text-sm bg-orange-50/50">
+
+                    <div>
+                        <label class="block font-bold text-gray-600 mb-1.5 text-xs">
+                            현재 작동 상태
+                        </label>
+
+                        <div id="statusIndicator" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold bg-gray-100 text-gray-600 text-xs shadow-sm border border-gray-200">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gray-400"></span>
+                            <span>대기 중...</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-orange-100">
+
+                        <label class="block font-bold text-orange-600 mb-1.5 text-xs">
+                            📦 오프라인 백업 데이터 등록
+                        </label>
+
+                        <p class="text-[10px] text-gray-500 mb-2">
+                            급식식단정보 JSON 파일을 등록하면 API 연결이 어려울 때 저장된 데이터를 사용할 수 있습니다.
+                        </p>
+
+                        <input
+                            type="file"
+                            id="backupFile"
+                            accept=".json"
+                            class="w-full text-gray-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-orange-100 file:text-orange-600 hover:file:bg-orange-200 cursor-pointer"
+                        >
+
+                        <div id="backupStatus" class="mt-2 text-[11px] font-bold text-green-600 hidden"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="mt-6 text-center">
-            <p class="text-xs text-slate-500">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 20문항 전체를 풀스크린으로 응시할 수 있습니다.</p>
+
+        <div class="p-3 text-center text-[11px] font-medium text-peach-300 border-t border-peach-50 bg-white">
+            © 숭의여자중학교 오늘의 급식 조회 앱
         </div>
     </div>
+
     <script>
-        function showAns(idx, isCorrect) {
-            const el = document.getElementById('ans-' + idx);
-            if (el) {
-                el.classList.remove('hidden');
-                if (!isCorrect) el.innerHTML = '❌ <strong>오답입니다!</strong> 다시 한 번 개념을 복습해 보세요.';
+        const API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
+        const API_KEY = "fa321714b05546ad82fc4bf29b3a20ef";
+        const SCHOOL_NAME = "숭의여자중학교";
+        const SCHOOL_CODE = "7132148";
+        const OFFICE_CODE = "B10";
+
+        const LOCAL_MEAL_DATA = [
+            {
+                MLSV_YMD: "20260312",
+                DDISH_NM: "혼합잡곡밥 (5)<br/>맑은순두부국 (5)<br/>시금치나물<br/>제육볶음 (5.6.10.13)<br/>야채계란말이 (1.5)<br/>포기김치 (9)",
+                CAL_INFO: "811.9 Kcal"
+            }
+        ];
+
+        const mainTitle = document.getElementById("mainTitle");
+        const lunchDate = document.getElementById("lunchDate");
+        const searchButton = document.getElementById("searchButton");
+        const menuDisplay = document.getElementById("menuDisplay");
+        const caloriesDisplay = document.getElementById("caloriesDisplay");
+        const settingsButton = document.getElementById("settingsButton");
+        const settingsPanel = document.getElementById("settingsPanel");
+        const settingsArrow = document.getElementById("settingsArrow");
+        const statusIndicator = document.getElementById("statusIndicator");
+        const backupFile = document.getElementById("backupFile");
+        const backupStatus = document.getElementById("backupStatus");
+
+        function toggleSettings() {
+            const isHidden = settingsPanel.classList.contains("hidden");
+
+            settingsPanel.classList.toggle("hidden");
+            settingsArrow.style.transform =
+                isHidden ? "rotate(180deg)" : "rotate(0deg)";
+        }
+
+        function updateStatusIndicator(mode) {
+            if (mode === "online") {
+                statusIndicator.className =
+                    "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold bg-green-100 text-green-600 text-xs shadow-sm border border-green-200";
+
+                statusIndicator.innerHTML =
+                    '<span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span><span>나이스 API 연결</span>';
+            } else {
+                statusIndicator.className =
+                    "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold bg-blue-100 text-blue-600 text-xs shadow-sm border border-blue-200";
+
+                statusIndicator.innerHTML =
+                    '<span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span><span>로컬 백업 데이터</span>';
             }
         }
+
+        function cleanMenu(menu) {
+            return String(menu || "")
+                .replace(/<br\s*\/?\s*>/gi, "\n")
+                .replace(/&amp;/gi, "&")
+                .replace(/&lt;/gi, "<")
+                .replace(/&gt;/gi, ">");
+        }
+
+        function getApiMessage(data) {
+            if (data?.RESULT?.MESSAGE) {
+                return data.RESULT.MESSAGE;
+            }
+
+            const head = data?.mealServiceDietInfo?.[0]?.head;
+
+            if (Array.isArray(head)) {
+                const resultItem = head.find(item => item.RESULT);
+
+                if (resultItem?.RESULT?.MESSAGE) {
+                    return resultItem.RESULT.MESSAGE;
+                }
+            }
+
+            return "";
+        }
+
+        function loadLocalMeal(ymd) {
+            const savedBackup = localStorage.getItem("localMealData");
+
+            let activeData = LOCAL_MEAL_DATA;
+
+            if (savedBackup) {
+                try {
+                    activeData = JSON.parse(savedBackup);
+                } catch {
+                    activeData = LOCAL_MEAL_DATA;
+                }
+            }
+
+            const matchedRow = activeData.find(
+                row => String(row.MLSV_YMD) === ymd
+            );
+
+            if (matchedRow) {
+                menuDisplay.innerText = cleanMenu(matchedRow.DDISH_NM);
+
+                caloriesDisplay.innerText =
+                    String(matchedRow.CAL_INFO || "-")
+                        .split("(")[0]
+                        .trim();
+
+                updateStatusIndicator("offline");
+                return true;
+            }
+
+            return false;
+        }
+
+        async function fetchLunch() {
+            const dateValue = lunchDate.value;
+
+            if (!dateValue) {
+                alert("조회할 날짜를 선택해 주세요!");
+                return;
+            }
+
+            const ymd = dateValue.replace(/-/g, "");
+
+            menuDisplay.innerText =
+                "맛있는 급식 메뉴를 불러오는 중이에요... ⏳";
+
+            caloriesDisplay.innerText = "-";
+            searchButton.disabled = true;
+            searchButton.innerText = "조회 중...";
+
+            const parameters = new URLSearchParams({
+                KEY: API_KEY,
+                Type: "json",
+                pIndex: "1",
+                pSize: "10",
+                ATPT_OFCDC_SC_CODE: OFFICE_CODE,
+                SD_SCHUL_CODE: SCHOOL_CODE,
+                MLSV_YMD: ymd
+            });
+
+            const requestUrl =
+                `${API_URL}?${parameters.toString()}`;
+
+            try {
+                const response = await fetch(requestUrl);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP 오류: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const mealRows =
+                    data?.mealServiceDietInfo?.[1]?.row;
+
+                if (
+                    Array.isArray(mealRows) &&
+                    mealRows.length > 0
+                ) {
+                    const lunch =
+                        mealRows.find(
+                            row =>
+                                String(row.MMEAL_SC_CODE) === "2"
+                        ) || mealRows[0];
+
+                    menuDisplay.innerText =
+                        cleanMenu(lunch.DDISH_NM);
+
+                    caloriesDisplay.innerText =
+                        lunch.CAL_INFO || "-";
+
+                    updateStatusIndicator("online");
+                } else {
+                    const apiMessage =
+                        getApiMessage(data);
+
+                    menuDisplay.innerText =
+                        apiMessage.includes("해당하는 데이터가 없습니다")
+                            ? "선택한 날짜에 급식 정보가 없습니다 😢\n주말이거나 방학일 수 있어요!"
+                            : apiMessage ||
+                              "선택한 날짜에 급식 정보가 없습니다.";
+
+                    caloriesDisplay.innerText = "-";
+                    updateStatusIndicator("online");
+                }
+            } catch (error) {
+                console.error("급식 정보 조회 오류:", error);
+
+                if (!loadLocalMeal(ymd)) {
+                    menuDisplay.innerText =
+                        "급식 정보를 불러오지 못했습니다.\n잠시 후 다시 조회해 주세요.";
+
+                    caloriesDisplay.innerText = "-";
+                    updateStatusIndicator("offline");
+                }
+            } finally {
+                searchButton.disabled = false;
+                searchButton.innerText = "급식 조회하기 🔍";
+            }
+        }
+
+        backupFile.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (readEvent) {
+                try {
+                    const result = readEvent.target.result;
+
+                    if (typeof result !== "string") {
+                        throw new Error("파일 읽기 실패");
+                    }
+
+                    let jsonData = JSON.parse(result);
+
+                    if (!Array.isArray(jsonData)) {
+                        throw new Error("배열 형식이 아닙니다.");
+                    }
+
+                    if (
+                        jsonData.length > 0 &&
+                        jsonData[0].MLSV_YMD === "급식일자"
+                    ) {
+                        jsonData.shift();
+                    }
+
+                    localStorage.setItem(
+                        "localMealData",
+                        JSON.stringify(jsonData)
+                    );
+
+                    backupStatus.innerText =
+                        `✅ 백업 완료! (${jsonData.length}일치 식단 보관됨)`;
+
+                    backupStatus.classList.remove("hidden");
+
+                    alert(
+                        "오프라인 백업 데이터가 저장되었습니다."
+                    );
+                } catch {
+                    alert(
+                        "올바른 JSON 파일이 아닙니다. 파일을 다시 확인해 주세요."
+                    );
+                }
+            };
+
+            reader.readAsText(file);
+        });
+
+        settingsButton.addEventListener(
+            "click",
+            toggleSettings
+        );
+
+        searchButton.addEventListener(
+            "click",
+            fetchLunch
+        );
+
+        lunchDate.addEventListener(
+            "change",
+            fetchLunch
+        );
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                mainTitle.innerText =
+                    `🏫 ${SCHOOL_NAME} 오늘의 급식`;
+
+                const today = new Date();
+                const year = today.getFullYear();
+                const month =
+                    String(today.getMonth() + 1)
+                        .padStart(2, "0");
+                const day =
+                    String(today.getDate())
+                        .padStart(2, "0");
+
+                lunchDate.value =
+                    `${year}-${month}-${day}`;
+
+                fetchLunch();
+            }
+        );
     </script>
 </body>
 </html>
     </template>
-
-    <template id="tmpl-chaeyeon-meal">
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>숭의여자중학교 오늘의 급식</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-amber-50 p-4 font-sans text-slate-800">
-    <div class="max-w-md mx-auto bg-white p-5 rounded-2xl shadow-sm border border-amber-200">
-        <div class="flex items-center gap-2 mb-3">
-            <span class="text-xl">🍱</span>
-            <h3 class="font-bold text-amber-800">숭의여중 오늘의 급식 & 영양</h3>
-        </div>
-        <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-100 text-xs space-y-1 text-slate-700">
-            <p>🍚 <strong>식단:</strong> 친환경 쌀밥, 얼큰 소고기 미역국, 한돈 떡갈비 구이, 콩나물무침, 배추김치</p>
-            <p>🍎 <strong>후식:</strong> 유기농 사과 주스</p>
-            <p class="text-amber-700 font-semibold mt-2">⚡ 총 칼로리: 685 kcal</p>
-        </div>
-    </div>
-</body>
-</html>
-    </template>
-
     <script>
+        const STUDENT_INFO = { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -368,46 +2704,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -416,46 +2720,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -467,33 +2733,37 @@
             }
 
             studentProjectsMap = {};
-            // 박채연 기본 데이터 주입
-            if (currentStudent.name === '박채연') {
-                const quizTmpl = document.getElementById('tmpl-chaeyeon-quiz');
-                const mealTmpl = document.getElementById('tmpl-chaeyeon-meal');
-                if (quizTmpl) {
-                    studentProjectsMap['quiz'] = {
-                        title: '중3 과학 [운동과 에너지] 1학기 기말고사 20제 모의고사 (풀이/채점 앱)',
-                        sourceCode: quizTmpl.innerHTML.trim(),
-                        updatedAt: '2026-07-01'
-                    };
-                }
-                if (mealTmpl) {
-                    studentProjectsMap['meal-app'] = {
-                        title: '숭의여자중학교 오늘의 급식 & 영양 알리미 앱',
-                        sourceCode: mealTmpl.innerHTML.trim(),
-                        updatedAt: '2026-07-01'
-                    };
-                }
+            const tmpl_quiz = document.getElementById('tmpl-quiz');
+            if (tmpl_quiz) {
+                studentProjectsMap['quiz'] = {
+                    title: "중학교 환경 기말고사 완벽 대비 모의고사",
+                    sourceCode: tmpl_quiz.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_game = document.getElementById('tmpl-game');
+            if (tmpl_game) {
+                studentProjectsMap['game'] = {
+                    title: "파스텔 테트리스 🧸",
+                    sourceCode: tmpl_game.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_meal_app = document.getElementById('tmpl-meal-app');
+            if (tmpl_meal_app) {
+                studentProjectsMap['meal-app'] = {
+                    title: "숭의여자중학교 오늘의 급식",
+                    sourceCode: tmpl_meal_app.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
             }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -512,7 +2782,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -523,11 +2792,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -540,9 +2807,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -578,7 +2843,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -591,19 +2855,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -616,18 +2877,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -651,12 +2902,12 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
