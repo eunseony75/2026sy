@@ -1,0 +1,7 @@
+name = "neis-meal-proxy"
+main = "worker.js"
+compatibility_date = "2026-08-17"
+
+[vars]
+# 기본값으로 주입할 API 키 (또는 Cloudflare 대시보드 Secret 변수로 등록 가능)
+NEIS_API_KEY = "fa321714b05546ad82fc4bf29b3a20ef"
