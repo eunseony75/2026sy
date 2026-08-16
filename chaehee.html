@@ -314,7 +314,7 @@
             { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
         ];
 
-        let currentStudent = STUDENTS.find(s => s.name === '박채희') || STUDENTS[0];
+        let currentStudent = STUDENTS.find(function(s) { return s.name === '박채희'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
@@ -376,15 +376,42 @@
             document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
         }
 
+                // Built-in Genuine Student Projects
+        const DEFAULT_STUDENT_DATA = {
+            's_3_6_chaeyeon': {
+                'quiz': {
+                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                },
+                'meal-app': {
+                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                }
+            }
+        };
+
+        const DEFAULT_STUDENT_DATA = {
+  "meal-app": {
+    "title": "숭의여자중학교 오늘의 급식",
+    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>숭의여자중학교 오늘의 급식</title>\n    <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>\n    <link href=\"https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Gowun Dodum', sans-serif;\n        }\n        /* 줄바꿈 문자(\\n)가 웹 화면에서 줄바꿈으로 보이도록 하는 필수 스타일 */\n        .pre-line-text {\n            white-space: pre-line;\n        }\n    </style>\n</head>\n<body class=\"bg-amber-50/60 min-h-screen flex items-center justify-center p-4\">\n\n    <div class=\"w-full max-w-md bg-white rounded-3xl shadow-xl border-4 border-mint-200 overflow-hidden\">\n        \n        <div class=\"bg-[#E8F5E9] p-6 text-center border-b-2 border-dashed border-[#C8E6C9]\">\n            <h1 class=\"text-2xl font-bold text-[#2E7D32] flex flex-col gap-1\">\n                <span>🏫 숭의여자중학교</span>\n                <span class=\"text-xl text-[#388E3C]\">오늘의 급식</span>\n            </h1>\n        </div>\n\n        <div class=\"p-6 flex flex-col gap-6\">\n            \n            <div class=\"flex gap-2 items-center justify-center\">\n                <input type=\"date\" id=\"datePicker\" \n                       class=\"flex-1 px-4 py-2.5 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-[#FFAB91] text-gray-700 font-medium transition-all text-center\">\n                <button id=\"searchBtn\" \n                        class=\"px-5 py-2.5 bg-[#FFAB91] text-white font-bold rounded-2xl hover:bg-[#FF8A65] active:scale-95 transition-all shadow-md cursor-pointer\">\n                    조회\n                </button>\n            </div>\n\n            <div id=\"lunchCard\" class=\"bg-[#FFF3E0] rounded-2xl p-5 border border-[#FFE0B2] min-h-[200px] flex flex-col justify-center transition-all\">\n                <div id=\"statusMessage\" class=\"text-center text-gray-500 font-medium\">\n                    급식 정보를 불러오는 중입니다...\n                </div>\n                \n                <div id=\"lunchContent\" class=\"hidden flex flex-col gap-4 text-center\">\n                    <div>\n                        <span class=\"inline-block bg-[#FFE0B2] text-[#E65100] text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-sm\">\n                            MENU\n                        </span>\n                        <p id=\"menuList\" class=\"text-gray-800 text-lg font-medium leading-relaxed pre-line-text\"></p>\n                    </div>\n                    \n                    <div class=\"border-t border-dashed border-[#FFCC80] pt-3 mt-1\">\n                        <p id=\"caloriesInfo\" class=\"text-[#F4511E] font-bold text-base\"></p>\n                    </div>\n                </div>\n\n                <div id=\"errorMessage\" class=\"hidden text-center text-red-500 font-bold pre-line-text\"></div>\n            </div>\n\n        </div>\n\n        <div class=\"bg-gray-50 text-center py-3 text-xs text-gray-400 border-t border-gray-100\">\n            맛있는 급식 먹고 오늘도 힘내세요! ✨\n        </div>\n    </div>\n\n    <script>\n        const API_URL = \"https://open.neis.go.kr/hub/mealServiceDietInfo\";\n        const API_KEY = \"fa321714b05546ad82fc4bf29b3a20ef\";\n        const EDUCATION_OFFICE_CODE = \"B10\";\n        const SCHOOL_CODE = \"7132148\";\n\n        // HTML 엘리먼트 가져오기\n        const datePicker = document.getElementById('datePicker');\n        const searchBtn = document.getElementById('searchBtn');\n        const statusMessage = document.getElementById('statusMessage');\n        const lunchContent = document.getElementById('lunchContent');\n        const menuList = document.getElementById('menuList');\n        const caloriesInfo = document.getElementById('caloriesInfo');\n        const errorMessage = document.getElementById('errorMessage');\n        const lunchCard = document.getElementById('lunchCard');\n\n        // 페이지가 처음 열렸을 때 오늘 날짜로 초기화 및 즉시 조회\n        window.addEventListener('DOMContentLoaded', () => {\n            const today = new Date();\n            const yyyy = today.getFullYear();\n            const mm = String(today.getMonth() + 1).padStart(2, '0');\n            const dd = String(today.getDate()).padStart(2, '0');\n            \n            // 대시(-) 형태의 포맷으로 input[type=\"date\"]에 세팅 (예: 2026-07-08)\n            const todayString = `${yyyy}-${mm}-${dd}`;\n            datePicker.value = todayString;\n\n            // 바로 오늘 급식 조회 함수 호출\n            fetchLunchData(yyyy + mm + dd);\n        });\n\n        // 급식 조회 버튼 클릭 이벤트\n        searchBtn.addEventListener('click', () => {\n            handleSearch();\n        });\n\n        // 날짜 변경 시 자동 조회 이벤트 추가 (선택 사항이지만 편리함을 위해 도입)\n        datePicker.addEventListener('change', () => {\n            handleSearch();\n        });\n\n        // 날짜 가공 후 API 요청을 보내는 핸들러 함수\n        function handleSearch() {\n            const selectedDate = datePicker.value; // YYYY-MM-DD 형태\n            if (!selectedDate) {\n                alert(\"날짜를 선택해 주세요!\");\n                return;\n            }\n            // 하이픈(-)을 제거하여 YYYYMMDD 8자리 숫자로 변환\n            const formattedDate = selectedDate.replace(/-/g, \"\");\n            fetchLunchData(formattedDate);\n        }\n\n        // 2. 비동기 API 요청 및 데이터 처리 함수\n        async function fetchLunchData(dateStr) {\n            // 화면 상태 초기화 (로딩 표시)\n            statusMessage.classList.remove('hidden');\n            lunchContent.classList.add('hidden');\n            errorMessage.classList.add('hidden');\n            statusMessage.textContent = \"급식 정보를 불러오는 중입니다... 🍱\";\n            \n            // 카드 배경색 초기화\n            lunchCard.style.backgroundColor = \"#FFF3E0\";\n\n            try {\n                // API 요청 주소 조립\n                const params = new URLSearchParams({\n                    KEY: API_KEY,\n                    Type: \"json\",\n                    pIndex: \"1\",\n                    pSize: \"10\",\n                    ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,\n                    SD_SCHUL_CODE: SCHOOL_CODE,\n                    MLSV_YMD: dateStr\n                });\n                const response = await fetch(`${API_URL}?${params.toString()}`);\n                \n                if (!response.ok) {\n                    throw new Error(\"서버 응답에 실패했습니다.\");\n                }\n\n                const data = await response.json();\n\n                const mealRows = data.mealServiceDietInfo?.[1]?.row;\n\n                // 3. 서버 응답 결과(JSON)에 따른 분기 처리\n                if (Array.isArray(mealRows) && mealRows.length > 0) {\n                    const meal = mealRows.find(item => String(item.MMEAL_SC_CODE) === \"2\") || mealRows[0];\n                    const cleanMenu = (meal.DDISH_NM || \"\")\n                        .replace(/<br\\s*\\/?\\s*>/gi, \"\\n\")\n                        .replace(/&amp;/g, \"&\")\n                        .replace(/&lt;/g, \"<\")\n                        .replace(/&gt;/g, \">\");\n                    // 성공할 때 처리\n                    statusMessage.classList.add('hidden');\n                    errorMessage.classList.add('hidden');\n                    lunchContent.classList.remove('hidden');\n\n                    // 데이터 바인딩 (\\n 문자는 CSS의 pre-line-text 클래스로 자동 줄바꿈 처리됨)\n                    menuList.textContent = cleanMenu;\n                    caloriesInfo.textContent = `🔥 총 칼로리: ${meal.CAL_INFO || \"열량 정보 없음\"}`;\n                } else {\n                    // 실패할 때 처리 (성공 여부가 false인 경우)\n                    showError(data.RESULT?.MESSAGE || \"오늘은 급식이 없습니다.\");\n                }\n\n            } catch (error) {\n                // 네트워크 오류 또는 기타 예외 처리\n                showError(\"급식 정보를 불러오지 못했습니다.\\n잠시 후 다시 조회해 주세요.\");\n                console.error(error);\n            }\n        }\n\n        // 에러 메시지 전용 출력 함수\n        function showError(message) {\n            statusMessage.classList.add('hidden');\n            lunchContent.classList.add('hidden');\n            errorMessage.classList.remove('hidden');\n            \n            // 경고 메시지 반영\n            errorMessage.textContent = message;\n            \n            // 실패 시 카드 배경을 연한 빨간색 톤으로 부드럽게 변경\n            lunchCard.style.backgroundColor = \"#FFEBEE\";\n        }\n    </script>\n</body>\n</html>",
+    "updatedAt": "2026-07-01"
+  }
+};
+
         function loadStudentProjects() {
             const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
             if (saved) {
                 try {
-                    studentProjectsMap = JSON.parse(saved);
-                    return;
+                    const parsed = JSON.parse(saved);
+                    if (Object.keys(parsed).length > 0) {
+                        studentProjectsMap = parsed;
+                        return;
+                    }
                 } catch (e) {}
             }
-            studentProjectsMap = {};
+            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
         }
 
         function saveStudentProjects() {
@@ -560,3 +587,4 @@
     </script>
 </body>
 </html>
+
