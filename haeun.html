@@ -1392,8 +1392,7 @@
         // 1. API 주소 변수 정의 (요구사항 필수 지정)
         // ----------------------------------------------------
         const API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
-        const API_KEY = "fa321714b05546ad82fc4bf29b3a20ef";
-        const EDUCATION_OFFICE_CODE = "B10";
+const EDUCATION_OFFICE_CODE = "B10";
         const SCHOOL_CODE = "7132148";
 
         // ----------------------------------------------------
@@ -1493,8 +1492,7 @@
             // 하이픈 제거하여 8자리 'YYYYMMDD'로 변환 (요구사항 2번)
             const dateQuery = rawDateValue.replace(/-/g, '');
             const params = new URLSearchParams({
-                KEY: API_KEY,
-                Type: "json",
+Type: "json",
                 pIndex: "1",
                 pSize: "10",
                 ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
