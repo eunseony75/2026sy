@@ -334,8 +334,7 @@
 
   <script>
     const API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
-    const API_KEY = "fa321714b05546ad82fc4bf29b3a20ef";
-    const EDUCATION_OFFICE_CODE = "B10";
+const EDUCATION_OFFICE_CODE = "B10";
     const SCHOOL_CODE = "7132148";
 
     // DOM 요소 캐싱
@@ -393,8 +392,7 @@
       // 하이픈(-)을 제거하고 숫자 8자리 'YYYYMMDD' 형식으로 파라미터 변환
       const cleanDate = dateString.replace(/-/g, '');
       const params = new URLSearchParams({
-        KEY: API_KEY,
-        Type: "json",
+Type: "json",
         pIndex: "1",
         pSize: "10",
         ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
