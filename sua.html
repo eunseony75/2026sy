@@ -314,7 +314,7 @@
             { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
         ];
 
-        let currentStudent = STUDENTS.find(s => s.name === '김수아') || STUDENTS[0];
+        let currentStudent = STUDENTS.find(function(s) { return s.name === '김수아'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
@@ -376,15 +376,42 @@
             document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
         }
 
+                // Built-in Genuine Student Projects
+        const DEFAULT_STUDENT_DATA = {
+            's_3_6_chaeyeon': {
+                'quiz': {
+                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                },
+                'meal-app': {
+                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                }
+            }
+        };
+
+        const DEFAULT_STUDENT_DATA = {
+  "meal-app": {
+    "title": "숭의여자중학교 오늘의 급식",
+    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>숭의여자중학교 오늘의 급식</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <link rel=\"stylesheet\" as=\"style\" crossorigin href=\"https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css\" />\n    <style>\n        body {\n            font-family: 'Pretendard', sans-serif;\n        }\n    </style>\n</head>\n<body class=\"bg-amber-50/60 min-h-screen flex flex-col items-center justify-center p-4\">\n\n    <div class=\"w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-orange-100 p-6 space-y-6\">\n        \n        <div class=\"text-center space-y-2\">\n            <h1 class=\"text-2xl font-black text-slate-800 tracking-tight\">\n                🏫 숭의여자중학교 오늘의 급식\n            </h1>\n            <p class=\"text-xs font-medium text-orange-400 bg-orange-50 inline-block px-3 py-1 rounded-full\">\n                맛있는 급식 먹고 힘내요! ✨\n            </p>\n        </div>\n\n        <hr class=\"border-dashed border-orange-100\">\n\n        <div class=\"flex gap-2 items-center\">\n            <input type=\"date\" id=\"meal-date\" \n                   class=\"flex-1 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-300 focus:bg-white transition-all\">\n            <button id=\"search-btn\" \n                    class=\"px-5 py-3 rounded-2xl bg-orange-400 hover:bg-orange-500 text-white font-bold shadow-md shadow-orange-200 transition-all active:scale-95 whitespace-nowrap\">\n                급식 조회\n            </button>\n        </div>\n\n        <div id=\"meal-card\" class=\"bg-orange-50/50 rounded-2xl p-5 border border-orange-100/70 min-h-[200px] flex flex-col justify-center\">\n            <div id=\"loading-view\" class=\"text-center text-slate-400 font-medium py-8 hidden\">\n                <p class=\"animate-bounce mb-2\">🍱</p>\n                <p class=\"text-sm\">오늘의 메뉴를 불러오는 중이에요...</p>\n            </div>\n\n            <div id=\"success-view\" class=\"space-y-4\">\n                <div class=\"flex justify-between items-center bg-white px-4 py-2 rounded-xl border border-orange-100/50\">\n                    <span class=\"text-xs font-bold text-orange-400\">🔥 총 칼로리</span>\n                    <span id=\"calories-info\" class=\"text-sm font-black text-slate-700\">000 Kcal</span>\n                </div>\n                <div class=\"bg-white p-5 rounded-xl border border-orange-100/50 shadow-inner\">\n                    <p id=\"menu-list\" class=\"text-center text-slate-700 font-medium leading-relaxed tracking-wide text-[15px]\" style=\"white-space: pre-line;\"></p>\n                </div>\n            </div>\n\n            <div id=\"error-view\" class=\"hidden text-center py-6 space-y-2\">\n                <p class=\"text-3xl\">🫥</p>\n                <p id=\"error-message\" class=\"text-sm font-bold text-rose-500 bg-rose-50 px-4 py-2 rounded-xl inline-block\"></p>\n            </div>\n        </div>\n\n        <p class=\"text-center text-[11px] text-slate-400\">\n            ※ 위 정보는 학교 사정에 따라 변경될 수 있습니다.\n        </p>\n    </div>\n\n    <script>\n        const API_URL = \"https://open.neis.go.kr/hub/mealServiceDietInfo\";\n        const API_KEY = \"fa321714b05546ad82fc4bf29b3a20ef\";\n        const EDUCATION_OFFICE_CODE = \"B10\";\n        const SCHOOL_CODE = \"7132148\";\n\n        // HTML 요소 가져오기\n        const mealDateInput = document.getElementById('meal-date');\n        const searchBtn = document.getElementById('search-btn');\n        const loadingView = document.getElementById('loading-view');\n        const successView = document.getElementById('success-view');\n        const errorView = document.getElementById('error-view');\n        const menuList = document.getElementById('menu-list');\n        const caloriesInfo = document.getElementById('calories-info');\n        const errorMessage = document.getElementById('error-message');\n\n        // 화면 상태 전환 함수\n        function showView(status) {\n            loadingView.classList.add('hidden');\n            successView.classList.add('hidden');\n            errorView.classList.add('hidden');\n\n            if (status === 'loading') loadingView.classList.remove('hidden');\n            if (status === 'success') successView.classList.remove('hidden');\n            if (status === 'error') errorView.classList.remove('hidden');\n        }\n\n        // 2. 급식 데이터 Fetch 함수\n        async function fetchMealData() {\n            const rawDate = mealDateInput.value;\n            if (!rawDate) {\n                alert('날짜를 선택해 주세요!');\n                return;\n            }\n\n            // 하이픈(-) 제거하여 YYYYMMDD 형식으로 변환\n            const formattedDate = rawDate.replace(/-/g, '');\n            \n            showView('loading');\n\n            try {\n                const params = new URLSearchParams({\n                    KEY: API_KEY,\n                    Type: \"json\",\n                    pIndex: \"1\",\n                    pSize: \"10\",\n                    ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,\n                    SD_SCHUL_CODE: SCHOOL_CODE,\n                    MLSV_YMD: formattedDate\n                });\n                const response = await fetch(`${API_URL}?${params.toString()}`);\n\n                if (!response.ok) {\n                    throw new Error(`API 응답 오류: ${response.status}`);\n                }\n\n                const data = await response.json();\n                const mealRows = data.mealServiceDietInfo?.[1]?.row;\n\n                if (Array.isArray(mealRows) && mealRows.length > 0) {\n                    const meal = mealRows.find(item => String(item.MMEAL_SC_CODE) === \"2\") || mealRows[0];\n                    const cleanMenu = (meal.DDISH_NM || \"\")\n                        .replace(/<br\\s*\\/?\\s*>/gi, \"\\n\")\n                        .replace(/&amp;/g, \"&\")\n                        .replace(/&lt;/g, \"<\")\n                        .replace(/&gt;/g, \">\");\n                    // 성공 시 화면에 데이터 넣기\n                    menuList.textContent = cleanMenu;\n                    caloriesInfo.textContent = meal.CAL_INFO || \"칼로리 정보 없음\";\n                    showView('success');\n                } else {\n                    // 실패 시 에러 메시지 노출 (서버 메시지 우선, 없을 시 기본 문구)\n                    errorMessage.textContent = data.RESULT?.MESSAGE || \"오늘은 급식이 없습니다.\";\n                    showView('error');\n                }\n            } catch (error) {\n                console.error(error);\n                errorMessage.textContent = \"급식 정보를 불러오지 못했습니다. 잠시 후 다시 조회해 주세요.\";\n                showView('error');\n            }\n        }\n\n        // 4. 페이지 초기화 및 오늘 날짜 설정 로직\n        function initPage() {\n            const today = new Date();\n            const year = today.getFullYear();\n            // 월과 일은 항상 2자리 숫자가 되도록 처리\n            const month = String(today.getMonth() + 1).padStart(2, '0');\n            const day = String(today.getDate()).padStart(2, '0');\n            \n            const todayString = `${year}-${month}-${day}`;\n            mealDateInput.value = todayString;\n\n            // 즉시 오늘 급식 불러오기\n            fetchMealData();\n        }\n\n        // 이벤트 리스너 연결\n        searchBtn.addEventListener('click', fetchMealData);\n        mealDateInput.addEventListener('change', fetchMealData); // 날짜 변경 시에도 즉시 조회\n\n        // 페이지 로드 시 자동 실행\n        window.addEventListener('DOMContentLoaded', initPage);\n    </script>\n</body>\n</html>",
+    "updatedAt": "2026-07-01"
+  }
+};
+
         function loadStudentProjects() {
             const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
             if (saved) {
                 try {
-                    studentProjectsMap = JSON.parse(saved);
-                    return;
+                    const parsed = JSON.parse(saved);
+                    if (Object.keys(parsed).length > 0) {
+                        studentProjectsMap = parsed;
+                        return;
+                    }
                 } catch (e) {}
             }
-            studentProjectsMap = {};
+            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
         }
 
         function saveStudentProjects() {
@@ -560,3 +587,4 @@
     </script>
 </body>
 </html>
+
