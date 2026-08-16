@@ -158,8 +158,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
     &lt;script&gt;
         // 나이스 교육정보 개방포털 급식 API 설정
         const API_URL = &quot;https://open.neis.go.kr/hub/mealServiceDietInfo&quot;;
-        const API_KEY = &quot;fa321714b05546ad82fc4bf29b3a20ef&quot;;
-        const EDUCATION_OFFICE_CODE = &quot;B10&quot;; // 서울특별시교육청
+const EDUCATION_OFFICE_CODE = &quot;B10&quot;; // 서울특별시교육청
         const SCHOOL_CODE = &quot;7132148&quot;;       // 숭의여자중학교
 
         // DOM 요소 가져오기
@@ -205,8 +204,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
             try {
                 // 나이스 API 요청 주소 생성
                 const params = new URLSearchParams({
-                    KEY: API_KEY,
-                    Type: &quot;json&quot;,
+Type: &quot;json&quot;,
                     pIndex: &quot;1&quot;,
                     pSize: &quot;10&quot;,
                     ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
