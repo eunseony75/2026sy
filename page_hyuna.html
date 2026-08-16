@@ -243,8 +243,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
 
   &lt;script&gt;
     const API_URL = &quot;https://open.neis.go.kr/hub/mealServiceDietInfo&quot;;
-    const API_KEY = &quot;fa321714b05546ad82fc4bf29b3a20ef&quot;;
-    const EDUCATION_OFFICE_CODE = &quot;B10&quot;;
+const EDUCATION_OFFICE_CODE = &quot;B10&quot;;
     const SCHOOL_CODE = &quot;7132148&quot;;
 
     // DOM 요소 캐싱
@@ -302,8 +301,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
       // 하이픈(-)을 제거하고 숫자 8자리 &#39;YYYYMMDD&#39; 형식으로 파라미터 변환
       const cleanDate = dateString.replace(/-/g, &#39;&#39;);
       const params = new URLSearchParams({
-        KEY: API_KEY,
-        Type: &quot;json&quot;,
+Type: &quot;json&quot;,
         pIndex: &quot;1&quot;,
         pSize: &quot;10&quot;,
         ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
