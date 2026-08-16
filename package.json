@@ -1,0 +1,9 @@
+﻿{
+  "name": "2026sy",
+  "version": "1.0.0",
+  "scripts": {
+    "neis-proxy": "echo 'Build OK'",
+    "build": "echo 'Build OK'"
+  },
+  "dependencies": {}
+}
