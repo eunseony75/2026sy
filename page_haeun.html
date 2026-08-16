@@ -1299,8 +1299,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
         // 1. API 주소 변수 정의 (요구사항 필수 지정)
         // ----------------------------------------------------
         const API_URL = &quot;https://open.neis.go.kr/hub/mealServiceDietInfo&quot;;
-        const API_KEY = &quot;fa321714b05546ad82fc4bf29b3a20ef&quot;;
-        const EDUCATION_OFFICE_CODE = &quot;B10&quot;;
+const EDUCATION_OFFICE_CODE = &quot;B10&quot;;
         const SCHOOL_CODE = &quot;7132148&quot;;
 
         // ----------------------------------------------------
@@ -1400,8 +1399,7 @@ if(E.u!==R){G(!E.u,"Failed to set the default implementation to <"+R+">: The def
             // 하이픈 제거하여 8자리 &#39;YYYYMMDD&#39;로 변환 (요구사항 2번)
             const dateQuery = rawDateValue.replace(/-/g, &#39;&#39;);
             const params = new URLSearchParams({
-                KEY: API_KEY,
-                Type: &quot;json&quot;,
+Type: &quot;json&quot;,
                 pIndex: &quot;1&quot;,
                 pSize: &quot;10&quot;,
                 ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
