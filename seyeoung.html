@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
-    <!-- Google Sites iframe 임베드 설정 -->
+    <title>신세영 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -31,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -84,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen (높이를 320px로 확장 및 상단 풀스크린 바로가기 오버레이) */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -173,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">신</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>신세영 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 2학년 3반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html">3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html" selected>2학년 3반 신세영</option>
+                    <option value="jiwoo.html">2학년 4반 임지우</option>
+                    <option value="heejung.html">1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html">3학년 2반 이아연</option>
+                    <option value="hayoon.html">3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -205,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">2학년 3반 신세영 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -258,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -273,12 +179,1699 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-quiz">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중1 영어 1학기 기말고사 모의고사</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900 leading-tight">중1 영어 1학기 기말고사</h1>
+                    <p class="text-xs text-indigo-600 font-semibold">실전 대비 모의고사 (난이도: 중급)</p>
+                </div>
+            </div>
+            <div class="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full" id="timer-badge">
+                <i class="fa-regular fa-clock mr-1 text-slate-600"></i> <span id="timer-display">00:00</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-10 flex flex-col">
+        
+        <!-- START SCREEN -->
+        <div id="start-screen" class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 text-center max-w-2xl mx-auto my-auto animate-fade-in">
+            <span class="inline-block bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full mb-4">Middle School Grade 1</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-950 mb-3">1학기 기말고사 완벽 대비!</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed text-sm md:text-base">
+                중학교 1학년 1학기 과정에서 꼭 출제되는 빈출 문법, 어휘, 대화 표현, 독해 영역의 중급 난이도 20문항입니다. 문제를 푼 뒤 바로 결과를 확인하고, 오답 노트 기능으로 취약점을 보완해보세요.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8 text-left max-w-md mx-auto">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3">
+                    <i class="fa-solid fa-list-ol text-indigo-600 text-lg"></i>
+                    <div>
+                        <p class="text-xs text-slate-400">문항 수</p>
+                        <p class="text-sm font-bold text-slate-800">20문제 (객관식)</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3">
+                    <i class="fa-solid fa-gauge-high text-indigo-600 text-lg"></i>
+                    <div>
+                        <p class="text-xs text-slate-400">난이도</p>
+                        <p class="text-sm font-bold text-slate-800">중급 (기초~응용)</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3 col-span-2">
+                    <i class="fa-solid fa-circle-check text-indigo-600 text-lg"></i>
+                    <div>
+                        <p class="text-xs text-slate-400">특별 혜택</p>
+                        <p class="text-sm font-bold text-slate-800">모든 선택지 상세 해설 및 오답 이유 제공</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-start" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-indigo-200 transition-all duration-200 transform hover:-translate-y-0.5">
+                시험 시작하기 <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+
+        <!-- EXAM SCREEN -->
+        <div id="exam-screen" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+            
+            <!-- Question Status Sidebar (Desktop) -->
+            <div class="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm sticky top-24">
+                <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center justify-between">
+                    <span>답안지 현황</span>
+                    <span class="text-xs text-slate-500" id="progress-text">0 / 20 완료</span>
+                </h3>
+                <div class="grid grid-cols-5 gap-2 mb-6" id="status-grid">
+                    <!-- Dynamic generation of 20 question buttons -->
+                </div>
+                <button id="btn-quick-submit" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-md transition-colors text-sm flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>최종 답안 제출하기</span>
+                </button>
+            </div>
+
+            <!-- Active Question & Navigation -->
+            <div class="lg:col-span-3 flex flex-col space-y-6">
+                <!-- Question Card -->
+                <div class="bg-white border border-slate-200 rounded-3xl shadow-md p-6 md:p-8" id="question-card">
+                    
+                    <!-- Category & Info -->
+                    <div class="flex justify-between items-center mb-5">
+                        <span id="question-category" class="bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full">
+                            문법
+                        </span>
+                        <span id="question-number-badge" class="text-sm font-semibold text-slate-400">
+                            Question 1 of 20
+                        </span>
+                    </div>
+
+                    <!-- Reading Passage Box (Hidden by default, shown if question has it) -->
+                    <div id="passage-container" class="hidden mb-6 p-5 bg-slate-50 rounded-2xl border border-slate-200 text-slate-700 font-medium leading-relaxed whitespace-pre-wrap">
+                        <!-- Passage text will go here -->
+                    </div>
+
+                    <!-- Question Title -->
+                    <h2 id="question-title" class="text-lg md:text-xl font-bold text-slate-900 mb-6 leading-snug">
+                        <!-- Question text here -->
+                    </h2>
+
+                    <!-- Options (1-4) -->
+                    <div class="space-y-3" id="options-container">
+                        <!-- Dynamic Options will go here -->
+                    </div>
+                </div>
+
+                <!-- Footer Navigation Buttons -->
+                <div class="flex justify-between items-center">
+                    <button id="btn-prev" class="px-5 py-3 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl flex items-center space-x-2 transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>이전 문제</span>
+                    </button>
+                    <button id="btn-next" class="px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors">
+                        <span>다음 문제</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="result-screen" class="hidden space-y-8">
+            <!-- Score Card -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-indigo-50 text-indigo-600 mb-6 border-4 border-indigo-100">
+                    <i class="fa-solid fa-award text-4xl"></i>
+                </div>
+                <h2 class="text-3xl font-black text-slate-900 mb-2">시험 결과 리포트</h2>
+                <p class="text-slate-500 mb-6 text-sm">중학교 1학년 1학기 기말고사 대비 모의고사가 성공적으로 완료되었습니다.</p>
+
+                <!-- Score Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+                    <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-100">
+                        <p class="text-xs text-indigo-600 font-bold mb-1">내 점수</p>
+                        <p class="text-3xl font-black text-indigo-900"><span id="score-display">0</span>점</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                        <p class="text-xs text-slate-500 font-bold mb-1">맞춘 문제</p>
+                        <p class="text-3xl font-black text-slate-800"><span id="correct-count-display">0</span> / 20</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                        <p class="text-xs text-slate-500 font-bold mb-1">소요 시간</p>
+                        <p class="text-3xl font-black text-slate-800" id="time-spent-display">00:00</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto">
+                    <button id="btn-restart" class="px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span>다시 도전하기</span>
+                    </button>
+                    <a href="#answers-breakdown" class="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md hover:shadow-indigo-100 transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>오답 노트 및 해설 보기</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Detailed Answer Analysis -->
+            <div id="answers-breakdown" class="max-w-4xl mx-auto space-y-6 scroll-mt-24">
+                <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                        <span class="bg-indigo-600 text-white w-2 h-6 rounded"></span>
+                        <span>문항별 상세 해설 및 분석</span>
+                    </h3>
+                    <div class="flex space-x-2 text-xs">
+                        <span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-semibold border border-emerald-200">정답</span>
+                        <span class="bg-rose-50 text-rose-700 px-2 py-1 rounded font-semibold border border-rose-200">오답</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Answer Lists will be generated here -->
+                <div id="detailed-reviews-container" class="space-y-6"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-sm">© 2026 중학영어 학업성취도 평가 시스템. All rights reserved.</p>
+            <p class="text-xs text-slate-600 mt-2">이 시험지는 중학교 1학년 영어 교과 과정을 기준으로 제작된 맞춤형 평가 시스템입니다.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Dialog Modal (Replaces alert) -->
+    <div id="alert-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center border border-slate-100 transform scale-95 transition-transform duration-200">
+            <div id="modal-icon-container" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                <!-- Icon via JS -->
+            </div>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-2">알림</h3>
+            <p id="modal-message" class="text-sm text-slate-500 mb-6 leading-relaxed">알림 메시지 내용입니다.</p>
+            <div class="flex space-x-3" id="modal-actions">
+                <button id="modal-btn-confirm" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors">
+                    확인
+                </button>
+            </div>
+        </div>
     </div>
 
+    <!-- JavaScript Core Logic -->
     <script>
+        // --- QUESTION DATABASE (20 Questions, Medium difficulty) ---
+        const questions = [
+            {
+                id: 1,
+                category: "문법 (Be동사)",
+                title: "다음 빈칸에 공통으로 알맞은 be동사를 고르시오.",
+                passage: "• She _______ a middle school student.\n• It _______ cold today.",
+                options: [
+                    "am",
+                    "are",
+                    "is",
+                    "be"
+                ],
+                correctAnswer: 2, // is
+                explanation: {
+                    correct: "주어가 3인칭 단수(She, It)이므로 현재형 be동사는 'is'가 와야 합니다.",
+                    wrong: [
+                        "'am'은 1인칭 단수 주어(I)일 때만 쓸 수 있습니다.",
+                        "'are'는 2인칭 주어(You)나 복수 주어(We, They)일 때 쓰입니다.",
+                        "현재형 문장이므로 원형인 'be' 대신 알맞은 현재형 be동사(is)를 써야 합니다."
+                    ]
+                }
+            },
+            {
+                id: 2,
+                category: "문법 (대명사)",
+                title: "다음 대화의 빈칸에 알맞은 인칭대명사를 고르시오.",
+                passage: "A: Who is that boy standing by the tree?\nB: He is my brother. I love _______ very much.",
+                options: [
+                    "him",
+                    "his",
+                    "he",
+                    "himself"
+                ],
+                correctAnswer: 0, // him
+                explanation: {
+                    correct: "동사 love의 목적어 자리이므로 그(He)를 나타내는 목적격 대명사 'him'이 와야 합니다.",
+                    wrong: [
+                        "'his'는 소유격(~의)이나 소유대명사(~의 것)로, 목적어 자리에 단독으로 사용하기 어색합니다.",
+                        "'he'는 주격 대명사로 주어 자리에 쓰입니다.",
+                        "'himself'는 재귀대명사로 주어와 목적어가 같을 때(예: He loves himself) 주로 사용합니다."
+                    ]
+                }
+            },
+            {
+                id: 3,
+                category: "문법 (일반동사)",
+                title: "다음 문장의 빈칸에 들어갈 알맞은 단어는?",
+                passage: "My uncle _______ French and English very well.",
+                options: [
+                    "speak",
+                    "speaks",
+                    "speaking",
+                    "is speak"
+                ],
+                correctAnswer: 1, // speaks
+                explanation: {
+                    correct: "주어 'My uncle'은 3인칭 단수이므로, 현재형 일반동사의 뒤에 -(e)s가 붙은 'speaks'를 사용해야 합니다.",
+                    wrong: [
+                        "'speak'는 주어가 1/2인칭 혹은 복수일 때 사용합니다.",
+                        "동사 자리에 be동사 없이 'speaking'(-ing 형태)만 단독으로 동사 구실을 할 수 없습니다.",
+                        "'is speak'는 be동사와 일반동사 원형이 나란히 연속으로 올 수 없으므로 비문법적입니다."
+                    ]
+                }
+            },
+            {
+                id: 4,
+                category: "문법 (일반동사의 부정)",
+                title: "다음 빈칸에 들어갈 말로 알맞은 것은?",
+                passage: "Minjun and Jiwon _______ like computer games.",
+                options: [
+                    "doesn't",
+                    "isn't",
+                    "don't",
+                    "aren't"
+                ],
+                correctAnswer: 2, // don't
+                explanation: {
+                    correct: "주어가 'Minjun and Jiwon'(3인칭 복수, They)이고 일반동사 'like'를 부정해야 하므로 복수형 부정 조동사 'don't'가 알맞습니다.",
+                    wrong: [
+                        "'doesn't'는 주어가 3인칭 단수(He, She, It 등)일 때만 씁니다.",
+                        "'isn't'는 be동사 부정어입니다. 뒤에 일반동사 원형(like)이 올 수 없습니다.",
+                        "'aren't' 또한 be동사 부정어이므로 뒤에 일반동사 원형(like)을 수식할 수 없습니다."
+                    ]
+                }
+            },
+            {
+                id: 5,
+                category: "문법 (명사의 복수형)",
+                title: "다음 명사의 복수형 연결이 '잘못된' 것을 고르시오.",
+                options: [
+                    "child - children",
+                    "box - boxes",
+                    "city - cities",
+                    "foot - foots"
+                ],
+                correctAnswer: 3, // foot - foots
+                explanation: {
+                    correct: "foot의 복수형은 불규칙 변화를 하므로 'feet'이 올바릅니다. 뒤에 -s를 붙인 'foots'는 오답입니다.",
+                    wrong: [
+                        "child의 복수형은 불규칙 형태인 'children'이 맞습니다.",
+                        "-x로 끝나는 명사 box는 뒤에 -es를 붙여 'boxes'로 만드는 규칙이 맞습니다.",
+                        "자음+y로 끝나는 명사 city는 y를 i로 고치고 -es를 붙여 'cities'로 만드는 규칙이 맞습니다."
+                    ]
+                }
+            },
+            {
+                id: 6,
+                category: "문법 (현재진행형)",
+                title: "다음 대화의 빈칸에 알맞은 말을 고르시오.",
+                passage: "A: What are you doing right now?\nB: I _______ my homework.",
+                options: [
+                    "do",
+                    "am doing",
+                    "is doing",
+                    "doing"
+                ],
+                correctAnswer: 1, // am doing
+                explanation: {
+                    correct: "지금 하고 있는 일(right now)을 묻는 질문('What are you doing?')에 대해 'be동사(am) + 동사원형-ing' 형태의 현재진행형으로 답하는 'am doing'이 적절합니다.",
+                    wrong: [
+                        "'do'는 현재 시제 단순형으로, '지금 이 순간 진행 중인 동작'을 답하기에는 불완전합니다.",
+                        "주어가 1인칭 'I'이므로 3인칭 be동사인 'is doing'은 불가능합니다.",
+                        "be동사 없이 'doing'만 단독으로 쓰이면 문장의 동사 역할을 할 수 없습니다."
+                    ]
+                }
+            },
+            {
+                id: 7,
+                category: "어휘",
+                title: "밑줄 친 부분의 뜻으로 알맞은 것을 고르시오.",
+                passage: "She wants to become a famous <span class='underline decoration-indigo-500 decoration-2 font-bold text-indigo-700'>scientist</span> in the future.",
+                options: [
+                    "음악가",
+                    "과학자",
+                    "의사",
+                    "작가"
+                ],
+                correctAnswer: 1, // 과학자
+                explanation: {
+                    correct: "'scientist'는 '과학자'를 의미하는 영어 단어입니다.",
+                    wrong: [
+                        "음악가는 영어로 'musician'이라고 합니다.",
+                        "의사는 영어로 'doctor'라고 합니다.",
+                        "작가는 영어로 'writer' 혹은 'author'라고 합니다."
+                    ]
+                }
+            },
+            {
+                id: 8,
+                category: "의사소통 표현",
+                title: "다음 대화의 빈칸에 어울리지 '않는' 응답을 고르시오.",
+                passage: "A: Let's play soccer after school!\nB: __________________________________",
+                options: [
+                    "Sounds great!",
+                    "That's a good idea.",
+                    "Sure, why not?",
+                    "I am thirteen years old."
+                ],
+                correctAnswer: 3, // I am thirteen years old.
+                explanation: {
+                    correct: "축구를 하자는 제안('Let's play soccer~')에 갑자기 자신의 나이('나는 13살이야')를 답하는 것은 대화 흐름상 전혀 어울리지 않습니다.",
+                    wrong: [
+                        "'Sounds great!'는 제안에 흔쾌히 수락하는 훌륭한 응답입니다.",
+                        "'That's a good idea.' 또한 제안을 긍정적으로 받아들이는 표현입니다.",
+                        "'Sure, why not?'은 '물론이지, 왜 안 되겠어?(좋아)'라는 찬성의 응답입니다."
+                    ]
+                }
+            },
+            {
+                id: 9,
+                category: "문법 (조동사)",
+                title: "다음 빈칸에 알맞은 조동사를 고르시오.",
+                passage: "You look tired. You _______ go to bed early tonight.",
+                options: [
+                    "should",
+                    "will",
+                    "can",
+                    "may"
+                ],
+                correctAnswer: 0, // should
+                explanation: {
+                    correct: "상대방이 피곤해 보이므로 '일찍 자는 것이 좋겠다'라는 부드러운 의무나 충고/권유를 나타내는 조동사 'should'가 가장 자연스럽습니다.",
+                    wrong: [
+                        "'will'은 단순한 미래의 의지나 예측(~할 것이다)을 나타내어 충고의 맥락과 다소 거리가 있습니다.",
+                        "'can'은 능력이나 가능성(~할 수 있다)을 나타냅니다.",
+                        "'may'는 추측이나 허가(~해도 좋다, ~일지도 모른다)를 의미합니다."
+                    ]
+                }
+            },
+            {
+                id: 10,
+                category: "문법 (의문사)",
+                title: "다음 두 문장의 빈칸에 공통으로 알맞은 의문사를 고르시오.",
+                passage: "• _______ is your favorite subject?\n• _______ are you doing under the table?",
+                options: [
+                    "Who",
+                    "Where",
+                    "What",
+                    "When"
+                ],
+                correctAnswer: 2, // What
+                explanation: {
+                    correct: "가장 좋아하는 과목(무엇)을 묻는 'What is your favorite subject?'와 테이블 밑에서 무엇을 하는지 묻는 'What are you doing under the table?'에 공통으로 들어갈 의문사는 'What'입니다.",
+                    wrong: [
+                        "'Who'는 사람(누구)을 물을 때 사용합니다.",
+                        "'Where'는 장소(어디)를 물을 때 사용합니다.",
+                        "'When'은 시간(언제)을 물을 때 사용합니다."
+                    ]
+                }
+            },
+            {
+                id: 11,
+                category: "독해",
+                title: "다음 글을 읽고 물음에 답하시오. 수호(Suho)에 대한 설명으로 일치하는 것은?",
+                passage: "Suho is a middle school student in Seoul. He loves sports very much. He plays basketball with his friends every weekend. He also likes listening to music when he is free. His dream is to be a gym teacher.",
+                options: [
+                    "서울에 살지 않는다.",
+                    "음악 듣는 것을 싫어한다.",
+                    "주말마다 친구들과 농구를 한다.",
+                    "장래 희망은 음악 교사이다."
+                ],
+                correctAnswer: 2, // 주말마다 친구들과 농구를 한다.
+                explanation: {
+                    correct: "지문 속 'He plays basketball with his friends every weekend.'를 통해 주말마다 친구들과 농구를 한다는 설명이 일치함을 알 수 있습니다.",
+                    wrong: [
+                        "'Suho is a middle school student in Seoul.'에서 서울에 살고 있음을 알 수 있으므로 일치하지 않습니다.",
+                        "'He also likes listening to music~'에서 음악 감상을 좋아하는 것을 알 수 있으므로 일치하지 않습니다.",
+                        "'His dream is to be a gym teacher.'에서 장래 희망은 체육(gym) 교사임을 알 수 있으므로 일치하지 않습니다."
+                    ]
+                }
+            },
+            {
+                id: 12,
+                category: "문법 (형용사와 부사)",
+                title: "밑줄 친 단어의 쓰임이 올바르지 '않은' 것을 고르시오.",
+                options: [
+                    "The story is very <span class='underline font-bold text-indigo-700'>sad</span>.",
+                    "He runs very <span class='underline font-bold text-indigo-700'>fast</span>.",
+                    "She speaks English <span class='underline font-bold text-indigo-700'>good</span>.",
+                    "They are <span class='underline font-bold text-indigo-700'>happy</span> today."
+                ],
+                correctAnswer: 2, // good
+                explanation: {
+                    correct: "동사 speaks를 수식하여 '영어를 잘 말한다'라는 뜻이 되려면 형용사인 'good'이 아닌, 부사 형태인 'well'이 와야 합니다.",
+                    wrong: [
+                        "story라는 명사를 보충 설명하는 형용사 'sad'의 쓰임은 올바릅니다.",
+                        "'fast'는 형용사와 부사의 형태가 같으므로, '빠르게 달리다'라는 뜻의 부사로 쓰인 'fast'는 올바릅니다.",
+                        "They를 설명해주는 주격 보어 자리에 형용사 'happy'가 오는 구조는 올바릅니다."
+                    ]
+                }
+            },
+            {
+                id: 13,
+                category: "의사소통 표현",
+                title: "빈칸에 들어갈 대화로 가장 알맞은 표현을 고르시오.",
+                passage: "A: How is the weather in London today?\nB: __________________________________",
+                options: [
+                    "It is Sunday.",
+                    "I am in London now.",
+                    "It's sunny and warm.",
+                    "I like London very much."
+                ],
+                correctAnswer: 2, // It's sunny and warm.
+                explanation: {
+                    correct: "런던의 날씨('How is the weather~')를 묻고 있으므로, 날씨를 가리키는 비인칭 주어 It을 사용하여 날씨 상태('맑고 따뜻하다')를 표현한 응답이 가장 정답에 가깝습니다.",
+                    wrong: [
+                        "'It is Sunday.'는 요일(일요일)을 말하는 표현이므로 오답입니다.",
+                        "'I am in London now.'는 본인의 현재 위치를 뜻하므로 날씨에 대한 답변이 아닙니다.",
+                        "'I like London very much.'는 런던에 대한 본인의 기호를 나타내므로 오답입니다."
+                    ]
+                }
+            },
+            {
+                id: 14,
+                category: "문법 (전치사)",
+                title: "다음 문장의 빈칸에 들어갈 전치사가 순서대로 바르게 짝지어진 것은?",
+                passage: "• The concert starts _______ 7 p.m.\n• My school festival is _______ October.",
+                options: [
+                    "at - in",
+                    "on - at",
+                    "in - on",
+                    "at - on"
+                ],
+                correctAnswer: 0, // at - in
+                explanation: {
+                    correct: "구체적인 시각(7 p.m.) 앞에는 전치사 'at'을 쓰고, 월(October, 10월) 앞에는 전치사 'in'을 사용합니다. 따라서 'at - in'이 정답입니다.",
+                    wrong: [
+                        "첫 번째 빈칸에 on은 구체적인 날짜나 요일에 쓰이므로 'on 7 p.m.'은 어색하며, 두 번째 빈칸의 월 앞에는 at을 쓸 수 없습니다.",
+                        "첫 번째 빈칸의 시각 앞에는 in을 쓸 수 없고, 두 번째 월 앞에는 on을 쓸 수 없습니다 (예: on October 5th처럼 구체적 날짜가 있을 때만 on 사용).",
+                        "두 번째 빈칸의 월 앞에는 on이 아닌 in이 와야 합니다."
+                    ]
+                }
+            },
+            {
+                id: 15,
+                category: "어휘",
+                title: "다음 두 단어의 관계가 나머지 셋과 '다른' 하나를 고르시오.",
+                options: [
+                    "hot - cold",
+                    "large - small",
+                    "clean - dirty",
+                    "smart - clever"
+                ],
+                correctAnswer: 3, // smart - clever
+                explanation: {
+                    correct: "나머지 세 쌍은 모두 반대말(반의어) 관계이지만, 'smart(똑똑한)'와 'clever(영리한)'는 서로 뜻이 비슷한 유의어 관계입니다.",
+                    wrong: [
+                        "hot(더운)과 cold(추운)는 반대말 관계가 맞습니다.",
+                        "large(큰)와 small(작은)은 반대말 관계가 맞습니다.",
+                        "clean(깨끗한)과 dirty(더러운)는 반대말 관계가 맞습니다."
+                    ]
+                }
+            },
+            {
+                id: 16,
+                category: "의사소통 표현",
+                title: "다음 상황에서 사용할 수 있는 표현으로 가장 알맞은 것은?",
+                passage: "친구의 제안에 동의하지 않거나 거절하고 싶을 때 거절의 이유를 덧붙여 말하려 합니다.",
+                options: [
+                    "Sure. Why not?",
+                    "That sounds fun, but I can't.",
+                    "Of course. I'd love to.",
+                    "Yes, let's do that."
+                ],
+                correctAnswer: 1, // That sounds fun, but I can't.
+                explanation: {
+                    correct: "제안에 대해 거절의 뜻을 전할 때 부드럽게 '재미있을 것 같지만, 갈 수 없어(할 수 없어)'라고 사양하는 'That sounds fun, but I can't.'가 적합합니다.",
+                    wrong: [
+                        "'Sure. Why not?'은 완전한 수락의 의미입니다.",
+                        "'Of course. I'd love to.' 또한 '물론이지, 정말 그러고 싶어'라는 기쁜 승낙의 뜻입니다.",
+                        "'Yes, let's do that.'은 찬성하며 적극적으로 같이 하자고 동의하는 대답입니다."
+                    ]
+                }
+            },
+            {
+                id: 17,
+                category: "문법 (일반동사의 의문문)",
+                title: "다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?",
+                passage: "A: _______ you have any sisters?\nB: No, I _______.",
+                options: [
+                    "Are - am not",
+                    "Do - don't",
+                    "Does - doesn't",
+                    "Do - doesn't"
+                ],
+                correctAnswer: 1, // Do - don't
+                explanation: {
+                    correct: "주어가 2인칭 단수(you)이고 일반동사 'have'의 의문문이므로 조동사 'Do'로 물어야 하며, 부정 답변 시 대답 주어가 I이므로 'No, I don't.'가 됩니다.",
+                    wrong: [
+                        "일반동사 'have'의 의문문을 만들 때 be동사인 'Are'로 물어볼 수 없습니다.",
+                        "주어 'you'는 3인칭 단수가 아니므로 3인칭 단수형 조동사인 'Does'를 사용할 수 없습니다.",
+                        "주어 'you'에 맞게 Do로 물었다면 대답도 1인칭 'I'에 상응하는 'don't'로 받아야지, 3인칭 단수형인 'doesn't'를 쓸 수는 없습니다."
+                    ]
+                }
+            },
+            {
+                id: 18,
+                category: "문법 (지시 대명사)",
+                title: "다음 빈칸에 공통으로 알맞은 단어를 고르시오.",
+                passage: "• _______ books on the table are mine.\n• Who are _______ people over there?",
+                options: [
+                    "This",
+                    "That",
+                    "These",
+                    "Those"
+                ],
+                correctAnswer: 3, // Those
+                explanation: {
+                    correct: "두 번째 문장의 'over there(저쪽에)'를 통해 멀리 있는 대상들을 가리킴을 알 수 있고, 복수형 명사(books, people)를 수식해야 하므로, 복수 지시형용사 'Those(저 ~들)'가 가장 적절합니다.",
+                    wrong: [
+                        "'This'는 가까이 있는 단수 대상('이것')을 지칭할 때 사용하므로 복수 명사 앞에 올 수 없습니다.",
+                        "'That'은 멀리 있는 단수 대상('저것')을 뜻하므로 복수 명사 앞에 올 수 없습니다.",
+                        "'These'는 가까이 있는 복수 대상('이것들')을 가리킬 때 씁니다. 'over there(저기에)'와 의미가 조응하지 않습니다."
+                    ]
+                }
+            },
+            {
+                id: 19,
+                category: "독해",
+                title: "다음 글을 읽고 글쓴이의 고양이에 대해 알 수 '없는' 사실을 고르시오.",
+                passage: "I have a cute pet cat. Her name is Bella. She is two years old. She has beautiful blue eyes and soft white hair. She likes to sleep on my bed, and she loves eating fish.",
+                options: [
+                    "고양이의 이름",
+                    "고양이의 나이",
+                    "고양이를 분양받은 곳",
+                    "고양이가 좋아하는 음식"
+                ],
+                correctAnswer: 2, // 고양이를 분양받은 곳
+                explanation: {
+                    correct: "글 속에서 고양이를 어디서 분양받았는지 혹은 얻었는지에 대한 경로나 장소는 언급되지 않았습니다.",
+                    wrong: [
+                        "'Her name is Bella.'에서 고양이의 이름을 알 수 있습니다.",
+                        "'She is two years old.'에서 고양이의 나이(2살)를 알 수 있습니다.",
+                        "'she loves eating fish.'에서 좋아하는 음식(생선)을 알 수 있습니다."
+                    ]
+                }
+            },
+            {
+                id: 20,
+                category: "문법 (어순 및 종합)",
+                title: "다음 중 어법상 가장 '자연스러운' 문장을 고르시오.",
+                options: [
+                    "She does always her best.",
+                    "We always are kind to strangers.",
+                    "He always gets up early.",
+                    "Always they study English together."
+                ],
+                correctAnswer: 2, // He always gets up early.
+                explanation: {
+                    correct: "빈도부사(always)의 위치는 '조동사/be동사 뒤, 일반동사 앞(조뒤비뒤 일앞)'입니다. 'gets up'이라는 일반동사 앞에 위치한 'He always gets up early.'는 문법적으로 아주 자연스럽고 올바른 문장입니다.",
+                    wrong: [
+                        "does(일반동사) 앞 혹은 본동사 앞에 와야 하므로 'She always does her best'가 올바른 순서입니다.",
+                        "be동사(are) 뒤에 빈도부사가 와야 하므로 'We are always kind~'가 올바른 순서입니다.",
+                        "문장 맨 앞에 빈도부사가 무작위로 위치하는 것은 일반적이지 않습니다. 주어 뒤, 일반동사 앞인 'They always study~'가 알맞습니다."
+                    ]
+                }
+            }
+        ];
+
+        // --- APPLICATION STATE ---
+        let userAnswers = Array(questions.length).fill(null);
+        let currentIdx = 0;
+        let isSubmitted = false;
+        let startTime = null;
+        let timerInterval = null;
+
+        // --- DOM ELEMENTS ---
+        const startScreen = document.getElementById('start-screen');
+        const examScreen = document.getElementById('exam-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const timerDisplay = document.getElementById('timer-display');
+        const timerBadge = document.getElementById('timer-badge');
+
+        const btnStart = document.getElementById('btn-start');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnQuickSubmit = document.getElementById('btn-quick-submit');
+        const btnRestart = document.getElementById('btn-restart');
+
+        const statusGrid = document.getElementById('status-grid');
+        const progressText = document.getElementById('progress-text');
+        
+        const questionCard = document.getElementById('question-card');
+        const questionCategory = document.getElementById('question-category');
+        const questionNumberBadge = document.getElementById('question-number-badge');
+        const passageContainer = document.getElementById('passage-container');
+        const questionTitle = document.getElementById('question-title');
+        const optionsContainer = document.getElementById('options-container');
+
+        const scoreDisplay = document.getElementById('score-display');
+        const correctCountDisplay = document.getElementById('correct-count-display');
+        const timeSpentDisplay = document.getElementById('time-spent-display');
+        const detailedReviewsContainer = document.getElementById('detailed-reviews-container');
+
+        // Modal Elements
+        const alertModal = document.getElementById('alert-modal');
+        const modalIconContainer = document.getElementById('modal-icon-container');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalBtnConfirm = document.getElementById('modal-btn-confirm');
+        const modalActions = document.getElementById('modal-actions');
+
+        // --- EVENT LISTENERS ---
+        btnStart.addEventListener('click', startExam);
+        btnPrev.addEventListener('click', () => navigateQuestion(currentIdx - 1));
+        btnNext.addEventListener('click', handleNextButton);
+        btnQuickSubmit.addEventListener('click', promptSubmit);
+        btnRestart.addEventListener('click', restartExam);
+        modalBtnConfirm.addEventListener('click', closeModal);
+
+        // --- FUNCTIONS ---
+
+        // Custom Modal Alert Helper
+        function showAlert(title, message, type = 'info', onConfirm = null) {
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+            
+            // Stylize Icon and Background
+            if (type === 'success') {
+                modalIconContainer.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-emerald-50 text-emerald-600 border border-emerald-100";
+                modalIconContainer.innerHTML = '<i class="fa-solid fa-circle-check text-2xl"></i>';
+            } else if (type === 'warning') {
+                modalIconContainer.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-amber-50 text-amber-600 border border-amber-100";
+                modalIconContainer.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-2xl"></i>';
+            } else if (type === 'confirm') {
+                modalIconContainer.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-indigo-50 text-indigo-600 border border-indigo-100";
+                modalIconContainer.innerHTML = '<i class="fa-solid fa-circle-question text-2xl"></i>';
+            } else {
+                modalIconContainer.className = "mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-indigo-50 text-indigo-600 border border-indigo-100";
+                modalIconContainer.innerHTML = '<i class="fa-solid fa-circle-info text-2xl"></i>';
+            }
+
+            // Customize Action Buttons
+            if (type === 'confirm') {
+                modalActions.innerHTML = `
+                    <button id="modal-cancel-btn" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-colors">취소</button>
+                    <button id="modal-confirm-btn" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors">확인</button>
+                `;
+                document.getElementById('modal-cancel-btn').onclick = closeModal;
+                document.getElementById('modal-confirm-btn').onclick = () => {
+                    closeModal();
+                    if (onConfirm) onConfirm();
+                };
+            } else {
+                modalActions.innerHTML = `
+                    <button id="modal-ok-btn" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors">확인</button>
+                `;
+                document.getElementById('modal-ok-btn').onclick = () => {
+                    closeModal();
+                    if (onConfirm) onConfirm();
+                };
+            }
+
+            alertModal.classList.remove('hidden');
+            setTimeout(() => {
+                alertModal.firstElementChild.classList.remove('scale-95');
+                alertModal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            alertModal.firstElementChild.classList.remove('scale-100');
+            alertModal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => {
+                alertModal.classList.add('hidden');
+            }, 150);
+        }
+
+        // Initialize Timer
+        function startTimer() {
+            startTime = Date.now();
+            updateTimerDisplay();
+            timerInterval = setInterval(updateTimerDisplay, 1000);
+            timerBadge.classList.remove('hidden');
+        }
+
+        function updateTimerDisplay() {
+            const elapsedMs = Date.now() - startTime;
+            const totalSeconds = Math.floor(elapsedMs / 1000);
+            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+            const seconds = String(totalSeconds % 60).padStart(2, '0');
+            timerDisplay.innerText = `${minutes}:${seconds}`;
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function getFormattedTime() {
+            const elapsedMs = Date.now() - startTime;
+            const totalSeconds = Math.floor(elapsedMs / 1000);
+            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+            const seconds = String(totalSeconds % 60).padStart(2, '0');
+            return `${minutes}분 ${seconds}초`;
+        }
+
+        // Start Exam
+        function startExam() {
+            userAnswers = Array(questions.length).fill(null);
+            currentIdx = 0;
+            isSubmitted = false;
+            
+            startScreen.classList.add('hidden');
+            examScreen.classList.remove('hidden');
+            resultScreen.classList.add('hidden');
+
+            buildStatusGrid();
+            renderQuestion();
+            startTimer();
+        }
+
+        // Sidebar Navigation Map builder
+        function buildStatusGrid() {
+            statusGrid.innerHTML = '';
+            for (let i = 0; i < questions.length; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.id = `status-dot-${i}`;
+                btn.className = "w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs border transition-all duration-200 " + getStatusDotClass(i);
+                btn.innerText = i + 1;
+                btn.addEventListener('click', () => navigateQuestion(i));
+                statusGrid.appendChild(btn);
+            }
+            updateProgressText();
+        }
+
+        function getStatusDotClass(index) {
+            if (currentIdx === index) {
+                return "border-indigo-600 bg-indigo-50 text-indigo-700 ring-2 ring-indigo-100 shadow-sm";
+            } else if (userAnswers[index] !== null) {
+                return "border-slate-300 bg-slate-100 text-slate-800";
+            } else {
+                return "border-slate-200 bg-white text-slate-400 hover:border-slate-300 hover:bg-slate-50";
+            }
+        }
+
+        function updateProgressText() {
+            const completedCount = userAnswers.filter(ans => ans !== null).length;
+            progressText.innerText = `${completedCount} / ${questions.length} 완료`;
+        }
+
+        // Render Active Question
+        function renderQuestion() {
+            const q = questions[currentIdx];
+
+            // Setup Badge, category and numbers
+            questionCategory.innerText = q.category;
+            questionNumberBadge.innerText = `Question ${currentIdx + 1} of ${questions.length}`;
+            
+            // Title
+            questionTitle.innerText = q.title;
+
+            // Optional Passage box
+            if (q.passage) {
+                passageContainer.innerHTML = q.passage;
+                passageContainer.classList.remove('hidden');
+            } else {
+                passageContainer.classList.add('hidden');
+                passageContainer.innerHTML = '';
+            }
+
+            // Options container building
+            optionsContainer.innerHTML = '';
+            q.options.forEach((opt, oIdx) => {
+                const isSelected = userAnswers[currentIdx] === oIdx;
+                
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `w-full text-left p-4 rounded-xl border flex items-center justify-between transition-all group ${
+                    isSelected 
+                    ? 'border-indigo-600 bg-indigo-50/50 text-indigo-900 font-semibold ring-1 ring-indigo-200 shadow-sm' 
+                    : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+                }`;
+                
+                // Click behavior
+                btn.addEventListener('click', () => selectOption(oIdx));
+
+                // Left Content: Option Label Indicator and Option Text
+                const contentDiv = document.createElement('div');
+                contentDiv.className = "flex items-center space-x-3";
+
+                const badge = document.createElement('span');
+                badge.className = `w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${
+                    isSelected
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
+                }`;
+                badge.innerText = oIdx + 1;
+
+                const textSpan = document.createElement('span');
+                textSpan.className = "text-sm md:text-base";
+                textSpan.innerText = opt;
+
+                contentDiv.appendChild(badge);
+                contentDiv.appendChild(textSpan);
+                btn.appendChild(contentDiv);
+
+                // Right Content: Select Indicator Circle
+                const circle = document.createElement('span');
+                circle.className = `w-5 h-5 rounded-full border flex items-center justify-center text-xs ${
+                    isSelected
+                    ? 'border-indigo-600 bg-indigo-600 text-white'
+                    : 'border-slate-300 bg-white group-hover:border-slate-400'
+                }`;
+                if (isSelected) {
+                    circle.innerHTML = '<i class="fa-solid fa-check"></i>';
+                }
+                btn.appendChild(circle);
+
+                optionsContainer.appendChild(btn);
+            });
+
+            // Update footer controls
+            btnPrev.disabled = currentIdx === 0;
+            if (currentIdx === 0) {
+                btnPrev.classList.add('opacity-40', 'cursor-not-allowed');
+            } else {
+                btnPrev.classList.remove('opacity-40', 'cursor-not-allowed');
+            }
+
+            if (currentIdx === questions.length - 1) {
+                btnNext.innerHTML = '<span>제출하기</span> <i class="fa-solid fa-paper-plane text-xs"></i>';
+                btnNext.className = "px-5 py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors";
+            } else {
+                btnNext.innerHTML = '<span>다음 문제</span> <i class="fa-solid fa-chevron-right"></i>';
+                btnNext.className = "px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors";
+            }
+
+            // Sync visual active dot in sidebar
+            for (let i = 0; i < questions.length; i++) {
+                const dot = document.getElementById(`status-dot-${i}`);
+                if (dot) {
+                    dot.className = "w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs border transition-all duration-200 " + getStatusDotClass(i);
+                }
+            }
+        }
+
+        // Pick Answer Option
+        function selectOption(optionIndex) {
+            userAnswers[currentIdx] = optionIndex;
+            
+            // Re-render immediately to show visual change
+            renderQuestion();
+            updateProgressText();
+        }
+
+        // Navigation Controller
+        function navigateQuestion(targetIndex) {
+            if (targetIndex >= 0 && targetIndex < questions.length) {
+                currentIdx = targetIndex;
+                renderQuestion();
+            }
+        }
+
+        function handleNextButton() {
+            if (currentIdx === questions.length - 1) {
+                promptSubmit();
+            } else {
+                navigateQuestion(currentIdx + 1);
+            }
+        }
+
+        // Submitting Exam Process
+        function promptSubmit() {
+            const unanswered = [];
+            userAnswers.forEach((ans, idx) => {
+                if (ans === null) unanswered.push(idx + 1);
+            });
+
+            if (unanswered.length > 0) {
+                showAlert(
+                    "풀지 않은 문제 있음", 
+                    `아직 풀지 않은 문제가 있습니다: ${unanswered.join(', ')}번\n그래도 제출하고 채점하시겠습니까?`, 
+                    'warning', 
+                    processSubmit
+                );
+            } else {
+                showAlert(
+                    "답안 제출", 
+                    "시험을 종료하고 답안을 제출하시겠습니까?", 
+                    'confirm', 
+                    processSubmit
+                );
+            }
+        }
+
+        function processSubmit() {
+            stopTimer();
+            isSubmitted = true;
+            
+            // Calculate Score
+            let correctCount = 0;
+            questions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correctAnswer) {
+                    correctCount++;
+                }
+            });
+
+            const rawScore = Math.round((correctCount / questions.length) * 100);
+
+            // Hide exam screen, show result
+            examScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            timerBadge.classList.add('hidden');
+
+            // Render stats
+            scoreDisplay.innerText = rawScore;
+            correctCountDisplay.innerText = correctCount;
+            timeSpentDisplay.innerText = getFormattedTime();
+
+            // Render Detailed Analysis Review
+            renderReviews();
+        }
+
+        // Render Explanations Screen (오답 및 정답 이유 상세 해설 생성)
+        function renderReviews() {
+            detailedReviewsContainer.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const uAnswer = userAnswers[idx];
+                const isCorrect = uAnswer === q.correctAnswer;
+
+                const card = document.createElement('div');
+                card.className = `bg-white border rounded-2xl p-6 shadow-sm overflow-hidden ${
+                    isCorrect 
+                    ? 'border-emerald-200 bg-gradient-to-br from-white to-emerald-50/10' 
+                    : 'border-rose-200 bg-gradient-to-br from-white to-rose-50/10'
+                }`;
+
+                // Header status
+                const headDiv = document.createElement('div');
+                headDiv.className = "flex justify-between items-start mb-4";
+                
+                const qNumSpan = document.createElement('span');
+                qNumSpan.className = "font-bold text-slate-900";
+                qNumSpan.innerText = `${idx + 1}번 문제 [${q.category}]`;
+
+                const badge = document.createElement('span');
+                if (isCorrect) {
+                    badge.className = "bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 border border-emerald-200";
+                    badge.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>정답</span>';
+                } else {
+                    badge.className = "bg-rose-100 text-rose-800 text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 border border-rose-200";
+                    badge.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span>오답</span>';
+                }
+
+                headDiv.appendChild(qNumSpan);
+                headDiv.appendChild(badge);
+                card.appendChild(headDiv);
+
+                // Passage (if exists)
+                if (q.passage) {
+                    const passDiv = document.createElement('div');
+                    passDiv.className = "p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs md:text-sm font-medium leading-relaxed mb-4 whitespace-pre-wrap";
+                    passDiv.innerHTML = q.passage;
+                    card.appendChild(passDiv);
+                }
+
+                // Question Title
+                const titlePara = document.createElement('p');
+                titlePara.className = "text-sm md:text-base font-bold text-slate-800 mb-4";
+                titlePara.innerText = q.title;
+                card.appendChild(titlePara);
+
+                // Option review items
+                const optsGrid = document.createElement('div');
+                optsGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-6";
+
+                q.options.forEach((opt, oIdx) => {
+                    const item = document.createElement('div');
+                    
+                    let bgBorderClass = "border-slate-200 text-slate-600";
+                    let iconMarkup = "";
+
+                    // User selected this
+                    const isUserSelected = uAnswer === oIdx;
+                    // Is this the actual correct option
+                    const isActualCorrect = q.correctAnswer === oIdx;
+
+                    if (isActualCorrect) {
+                        bgBorderClass = "border-emerald-300 bg-emerald-50 text-emerald-900 font-semibold";
+                        iconMarkup = '<span class="text-xs bg-emerald-500 text-white rounded px-1.5 py-0.5 ml-2 font-bold">정답</span>';
+                    } else if (isUserSelected) {
+                        bgBorderClass = "border-rose-300 bg-rose-50 text-rose-900 font-semibold";
+                        iconMarkup = '<span class="text-xs bg-rose-500 text-white rounded px-1.5 py-0.5 ml-2 font-bold">내 답</span>';
+                    }
+
+                    item.className = `p-3 rounded-xl border text-xs md:text-sm flex items-center justify-between ${bgBorderClass}`;
+                    item.innerHTML = `
+                        <div class="flex items-center space-x-2">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">${oIdx + 1}</span>
+                            <span>${opt}</span>
+                        </div>
+                        <div>${iconMarkup}</div>
+                    `;
+                    optsGrid.appendChild(item);
+                });
+                card.appendChild(optsGrid);
+
+                // Explanations Box
+                const explanationBox = document.createElement('div');
+                explanationBox.className = "bg-indigo-50/40 rounded-xl p-4 md:p-5 border border-indigo-100 text-xs md:text-sm text-slate-700 space-y-3";
+                
+                // Why it is correct
+                explanationBox.innerHTML = `
+                    <div>
+                        <p class="font-bold text-indigo-900 flex items-center space-x-1.5 mb-1.5">
+                            <i class="fa-solid fa-lightbulb text-indigo-500"></i>
+                            <span>왜 ${q.correctAnswer + 1}번이 정답일까요?</span>
+                        </p>
+                        <p class="leading-relaxed text-slate-600 pl-5">${q.explanation.correct}</p>
+                    </div>
+                `;
+
+                // Why others are wrong
+                const wrongsListDiv = document.createElement('div');
+                wrongsListDiv.className = "pt-2 border-t border-indigo-100/60";
+                wrongsListDiv.innerHTML = `
+                    <p class="font-bold text-slate-800 flex items-center space-x-1.5 mb-2">
+                        <i class="fa-solid fa-circle-xmark text-rose-400"></i>
+                        <span>나머지 번호가 오답인 이유:</span>
+                    </p>
+                `;
+
+                const listUl = document.createElement('ul');
+                listUl.className = "space-y-1.5 pl-5 list-disc text-slate-500 leading-relaxed";
+
+                let wrongCounter = 0;
+                q.options.forEach((opt, oIdx) => {
+                    if (oIdx !== q.correctAnswer) {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong class="text-slate-600">${oIdx + 1}번:</strong> ${q.explanation.wrong[wrongCounter]}`;
+                        listUl.appendChild(li);
+                        wrongCounter++;
+                    }
+                });
+
+                wrongsListDiv.appendChild(listUl);
+                explanationBox.appendChild(wrongsListDiv);
+                
+                card.appendChild(explanationBox);
+                detailedReviewsContainer.appendChild(card);
+            });
+        }
+
+        // Restart Exam Setup
+        function restartExam() {
+            showAlert(
+                "시험 재시작", 
+                "다시 시험에 응시하시겠습니까? 기존 기록은 소멸됩니다.", 
+                'confirm', 
+                () => {
+                    startExam();
+                }
+            );
+        }
+    </script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-meal-app">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>숭의여자중학교 오늘의 급식</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            peach: {
+              50: "#fff6f1",
+              100: "#ffece3",
+              200: "#ffd5c3",
+              300: "#ffb295",
+              400: "#ff845e",
+              500: "#ff5c2e"
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .font-jua {
+      font-family: "Jua", sans-serif;
+    }
+
+    /* 급식 메뉴의 줄바꿈을 화면에 반영 */
+    .menu-text {
+      white-space: pre-line;
+    }
+
+    .card-hover {
+      transition:
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-peach-50 to-orange-50 min-h-screen flex items-center justify-center p-4">
+
+  <!-- 메인 카드 -->
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-peach-100 overflow-hidden card-hover">
+
+    <!-- 상단 영역 -->
+    <header class="bg-gradient-to-r from-peach-300 to-peach-400 p-6 text-center text-white relative">
+
+      <div class="absolute top-2 right-4 text-3xl opacity-20">
+        🍳
+      </div>
+
+      <div class="absolute bottom-2 left-4 text-3xl opacity-20">
+        🍓
+      </div>
+
+      <p class="text-xs font-semibold tracking-wider bg-white/20 inline-block px-3 py-1 rounded-full mb-2">
+        오늘 뭐 먹지? 😋
+      </p>
+
+      <h1 class="text-2xl font-jua tracking-wide drop-shadow-md">
+        🏫 숭의여자중학교 오늘의 급식
+      </h1>
+    </header>
+
+    <!-- 입력 및 결과 영역 -->
+    <main class="p-6 space-y-6">
+
+      <!-- 날짜 선택 -->
+      <section class="bg-peach-50 p-4 rounded-2xl border border-peach-100">
+
+        <label
+          for="meal-date"
+          class="block text-xs font-semibold text-peach-500 mb-1.5 ml-1"
+        >
+          날짜를 골라주세요 👇
+        </label>
+
+        <div class="flex items-center gap-2">
+
+          <input
+            type="date"
+            id="meal-date"
+            class="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-peach-200 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-peach-400 focus:border-transparent text-sm bg-white cursor-pointer"
+          >
+
+          <button
+            type="button"
+            id="search-btn"
+            class="bg-peach-400 hover:bg-peach-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-peach-200 active:scale-95 transition-all duration-150 text-sm whitespace-nowrap"
+          >
+            급식 조회
+          </button>
+
+        </div>
+      </section>
+
+      <!-- 로딩 화면 -->
+      <section
+        id="loading-spinner"
+        class="hidden py-12 text-center"
+        aria-live="polite"
+      >
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-peach-400 border-t-transparent mb-3"></div>
+
+        <p class="text-sm text-gray-500 font-medium">
+          급식 요리사가 식단을 찾고 있어요... 👩‍🍳
+        </p>
+      </section>
+
+      <!-- 오류 및 급식 없음 -->
+      <section
+        id="error-card"
+        class="hidden bg-red-50 border border-red-200 rounded-2xl p-5 text-center"
+        aria-live="polite"
+      >
+        <div class="text-3xl mb-2">
+          🥣
+        </div>
+
+        <p
+          id="error-message"
+          class="text-red-500 font-semibold text-sm leading-relaxed"
+        >
+          오늘은 급식이 없습니다.
+        </p>
+
+        <p class="text-xs text-red-400 mt-1">
+          주말, 공휴일 또는 방학 기간일 수 있어요.
+        </p>
+      </section>
+
+      <!-- 급식 결과 -->
+      <section
+        id="meal-card"
+        class="hidden space-y-5"
+        aria-live="polite"
+      >
+
+        <!-- 칼로리 -->
+        <div class="bg-gradient-to-r from-orange-50 to-peach-50 border border-peach-100 rounded-2xl p-4 flex justify-between items-center">
+
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🔥</span>
+
+            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              오늘의 칼로리
+            </span>
+          </div>
+
+          <span
+            id="meal-calories"
+            class="font-jua text-lg text-peach-500 tracking-wide"
+          >
+            칼로리 정보 없음
+          </span>
+
+        </div>
+
+        <!-- 식단 메뉴 -->
+        <div class="bg-white border-2 border-dashed border-peach-200 rounded-2xl p-5 relative overflow-hidden">
+
+          <div class="absolute -right-2 -bottom-2 text-5xl opacity-5 pointer-events-none">
+            🍴
+          </div>
+
+          <div class="border-b border-peach-100 pb-3 mb-4 flex justify-between items-center">
+
+            <h2 class="font-jua text-lg text-peach-500 flex items-center gap-1.5">
+              <span>🍱</span>
+              오늘의 식단 메뉴
+            </h2>
+
+            <span class="text-[10px] bg-peach-100 text-peach-500 font-bold px-2 py-0.5 rounded-full">
+              중식
+            </span>
+
+          </div>
+
+          <p
+            id="meal-menu"
+            class="menu-text text-gray-700 font-medium text-base text-center leading-loose tracking-wide py-2"
+          >
+            맛있는 급식 준비 중...
+          </p>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 하단 -->
+    <footer class="bg-gray-50 py-4 px-6 border-t border-gray-100 text-center text-[11px] text-gray-400">
+      ❤️ 본 앱은 숭의여자중학교 학생들을 위해 제작되었습니다. ❤️
+      <br>
+      <span class="opacity-80">
+        숭의여중 급식 알리미 v1.0.0
+      </span>
+    </footer>
+
+  </div>
+
+  <script>
+    /*
+     * 나이스 교육정보 개방포털 급식 API 설정
+     *
+     * 교육청 코드 B10:
+     * 서울특별시교육청
+     *
+     * 학교 코드 7132148:
+     * 숭의여자중학교
+     */
+    const API_URL =
+      "https://open.neis.go.kr/hub/mealServiceDietInfo";
+
+    const API_KEY =
+      "fa321714b05546ad82fc4bf29b3a20ef";
+
+    const EDUCATION_OFFICE_CODE = "B10";
+    const SCHOOL_CODE = "7132148";
+
+    // 화면 요소
+    const dateInput =
+      document.getElementById("meal-date");
+
+    const searchBtn =
+      document.getElementById("search-btn");
+
+    const loadingSpinner =
+      document.getElementById("loading-spinner");
+
+    const errorCard =
+      document.getElementById("error-card");
+
+    const errorMessage =
+      document.getElementById("error-message");
+
+    const mealCard =
+      document.getElementById("meal-card");
+
+    const mealCalories =
+      document.getElementById("meal-calories");
+
+    const mealMenu =
+      document.getElementById("meal-menu");
+
+    /*
+     * 오늘 날짜를 YYYY-MM-DD 형식으로 반환
+     */
+    function getTodayDateString() {
+      const today = new Date();
+
+      const year = today.getFullYear();
+
+      const month = String(
+        today.getMonth() + 1
+      ).padStart(2, "0");
+
+      const day = String(
+        today.getDate()
+      ).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+    }
+
+    /*
+     * YYYY-MM-DD를 YYYYMMDD로 변환
+     */
+    function convertDateToYYYYMMDD(dateString) {
+      return dateString.replace(/-/g, "");
+    }
+
+    /*
+     * 나이스 급식 메뉴에 포함된 HTML 줄바꿈과
+     * 일부 특수문자를 일반 텍스트로 변환
+     */
+    function cleanMenuText(menuText) {
+      return String(menuText || "")
+        .replace(/<br\s*\/?\s*>/gi, "\n")
+        .replace(/&amp;/gi, "&")
+        .replace(/&lt;/gi, "<")
+        .replace(/&gt;/gi, ">")
+        .replace(/&quot;/gi, "\"")
+        .replace(/&#39;/gi, "'");
+    }
+
+    /*
+     * API 오류 메시지를 확인
+     */
+    function getApiMessage(data) {
+      if (data?.RESULT?.MESSAGE) {
+        return data.RESULT.MESSAGE;
+      }
+
+      const head =
+        data?.mealServiceDietInfo?.[0]?.head;
+
+      if (Array.isArray(head)) {
+        const resultItem = head.find(
+          (item) => item.RESULT
+        );
+
+        if (resultItem?.RESULT?.MESSAGE) {
+          return resultItem.RESULT.MESSAGE;
+        }
+      }
+
+      return "";
+    }
+
+    /*
+     * 로딩 화면 표시
+     */
+    function showLoading() {
+      mealCard.classList.add("hidden");
+      errorCard.classList.add("hidden");
+      loadingSpinner.classList.remove("hidden");
+      searchBtn.disabled = true;
+
+      searchBtn.classList.add(
+        "opacity-60",
+        "cursor-not-allowed"
+      );
+
+      searchBtn.textContent = "조회 중";
+    }
+
+    /*
+     * 급식 결과 표시
+     */
+    function showMeal(menu, calories) {
+      loadingSpinner.classList.add("hidden");
+      errorCard.classList.add("hidden");
+      mealCard.classList.remove("hidden");
+
+      mealMenu.textContent =
+        menu || "메뉴 정보가 없습니다.";
+
+      mealCalories.textContent =
+        calories || "칼로리 정보 없음";
+
+      searchBtn.disabled = false;
+
+      searchBtn.classList.remove(
+        "opacity-60",
+        "cursor-not-allowed"
+      );
+
+      searchBtn.textContent = "급식 조회";
+    }
+
+    /*
+     * 급식 없음 또는 오류 표시
+     */
+    function showError(message) {
+      loadingSpinner.classList.add("hidden");
+      mealCard.classList.add("hidden");
+      errorCard.classList.remove("hidden");
+
+      errorMessage.textContent = message;
+
+      searchBtn.disabled = false;
+
+      searchBtn.classList.remove(
+        "opacity-60",
+        "cursor-not-allowed"
+      );
+
+      searchBtn.textContent = "급식 조회";
+    }
+
+    /*
+     * 나이스 API에서 급식 정보 조회
+     */
+    async function fetchMealData(selectedDate) {
+      if (!selectedDate) {
+        showError("조회할 날짜를 선택해 주세요.");
+        return;
+      }
+
+      showLoading();
+
+      const mealDate =
+        convertDateToYYYYMMDD(selectedDate);
+
+      const parameters = new URLSearchParams({
+        KEY: API_KEY,
+        Type: "json",
+        pIndex: "1",
+        pSize: "10",
+        ATPT_OFCDC_SC_CODE:
+          EDUCATION_OFFICE_CODE,
+        SD_SCHUL_CODE:
+          SCHOOL_CODE,
+        MLSV_YMD:
+          mealDate
+      });
+
+      const apiEndpoint =
+        `${API_URL}?${parameters.toString()}`;
+
+      try {
+        const response =
+          await fetch(apiEndpoint);
+
+        if (!response.ok) {
+          throw new Error(
+            `HTTP 오류: ${response.status}`
+          );
+        }
+
+        const data =
+          await response.json();
+
+        const mealRows =
+          data?.mealServiceDietInfo?.[1]?.row;
+
+        if (
+          !Array.isArray(mealRows) ||
+          mealRows.length === 0
+        ) {
+          const apiMessage =
+            getApiMessage(data);
+
+          if (
+            apiMessage.includes(
+              "해당하는 데이터가 없습니다"
+            )
+          ) {
+            showError(
+              "선택한 날짜에는 급식이 없습니다."
+            );
+          } else {
+            showError(
+              apiMessage ||
+              "선택한 날짜에는 급식이 없습니다."
+            );
+          }
+
+          return;
+        }
+
+        /*
+         * 같은 날짜에 조식·중식·석식이 함께 조회될 경우
+         * 중식(MMEAL_SC_CODE 2)을 우선 선택
+         */
+        const lunch =
+          mealRows.find(
+            (meal) =>
+              String(meal.MMEAL_SC_CODE) === "2"
+          ) || mealRows[0];
+
+        const menu =
+          cleanMenuText(lunch.DDISH_NM);
+
+        const calories =
+          lunch.CAL_INFO;
+
+        showMeal(menu, calories);
+
+      } catch (error) {
+        console.error(
+          "급식 정보 조회 오류:",
+          error
+        );
+
+        showError(
+          "급식 정보를 가져오지 못했습니다. 잠시 후 다시 조회해 주세요."
+        );
+      }
+    }
+
+    /*
+     * 조회 버튼
+     */
+    searchBtn.addEventListener(
+      "click",
+      function () {
+        if (!dateInput.value) {
+          dateInput.focus();
+          return;
+        }
+
+        fetchMealData(dateInput.value);
+      }
+    );
+
+    /*
+     * 날짜 변경 시 자동 조회
+     */
+    dateInput.addEventListener(
+      "change",
+      function () {
+        if (dateInput.value) {
+          fetchMealData(dateInput.value);
+        }
+      }
+    );
+
+    /*
+     * 페이지가 열리면 오늘 급식을 자동 조회
+     */
+    window.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        const todayDate =
+          getTodayDateString();
+
+        dateInput.value =
+          todayDate;
+
+        fetchMealData(todayDate);
+      }
+    );
+  </script>
+
+</body>
+</html>
+    </template>
+    <script>
+        const STUDENT_INFO = { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -290,46 +1883,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS.find(function(s) { return s.name === '신세영'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -338,75 +1899,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
-                // Built-in Genuine Student Projects
-        const DEFAULT_STUDENT_DATA = {
-            's_3_6_chaeyeon': {
-                'quiz': {
-                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                },
-                'meal-app': {
-                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                }
-            }
-        };
-
-        const DEFAULT_STUDENT_DATA = {
-  "quiz": {
-    "title": "중1 영어 1학기 기말고사 모의고사",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>중1 영어 1학기 기말고사 모의고사</title>\n    <!-- Tailwind CSS CDN -->\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <!-- Font Awesome Icons -->\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');\n        body {\n            font-family: 'Noto Sans KR', sans-serif;\n        }\n    </style>\n</head>\n<body class=\"bg-slate-50 text-slate-800 min-h-screen flex flex-col\">\n\n    <!-- Header -->\n    <header class=\"bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm\">\n        <div class=\"max-w-6xl mx-auto px-4 py-4 flex justify-between items-center\">\n            <div class=\"flex items-center space-x-3\">\n                <div class=\"bg-indigo-600 text-white p-2.5 rounded-xl shadow-md\">\n                    <i class=\"fa-solid fa-graduation-cap text-xl\"></i>\n                </div>\n                <div>\n                    <h1 class=\"text-lg font-bold text-slate-900 leading-tight\">중1 영어 1학기 기말고사</h1>\n                    <p class=\"text-xs text-indigo-600 font-semibold\">실전 대비 모의고사 (난이도: 중급)</p>\n                </div>\n            </div>\n            <div class=\"text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full\" id=\"timer-badge\">\n                <i class=\"fa-regular fa-clock mr-1 text-slate-600\"></i> <span id=\"timer-display\">00:00</span>\n            </div>\n        </div>\n    </header>\n\n    <!-- Main Content Container -->\n    <main class=\"flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-10 flex flex-col\">\n        \n        <!-- START SCREEN -->\n        <div id=\"start-screen\" class=\"bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 text-center max-w-2xl mx-auto my-auto animate-fade-in\">\n            <span class=\"inline-block bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full mb-4\">Middle School Grade 1</span>\n            <h2 class=\"text-2xl md:text-3xl font-extrabold text-slate-950 mb-3\">1학기 기말고사 완벽 대비!</h2>\n            <p class=\"text-slate-500 mb-8 leading-relaxed text-sm md:text-base\">\n                중학교 1학년 1학기 과정에서 꼭 출제되는 빈출 문법, 어휘, 대화 표현, 독해 영역의 중급 난이도 20문항입니다. 문제를 푼 뒤 바로 결과를 확인하고, 오답 노트 기능으로 취약점을 보완해보세요.\n            </p>\n            \n            <div class=\"grid grid-cols-2 gap-4 mb-8 text-left max-w-md mx-auto\">\n                <div class=\"bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3\">\n                    <i class=\"fa-solid fa-list-ol text-indigo-600 text-lg\"></i>\n                    <div>\n                        <p class=\"text-xs text-slate-400\">문항 수</p>\n                        <p class=\"text-sm font-bold text-slate-800\">20문제 (객관식)</p>\n                    </div>\n                </div>\n                <div class=\"bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3\">\n                    <i class=\"fa-solid fa-gauge-high text-indigo-600 text-lg\"></i>\n                    <div>\n                        <p class=\"text-xs text-slate-400\">난이도</p>\n                        <p class=\"text-sm font-bold text-slate-800\">중급 (기초~응용)</p>\n                    </div>\n                </div>\n                <div class=\"bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-center space-x-3 col-span-2\">\n                    <i class=\"fa-solid fa-circle-check text-indigo-600 text-lg\"></i>\n                    <div>\n                        <p class=\"text-xs text-slate-400\">특별 혜택</p>\n                        <p class=\"text-sm font-bold text-slate-800\">모든 선택지 상세 해설 및 오답 이유 제공</p>\n                    </div>\n                </div>\n            </div>\n\n            <button id=\"btn-start\" class=\"w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-indigo-200 transition-all duration-200 transform hover:-translate-y-0.5\">\n                시험 시작하기 <i class=\"fa-solid fa-arrow-right ml-2\"></i>\n            </button>\n        </div>\n\n        <!-- EXAM SCREEN -->\n        <div id=\"exam-screen\" class=\"hidden grid grid-cols-1 lg:grid-cols-4 gap-6 items-start\">\n            \n            <!-- Question Status Sidebar (Desktop) -->\n            <div class=\"lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm sticky top-24\">\n                <h3 class=\"text-sm font-bold text-slate-900 mb-4 flex items-center justify-between\">\n                    <span>답안지 현황</span>\n                    <span class=\"text-xs text-slate-500\" id=\"progress-text\">0 / 20 완료</span>\n                </h3>\n                <div class=\"grid grid-cols-5 gap-2 mb-6\" id=\"status-grid\">\n                    <!-- Dynamic generation of 20 question buttons -->\n                </div>\n                <button id=\"btn-quick-submit\" class=\"w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-md transition-colors text-sm flex items-center justify-center space-x-2\">\n                    <i class=\"fa-solid fa-paper-plane\"></i>\n                    <span>최종 답안 제출하기</span>\n                </button>\n            </div>\n\n            <!-- Active Question & Navigation -->\n            <div class=\"lg:col-span-3 flex flex-col space-y-6\">\n                <!-- Question Card -->\n                <div class=\"bg-white border border-slate-200 rounded-3xl shadow-md p-6 md:p-8\" id=\"question-card\">\n                    \n                    <!-- Category & Info -->\n                    <div class=\"flex justify-between items-center mb-5\">\n                        <span id=\"question-category\" class=\"bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full\">\n                            문법\n                        </span>\n                        <span id=\"question-number-badge\" class=\"text-sm font-semibold text-slate-400\">\n                            Question 1 of 20\n                        </span>\n                    </div>\n\n                    <!-- Reading Passage Box (Hidden by default, shown if question has it) -->\n                    <div id=\"passage-container\" class=\"hidden mb-6 p-5 bg-slate-50 rounded-2xl border border-slate-200 text-slate-700 font-medium leading-relaxed whitespace-pre-wrap\">\n                        <!-- Passage text will go here -->\n                    </div>\n\n                    <!-- Question Title -->\n                    <h2 id=\"question-title\" class=\"text-lg md:text-xl font-bold text-slate-900 mb-6 leading-snug\">\n                        <!-- Question text here -->\n                    </h2>\n\n                    <!-- Options (1-4) -->\n                    <div class=\"space-y-3\" id=\"options-container\">\n                        <!-- Dynamic Options will go here -->\n                    </div>\n                </div>\n\n                <!-- Footer Navigation Buttons -->\n                <div class=\"flex justify-between items-center\">\n                    <button id=\"btn-prev\" class=\"px-5 py-3 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl flex items-center space-x-2 transition-colors\">\n                        <i class=\"fa-solid fa-chevron-left\"></i>\n                        <span>이전 문제</span>\n                    </button>\n                    <button id=\"btn-next\" class=\"px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors\">\n                        <span>다음 문제</span>\n                        <i class=\"fa-solid fa-chevron-right\"></i>\n                    </button>\n                </div>\n            </div>\n        </div>\n\n        <!-- RESULT SCREEN -->\n        <div id=\"result-screen\" class=\"hidden space-y-8\">\n            <!-- Score Card -->\n            <div class=\"bg-white border border-slate-200 rounded-3xl p-8 shadow-xl text-center max-w-3xl mx-auto\">\n                <div class=\"inline-flex items-center justify-center w-24 h-24 rounded-full bg-indigo-50 text-indigo-600 mb-6 border-4 border-indigo-100\">\n                    <i class=\"fa-solid fa-award text-4xl\"></i>\n                </div>\n                <h2 class=\"text-3xl font-black text-slate-900 mb-2\">시험 결과 리포트</h2>\n                <p class=\"text-slate-500 mb-6 text-sm\">중학교 1학년 1학기 기말고사 대비 모의고사가 성공적으로 완료되었습니다.</p>\n\n                <!-- Score Stats Grid -->\n                <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8\">\n                    <div class=\"bg-indigo-50 p-5 rounded-2xl border border-indigo-100\">\n                        <p class=\"text-xs text-indigo-600 font-bold mb-1\">내 점수</p>\n                        <p class=\"text-3xl font-black text-indigo-900\"><span id=\"score-display\">0</span>점</p>\n                    </div>\n                    <div class=\"bg-slate-50 p-5 rounded-2xl border border-slate-100\">\n                        <p class=\"text-xs text-slate-500 font-bold mb-1\">맞춘 문제</p>\n                        <p class=\"text-3xl font-black text-slate-800\"><span id=\"correct-count-display\">0</span> / 20</p>\n                    </div>\n                    <div class=\"bg-slate-50 p-5 rounded-2xl border border-slate-100\">\n                        <p class=\"text-xs text-slate-500 font-bold mb-1\">소요 시간</p>\n                        <p class=\"text-3xl font-black text-slate-800\" id=\"time-spent-display\">00:00</p>\n                    </div>\n                </div>\n\n                <div class=\"flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto\">\n                    <button id=\"btn-restart\" class=\"px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all flex items-center justify-center space-x-2\">\n                        <i class=\"fa-solid fa-arrow-rotate-left\"></i>\n                        <span>다시 도전하기</span>\n                    </button>\n                    <a href=\"#answers-breakdown\" class=\"px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md hover:shadow-indigo-100 transition-all flex items-center justify-center space-x-2\">\n                        <i class=\"fa-solid fa-magnifying-glass\"></i>\n                        <span>오답 노트 및 해설 보기</span>\n                    </a>\n                </div>\n            </div>\n\n            <!-- Detailed Answer Analysis -->\n            <div id=\"answers-breakdown\" class=\"max-w-4xl mx-auto space-y-6 scroll-mt-24\">\n                <div class=\"border-b border-slate-200 pb-3 flex justify-between items-center\">\n                    <h3 class=\"text-xl font-bold text-slate-900 flex items-center space-x-2\">\n                        <span class=\"bg-indigo-600 text-white w-2 h-6 rounded\"></span>\n                        <span>문항별 상세 해설 및 분석</span>\n                    </h3>\n                    <div class=\"flex space-x-2 text-xs\">\n                        <span class=\"bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-semibold border border-emerald-200\">정답</span>\n                        <span class=\"bg-rose-50 text-rose-700 px-2 py-1 rounded font-semibold border border-rose-200\">오답</span>\n                    </div>\n                </div>\n\n                <!-- Dynamic Answer Lists will be generated here -->\n                <div id=\"detailed-reviews-container\" class=\"space-y-6\"></div>\n            </div>\n        </div>\n\n    </main>\n\n    <!-- Footer -->\n    <footer class=\"bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12\">\n        <div class=\"max-w-6xl mx-auto px-4 text-center\">\n            <p class=\"text-sm\">© 2026 중학영어 학업성취도 평가 시스템. All rights reserved.</p>\n            <p class=\"text-xs text-slate-600 mt-2\">이 시험지는 중학교 1학년 영어 교과 과정을 기준으로 제작된 맞춤형 평가 시스템입니다.</p>\n        </div>\n    </footer>\n\n    <!-- Custom Dialog Modal (Replaces alert) -->\n    <div id=\"alert-modal\" class=\"hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50\">\n        <div class=\"bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center border border-slate-100 transform scale-95 transition-transform duration-200\">\n            <div id=\"modal-icon-container\" class=\"mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4\">\n                <!-- Icon via JS -->\n            </div>\n            <h3 id=\"modal-title\" class=\"text-lg font-bold text-slate-900 mb-2\">알림</h3>\n            <p id=\"modal-message\" class=\"text-sm text-slate-500 mb-6 leading-relaxed\">알림 메시지 내용입니다.</p>\n            <div class=\"flex space-x-3\" id=\"modal-actions\">\n                <button id=\"modal-btn-confirm\" class=\"flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors\">\n                    확인\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <!-- JavaScript Core Logic -->\n    <script>\n        // --- QUESTION DATABASE (20 Questions, Medium difficulty) ---\n        const questions = [\n            {\n                id: 1,\n                category: \"문법 (Be동사)\",\n                title: \"다음 빈칸에 공통으로 알맞은 be동사를 고르시오.\",\n                passage: \"• She _______ a middle school student.\\n• It _______ cold today.\",\n                options: [\n                    \"am\",\n                    \"are\",\n                    \"is\",\n                    \"be\"\n                ],\n                correctAnswer: 2, // is\n                explanation: {\n                    correct: \"주어가 3인칭 단수(She, It)이므로 현재형 be동사는 'is'가 와야 합니다.\",\n                    wrong: [\n                        \"'am'은 1인칭 단수 주어(I)일 때만 쓸 수 있습니다.\",\n                        \"'are'는 2인칭 주어(You)나 복수 주어(We, They)일 때 쓰입니다.\",\n                        \"현재형 문장이므로 원형인 'be' 대신 알맞은 현재형 be동사(is)를 써야 합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 2,\n                category: \"문법 (대명사)\",\n                title: \"다음 대화의 빈칸에 알맞은 인칭대명사를 고르시오.\",\n                passage: \"A: Who is that boy standing by the tree?\\nB: He is my brother. I love _______ very much.\",\n                options: [\n                    \"him\",\n                    \"his\",\n                    \"he\",\n                    \"himself\"\n                ],\n                correctAnswer: 0, // him\n                explanation: {\n                    correct: \"동사 love의 목적어 자리이므로 그(He)를 나타내는 목적격 대명사 'him'이 와야 합니다.\",\n                    wrong: [\n                        \"'his'는 소유격(~의)이나 소유대명사(~의 것)로, 목적어 자리에 단독으로 사용하기 어색합니다.\",\n                        \"'he'는 주격 대명사로 주어 자리에 쓰입니다.\",\n                        \"'himself'는 재귀대명사로 주어와 목적어가 같을 때(예: He loves himself) 주로 사용합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 3,\n                category: \"문법 (일반동사)\",\n                title: \"다음 문장의 빈칸에 들어갈 알맞은 단어는?\",\n                passage: \"My uncle _______ French and English very well.\",\n                options: [\n                    \"speak\",\n                    \"speaks\",\n                    \"speaking\",\n                    \"is speak\"\n                ],\n                correctAnswer: 1, // speaks\n                explanation: {\n                    correct: \"주어 'My uncle'은 3인칭 단수이므로, 현재형 일반동사의 뒤에 -(e)s가 붙은 'speaks'를 사용해야 합니다.\",\n                    wrong: [\n                        \"'speak'는 주어가 1/2인칭 혹은 복수일 때 사용합니다.\",\n                        \"동사 자리에 be동사 없이 'speaking'(-ing 형태)만 단독으로 동사 구실을 할 수 없습니다.\",\n                        \"'is speak'는 be동사와 일반동사 원형이 나란히 연속으로 올 수 없으므로 비문법적입니다.\"\n                    ]\n                }\n            },\n            {\n                id: 4,\n                category: \"문법 (일반동사의 부정)\",\n                title: \"다음 빈칸에 들어갈 말로 알맞은 것은?\",\n                passage: \"Minjun and Jiwon _______ like computer games.\",\n                options: [\n                    \"doesn't\",\n                    \"isn't\",\n                    \"don't\",\n                    \"aren't\"\n                ],\n                correctAnswer: 2, // don't\n                explanation: {\n                    correct: \"주어가 'Minjun and Jiwon'(3인칭 복수, They)이고 일반동사 'like'를 부정해야 하므로 복수형 부정 조동사 'don't'가 알맞습니다.\",\n                    wrong: [\n                        \"'doesn't'는 주어가 3인칭 단수(He, She, It 등)일 때만 씁니다.\",\n                        \"'isn't'는 be동사 부정어입니다. 뒤에 일반동사 원형(like)이 올 수 없습니다.\",\n                        \"'aren't' 또한 be동사 부정어이므로 뒤에 일반동사 원형(like)을 수식할 수 없습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 5,\n                category: \"문법 (명사의 복수형)\",\n                title: \"다음 명사의 복수형 연결이 '잘못된' 것을 고르시오.\",\n                options: [\n                    \"child - children\",\n                    \"box - boxes\",\n                    \"city - cities\",\n                    \"foot - foots\"\n                ],\n                correctAnswer: 3, // foot - foots\n                explanation: {\n                    correct: \"foot의 복수형은 불규칙 변화를 하므로 'feet'이 올바릅니다. 뒤에 -s를 붙인 'foots'는 오답입니다.\",\n                    wrong: [\n                        \"child의 복수형은 불규칙 형태인 'children'이 맞습니다.\",\n                        \"-x로 끝나는 명사 box는 뒤에 -es를 붙여 'boxes'로 만드는 규칙이 맞습니다.\",\n                        \"자음+y로 끝나는 명사 city는 y를 i로 고치고 -es를 붙여 'cities'로 만드는 규칙이 맞습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 6,\n                category: \"문법 (현재진행형)\",\n                title: \"다음 대화의 빈칸에 알맞은 말을 고르시오.\",\n                passage: \"A: What are you doing right now?\\nB: I _______ my homework.\",\n                options: [\n                    \"do\",\n                    \"am doing\",\n                    \"is doing\",\n                    \"doing\"\n                ],\n                correctAnswer: 1, // am doing\n                explanation: {\n                    correct: \"지금 하고 있는 일(right now)을 묻는 질문('What are you doing?')에 대해 'be동사(am) + 동사원형-ing' 형태의 현재진행형으로 답하는 'am doing'이 적절합니다.\",\n                    wrong: [\n                        \"'do'는 현재 시제 단순형으로, '지금 이 순간 진행 중인 동작'을 답하기에는 불완전합니다.\",\n                        \"주어가 1인칭 'I'이므로 3인칭 be동사인 'is doing'은 불가능합니다.\",\n                        \"be동사 없이 'doing'만 단독으로 쓰이면 문장의 동사 역할을 할 수 없습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 7,\n                category: \"어휘\",\n                title: \"밑줄 친 부분의 뜻으로 알맞은 것을 고르시오.\",\n                passage: \"She wants to become a famous <span class='underline decoration-indigo-500 decoration-2 font-bold text-indigo-700'>scientist</span> in the future.\",\n                options: [\n                    \"음악가\",\n                    \"과학자\",\n                    \"의사\",\n                    \"작가\"\n                ],\n                correctAnswer: 1, // 과학자\n                explanation: {\n                    correct: \"'scientist'는 '과학자'를 의미하는 영어 단어입니다.\",\n                    wrong: [\n                        \"음악가는 영어로 'musician'이라고 합니다.\",\n                        \"의사는 영어로 'doctor'라고 합니다.\",\n                        \"작가는 영어로 'writer' 혹은 'author'라고 합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 8,\n                category: \"의사소통 표현\",\n                title: \"다음 대화의 빈칸에 어울리지 '않는' 응답을 고르시오.\",\n                passage: \"A: Let's play soccer after school!\\nB: __________________________________\",\n                options: [\n                    \"Sounds great!\",\n                    \"That's a good idea.\",\n                    \"Sure, why not?\",\n                    \"I am thirteen years old.\"\n                ],\n                correctAnswer: 3, // I am thirteen years old.\n                explanation: {\n                    correct: \"축구를 하자는 제안('Let's play soccer~')에 갑자기 자신의 나이('나는 13살이야')를 답하는 것은 대화 흐름상 전혀 어울리지 않습니다.\",\n                    wrong: [\n                        \"'Sounds great!'는 제안에 흔쾌히 수락하는 훌륭한 응답입니다.\",\n                        \"'That's a good idea.' 또한 제안을 긍정적으로 받아들이는 표현입니다.\",\n                        \"'Sure, why not?'은 '물론이지, 왜 안 되겠어?(좋아)'라는 찬성의 응답입니다.\"\n                    ]\n                }\n            },\n            {\n                id: 9,\n                category: \"문법 (조동사)\",\n                title: \"다음 빈칸에 알맞은 조동사를 고르시오.\",\n                passage: \"You look tired. You _______ go to bed early tonight.\",\n                options: [\n                    \"should\",\n                    \"will\",\n                    \"can\",\n                    \"may\"\n                ],\n                correctAnswer: 0, // should\n                explanation: {\n                    correct: \"상대방이 피곤해 보이므로 '일찍 자는 것이 좋겠다'라는 부드러운 의무나 충고/권유를 나타내는 조동사 'should'가 가장 자연스럽습니다.\",\n                    wrong: [\n                        \"'will'은 단순한 미래의 의지나 예측(~할 것이다)을 나타내어 충고의 맥락과 다소 거리가 있습니다.\",\n                        \"'can'은 능력이나 가능성(~할 수 있다)을 나타냅니다.\",\n                        \"'may'는 추측이나 허가(~해도 좋다, ~일지도 모른다)를 의미합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 10,\n                category: \"문법 (의문사)\",\n                title: \"다음 두 문장의 빈칸에 공통으로 알맞은 의문사를 고르시오.\",\n                passage: \"• _______ is your favorite subject?\\n• _______ are you doing under the table?\",\n                options: [\n                    \"Who\",\n                    \"Where\",\n                    \"What\",\n                    \"When\"\n                ],\n                correctAnswer: 2, // What\n                explanation: {\n                    correct: \"가장 좋아하는 과목(무엇)을 묻는 'What is your favorite subject?'와 테이블 밑에서 무엇을 하는지 묻는 'What are you doing under the table?'에 공통으로 들어갈 의문사는 'What'입니다.\",\n                    wrong: [\n                        \"'Who'는 사람(누구)을 물을 때 사용합니다.\",\n                        \"'Where'는 장소(어디)를 물을 때 사용합니다.\",\n                        \"'When'은 시간(언제)을 물을 때 사용합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 11,\n                category: \"독해\",\n                title: \"다음 글을 읽고 물음에 답하시오. 수호(Suho)에 대한 설명으로 일치하는 것은?\",\n                passage: \"Suho is a middle school student in Seoul. He loves sports very much. He plays basketball with his friends every weekend. He also likes listening to music when he is free. His dream is to be a gym teacher.\",\n                options: [\n                    \"서울에 살지 않는다.\",\n                    \"음악 듣는 것을 싫어한다.\",\n                    \"주말마다 친구들과 농구를 한다.\",\n                    \"장래 희망은 음악 교사이다.\"\n                ],\n                correctAnswer: 2, // 주말마다 친구들과 농구를 한다.\n                explanation: {\n                    correct: \"지문 속 'He plays basketball with his friends every weekend.'를 통해 주말마다 친구들과 농구를 한다는 설명이 일치함을 알 수 있습니다.\",\n                    wrong: [\n                        \"'Suho is a middle school student in Seoul.'에서 서울에 살고 있음을 알 수 있으므로 일치하지 않습니다.\",\n                        \"'He also likes listening to music~'에서 음악 감상을 좋아하는 것을 알 수 있으므로 일치하지 않습니다.\",\n                        \"'His dream is to be a gym teacher.'에서 장래 희망은 체육(gym) 교사임을 알 수 있으므로 일치하지 않습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 12,\n                category: \"문법 (형용사와 부사)\",\n                title: \"밑줄 친 단어의 쓰임이 올바르지 '않은' 것을 고르시오.\",\n                options: [\n                    \"The story is very <span class='underline font-bold text-indigo-700'>sad</span>.\",\n                    \"He runs very <span class='underline font-bold text-indigo-700'>fast</span>.\",\n                    \"She speaks English <span class='underline font-bold text-indigo-700'>good</span>.\",\n                    \"They are <span class='underline font-bold text-indigo-700'>happy</span> today.\"\n                ],\n                correctAnswer: 2, // good\n                explanation: {\n                    correct: \"동사 speaks를 수식하여 '영어를 잘 말한다'라는 뜻이 되려면 형용사인 'good'이 아닌, 부사 형태인 'well'이 와야 합니다.\",\n                    wrong: [\n                        \"story라는 명사를 보충 설명하는 형용사 'sad'의 쓰임은 올바릅니다.\",\n                        \"'fast'는 형용사와 부사의 형태가 같으므로, '빠르게 달리다'라는 뜻의 부사로 쓰인 'fast'는 올바릅니다.\",\n                        \"They를 설명해주는 주격 보어 자리에 형용사 'happy'가 오는 구조는 올바릅니다.\"\n                    ]\n                }\n            },\n            {\n                id: 13,\n                category: \"의사소통 표현\",\n                title: \"빈칸에 들어갈 대화로 가장 알맞은 표현을 고르시오.\",\n                passage: \"A: How is the weather in London today?\\nB: __________________________________\",\n                options: [\n                    \"It is Sunday.\",\n                    \"I am in London now.\",\n                    \"It's sunny and warm.\",\n                    \"I like London very much.\"\n                ],\n                correctAnswer: 2, // It's sunny and warm.\n                explanation: {\n                    correct: \"런던의 날씨('How is the weather~')를 묻고 있으므로, 날씨를 가리키는 비인칭 주어 It을 사용하여 날씨 상태('맑고 따뜻하다')를 표현한 응답이 가장 정답에 가깝습니다.\",\n                    wrong: [\n                        \"'It is Sunday.'는 요일(일요일)을 말하는 표현이므로 오답입니다.\",\n                        \"'I am in London now.'는 본인의 현재 위치를 뜻하므로 날씨에 대한 답변이 아닙니다.\",\n                        \"'I like London very much.'는 런던에 대한 본인의 기호를 나타내므로 오답입니다.\"\n                    ]\n                }\n            },\n            {\n                id: 14,\n                category: \"문법 (전치사)\",\n                title: \"다음 문장의 빈칸에 들어갈 전치사가 순서대로 바르게 짝지어진 것은?\",\n                passage: \"• The concert starts _______ 7 p.m.\\n• My school festival is _______ October.\",\n                options: [\n                    \"at - in\",\n                    \"on - at\",\n                    \"in - on\",\n                    \"at - on\"\n                ],\n                correctAnswer: 0, // at - in\n                explanation: {\n                    correct: \"구체적인 시각(7 p.m.) 앞에는 전치사 'at'을 쓰고, 월(October, 10월) 앞에는 전치사 'in'을 사용합니다. 따라서 'at - in'이 정답입니다.\",\n                    wrong: [\n                        \"첫 번째 빈칸에 on은 구체적인 날짜나 요일에 쓰이므로 'on 7 p.m.'은 어색하며, 두 번째 빈칸의 월 앞에는 at을 쓸 수 없습니다.\",\n                        \"첫 번째 빈칸의 시각 앞에는 in을 쓸 수 없고, 두 번째 월 앞에는 on을 쓸 수 없습니다 (예: on October 5th처럼 구체적 날짜가 있을 때만 on 사용).\",\n                        \"두 번째 빈칸의 월 앞에는 on이 아닌 in이 와야 합니다.\"\n                    ]\n                }\n            },\n            {\n                id: 15,\n                category: \"어휘\",\n                title: \"다음 두 단어의 관계가 나머지 셋과 '다른' 하나를 고르시오.\",\n                options: [\n                    \"hot - cold\",\n                    \"large - small\",\n                    \"clean - dirty\",\n                    \"smart - clever\"\n                ],\n                correctAnswer: 3, // smart - clever\n                explanation: {\n                    correct: \"나머지 세 쌍은 모두 반대말(반의어) 관계이지만, 'smart(똑똑한)'와 'clever(영리한)'는 서로 뜻이 비슷한 유의어 관계입니다.\",\n                    wrong: [\n                        \"hot(더운)과 cold(추운)는 반대말 관계가 맞습니다.\",\n                        \"large(큰)와 small(작은)은 반대말 관계가 맞습니다.\",\n                        \"clean(깨끗한)과 dirty(더러운)는 반대말 관계가 맞습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 16,\n                category: \"의사소통 표현\",\n                title: \"다음 상황에서 사용할 수 있는 표현으로 가장 알맞은 것은?\",\n                passage: \"친구의 제안에 동의하지 않거나 거절하고 싶을 때 거절의 이유를 덧붙여 말하려 합니다.\",\n                options: [\n                    \"Sure. Why not?\",\n                    \"That sounds fun, but I can't.\",\n                    \"Of course. I'd love to.\",\n                    \"Yes, let's do that.\"\n                ],\n                correctAnswer: 1, // That sounds fun, but I can't.\n                explanation: {\n                    correct: \"제안에 대해 거절의 뜻을 전할 때 부드럽게 '재미있을 것 같지만, 갈 수 없어(할 수 없어)'라고 사양하는 'That sounds fun, but I can't.'가 적합합니다.\",\n                    wrong: [\n                        \"'Sure. Why not?'은 완전한 수락의 의미입니다.\",\n                        \"'Of course. I'd love to.' 또한 '물론이지, 정말 그러고 싶어'라는 기쁜 승낙의 뜻입니다.\",\n                        \"'Yes, let's do that.'은 찬성하며 적극적으로 같이 하자고 동의하는 대답입니다.\"\n                    ]\n                }\n            },\n            {\n                id: 17,\n                category: \"문법 (일반동사의 의문문)\",\n                title: \"다음 대화의 빈칸에 들어갈 말이 바르게 짝지어진 것은?\",\n                passage: \"A: _______ you have any sisters?\\nB: No, I _______.\",\n                options: [\n                    \"Are - am not\",\n                    \"Do - don't\",\n                    \"Does - doesn't\",\n                    \"Do - doesn't\"\n                ],\n                correctAnswer: 1, // Do - don't\n                explanation: {\n                    correct: \"주어가 2인칭 단수(you)이고 일반동사 'have'의 의문문이므로 조동사 'Do'로 물어야 하며, 부정 답변 시 대답 주어가 I이므로 'No, I don't.'가 됩니다.\",\n                    wrong: [\n                        \"일반동사 'have'의 의문문을 만들 때 be동사인 'Are'로 물어볼 수 없습니다.\",\n                        \"주어 'you'는 3인칭 단수가 아니므로 3인칭 단수형 조동사인 'Does'를 사용할 수 없습니다.\",\n                        \"주어 'you'에 맞게 Do로 물었다면 대답도 1인칭 'I'에 상응하는 'don't'로 받아야지, 3인칭 단수형인 'doesn't'를 쓸 수는 없습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 18,\n                category: \"문법 (지시 대명사)\",\n                title: \"다음 빈칸에 공통으로 알맞은 단어를 고르시오.\",\n                passage: \"• _______ books on the table are mine.\\n• Who are _______ people over there?\",\n                options: [\n                    \"This\",\n                    \"That\",\n                    \"These\",\n                    \"Those\"\n                ],\n                correctAnswer: 3, // Those\n                explanation: {\n                    correct: \"두 번째 문장의 'over there(저쪽에)'를 통해 멀리 있는 대상들을 가리킴을 알 수 있고, 복수형 명사(books, people)를 수식해야 하므로, 복수 지시형용사 'Those(저 ~들)'가 가장 적절합니다.\",\n                    wrong: [\n                        \"'This'는 가까이 있는 단수 대상('이것')을 지칭할 때 사용하므로 복수 명사 앞에 올 수 없습니다.\",\n                        \"'That'은 멀리 있는 단수 대상('저것')을 뜻하므로 복수 명사 앞에 올 수 없습니다.\",\n                        \"'These'는 가까이 있는 복수 대상('이것들')을 가리킬 때 씁니다. 'over there(저기에)'와 의미가 조응하지 않습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 19,\n                category: \"독해\",\n                title: \"다음 글을 읽고 글쓴이의 고양이에 대해 알 수 '없는' 사실을 고르시오.\",\n                passage: \"I have a cute pet cat. Her name is Bella. She is two years old. She has beautiful blue eyes and soft white hair. She likes to sleep on my bed, and she loves eating fish.\",\n                options: [\n                    \"고양이의 이름\",\n                    \"고양이의 나이\",\n                    \"고양이를 분양받은 곳\",\n                    \"고양이가 좋아하는 음식\"\n                ],\n                correctAnswer: 2, // 고양이를 분양받은 곳\n                explanation: {\n                    correct: \"글 속에서 고양이를 어디서 분양받았는지 혹은 얻었는지에 대한 경로나 장소는 언급되지 않았습니다.\",\n                    wrong: [\n                        \"'Her name is Bella.'에서 고양이의 이름을 알 수 있습니다.\",\n                        \"'She is two years old.'에서 고양이의 나이(2살)를 알 수 있습니다.\",\n                        \"'she loves eating fish.'에서 좋아하는 음식(생선)을 알 수 있습니다.\"\n                    ]\n                }\n            },\n            {\n                id: 20,\n                category: \"문법 (어순 및 종합)\",\n                title: \"다음 중 어법상 가장 '자연스러운' 문장을 고르시오.\",\n                options: [\n                    \"She does always her best.\",\n                    \"We always are kind to strangers.\",\n                    \"He always gets up early.\",\n                    \"Always they study English together.\"\n                ],\n                correctAnswer: 2, // He always gets up early.\n                explanation: {\n                    correct: \"빈도부사(always)의 위치는 '조동사/be동사 뒤, 일반동사 앞(조뒤비뒤 일앞)'입니다. 'gets up'이라는 일반동사 앞에 위치한 'He always gets up early.'는 문법적으로 아주 자연스럽고 올바른 문장입니다.\",\n                    wrong: [\n                        \"does(일반동사) 앞 혹은 본동사 앞에 와야 하므로 'She always does her best'가 올바른 순서입니다.\",\n                        \"be동사(are) 뒤에 빈도부사가 와야 하므로 'We are always kind~'가 올바른 순서입니다.\",\n                        \"문장 맨 앞에 빈도부사가 무작위로 위치하는 것은 일반적이지 않습니다. 주어 뒤, 일반동사 앞인 'They always study~'가 알맞습니다.\"\n                    ]\n                }\n            }\n        ];\n\n        // --- APPLICATION STATE ---\n        let userAnswers = Array(questions.length).fill(null);\n        let currentIdx = 0;\n        let isSubmitted = false;\n        let startTime = null;\n        let timerInterval = null;\n\n        // --- DOM ELEMENTS ---\n        const startScreen = document.getElementById('start-screen');\n        const examScreen = document.getElementById('exam-screen');\n        const resultScreen = document.getElementById('result-screen');\n        const timerDisplay = document.getElementById('timer-display');\n        const timerBadge = document.getElementById('timer-badge');\n\n        const btnStart = document.getElementById('btn-start');\n        const btnPrev = document.getElementById('btn-prev');\n        const btnNext = document.getElementById('btn-next');\n        const btnQuickSubmit = document.getElementById('btn-quick-submit');\n        const btnRestart = document.getElementById('btn-restart');\n\n        const statusGrid = document.getElementById('status-grid');\n        const progressText = document.getElementById('progress-text');\n        \n        const questionCard = document.getElementById('question-card');\n        const questionCategory = document.getElementById('question-category');\n        const questionNumberBadge = document.getElementById('question-number-badge');\n        const passageContainer = document.getElementById('passage-container');\n        const questionTitle = document.getElementById('question-title');\n        const optionsContainer = document.getElementById('options-container');\n\n        const scoreDisplay = document.getElementById('score-display');\n        const correctCountDisplay = document.getElementById('correct-count-display');\n        const timeSpentDisplay = document.getElementById('time-spent-display');\n        const detailedReviewsContainer = document.getElementById('detailed-reviews-container');\n\n        // Modal Elements\n        const alertModal = document.getElementById('alert-modal');\n        const modalIconContainer = document.getElementById('modal-icon-container');\n        const modalTitle = document.getElementById('modal-title');\n        const modalMessage = document.getElementById('modal-message');\n        const modalBtnConfirm = document.getElementById('modal-btn-confirm');\n        const modalActions = document.getElementById('modal-actions');\n\n        // --- EVENT LISTENERS ---\n        btnStart.addEventListener('click', startExam);\n        btnPrev.addEventListener('click', () => navigateQuestion(currentIdx - 1));\n        btnNext.addEventListener('click', handleNextButton);\n        btnQuickSubmit.addEventListener('click', promptSubmit);\n        btnRestart.addEventListener('click', restartExam);\n        modalBtnConfirm.addEventListener('click', closeModal);\n\n        // --- FUNCTIONS ---\n\n        // Custom Modal Alert Helper\n        function showAlert(title, message, type = 'info', onConfirm = null) {\n            modalTitle.innerText = title;\n            modalMessage.innerText = message;\n            \n            // Stylize Icon and Background\n            if (type === 'success') {\n                modalIconContainer.className = \"mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-emerald-50 text-emerald-600 border border-emerald-100\";\n                modalIconContainer.innerHTML = '<i class=\"fa-solid fa-circle-check text-2xl\"></i>';\n            } else if (type === 'warning') {\n                modalIconContainer.className = \"mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-amber-50 text-amber-600 border border-amber-100\";\n                modalIconContainer.innerHTML = '<i class=\"fa-solid fa-triangle-exclamation text-2xl\"></i>';\n            } else if (type === 'confirm') {\n                modalIconContainer.className = \"mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-indigo-50 text-indigo-600 border border-indigo-100\";\n                modalIconContainer.innerHTML = '<i class=\"fa-solid fa-circle-question text-2xl\"></i>';\n            } else {\n                modalIconContainer.className = \"mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-indigo-50 text-indigo-600 border border-indigo-100\";\n                modalIconContainer.innerHTML = '<i class=\"fa-solid fa-circle-info text-2xl\"></i>';\n            }\n\n            // Customize Action Buttons\n            if (type === 'confirm') {\n                modalActions.innerHTML = `\n                    <button id=\"modal-cancel-btn\" class=\"flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-colors\">취소</button>\n                    <button id=\"modal-confirm-btn\" class=\"flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors\">확인</button>\n                `;\n                document.getElementById('modal-cancel-btn').onclick = closeModal;\n                document.getElementById('modal-confirm-btn').onclick = () => {\n                    closeModal();\n                    if (onConfirm) onConfirm();\n                };\n            } else {\n                modalActions.innerHTML = `\n                    <button id=\"modal-ok-btn\" class=\"flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-md transition-colors\">확인</button>\n                `;\n                document.getElementById('modal-ok-btn').onclick = () => {\n                    closeModal();\n                    if (onConfirm) onConfirm();\n                };\n            }\n\n            alertModal.classList.remove('hidden');\n            setTimeout(() => {\n                alertModal.firstElementChild.classList.remove('scale-95');\n                alertModal.firstElementChild.classList.add('scale-100');\n            }, 10);\n        }\n\n        function closeModal() {\n            alertModal.firstElementChild.classList.remove('scale-100');\n            alertModal.firstElementChild.classList.add('scale-95');\n            setTimeout(() => {\n                alertModal.classList.add('hidden');\n            }, 150);\n        }\n\n        // Initialize Timer\n        function startTimer() {\n            startTime = Date.now();\n            updateTimerDisplay();\n            timerInterval = setInterval(updateTimerDisplay, 1000);\n            timerBadge.classList.remove('hidden');\n        }\n\n        function updateTimerDisplay() {\n            const elapsedMs = Date.now() - startTime;\n            const totalSeconds = Math.floor(elapsedMs / 1000);\n            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');\n            const seconds = String(totalSeconds % 60).padStart(2, '0');\n            timerDisplay.innerText = `${minutes}:${seconds}`;\n        }\n\n        function stopTimer() {\n            clearInterval(timerInterval);\n        }\n\n        function getFormattedTime() {\n            const elapsedMs = Date.now() - startTime;\n            const totalSeconds = Math.floor(elapsedMs / 1000);\n            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');\n            const seconds = String(totalSeconds % 60).padStart(2, '0');\n            return `${minutes}분 ${seconds}초`;\n        }\n\n        // Start Exam\n        function startExam() {\n            userAnswers = Array(questions.length).fill(null);\n            currentIdx = 0;\n            isSubmitted = false;\n            \n            startScreen.classList.add('hidden');\n            examScreen.classList.remove('hidden');\n            resultScreen.classList.add('hidden');\n\n            buildStatusGrid();\n            renderQuestion();\n            startTimer();\n        }\n\n        // Sidebar Navigation Map builder\n        function buildStatusGrid() {\n            statusGrid.innerHTML = '';\n            for (let i = 0; i < questions.length; i++) {\n                const btn = document.createElement('button');\n                btn.type = 'button';\n                btn.id = `status-dot-${i}`;\n                btn.className = \"w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs border transition-all duration-200 \" + getStatusDotClass(i);\n                btn.innerText = i + 1;\n                btn.addEventListener('click', () => navigateQuestion(i));\n                statusGrid.appendChild(btn);\n            }\n            updateProgressText();\n        }\n\n        function getStatusDotClass(index) {\n            if (currentIdx === index) {\n                return \"border-indigo-600 bg-indigo-50 text-indigo-700 ring-2 ring-indigo-100 shadow-sm\";\n            } else if (userAnswers[index] !== null) {\n                return \"border-slate-300 bg-slate-100 text-slate-800\";\n            } else {\n                return \"border-slate-200 bg-white text-slate-400 hover:border-slate-300 hover:bg-slate-50\";\n            }\n        }\n\n        function updateProgressText() {\n            const completedCount = userAnswers.filter(ans => ans !== null).length;\n            progressText.innerText = `${completedCount} / ${questions.length} 완료`;\n        }\n\n        // Render Active Question\n        function renderQuestion() {\n            const q = questions[currentIdx];\n\n            // Setup Badge, category and numbers\n            questionCategory.innerText = q.category;\n            questionNumberBadge.innerText = `Question ${currentIdx + 1} of ${questions.length}`;\n            \n            // Title\n            questionTitle.innerText = q.title;\n\n            // Optional Passage box\n            if (q.passage) {\n                passageContainer.innerHTML = q.passage;\n                passageContainer.classList.remove('hidden');\n            } else {\n                passageContainer.classList.add('hidden');\n                passageContainer.innerHTML = '';\n            }\n\n            // Options container building\n            optionsContainer.innerHTML = '';\n            q.options.forEach((opt, oIdx) => {\n                const isSelected = userAnswers[currentIdx] === oIdx;\n                \n                const btn = document.createElement('button');\n                btn.type = 'button';\n                btn.className = `w-full text-left p-4 rounded-xl border flex items-center justify-between transition-all group ${\n                    isSelected \n                    ? 'border-indigo-600 bg-indigo-50/50 text-indigo-900 font-semibold ring-1 ring-indigo-200 shadow-sm' \n                    : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 text-slate-700'\n                }`;\n                \n                // Click behavior\n                btn.addEventListener('click', () => selectOption(oIdx));\n\n                // Left Content: Option Label Indicator and Option Text\n                const contentDiv = document.createElement('div');\n                contentDiv.className = \"flex items-center space-x-3\";\n\n                const badge = document.createElement('span');\n                badge.className = `w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${\n                    isSelected\n                    ? 'bg-indigo-600 text-white'\n                    : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'\n                }`;\n                badge.innerText = oIdx + 1;\n\n                const textSpan = document.createElement('span');\n                textSpan.className = \"text-sm md:text-base\";\n                textSpan.innerText = opt;\n\n                contentDiv.appendChild(badge);\n                contentDiv.appendChild(textSpan);\n                btn.appendChild(contentDiv);\n\n                // Right Content: Select Indicator Circle\n                const circle = document.createElement('span');\n                circle.className = `w-5 h-5 rounded-full border flex items-center justify-center text-xs ${\n                    isSelected\n                    ? 'border-indigo-600 bg-indigo-600 text-white'\n                    : 'border-slate-300 bg-white group-hover:border-slate-400'\n                }`;\n                if (isSelected) {\n                    circle.innerHTML = '<i class=\"fa-solid fa-check\"></i>';\n                }\n                btn.appendChild(circle);\n\n                optionsContainer.appendChild(btn);\n            });\n\n            // Update footer controls\n            btnPrev.disabled = currentIdx === 0;\n            if (currentIdx === 0) {\n                btnPrev.classList.add('opacity-40', 'cursor-not-allowed');\n            } else {\n                btnPrev.classList.remove('opacity-40', 'cursor-not-allowed');\n            }\n\n            if (currentIdx === questions.length - 1) {\n                btnNext.innerHTML = '<span>제출하기</span> <i class=\"fa-solid fa-paper-plane text-xs\"></i>';\n                btnNext.className = \"px-5 py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors\";\n            } else {\n                btnNext.innerHTML = '<span>다음 문제</span> <i class=\"fa-solid fa-chevron-right\"></i>';\n                btnNext.className = \"px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl flex items-center space-x-2 transition-colors\";\n            }\n\n            // Sync visual active dot in sidebar\n            for (let i = 0; i < questions.length; i++) {\n                const dot = document.getElementById(`status-dot-${i}`);\n                if (dot) {\n                    dot.className = \"w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs border transition-all duration-200 \" + getStatusDotClass(i);\n                }\n            }\n        }\n\n        // Pick Answer Option\n        function selectOption(optionIndex) {\n            userAnswers[currentIdx] = optionIndex;\n            \n            // Re-render immediately to show visual change\n            renderQuestion();\n            updateProgressText();\n        }\n\n        // Navigation Controller\n        function navigateQuestion(targetIndex) {\n            if (targetIndex >= 0 && targetIndex < questions.length) {\n                currentIdx = targetIndex;\n                renderQuestion();\n            }\n        }\n\n        function handleNextButton() {\n            if (currentIdx === questions.length - 1) {\n                promptSubmit();\n            } else {\n                navigateQuestion(currentIdx + 1);\n            }\n        }\n\n        // Submitting Exam Process\n        function promptSubmit() {\n            const unanswered = [];\n            userAnswers.forEach((ans, idx) => {\n                if (ans === null) unanswered.push(idx + 1);\n            });\n\n            if (unanswered.length > 0) {\n                showAlert(\n                    \"풀지 않은 문제 있음\", \n                    `아직 풀지 않은 문제가 있습니다: ${unanswered.join(', ')}번\\n그래도 제출하고 채점하시겠습니까?`, \n                    'warning', \n                    processSubmit\n                );\n            } else {\n                showAlert(\n                    \"답안 제출\", \n                    \"시험을 종료하고 답안을 제출하시겠습니까?\", \n                    'confirm', \n                    processSubmit\n                );\n            }\n        }\n\n        function processSubmit() {\n            stopTimer();\n            isSubmitted = true;\n            \n            // Calculate Score\n            let correctCount = 0;\n            questions.forEach((q, idx) => {\n                if (userAnswers[idx] === q.correctAnswer) {\n                    correctCount++;\n                }\n            });\n\n            const rawScore = Math.round((correctCount / questions.length) * 100);\n\n            // Hide exam screen, show result\n            examScreen.classList.add('hidden');\n            resultScreen.classList.remove('hidden');\n            timerBadge.classList.add('hidden');\n\n            // Render stats\n            scoreDisplay.innerText = rawScore;\n            correctCountDisplay.innerText = correctCount;\n            timeSpentDisplay.innerText = getFormattedTime();\n\n            // Render Detailed Analysis Review\n            renderReviews();\n        }\n\n        // Render Explanations Screen (오답 및 정답 이유 상세 해설 생성)\n        function renderReviews() {\n            detailedReviewsContainer.innerHTML = '';\n\n            questions.forEach((q, idx) => {\n                const uAnswer = userAnswers[idx];\n                const isCorrect = uAnswer === q.correctAnswer;\n\n                const card = document.createElement('div');\n                card.className = `bg-white border rounded-2xl p-6 shadow-sm overflow-hidden ${\n                    isCorrect \n                    ? 'border-emerald-200 bg-gradient-to-br from-white to-emerald-50/10' \n                    : 'border-rose-200 bg-gradient-to-br from-white to-rose-50/10'\n                }`;\n\n                // Header status\n                const headDiv = document.createElement('div');\n                headDiv.className = \"flex justify-between items-start mb-4\";\n                \n                const qNumSpan = document.createElement('span');\n                qNumSpan.className = \"font-bold text-slate-900\";\n                qNumSpan.innerText = `${idx + 1}번 문제 [${q.category}]`;\n\n                const badge = document.createElement('span');\n                if (isCorrect) {\n                    badge.className = \"bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 border border-emerald-200\";\n                    badge.innerHTML = '<i class=\"fa-solid fa-circle-check\"></i> <span>정답</span>';\n                } else {\n                    badge.className = \"bg-rose-100 text-rose-800 text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 border border-rose-200\";\n                    badge.innerHTML = '<i class=\"fa-solid fa-triangle-exclamation\"></i> <span>오답</span>';\n                }\n\n                headDiv.appendChild(qNumSpan);\n                headDiv.appendChild(badge);\n                card.appendChild(headDiv);\n\n                // Passage (if exists)\n                if (q.passage) {\n                    const passDiv = document.createElement('div');\n                    passDiv.className = \"p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs md:text-sm font-medium leading-relaxed mb-4 whitespace-pre-wrap\";\n                    passDiv.innerHTML = q.passage;\n                    card.appendChild(passDiv);\n                }\n\n                // Question Title\n                const titlePara = document.createElement('p');\n                titlePara.className = \"text-sm md:text-base font-bold text-slate-800 mb-4\";\n                titlePara.innerText = q.title;\n                card.appendChild(titlePara);\n\n                // Option review items\n                const optsGrid = document.createElement('div');\n                optsGrid.className = \"grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-6\";\n\n                q.options.forEach((opt, oIdx) => {\n                    const item = document.createElement('div');\n                    \n                    let bgBorderClass = \"border-slate-200 text-slate-600\";\n                    let iconMarkup = \"\";\n\n                    // User selected this\n                    const isUserSelected = uAnswer === oIdx;\n                    // Is this the actual correct option\n                    const isActualCorrect = q.correctAnswer === oIdx;\n\n                    if (isActualCorrect) {\n                        bgBorderClass = \"border-emerald-300 bg-emerald-50 text-emerald-900 font-semibold\";\n                        iconMarkup = '<span class=\"text-xs bg-emerald-500 text-white rounded px-1.5 py-0.5 ml-2 font-bold\">정답</span>';\n                    } else if (isUserSelected) {\n                        bgBorderClass = \"border-rose-300 bg-rose-50 text-rose-900 font-semibold\";\n                        iconMarkup = '<span class=\"text-xs bg-rose-500 text-white rounded px-1.5 py-0.5 ml-2 font-bold\">내 답</span>';\n                    }\n\n                    item.className = `p-3 rounded-xl border text-xs md:text-sm flex items-center justify-between ${bgBorderClass}`;\n                    item.innerHTML = `\n                        <div class=\"flex items-center space-x-2\">\n                            <span class=\"w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500\">${oIdx + 1}</span>\n                            <span>${opt}</span>\n                        </div>\n                        <div>${iconMarkup}</div>\n                    `;\n                    optsGrid.appendChild(item);\n                });\n                card.appendChild(optsGrid);\n\n                // Explanations Box\n                const explanationBox = document.createElement('div');\n                explanationBox.className = \"bg-indigo-50/40 rounded-xl p-4 md:p-5 border border-indigo-100 text-xs md:text-sm text-slate-700 space-y-3\";\n                \n                // Why it is correct\n                explanationBox.innerHTML = `\n                    <div>\n                        <p class=\"font-bold text-indigo-900 flex items-center space-x-1.5 mb-1.5\">\n                            <i class=\"fa-solid fa-lightbulb text-indigo-500\"></i>\n                            <span>왜 ${q.correctAnswer + 1}번이 정답일까요?</span>\n                        </p>\n                        <p class=\"leading-relaxed text-slate-600 pl-5\">${q.explanation.correct}</p>\n                    </div>\n                `;\n\n                // Why others are wrong\n                const wrongsListDiv = document.createElement('div');\n                wrongsListDiv.className = \"pt-2 border-t border-indigo-100/60\";\n                wrongsListDiv.innerHTML = `\n                    <p class=\"font-bold text-slate-800 flex items-center space-x-1.5 mb-2\">\n                        <i class=\"fa-solid fa-circle-xmark text-rose-400\"></i>\n                        <span>나머지 번호가 오답인 이유:</span>\n                    </p>\n                `;\n\n                const listUl = document.createElement('ul');\n                listUl.className = \"space-y-1.5 pl-5 list-disc text-slate-500 leading-relaxed\";\n\n                let wrongCounter = 0;\n                q.options.forEach((opt, oIdx) => {\n                    if (oIdx !== q.correctAnswer) {\n                        const li = document.createElement('li');\n                        li.innerHTML = `<strong class=\"text-slate-600\">${oIdx + 1}번:</strong> ${q.explanation.wrong[wrongCounter]}`;\n                        listUl.appendChild(li);\n                        wrongCounter++;\n                    }\n                });\n\n                wrongsListDiv.appendChild(listUl);\n                explanationBox.appendChild(wrongsListDiv);\n                \n                card.appendChild(explanationBox);\n                detailedReviewsContainer.appendChild(card);\n            });\n        }\n\n        // Restart Exam Setup\n        function restartExam() {\n            showAlert(\n                \"시험 재시작\", \n                \"다시 시험에 응시하시겠습니까? 기존 기록은 소멸됩니다.\", \n                'confirm', \n                () => {\n                    startExam();\n                }\n            );\n        }\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  },
-  "meal-app": {
-    "title": "숭의여자중학교 오늘의 급식",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n  <title>숭의여자중학교 오늘의 급식</title>\n\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link\n    href=\"https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;600;700&display=swap\"\n    rel=\"stylesheet\"\n  >\n\n  <script>\n    tailwind.config = {\n      theme: {\n        extend: {\n          colors: {\n            peach: {\n              50: \"#fff6f1\",\n              100: \"#ffece3\",\n              200: \"#ffd5c3\",\n              300: \"#ffb295\",\n              400: \"#ff845e\",\n              500: \"#ff5c2e\"\n            }\n          }\n        }\n      }\n    };\n  </script>\n\n  <style>\n    body {\n      font-family: \"Noto Sans KR\", sans-serif;\n    }\n\n    .font-jua {\n      font-family: \"Jua\", sans-serif;\n    }\n\n    /* 급식 메뉴의 줄바꿈을 화면에 반영 */\n    .menu-text {\n      white-space: pre-line;\n    }\n\n    .card-hover {\n      transition:\n        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),\n        box-shadow 0.3s ease;\n    }\n\n    .card-hover:hover {\n      transform: translateY(-4px);\n    }\n  </style>\n</head>\n\n<body class=\"bg-gradient-to-br from-peach-50 to-orange-50 min-h-screen flex items-center justify-center p-4\">\n\n  <!-- 메인 카드 -->\n  <div class=\"w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-peach-100 overflow-hidden card-hover\">\n\n    <!-- 상단 영역 -->\n    <header class=\"bg-gradient-to-r from-peach-300 to-peach-400 p-6 text-center text-white relative\">\n\n      <div class=\"absolute top-2 right-4 text-3xl opacity-20\">\n        🍳\n      </div>\n\n      <div class=\"absolute bottom-2 left-4 text-3xl opacity-20\">\n        🍓\n      </div>\n\n      <p class=\"text-xs font-semibold tracking-wider bg-white/20 inline-block px-3 py-1 rounded-full mb-2\">\n        오늘 뭐 먹지? 😋\n      </p>\n\n      <h1 class=\"text-2xl font-jua tracking-wide drop-shadow-md\">\n        🏫 숭의여자중학교 오늘의 급식\n      </h1>\n    </header>\n\n    <!-- 입력 및 결과 영역 -->\n    <main class=\"p-6 space-y-6\">\n\n      <!-- 날짜 선택 -->\n      <section class=\"bg-peach-50 p-4 rounded-2xl border border-peach-100\">\n\n        <label\n          for=\"meal-date\"\n          class=\"block text-xs font-semibold text-peach-500 mb-1.5 ml-1\"\n        >\n          날짜를 골라주세요 👇\n        </label>\n\n        <div class=\"flex items-center gap-2\">\n\n          <input\n            type=\"date\"\n            id=\"meal-date\"\n            class=\"flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-peach-200 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-peach-400 focus:border-transparent text-sm bg-white cursor-pointer\"\n          >\n\n          <button\n            type=\"button\"\n            id=\"search-btn\"\n            class=\"bg-peach-400 hover:bg-peach-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-peach-200 active:scale-95 transition-all duration-150 text-sm whitespace-nowrap\"\n          >\n            급식 조회\n          </button>\n\n        </div>\n      </section>\n\n      <!-- 로딩 화면 -->\n      <section\n        id=\"loading-spinner\"\n        class=\"hidden py-12 text-center\"\n        aria-live=\"polite\"\n      >\n        <div class=\"inline-block animate-spin rounded-full h-8 w-8 border-4 border-peach-400 border-t-transparent mb-3\"></div>\n\n        <p class=\"text-sm text-gray-500 font-medium\">\n          급식 요리사가 식단을 찾고 있어요... 👩‍🍳\n        </p>\n      </section>\n\n      <!-- 오류 및 급식 없음 -->\n      <section\n        id=\"error-card\"\n        class=\"hidden bg-red-50 border border-red-200 rounded-2xl p-5 text-center\"\n        aria-live=\"polite\"\n      >\n        <div class=\"text-3xl mb-2\">\n          🥣\n        </div>\n\n        <p\n          id=\"error-message\"\n          class=\"text-red-500 font-semibold text-sm leading-relaxed\"\n        >\n          오늘은 급식이 없습니다.\n        </p>\n\n        <p class=\"text-xs text-red-400 mt-1\">\n          주말, 공휴일 또는 방학 기간일 수 있어요.\n        </p>\n      </section>\n\n      <!-- 급식 결과 -->\n      <section\n        id=\"meal-card\"\n        class=\"hidden space-y-5\"\n        aria-live=\"polite\"\n      >\n\n        <!-- 칼로리 -->\n        <div class=\"bg-gradient-to-r from-orange-50 to-peach-50 border border-peach-100 rounded-2xl p-4 flex justify-between items-center\">\n\n          <div class=\"flex items-center gap-2\">\n            <span class=\"text-xl\">🔥</span>\n\n            <span class=\"text-xs font-semibold text-gray-500 uppercase tracking-wider\">\n              오늘의 칼로리\n            </span>\n          </div>\n\n          <span\n            id=\"meal-calories\"\n            class=\"font-jua text-lg text-peach-500 tracking-wide\"\n          >\n            칼로리 정보 없음\n          </span>\n\n        </div>\n\n        <!-- 식단 메뉴 -->\n        <div class=\"bg-white border-2 border-dashed border-peach-200 rounded-2xl p-5 relative overflow-hidden\">\n\n          <div class=\"absolute -right-2 -bottom-2 text-5xl opacity-5 pointer-events-none\">\n            🍴\n          </div>\n\n          <div class=\"border-b border-peach-100 pb-3 mb-4 flex justify-between items-center\">\n\n            <h2 class=\"font-jua text-lg text-peach-500 flex items-center gap-1.5\">\n              <span>🍱</span>\n              오늘의 식단 메뉴\n            </h2>\n\n            <span class=\"text-[10px] bg-peach-100 text-peach-500 font-bold px-2 py-0.5 rounded-full\">\n              중식\n            </span>\n\n          </div>\n\n          <p\n            id=\"meal-menu\"\n            class=\"menu-text text-gray-700 font-medium text-base text-center leading-loose tracking-wide py-2\"\n          >\n            맛있는 급식 준비 중...\n          </p>\n\n        </div>\n      </section>\n\n    </main>\n\n    <!-- 하단 -->\n    <footer class=\"bg-gray-50 py-4 px-6 border-t border-gray-100 text-center text-[11px] text-gray-400\">\n      ❤️ 본 앱은 숭의여자중학교 학생들을 위해 제작되었습니다. ❤️\n      <br>\n      <span class=\"opacity-80\">\n        숭의여중 급식 알리미 v1.0.0\n      </span>\n    </footer>\n\n  </div>\n\n  <script>\n    /*\n     * 나이스 교육정보 개방포털 급식 API 설정\n     *\n     * 교육청 코드 B10:\n     * 서울특별시교육청\n     *\n     * 학교 코드 7132148:\n     * 숭의여자중학교\n     */\n    const API_URL =\n      \"https://open.neis.go.kr/hub/mealServiceDietInfo\";\n\n    const API_KEY =\n      \"fa321714b05546ad82fc4bf29b3a20ef\";\n\n    const EDUCATION_OFFICE_CODE = \"B10\";\n    const SCHOOL_CODE = \"7132148\";\n\n    // 화면 요소\n    const dateInput =\n      document.getElementById(\"meal-date\");\n\n    const searchBtn =\n      document.getElementById(\"search-btn\");\n\n    const loadingSpinner =\n      document.getElementById(\"loading-spinner\");\n\n    const errorCard =\n      document.getElementById(\"error-card\");\n\n    const errorMessage =\n      document.getElementById(\"error-message\");\n\n    const mealCard =\n      document.getElementById(\"meal-card\");\n\n    const mealCalories =\n      document.getElementById(\"meal-calories\");\n\n    const mealMenu =\n      document.getElementById(\"meal-menu\");\n\n    /*\n     * 오늘 날짜를 YYYY-MM-DD 형식으로 반환\n     */\n    function getTodayDateString() {\n      const today = new Date();\n\n      const year = today.getFullYear();\n\n      const month = String(\n        today.getMonth() + 1\n      ).padStart(2, \"0\");\n\n      const day = String(\n        today.getDate()\n      ).padStart(2, \"0\");\n\n      return `${year}-${month}-${day}`;\n    }\n\n    /*\n     * YYYY-MM-DD를 YYYYMMDD로 변환\n     */\n    function convertDateToYYYYMMDD(dateString) {\n      return dateString.replace(/-/g, \"\");\n    }\n\n    /*\n     * 나이스 급식 메뉴에 포함된 HTML 줄바꿈과\n     * 일부 특수문자를 일반 텍스트로 변환\n     */\n    function cleanMenuText(menuText) {\n      return String(menuText || \"\")\n        .replace(/<br\\s*\\/?\\s*>/gi, \"\\n\")\n        .replace(/&amp;/gi, \"&\")\n        .replace(/&lt;/gi, \"<\")\n        .replace(/&gt;/gi, \">\")\n        .replace(/&quot;/gi, \"\\\"\")\n        .replace(/&#39;/gi, \"'\");\n    }\n\n    /*\n     * API 오류 메시지를 확인\n     */\n    function getApiMessage(data) {\n      if (data?.RESULT?.MESSAGE) {\n        return data.RESULT.MESSAGE;\n      }\n\n      const head =\n        data?.mealServiceDietInfo?.[0]?.head;\n\n      if (Array.isArray(head)) {\n        const resultItem = head.find(\n          (item) => item.RESULT\n        );\n\n        if (resultItem?.RESULT?.MESSAGE) {\n          return resultItem.RESULT.MESSAGE;\n        }\n      }\n\n      return \"\";\n    }\n\n    /*\n     * 로딩 화면 표시\n     */\n    function showLoading() {\n      mealCard.classList.add(\"hidden\");\n      errorCard.classList.add(\"hidden\");\n      loadingSpinner.classList.remove(\"hidden\");\n      searchBtn.disabled = true;\n\n      searchBtn.classList.add(\n        \"opacity-60\",\n        \"cursor-not-allowed\"\n      );\n\n      searchBtn.textContent = \"조회 중\";\n    }\n\n    /*\n     * 급식 결과 표시\n     */\n    function showMeal(menu, calories) {\n      loadingSpinner.classList.add(\"hidden\");\n      errorCard.classList.add(\"hidden\");\n      mealCard.classList.remove(\"hidden\");\n\n      mealMenu.textContent =\n        menu || \"메뉴 정보가 없습니다.\";\n\n      mealCalories.textContent =\n        calories || \"칼로리 정보 없음\";\n\n      searchBtn.disabled = false;\n\n      searchBtn.classList.remove(\n        \"opacity-60\",\n        \"cursor-not-allowed\"\n      );\n\n      searchBtn.textContent = \"급식 조회\";\n    }\n\n    /*\n     * 급식 없음 또는 오류 표시\n     */\n    function showError(message) {\n      loadingSpinner.classList.add(\"hidden\");\n      mealCard.classList.add(\"hidden\");\n      errorCard.classList.remove(\"hidden\");\n\n      errorMessage.textContent = message;\n\n      searchBtn.disabled = false;\n\n      searchBtn.classList.remove(\n        \"opacity-60\",\n        \"cursor-not-allowed\"\n      );\n\n      searchBtn.textContent = \"급식 조회\";\n    }\n\n    /*\n     * 나이스 API에서 급식 정보 조회\n     */\n    async function fetchMealData(selectedDate) {\n      if (!selectedDate) {\n        showError(\"조회할 날짜를 선택해 주세요.\");\n        return;\n      }\n\n      showLoading();\n\n      const mealDate =\n        convertDateToYYYYMMDD(selectedDate);\n\n      const parameters = new URLSearchParams({\n        KEY: API_KEY,\n        Type: \"json\",\n        pIndex: \"1\",\n        pSize: \"10\",\n        ATPT_OFCDC_SC_CODE:\n          EDUCATION_OFFICE_CODE,\n        SD_SCHUL_CODE:\n          SCHOOL_CODE,\n        MLSV_YMD:\n          mealDate\n      });\n\n      const apiEndpoint =\n        `${API_URL}?${parameters.toString()}`;\n\n      try {\n        const response =\n          await fetch(apiEndpoint);\n\n        if (!response.ok) {\n          throw new Error(\n            `HTTP 오류: ${response.status}`\n          );\n        }\n\n        const data =\n          await response.json();\n\n        const mealRows =\n          data?.mealServiceDietInfo?.[1]?.row;\n\n        if (\n          !Array.isArray(mealRows) ||\n          mealRows.length === 0\n        ) {\n          const apiMessage =\n            getApiMessage(data);\n\n          if (\n            apiMessage.includes(\n              \"해당하는 데이터가 없습니다\"\n            )\n          ) {\n            showError(\n              \"선택한 날짜에는 급식이 없습니다.\"\n            );\n          } else {\n            showError(\n              apiMessage ||\n              \"선택한 날짜에는 급식이 없습니다.\"\n            );\n          }\n\n          return;\n        }\n\n        /*\n         * 같은 날짜에 조식·중식·석식이 함께 조회될 경우\n         * 중식(MMEAL_SC_CODE 2)을 우선 선택\n         */\n        const lunch =\n          mealRows.find(\n            (meal) =>\n              String(meal.MMEAL_SC_CODE) === \"2\"\n          ) || mealRows[0];\n\n        const menu =\n          cleanMenuText(lunch.DDISH_NM);\n\n        const calories =\n          lunch.CAL_INFO;\n\n        showMeal(menu, calories);\n\n      } catch (error) {\n        console.error(\n          \"급식 정보 조회 오류:\",\n          error\n        );\n\n        showError(\n          \"급식 정보를 가져오지 못했습니다. 잠시 후 다시 조회해 주세요.\"\n        );\n      }\n    }\n\n    /*\n     * 조회 버튼\n     */\n    searchBtn.addEventListener(\n      \"click\",\n      function () {\n        if (!dateInput.value) {\n          dateInput.focus();\n          return;\n        }\n\n        fetchMealData(dateInput.value);\n      }\n    );\n\n    /*\n     * 날짜 변경 시 자동 조회\n     */\n    dateInput.addEventListener(\n      \"change\",\n      function () {\n        if (dateInput.value) {\n          fetchMealData(dateInput.value);\n        }\n      }\n    );\n\n    /*\n     * 페이지가 열리면 오늘 급식을 자동 조회\n     */\n    window.addEventListener(\n      \"DOMContentLoaded\",\n      function () {\n        const todayDate =\n          getTodayDateString();\n\n        dateInput.value =\n          todayDate;\n\n        fetchMealData(todayDate);\n      }\n    );\n  </script>\n\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  }
-};
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -416,15 +1910,31 @@
                     }
                 } catch (e) {}
             }
-            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
+
+            studentProjectsMap = {};
+            const tmpl_quiz = document.getElementById('tmpl-quiz');
+            if (tmpl_quiz) {
+                studentProjectsMap['quiz'] = {
+                    title: "중1 영어 1학기 기말고사 모의고사",
+                    sourceCode: tmpl_quiz.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_meal_app = document.getElementById('tmpl-meal-app');
+            if (tmpl_meal_app) {
+                studentProjectsMap['meal-app'] = {
+                    title: "숭의여자중학교 오늘의 급식",
+                    sourceCode: tmpl_meal_app.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -443,7 +1953,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -454,11 +1963,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -471,9 +1978,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -509,7 +2014,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -522,19 +2026,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -547,18 +2048,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -582,14 +2073,13 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
 </html>
-
