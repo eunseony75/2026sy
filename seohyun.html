@@ -2160,8 +2160,7 @@ window.onload = initQuiz;
     <!-- 기능 구현 스크립트 -->
     <script>
         const API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
-        const API_KEY = "fa321714b05546ad82fc4bf29b3a20ef";
-        const EDUCATION_OFFICE_CODE = "B10";
+const EDUCATION_OFFICE_CODE = "B10";
         const SCHOOL_CODE = "7132148";
 
         // DOM 요소 가져오기
@@ -2219,8 +2218,7 @@ window.onload = initQuiz;
             
             // API 요청 주소 구성
             const params = new URLSearchParams({
-                KEY: API_KEY,
-                Type: "json",
+Type: "json",
                 pIndex: "1",
                 pSize: "10",
                 ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
