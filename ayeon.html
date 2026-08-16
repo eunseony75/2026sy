@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
-    <!-- Google Sites iframe 임베드 설정 -->
+    <title>이아연 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -31,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -84,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen (높이를 320px로 확장 및 상단 풀스크린 바로가기 오버레이) */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -173,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">이</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>이아연 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 3학년 2반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html">3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html">2학년 3반 신세영</option>
+                    <option value="jiwoo.html">2학년 4반 임지우</option>
+                    <option value="heejung.html">1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html" selected>3학년 2반 이아연</option>
+                    <option value="hayoon.html">3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -205,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">3학년 2반 이아연 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -258,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -273,12 +179,869 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-quiz">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중3 과학 1학기 기말고사 모의고사</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+        /* Custom scrollbar for question navigation grid */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg">
+                    <i data-lucide="graduations-cap" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900 leading-none">중3 과학 1학기 모의고사</h1>
+                    <span class="text-xs text-indigo-600 font-semibold">난이도: 중급 (20문항)</span>
+                </div>
+            </div>
+            
+            <!-- Timer & Action Area -->
+            <div id="quiz-header-status" class="hidden flex items-center space-x-4">
+                <div class="flex items-center space-x-1.5 bg-rose-50 text-rose-700 px-3 py-1.5 rounded-full text-sm font-semibold border border-rose-100">
+                    <i data-lucide="timer" class="w-4 h-4 animate-pulse"></i>
+                    <span id="timer-display">40:00</span>
+                </div>
+                <button id="quick-submit-btn" onclick="openSubmitModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition-all shadow-sm">
+                    제출하기
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-6 flex flex-col justify-center">
+        <!-- 1. Intro Screen -->
+        <div id="intro-screen" class="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-10 max-w-2xl mx-auto w-full text-center my-8">
+            <div class="inline-flex bg-indigo-50 text-indigo-600 p-4 rounded-full mb-6">
+                <i data-lucide="award" class="w-12 h-12"></i>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">1학기 기말고사 최종 점검!</h2>
+            <p class="text-slate-500 mb-8 max-w-md mx-auto text-sm md:text-base leading-relaxed">
+                중3 과학 핵심 3대 단원(화학 반응, 기권과 날씨, 운동과 에너지)의 빈출 유형을 분석한 고품격 20문항입니다. 실전처럼 시간을 재며 풀어보세요!
+            </p>
+
+            <!-- Quiz Information Grid -->
+            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto mb-8 text-left">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-xs text-slate-400 font-semibold mb-1">시험 단원</div>
+                    <div class="text-sm font-bold text-slate-700 leading-tight">화학 법칙 / 기권과 기온 / 역학 에너지</div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <div class="text-xs text-slate-400 font-semibold mb-1">제한 시간</div>
+                    <div class="text-sm font-bold text-slate-700">40분 (타이머 작동)</div>
+                </div>
+            </div>
+
+            <button onclick="startQuiz()" class="w-full max-w-md bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-indigo-100 text-lg flex items-center justify-center space-x-2 mx-auto">
+                <span>모의고사 시작하기</span>
+                <i data-lucide="play" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- 2. Quiz Play Screen -->
+        <div id="quiz-screen" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6 my-4">
+            
+            <!-- Question Sheet (Left 3 cols) -->
+            <div class="lg:col-span-3 flex flex-col space-y-6">
+                
+                <!-- Progress & Current Status Info -->
+                <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+                    <div class="flex justify-between items-center mb-2.5 text-xs font-semibold text-slate-400">
+                        <span>전체 진행률</span>
+                        <span id="progress-text" class="text-indigo-600">0% 완료 (0/20 문제)</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-full transition-all duration-300 w-0"></div>
+                    </div>
+                </div>
+
+                <!-- Main Question Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 md:p-8 flex flex-col min-h-[400px]">
+                    <!-- Question Header -->
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="inline-block bg-slate-100 text-slate-700 font-bold px-3 py-1 rounded-full text-sm">
+                            문제 <span id="current-q-num">1</span>
+                        </span>
+                        <!-- Help Hint Accordion Button -->
+                        <button onclick="toggleHint()" class="text-amber-600 hover:text-amber-700 font-semibold text-sm flex items-center space-x-1.5 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-100">
+                            <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                            <span>힌트 보기</span>
+                        </button>
+                    </div>
+
+                    <!-- Hint Box (Hidden by default) -->
+                    <div id="hint-box" class="hidden mb-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-900 text-sm">
+                        <p class="font-bold mb-1">💡 문제 힌트</p>
+                        <p id="hint-text"></p>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div class="mb-8">
+                        <h3 id="question-text" class="text-lg md:text-xl font-bold text-slate-900 leading-relaxed whitespace-pre-line">
+                            질문 텍스트 공간
+                        </h3>
+                    </div>
+
+                    <!-- Options (Vertical Layout) -->
+                    <div id="options-container" class="space-y-3.5 mb-8 flex-grow">
+                        <!-- Dynamically filled with option buttons -->
+                    </div>
+
+                    <!-- Navigation controls -->
+                    <div class="flex justify-between items-center pt-6 border-t border-slate-100">
+                        <button id="prev-btn" onclick="prevQuestion()" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold transition-all disabled:opacity-40 disabled:hover:bg-transparent">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            <span>이전 문제</span>
+                        </button>
+
+                        <button id="next-btn" onclick="nextQuestion()" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold transition-all">
+                            <span>다음 문제</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Sidebar / Navigator (Right 1 col) -->
+            <div class="lg:col-span-1 flex flex-col space-y-4">
+                <!-- Question Navigation Panel -->
+                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center justify-between">
+                        <span>답안 작성 현황</span>
+                        <span id="answered-count-badge" class="bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md text-xs">0 / 20</span>
+                    </h4>
+                    <!-- Grid of 1-20 buttons -->
+                    <div class="grid grid-cols-5 gap-2.5 mb-5" id="nav-grid">
+                        <!-- Dynamically created -->
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-4 flex flex-col space-y-3 text-xs">
+                        <div class="flex items-center space-x-2 text-slate-500">
+                            <span class="w-3 h-3 rounded-md bg-indigo-600 block"></span>
+                            <span>선택한 문항</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-slate-500">
+                            <span class="w-3 h-3 rounded-md border border-slate-300 bg-white block"></span>
+                            <span>미선택 문항</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Useful Reminder / Tip Box -->
+                <div class="bg-gradient-to-br from-indigo-500 to-violet-600 text-white rounded-xl p-5 shadow-md">
+                    <div class="flex items-start space-x-3">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">중요 안내</h4>
+                            <p class="text-indigo-100 text-xs leading-relaxed">
+                                모든 문제는 1학기 핵심 교육과정을 준수합니다. 기출 유형을 완벽하게 재구성한 핵심 문항들입니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Final Report/Results Screen -->
+        <div id="results-screen" class="hidden flex flex-col space-y-8 my-4">
+            
+            <!-- Result Summary Card -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-10 text-center max-w-3xl mx-auto w-full">
+                <div class="inline-flex bg-emerald-50 text-emerald-600 p-4 rounded-full mb-6" id="result-icon-box">
+                    <i data-lucide="check-circle-2" class="w-14 h-14"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-1">모의고사 채점 결과</h2>
+                <p id="time-taken-display" class="text-sm text-slate-400 mb-6">소요 시간: 15분 30초</p>
+
+                <!-- Big Score Showcase -->
+                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 max-w-md mx-auto mb-8 flex items-center justify-around">
+                    <div>
+                        <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">내 점수</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-indigo-600"><span id="final-score">85</span><span class="text-2xl text-slate-400">점</span></div>
+                    </div>
+                    <div class="h-12 w-[1px] bg-slate-200"></div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">정답 개수</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-800"><span id="correct-count">17</span><span class="text-2xl text-slate-400">/20</span></div>
+                    </div>
+                </div>
+
+                <!-- Custom Performance Feedback Message -->
+                <div class="max-w-xl mx-auto bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-indigo-950 text-sm mb-8 leading-relaxed">
+                    <span class="font-extrabold block text-base text-indigo-800 mb-1" id="feedback-grade">훌륭한 실력입니다! 🎉</span>
+                    <span id="feedback-message">이 기세대로라면 실제 시험에서도 아주 좋은 성적을 받을 수 있을 거에요. 오답 정리를 통해 마지막 실수를 줄여봅시다.</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto">
+                    <button onclick="restartQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
+                        <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                        <span>다시 도전하기</span>
+                    </button>
+                    <a href="#incorrect-analysis-header" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-xl transition-all flex items-center justify-center space-x-2">
+                        <i data-lucide="book-open" class="w-5 h-5"></i>
+                        <span>상세 오답 정리 보기</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Incorrect Answer Analysis Header -->
+            <div id="incorrect-analysis-header" class="border-b border-slate-200 pb-4 max-w-3xl mx-auto w-full pt-4">
+                <h3 class="text-xl font-bold text-slate-800 flex items-center space-x-2">
+                    <i data-lucide="file-text" class="w-5 h-5 text-indigo-600"></i>
+                    <span>전체 문항 상세 해설 및 분석</span>
+                </h3>
+                <p class="text-slate-400 text-xs mt-1">풀이 결과를 바탕으로 모든 정답과 오답 이유를 확인하고 취약한 개념을 보완하세요.</p>
+            </div>
+
+            <!-- Detailed Analysis List Container -->
+            <div id="detailed-analysis-list" class="space-y-6 max-w-3xl mx-auto w-full">
+                <!-- Dynamically rendered detailed analysis items -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-5xl mx-auto px-4 text-center text-slate-400 text-xs">
+            <p>© 2026 중학교 3학년 과학 1학기 기말고사 완벽 대비 모의고사. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Submit Confirm Modal -->
+    <div id="submit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl p-6 max-w-md w-full text-center">
+            <div class="inline-flex bg-amber-50 text-amber-500 p-3 rounded-full mb-4">
+                <i data-lucide="alert-triangle" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">시험을 끝내고 제출하시겠습니까?</h3>
+            <p id="modal-warning-text" class="text-slate-500 text-sm mb-6">풀지 않은 문제가 존재할 수 있습니다. 제출 시 최종 점수가 즉시 계산됩니다.</p>
+            
+            <div class="flex space-x-3">
+                <button onclick="closeSubmitModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl text-sm transition-all">
+                    계속 풀기
+                </button>
+                <button onclick="submitQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl text-sm transition-all shadow-md">
+                    제출 완료
+                </button>
+            </div>
+        </div>
     </div>
 
+    <!-- Script Area -->
     <script>
+        // Questions Data Array
+        const questions = [
+            {
+                question: "다음 중 물질의 성질 자체가 변하여 새로운 물질로 변하는 '화학 변화'에 해당하는 현상은 무엇인가요?",
+                answerOptions: [
+                    { text: "물이 끓어 김이 나고 수증기가 된다.", rationale: "물이 수증기로 변하는 것은 분자의 배열만 변하는 대표적인 물리 변화입니다.", isCorrect: false },
+                    { text: "김치가 익으면서 신맛이 강해진다.", rationale: "발효 과정을 통해 새로운 성분(산성 물질)이 만들어지므로 화학 변화에 해당합니다.", isCorrect: true },
+                    { text: "설탕이 물에 녹아 보이지 않게 된다.", rationale: "용해 현상은 설탕 분자가 물 분자 사이로 골고루 섞이는 물리 변화이며, 단맛이라는 성질은 그대로 유지됩니다.", isCorrect: false },
+                    { text: "유리컵이 떨어져 산산조각이 난다.", rationale: "모양만 변했을 뿐 유리라는 성질은 전혀 변하지 않았으므로 물리 변화입니다.", isCorrect: false }
+                ],
+                hint: "반응 전 물질의 성질과 전혀 다른 새로운 물질이 생성되는 현상을 찾아보세요."
+            },
+            {
+                question: "탄산 칼슘과 묽은 염산이 반응하여 이산화 탄소 기체가 발생하는 실험을 하고자 합니다. 닫힌 용기와 열린 용기에서의 반응 전후 질량 변화를 옳게 설명한 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "열린 용기에서는 반응 후 질량이 감소하고, 닫힌 용기에서는 질량이 일정하게 유지된다.", rationale: "열린 용기에서는 생성된 이산화 탄소 기체가 공기 중으로 날아가 질량이 감소한 것처럼 보이지만, 닫힌 용기에서는 기체가 빠져나가지 못해 질량이 변하지 않습니다.", isCorrect: true },
+                    { text: "열린 용기와 닫힌 용기 모두 질량이 감소한다.", rationale: "닫힌 용기에서는 기체가 밖으로 나갈 수 없어 질량이 완벽히 보존됩니다.", isCorrect: false },
+                    { text: "열린 용기와 닫힌 용기 모두 질량이 증가한다.", rationale: "기체가 발생하는 반응에서는 질량이 증가하지 않으며, 열린 용기에서는 오히려 기체가 도망쳐 질량이 감소합니다.", isCorrect: false },
+                    { text: "두 용기 모두 반응 전후 질량이 일정하게 유지된다.", rationale: "열린 용기에서는 기체가 날아가 측정되는 질량이 감소하므로 두 용기의 측정 결과는 다릅니다.", isCorrect: false }
+                ],
+                hint: "기체가 발생하는 반응에서 기체가 밖으로 빠져나갈 수 있는지 여부를 고려해 보세요."
+            },
+            {
+                question: "구리 가루를 공기 중에서 가열하여 산화 구리(II)를 합성할 때, 반응하는 구리와 산소의 질량비는 4 : 1입니다. 구리 가루 12 g을 완전히 반응시키기 위해 필요한 산소의 최소 질량은 얼마인가요?",
+                answerOptions: [
+                    { text: "2 g", rationale: "구리와 산소의 질량비가 4 : 1이므로, 구리 12 g에 필요한 산소는 3 g입니다.", isCorrect: false },
+                    { text: "3 g", rationale: "일정 성분비 법칙에 따라 구리와 산소는 4 : 1의 일정한 질량비로 반응하므로, 구리 12 g은 산소 3 g과 완전히 반응합니다.", isCorrect: true },
+                    { text: "4 g", rationale: "질량비 4 : 1을 대입하면 구리 12 g에 대해 산소 4 g은 과량입니다.", isCorrect: false },
+                    { text: "5 g", rationale: "산소가 5 g 반응하려면 구리는 20 g이 필요합니다.", isCorrect: false }
+                ],
+                hint: "일정 성분비 법칙에 따라 구리 질량의 4분의 1만큼 산소가 필요합니다."
+            },
+            {
+                question: "온도와 압력이 일정할 때, 수소 기체와 산소 기체가 반응하여 수증기를 생성합니다. 기체 반응 법칙에 따른 수소 기체, 산소 기체, 수증기의 부피비는 얼마인가요?",
+                answerOptions: [
+                    { text: "1 : 1 : 2", rationale: "수소와 산소의 반응 부피비는 1:1이 아닌 2:1입니다.", isCorrect: false },
+                    { text: "2 : 1 : 2", rationale: "화학 반응식 2H₂ + O₂ → 2H₂O에서 계수비가 곧 부피비가 되므로 수소, 산소, 수증기의 부피비는 2 : 1 : 2입니다.", isCorrect: true },
+                    { text: "1 : 2 : 2", rationale: "산소의 부피가 수소의 부피보다 더 많이 소모될 수 없습니다.", isCorrect: false },
+                    { text: "2 : 2 : 1", rationale: "수증기는 수소와 같은 부피만큼 생성되므로 부피비의 마지막 숫자는 2가 되어야 합니다.", isCorrect: false }
+                ],
+                hint: "수증기 생성 반응의 화학 반응식을 쓰고, 계수의 비를 확인해 보세요."
+            },
+            {
+                question: "화학 반응이 일어날 때 에너지가 출입합니다. 다음 중 주변의 열에너지를 흡수하여 주변 온도를 낮추는 '흡열 반응'에 해당하는 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "메테인(나무, 가스 등)의 연소 반응", rationale: "연소 반응은 빛과 열을 대량으로 방출하는 대표적인 발열 반응입니다.", isCorrect: false },
+                    { text: "염산과 수산화 나트륨 수용액의 중화 반응", rationale: "중화 반응 시에는 중화열이 발생하여 주변 온도가 올라가므로 발열 반응입니다.", isCorrect: false },
+                    { text: "철가루와 산소가 반응하여 녹이 스는 반응", rationale: "철이 녹스는 산화 반응은 미세하게 열을 방출하는 발열 반응입니다. (휴대용 손난로의 원리)", isCorrect: false },
+                    { text: "수산화 바륨과 염화 암모늄의 반응", rationale: "두 고체 물질이 반응하면서 주변의 열을 급격히 흡수하여 얼음판이 얼어붙을 정도로 온도가 내려가는 대표적인 흡열 반응입니다.", isCorrect: true }
+                ],
+                hint: "냉찜질 팩이나 온도가 시원해지는 화학 반응 실험을 떠올려 보세요."
+            },
+            {
+                question: "메테인의 연소 반응을 나타낸 화학 반응식은 CH₄ + 2O₂ → CO₂ + 2H₂O 입니다. 이에 대한 설명으로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "반응 전과 후의 분자 총합은 변하지 않는다.", rationale: "반응물의 분자 수(메테인 1개 + 산소 2개 = 3개)와 생성물의 분자 수(이산화 탄소 1개 + 물 2개 = 3개)가 서로 같아 분자 총 개수는 변하지 않습니다.", isCorrect: true },
+                    { text: "반응 전후에 원자의 종류와 개수가 달라진다.", rationale: "화학 반응이 일어나도 원자는 새로 생기거나 없어지지 않고 종류와 개수가 보존됩니다.", isCorrect: false },
+                    { text: "반응물의 총질량은 생성물의 총질량보다 크다.", rationale: "질량 보존 법칙에 의해 반응 전 물질의 총질량과 반응 후 생성된 물질의 총질량은 완벽히 같습니다.", isCorrect: false },
+                    { text: "이 반응은 열을 흡수하여 주변 온도를 낮추는 반응이다.", rationale: "메테인의 연소는 격렬하게 열과 빛을 내는 대표적인 발열 반응입니다.", isCorrect: false }
+                ],
+                hint: "화학 반응식 좌우의 계수들을 더해보고 반응 전후 분자의 개수 변화를 살펴보세요."
+            },
+            {
+                question: "기권을 높이에 따른 기온 변화를 기준으로 4개의 층으로 구분할 때, 높이 올라갈수록 기온이 상승하며 태양의 자외선을 흡수하는 오존층이 존재하는 층은 어디인가요?",
+                answerOptions: [
+                    { text: "대류권", rationale: "대류권은 위로 갈수록 지표가 방출하는 열이 적게 도달하므로 기온이 내려가는 층입니다.", isCorrect: false },
+                    { text: "성층권", rationale: "성층권에는 오존층이 존재하여 태양의 유해한 자외선을 흡수하므로 위로 갈수록 기온이 상승합니다.", isCorrect: true },
+                    { text: "중간권", rationale: "중간권은 위로 갈수록 기온이 내려가 기권 중 가장 최저 온도가 나타나는 층입니다.", isCorrect: false },
+                    { text: "열권", rationale: "열권은 위로 올라갈수록 기온이 급격히 상승하지만 오존층이 있는 곳은 아닙니다.", isCorrect: false }
+                ],
+                hint: "비행기의 항로로 이용되는 안정적인 층이자 자외선을 차단해주는 오존층의 위치를 떠올려 보세요."
+            },
+            {
+                question: "대류권과 중간권은 둘 다 높이 올라갈수록 기온이 낮아져 대류 현상(공기의 위아래 섞임)이 활발하게 일어날 수 있는 불안정한 층입니다. 그럼에도 불구하고 기상 현상(비, 눈 등)이 '대류권'에서만 일어나는 결정적인 이유는 무엇인가요?",
+                answerOptions: [
+                    { text: "대류권에만 오존층이 존재하기 때문", rationale: "오존층은 성층권에 존재하므로 기상 현상과는 직접적인 관계가 없습니다.", isCorrect: false },
+                    { text: "대류권의 기압이 중간권보다 훨씬 낮기 때문", rationale: "지표면 부근인 대류권이 중간권보다 기압(공기의 밀도)이 훨씬 높습니다.", isCorrect: false },
+                    { text: "대류권에는 기상 현상의 원인이 되는 수증기가 집중되어 있기 때문", rationale: "기상 현상이 나타나려면 대류 현상뿐만 아니라 구름과 비를 만들 수 있는 '수증기'가 있어야 하는데, 수증기는 대부분 지표 근처인 대류권에 모여 있습니다.", isCorrect: true },
+                    { text: "대류권이 태양 복사 에너지를 가장 직접적으로 흡수하기 때문", rationale: "대류권 하부는 지구 복사 에너지를 주로 받으며, 이것이 대류권에서만 기상 현상이 발생하는 직접적 원인은 아닙니다.", isCorrect: false }
+                ],
+                hint: "비나 눈이 내리는 데 반드시 필요한 '물의 상태 변화'와 관련 있는 물질이 어디에 존재하는지 생각해 보세요."
+            },
+            {
+                question: "지구의 복사 평형에 대한 설명으로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "지구가 흡수하는 태양 복사 에너지양보다 방출하는 지구 복사 에너지양이 더 많다.", rationale: "방출량이 더 많다면 지구의 온도는 계속 내려갔을 것입니다.", isCorrect: false },
+                    { text: "지구는 복사 에너지를 우주 공간으로 전혀 방출하지 않는다.", rationale: "지구도 지구 복사 에너지 형태로 열을 우주로 방출하고 있습니다.", isCorrect: false },
+                    { text: "지구가 흡수하는 태양 복사 에너지양과 방출하는 지구 복사 에너지양이 같아 평균 기온이 일정하게 유지된다.", rationale: "지구는 흡수하는 태양 복사 에너지양과 방출하는 지구 복사 에너지양이 같아 복사 평형 상태를 이루며 연평균 기온을 일정하게 유지합니다.", isCorrect: true },
+                    { text: "온실 효과가 커지면 지구 복사 평형이 깨져 지구 온도가 계속해서 낮아진다.", rationale: "온실 효과가 강해지면 대기가 열을 더 많이 가두어 복사 평형을 이루는 온도가 높아져 지구 온난화가 발생합니다.", isCorrect: false }
+                ],
+                hint: "지구의 연평균 온도가 오랜 세월 동안 비교적 일정하게 유지되는 원리를 생각해 보세요."
+            },
+            {
+                question: "대기 중의 온실 기체가 지구 복사 에너지를 흡수했다가 다시 지표로 방출하여 지구를 따뜻하게 유지하는 현상을 온실 효과라고 합니다. 인류의 활동으로 인해 농도가 급격히 증가하여 지구 온난화를 일으키는 대표적인 온실 기체는 무엇인가요?",
+                answerOptions: [
+                    { text: "질소", rationale: "질소는 대기의 약 78%를 차지하는 가장 많은 기체이지만 온실 효과를 일으키지는 않습니다.", isCorrect: false },
+                    { text: "산소", rationale: "산소는 대기 성분 중 약 21%를 차지하며 온실 기체가 아닙니다.", isCorrect: false },
+                    { text: "이산화 탄소", rationale: "이산화 탄소는 화석 연료의 사용 등으로 급증하고 있으며, 지구 온난화를 유발하는 가장 대표적인 온실 기체입니다.", isCorrect: true },
+                    { text: "아르곤", rationale: "아르곤은 비활성 기체로 온실 효과와 무관합니다.", isCorrect: false }
+                ],
+                hint: "화석 연료(석탄, 석유)를 연수시킬 때 다량 배출되는 기체를 골라보세요."
+            },
+            {
+                question: "현재 기온이 일정한 상태에서, 실내 공기 속에 포함된 실제 수증기량이 점점 증가할 때 나타나는 변화로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "상대 습도는 높아지고 이슬점은 낮아진다.", rationale: "실제 수증기량이 늘어나면 이슬점은 낮아지는 것이 아니라 높아집니다.", isCorrect: false },
+                    { text: "상대 습도는 높아지고 이슬점은 높아진다.", rationale: "기온이 일정하므로 포화 수증기량은 일정한데 실제 수증기량이 늘어나 상대 습도가 올라가고, 수증기가 많아졌으므로 응결이 시작되는 온도인 이슬점도 함께 높아집니다.", isCorrect: true },
+                    { text: "상대 습도는 낮아지고 이슬점은 높아진다.", rationale: "수증기량이 증가하면 공기가 더 축축해지므로 상대 습도는 증가해야 합니다.", isCorrect: false },
+                    { text: "상대 습도와 이슬점 모두 변화 없다.", rationale: "실제 수증기량의 변화는 상대 습도와 이슬점 모두에 직접적인 영향을 미칩니다.", isCorrect: false }
+                ],
+                hint: "이슬점은 실제 수증기량에만 비례하며, 상대 습도는 포화 수증기량 분의 실제 수증기량으로 계산됩니다."
+            },
+            {
+                question: "하늘에 구름이 생성되는 과정을 순서대로 바르게 나열한 것은 무엇인가요?\n(가) 단열 팽창  (나) 수증기 응결  (다) 공기 상승  (라) 기온 하강  (마) 이슬점 도달",
+                answerOptions: [
+                    { text: "(다) → (가) → (라) → (마) → (나)", rationale: "공기가 위로 상승하면서 기압이 낮아져 단열 팽창하고, 이로 인해 기온이 하강하여 이슬점에 도달하면 수증기가 응결해 구름이 됩니다.", isCorrect: true },
+                    { text: "(다) → (라) → (가) → (마) → (나)", rationale: "단열 팽창이 일어난 결과로 기온이 내려가는 것이므로 순서가 바뀌었습니다.", isCorrect: false },
+                    { text: "(가) → (다) → (라) → (나) → (마)", rationale: "공기가 먼저 위로 올라가는 과정(상승)이 첫 단계가 되어야 합니다.", isCorrect: false },
+                    { text: "(라) → (다) → (가) → (마) → (나)", rationale: "공기가 올라가기도 전에 기온이 먼저 스스로 하강하지 않습니다.", isCorrect: false }
+                ],
+                hint: "지표 근처의 가벼워진 공기가 위로 솟구쳐 올라가면서 주변 기압이 약해져 부피가 늘어나는 현상부터 시작합니다."
+            },
+            {
+                question: "우리나라와 같은 중위도 및 고위도 지방의 구름에서 비가 내리는 원리를 설명하는 '빙정설'에 대한 설명으로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "구름 내부 온도가 모두 0℃ 이상으로 유지된다.", rationale: "빙정(얼음 알갱이)이 존재하려면 구름 상부의 온도가 영하 이하로 매우 낮아야 합니다.", isCorrect: false },
+                    { text: "따뜻한 물방울끼리 서로 충돌하고 합쳐지면서 비가 내린다.", rationale: "물방울끼리 병합되어 비가 내리는 이론은 저위도 열대 지방의 '병합설'에 해당합니다.", isCorrect: false },
+                    { text: "영하의 구름 속에서 얼음 알갱이(빙정)에 수증기가 달라붙어 성장한 후, 떨어지면서 녹아 비가 된다.", rationale: "빙정설에 따르면 구름 속 얼음 알갱이 주변의 수증기가 승화 과정을 통해 빙정에 달라붙어 커지고, 이것이 무거워져 떨어질 때 녹으면 비, 안 녹으면 눈이 됩니다.", isCorrect: true },
+                    { text: "저위도 열대 지방의 따뜻한 비를 설명하는 대표적인 이론이다.", rationale: "빙정설은 중위도 및 고위도 지방의 찬 비와 눈을 설명하는 이론입니다.", isCorrect: false }
+                ],
+                hint: "빙정(氷晶)이란 '얼음 결정'을 뜻합니다. 구름 속 얼음 알갱이가 어떤 역할을 하는지 생각해 보세요."
+            },
+            {
+                question: "속력이 일정한 '등속 운동'을 하는 물체에 대한 설명으로 옳은 것을 고르세요.",
+                answerOptions: [
+                    { text: "시간이 흐를수록 물체의 속력이 점점 빨라진다.", rationale: "속력이 변하면 등속 운동이 아닌 가속도 운동입니다.", isCorrect: false },
+                    { text: "이동 거리가 시간에 비례하여 일정하게 증가한다.", rationale: "등속 운동에서는 속력이 일정하므로 이동 거리는 시간의 경과에 비례하여 곧게 증가하게 됩니다.", isCorrect: true },
+                    { text: "물체의 운동 방향으로 일정한 크기의 알짜힘이 계속 작용한다.", rationale: "운동 방향으로 힘이 계속 작용하면 속력이 변합니다. 등속 직선 운동을 하는 물체는 알짜힘이 0입니다.", isCorrect: false },
+                    { text: "시간에 따른 이동 거리 그래프는 완만한 곡선 모양이다.", rationale: "이동 거리가 시간에 비례하므로 그래프는 기울기가 일정한 직선 모양이어야 합니다.", isCorrect: false }
+                ],
+                hint: "1초당 이동하는 거리가 매초 일정하게 반복되는 상황을 연상해 보세요."
+            },
+            {
+                question: "공기 저항이 없는 진공 상태에서 질량이 1 kg인 쇠구슬과 질량이 10 kg인 볼링공을 같은 높이에서 동시에 떨어뜨렸습니다. 두 물체의 운동에 대한 설명으로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "볼링공의 질량이 더 크기 때문에 쇠구슬보다 먼저 바닥에 도달한다.", rationale: "공기 저항이 없을 때 낙하 속도는 물체의 질량과 전혀 관계가 없으므로 동시에 도달합니다.", isCorrect: false },
+                    { text: "두 물체의 속력은 매초 9.8 m/s씩 일정하게 증가한다.", rationale: "지구 중력에 의해 낙하하는 모든 물체는 질량에 관계없이 매초 속력이 9.8 m/s씩 증가하는 등가속도 운동을 합니다.", isCorrect: true },
+                    { text: "질량이 큰 볼링공의 중력 가속도가 더 크다.", rationale: "중력 가속도는 질량과 무관하게 두 물체 모두 9.8 m/s²로 동일합니다.", isCorrect: false },
+                    { text: "공기 저항이 없으므로 속도가 변하지 않는 등속 운동을 한다.", rationale: "중력이라는 일정한 힘이 계속 작용하므로 속도가 일정하게 증가하는 등가속도 운동을 합니다.", isCorrect: false }
+                ],
+                hint: "피사의 사탑에서 깃털과 쇠구슬을 떨어뜨리는 유명한 낙하 실험(진공 상태) 결과를 생각해 보세요."
+            },
+            {
+                question: "정지 상태에서 자유 낙하하는 물체가 있습니다. 공기 저항을 무시할 때, 낙하를 시작한 지 3초 후 이 물체의 속력은 얼마인가요? (단, 중력 가속도 상수는 9.8 m/s²입니다.)",
+                answerOptions: [
+                    { text: "9.8 m/s", rationale: "자유 낙하하는 물체의 1초 후 속력이 9.8 m/s입니다.", isCorrect: false },
+                    { text: "19.6 m/s", rationale: "2초 후 속력이 19.6 m/s입니다.", isCorrect: false },
+                    { text: "29.4 m/s", rationale: "자유 낙하 속력 공식 v = 9.8t에 따라, 3초 후 속력은 9.8 × 3 = 29.4 m/s가 됩니다.", isCorrect: true },
+                    { text: "39.2 m/s", rationale: "4초 후 속력이 39.2 m/s입니다.", isCorrect: false }
+                ],
+                hint: "속력(v)은 중력 가속도 상수(9.8)에 낙하 시간(t)을 곱해 구할 수 있습니다."
+            },
+            {
+                question: "과학에서 정의하는 물리적인 '일'을 한 경우에 해당하는 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "무거운 가방을 어깨에 메고 버스를 타기 위해 제자리에 가만히 서 있는 경우", rationale: "힘은 들지만 가방의 이동 거리가 0이므로 한 일의 양은 0입니다.", isCorrect: false },
+                    { text: "무거운 책장을 힘껏 밀었으나 책장이 꼼짝도 하지 않은 경우", rationale: "가한 힘은 크지만 책장의 이동 거리가 0이므로 일의 양은 0입니다.", isCorrect: false },
+                    { text: "마찰이 없는 매끄러운 얼음판 위에서 일정한 속도로 계속 미끄러져 가는 경우", rationale: "이동 거리는 존재하지만 등속 운동이므로 물체에 가해진 알짜힘이 0입니다. 따라서 한 일은 0입니다.", isCorrect: false },
+                    { text: "바닥에 있는 상자를 위로 들어 올려 계단을 타고 올라가는 경우", rationale: "중력에 대항하여 위 방향으로 힘을 주고, 그 힘의 방향으로 상자가 위로 이동했으므로 물리적인 일을 한 것입니다.", isCorrect: true }
+                ],
+                hint: "과학에서의 일은 물체에 힘을 주어, 그 '힘의 방향'으로 '물체가 이동'해야 성립합니다."
+            },
+            {
+                question: "질량이 2 kg인 물체가 4 m/s의 속력으로 운동하고 있습니다. 이 물체가 가지고 있는 운동 에너지는 몇 J인가요?",
+                answerOptions: [
+                    { text: "4 J", rationale: "속력의 제곱을 해주지 않은 잘못된 계산값입니다.", isCorrect: false },
+                    { text: "8 J", rationale: "공식 앞의 1/2을 생략하고 속력에 제곱을 하지 않았거나 계산 실수입니다.", isCorrect: false },
+                    { text: "16 J", rationale: "운동 에너지 공식 Ek = 1/2 * m * v²에 대입하면, 1/2 × 2 kg × (4 m/s)² = 16 J이 됩니다.", isCorrect: true },
+                    { text: "32 J", rationale: "공식의 1/2을 곱해주지 않고 계산한 값입니다.", isCorrect: false }
+                ],
+                hint: "운동 에너지 계산 공식 Ek = 1/2 * m * v²을 떠올려 보세요. (m은 질량, v는 속력)"
+            },
+            {
+                question: "질량이 5 kg인 물체가 지면(기준면)으로부터 2 m 높이에 정지해 있습니다. 이 물체가 지면에 대해 가지는 중력에 의한 위치 에너지는 몇 J인가요? (단, 중력 가속도 상수는 9.8입니다.)",
+                answerOptions: [
+                    { text: "10 J", rationale: "중력 가속도 상수를 곱하지 않고 단순히 질량과 높이만 곱한 값입니다.", isCorrect: false },
+                    { text: "49 J", rationale: "높이인 2를 곱하지 않고 9.8 × 5만 계산한 오답입니다.", isCorrect: false },
+                    { text: "98 J", rationale: "위치 에너지 공식 Ep = 9.8mh에 값을 대입하면, 9.8 × 5 kg × 2 m = 98 J이 됩니다.", isCorrect: true },
+                    { text: "196 J", rationale: "계산 과정에서 2배를 더 많이 곱한 값입니다.", isCorrect: false }
+                ],
+                hint: "위치 에너지 계산 공식 Ep = 9.8mh을 사용하세요. (m은 질량, h는 높이)"
+            },
+            {
+                question: "공기 저항을 무시할 때, 높은 곳에서 낙하하는 물체의 역학적 에너지 변화에 대한 설명으로 옳은 것은 무엇인가요?",
+                answerOptions: [
+                    { text: "위치 에너지는 감소하고 운동 에너지는 증가하지만, 두 에너지의 합인 역학적 에너지는 항상 일정하게 보존된다.", rationale: "낙하할수록 높이가 낮아져 위치 에너지는 줄고 속도가 빨라져 운동 에너지는 늘어나지만, 저항이 없을 때 이 둘의 합(역학적 에너지)은 항상 일정하게 보존됩니다.", isCorrect: true },
+                    { text: "낙하할수록 위치 에너지와 운동 에너지 모두 증가한다.", rationale: "높이가 낮아지므로 위치 에너지는 감소해야 합니다.", isCorrect: false },
+                    { text: "물체가 아래로 내려갈수록 역학적 에너지는 점점 증가한다.", rationale: "역학적 에너지는 증가하거나 감소하지 않고 일정한 값을 유지합니다.", isCorrect: false },
+                    { text: "낙하하는 도중에는 위치 에너지가 운동 에너지보다 항상 크다.", rationale: "낙하 시작 직후에는 위치 에너지가 더 크지만, 지면에 닿기 직전에는 운동 에너지가 더 커지므로 항상 크다고 볼 수는 없습니다.", isCorrect: false }
+                ],
+                hint: "역학적 에너지는 위치 에너지와 운동 에너지의 '합'을 의미합니다. 에너지 보존 법칙을 고려해 보세요."
+            }
+        ];
+
+        // App States
+        let currentQuestionIndex = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let timerInterval = null;
+        let timeLeft = 40 * 60; // 40 minutes in seconds
+        let isStarted = false;
+        let isSubmitted = false;
+
+        // Initialize Lucide Icons
+        window.onload = function() {
+            lucide.createIcons();
+            buildNavigationGrid();
+        };
+
+        // Start Quiz
+        function startQuiz() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            document.getElementById('quiz-header-status').classList.remove('hidden');
+            
+            isStarted = true;
+            currentQuestionIndex = 0;
+            userAnswers = Array(questions.length).fill(null);
+            
+            startTimer();
+            renderQuestion();
+            updateProgress();
+            buildNavigationGrid();
+        }
+
+        // Timer Function
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmit();
+                    return;
+                }
+                timeLeft--;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const displayStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.getElementById('timer-display').innerText = displayStr;
+            
+            // Warn if under 5 minutes
+            if (timeLeft < 300) {
+                const timerContainer = document.getElementById('timer-display').parentElement;
+                timerContainer.classList.remove('bg-rose-50', 'text-rose-700', 'border-rose-100');
+                timerContainer.classList.add('bg-rose-600', 'text-white', 'border-transparent', 'animate-pulse');
+            }
+        }
+
+        // Build Navigation Grid (1-20 sidebar)
+        function buildNavigationGrid() {
+            const gridContainer = document.getElementById('nav-grid');
+            gridContainer.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.innerText = i + 1;
+                btn.className = getNavButtonClass(i);
+                btn.onclick = () => selectQuestion(i);
+                gridContainer.appendChild(btn);
+            }
+            
+            // Update Answered Badge Count
+            const answeredCount = userAnswers.filter(ans => ans !== null).length;
+            document.getElementById('answered-count-badge').innerText = `${answeredCount} / ${questions.length}`;
+        }
+
+        // Determine CSS classes for navigation grid buttons
+        function getNavButtonClass(index) {
+            const baseClass = "h-10 text-sm font-bold rounded-lg transition-all focus:outline-none flex items-center justify-center border ";
+            
+            if (index === currentQuestionIndex) {
+                return baseClass + "border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-100";
+            } else if (userAnswers[index] !== null) {
+                return baseClass + "border-indigo-100 bg-indigo-50 text-indigo-700";
+            } else {
+                return baseClass + "border-slate-200 bg-white text-slate-600 hover:bg-slate-50";
+            }
+        }
+
+        // Render Current Question
+        function renderQuestion() {
+            const q = questions[currentQuestionIndex];
+            
+            // Header Indicator
+            document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;
+            
+            // Question Title
+            document.getElementById('question-text').innerText = q.question;
+            
+            // Hint Text
+            document.getElementById('hint-text').innerText = q.hint;
+            // Always collapse hint box when changing questions
+            document.getElementById('hint-box').classList.add('hidden');
+            
+            // Render Options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            
+            q.answerOptions.forEach((option, idx) => {
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                const optionBtn = document.createElement('button');
+                optionBtn.type = 'button';
+                optionBtn.onclick = () => selectOption(idx);
+                optionBtn.className = `w-full text-left p-4 rounded-xl border transition-all flex items-start space-x-3 group relative ${
+                    isSelected 
+                    ? 'border-indigo-600 bg-indigo-50/50 text-indigo-900 font-semibold shadow-sm' 
+                    : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300'
+                }`;
+                
+                // Index Circle Badge
+                const numberCircle = isSelected 
+                    ? `<span class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">${idx + 1}</span>`
+                    : `<span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-500 font-semibold text-xs flex items-center justify-center group-hover:bg-slate-200">${idx + 1}</span>`;
+                
+                optionBtn.innerHTML = `
+                    ${numberCircle}
+                    <span class="text-sm md:text-base leading-snug pt-0.5">${option.text}</span>
+                `;
+                
+                container.appendChild(optionBtn);
+            });
+            
+            // Update Nav Controls (prev / next buttons)
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            
+            const nextBtn = document.getElementById('next-btn');
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.innerHTML = `<span>최종 제출</span><i data-lucide="check" class="w-4 h-4"></i>`;
+                nextBtn.onclick = openSubmitModal;
+                nextBtn.className = "flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all shadow-md";
+            } else {
+                nextBtn.innerHTML = `<span>다음 문제</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+                nextBtn.onclick = nextQuestion;
+                nextBtn.className = "flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold transition-all";
+            }
+            
+            lucide.createIcons();
+            buildNavigationGrid();
+        }
+
+        // Interaction Handlers
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            renderQuestion();
+            updateProgress();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function selectQuestion(index) {
+            currentQuestionIndex = index;
+            renderQuestion();
+        }
+
+        function toggleHint() {
+            const hintBox = document.getElementById('hint-box');
+            hintBox.classList.toggle('hidden');
+        }
+
+        function updateProgress() {
+            const answeredCount = userAnswers.filter(ans => ans !== null).length;
+            const percent = Math.round((answeredCount / questions.length) * 100);
+            
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text').innerText = `${percent}% 완료 (${answeredCount}/${questions.length} 문제)`;
+        }
+
+        // Modal Controls
+        function openSubmitModal() {
+            const unanswered = questions.length - userAnswers.filter(ans => ans !== null).length;
+            const warningText = document.getElementById('modal-warning-text');
+            
+            if (unanswered > 0) {
+                warningText.innerHTML = `아직 풀지 않은 문제가 <strong class="text-rose-600">${unanswered}개</strong> 있습니다.<br>정말 제출하고 즉시 채점 결과를 확인하시겠습니까?`;
+            } else {
+                warningText.innerHTML = "모든 문제를 해결하셨습니다! 제출하고 성적표와 오답 해설 노트를 확인해 보세요.";
+            }
+            
+            document.getElementById('submit-modal').classList.remove('hidden');
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('submit-modal').classList.add('hidden');
+        }
+
+        // Form Submission (Grading)
+        function autoSubmit() {
+            alert("제한 시간이 초과되어 시험이 자동으로 제출됩니다.");
+            submitQuiz();
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            closeSubmitModal();
+            
+            isSubmitted = true;
+            
+            // Calculate Results
+            let correctCount = 0;
+            questions.forEach((q, qIdx) => {
+                const userAns = userAnswers[qIdx];
+                if (userAns !== null && q.answerOptions[userAns].isCorrect) {
+                    correctCount++;
+                }
+            });
+            
+            const score = (correctCount / questions.length) * 100;
+            const timeTakenSec = (40 * 60) - timeLeft;
+            const minutesTaken = Math.floor(timeTakenSec / 60);
+            const secondsTaken = timeTakenSec % 60;
+            
+            // Hide Quiz Screen, Show Results
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('quiz-header-status').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+            
+            // Set stats
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('correct-count').innerText = correctCount;
+            document.getElementById('time-taken-display').innerText = `소요 시간: ${minutesTaken}분 ${secondsTaken}초`;
+            
+            // Apply customized grade messages
+            const gradeTitle = document.getElementById('feedback-grade');
+            const gradeDesc = document.getElementById('feedback-message');
+            const iconBox = document.getElementById('result-icon-box');
+            
+            if (score >= 90) {
+                gradeTitle.innerText = "최상위권 보장! 완벽합니다 ⭐";
+                gradeDesc.innerText = "기념비적인 우수한 성적입니다! 완벽에 가까운 실력이며 실전에서도 100점을 기대할 수 있는 상태입니다.";
+                iconBox.className = "inline-flex bg-emerald-50 text-emerald-600 p-4 rounded-full mb-6";
+                iconBox.innerHTML = `<i data-lucide="award" class="w-14 h-14"></i>`;
+            } else if (score >= 70) {
+                gradeTitle.innerText = "훌륭한 실력입니다! 🎉";
+                gradeDesc.innerText = "개념을 대체로 정확하게 잘 이해하고 있습니다. 몇 가지 실수나 헷갈리는 부분들을 아래 상세 피드백에서 완벽하게 보정해 보세요.";
+                iconBox.className = "inline-flex bg-indigo-50 text-indigo-600 p-4 rounded-full mb-6";
+                iconBox.innerHTML = `<i data-lucide="check-circle-2" class="w-14 h-14"></i>`;
+            } else if (score >= 50) {
+                gradeTitle.innerText = "조금 더 집중해봅시다! 👍";
+                gradeDesc.innerText = "확실하지 않게 아는 애매한 상태의 문제들이 다소 있었습니다. 아래 오답 정리 목록을 통해 핵심 개념 이론을 다시 가다듬으세요.";
+                iconBox.className = "inline-flex bg-amber-50 text-amber-500 p-4 rounded-full mb-6";
+                iconBox.innerHTML = `<i data-lucide="help-circle" class="w-14 h-14"></i>`;
+            } else {
+                gradeTitle.innerText = "기초 보강이 필요해요 ✍️";
+                gradeDesc.innerText = "단원별 주요 핵심 개념을 명확하게 파악하는 학습이 시급합니다. 오답 해설 노트의 친절한 설명을 천천히 정독하는 것부터 시작해 봅시다.";
+                iconBox.className = "inline-flex bg-rose-50 text-rose-500 p-4 rounded-full mb-6";
+                iconBox.innerHTML = `<i data-lucide="alert-circle" class="w-14 h-14"></i>`;
+            }
+            
+            // Build Detailed Analysis Accordions
+            buildDetailedAnalysis();
+            lucide.createIcons();
+            
+            // Scroll to Top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Build detailed review for all questions at the bottom of result screen
+        function buildDetailedAnalysis() {
+            const listContainer = document.getElementById('detailed-analysis-list');
+            listContainer.innerHTML = '';
+            
+            questions.forEach((q, qIdx) => {
+                const userAnsIdx = userAnswers[qIdx];
+                const isCorrect = userAnsIdx !== null && q.answerOptions[userAnsIdx].isCorrect;
+                
+                const item = document.createElement('div');
+                item.className = `bg-white rounded-xl border p-5 shadow-sm transition-all duration-300 ${
+                    isCorrect ? 'border-emerald-200 hover:border-emerald-300' : 'border-rose-200 hover:border-rose-300'
+                }`;
+                
+                // Status Header
+                const statusBadge = isCorrect 
+                    ? `<span class="inline-flex items-center space-x-1 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md"><i data-lucide="check" class="w-3.5 h-3.5"></i><span>정답</span></span>`
+                    : `<span class="inline-flex items-center space-x-1 text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md"><i data-lucide="x" class="w-3.5 h-3.5"></i><span>오답</span></span>`;
+                
+                // Render choices inside review
+                let choicesHtml = '';
+                q.answerOptions.forEach((option, oIdx) => {
+                    let optionStatusStyle = 'bg-slate-50 border-slate-150 text-slate-700';
+                    let optionIcon = '';
+                    
+                    if (option.isCorrect) {
+                        // Correct option highlighted in Green
+                        optionStatusStyle = 'bg-emerald-50 border-emerald-300 text-emerald-900 font-semibold';
+                        optionIcon = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>`;
+                    } else if (oIdx === userAnsIdx && !option.isCorrect) {
+                        // User selected wrong option highlighted in Red
+                        optionStatusStyle = 'bg-rose-50 border-rose-200 text-rose-900 font-semibold';
+                        optionIcon = `<i data-lucide="alert-circle" class="w-4 h-4 text-rose-500 flex-shrink-0 mt-0.5"></i>`;
+                    }
+                    
+                    choicesHtml += `
+                        <div class="p-3.5 rounded-lg border text-xs md:text-sm flex items-start space-x-2.5 ${optionStatusStyle}">
+                            ${optionIcon ? optionIcon : `<span class="w-4 h-4 bg-slate-200 text-slate-500 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">${oIdx+1}</span>`}
+                            <div class="flex-grow">
+                                <p class="mb-1 leading-snug">${option.text}</p>
+                                <p class="text-xs text-slate-400 mt-1 pl-1 border-l-2 border-slate-200">${option.rationale}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                item.innerHTML = `
+                    <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2.5">
+                        <span class="text-sm font-bold text-slate-400">질문 ${qIdx + 1}</span>
+                        ${statusBadge}
+                    </div>
+                    <h4 class="text-sm md:text-base font-bold text-slate-900 mb-4 whitespace-pre-line leading-relaxed">${q.question}</h4>
+                    
+                    <div class="space-y-2 mb-4">
+                        ${choicesHtml}
+                    </div>
+                    
+                    <!-- Core Tip box for explanation -->
+                    <div class="bg-indigo-50/50 rounded-lg p-3 text-xs text-indigo-950 flex items-start space-x-2 border border-indigo-100/50">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-indigo-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <span class="font-bold block text-indigo-800 mb-0.5">정답 요약 정보</span>
+                            <span>이 문제의 정답은 <strong>${q.answerOptions.findIndex(o => o.isCorrect) + 1}번</strong>입니다. 힌트 원리였던 "${q.hint}"를 꼭 기억하세요.</span>
+                        </div>
+                    </div>
+                `;
+                
+                listContainer.appendChild(item);
+            });
+        }
+
+        // Restart Quiz / Reset State
+        function restartQuiz() {
+            isStarted = false;
+            isSubmitted = false;
+            timeLeft = 40 * 60;
+            currentQuestionIndex = 0;
+            userAnswers = Array(questions.length).fill(null);
+            
+            // Toggle screens
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('intro-screen').classList.remove('hidden');
+            
+            // Clean up timers
+            clearInterval(timerInterval);
+            document.getElementById('timer-display').innerText = "40:00";
+            const timerContainer = document.getElementById('timer-display').parentElement;
+            timerContainer.className = "flex items-center space-x-1.5 bg-rose-50 text-rose-700 px-3 py-1.5 rounded-full text-sm font-semibold border border-rose-100";
+            
+            // Scroll to Top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+    </template>
+    <script>
+        const STUDENT_INFO = { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -290,46 +1053,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS.find(function(s) { return s.name === '이아연'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -338,70 +1069,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
-                // Built-in Genuine Student Projects
-        const DEFAULT_STUDENT_DATA = {
-            's_3_6_chaeyeon': {
-                'quiz': {
-                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                },
-                'meal-app': {
-                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                }
-            }
-        };
-
-        const DEFAULT_STUDENT_DATA = {
-  "quiz": {
-    "title": "중3 과학 1학기 기말고사 모의고사",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>중3 과학 1학기 기말고사 모의고사</title>\n    <!-- Tailwind CSS CDN -->\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <!-- Lucide Icons -->\n    <script src=\"https://unpkg.com/lucide@latest\"></script>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');\n        body {\n            font-family: 'Pretendard', sans-serif;\n        }\n        /* Custom scrollbar for question navigation grid */\n        .custom-scrollbar::-webkit-scrollbar {\n            width: 6px;\n            height: 6px;\n        }\n        .custom-scrollbar::-webkit-scrollbar-track {\n            background: #f1f5f9;\n        }\n        .custom-scrollbar::-webkit-scrollbar-thumb {\n            background: #cbd5e1;\n            border-radius: 3px;\n        }\n    </style>\n</head>\n<body class=\"bg-slate-50 text-slate-800 min-h-screen flex flex-col\">\n\n    <!-- Header -->\n    <header class=\"bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm\">\n        <div class=\"max-w-5xl mx-auto px-4 py-3 flex items-center justify-between\">\n            <div class=\"flex items-center space-x-2\">\n                <div class=\"bg-indigo-600 text-white p-2 rounded-lg\">\n                    <i data-lucide=\"graduations-cap\" class=\"w-6 h-6\"></i>\n                </div>\n                <div>\n                    <h1 class=\"text-lg font-bold text-slate-900 leading-none\">중3 과학 1학기 모의고사</h1>\n                    <span class=\"text-xs text-indigo-600 font-semibold\">난이도: 중급 (20문항)</span>\n                </div>\n            </div>\n            \n            <!-- Timer & Action Area -->\n            <div id=\"quiz-header-status\" class=\"hidden flex items-center space-x-4\">\n                <div class=\"flex items-center space-x-1.5 bg-rose-50 text-rose-700 px-3 py-1.5 rounded-full text-sm font-semibold border border-rose-100\">\n                    <i data-lucide=\"timer\" class=\"w-4 h-4 animate-pulse\"></i>\n                    <span id=\"timer-display\">40:00</span>\n                </div>\n                <button id=\"quick-submit-btn\" onclick=\"openSubmitModal()\" class=\"bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition-all shadow-sm\">\n                    제출하기\n                </button>\n            </div>\n        </div>\n    </header>\n\n    <main class=\"flex-grow max-w-5xl w-full mx-auto px-4 py-6 flex flex-col justify-center\">\n        <!-- 1. Intro Screen -->\n        <div id=\"intro-screen\" class=\"bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-10 max-w-2xl mx-auto w-full text-center my-8\">\n            <div class=\"inline-flex bg-indigo-50 text-indigo-600 p-4 rounded-full mb-6\">\n                <i data-lucide=\"award\" class=\"w-12 h-12\"></i>\n            </div>\n            <h2 class=\"text-2xl md:text-3xl font-bold text-slate-900 mb-3\">1학기 기말고사 최종 점검!</h2>\n            <p class=\"text-slate-500 mb-8 max-w-md mx-auto text-sm md:text-base leading-relaxed\">\n                중3 과학 핵심 3대 단원(화학 반응, 기권과 날씨, 운동과 에너지)의 빈출 유형을 분석한 고품격 20문항입니다. 실전처럼 시간을 재며 풀어보세요!\n            </p>\n\n            <!-- Quiz Information Grid -->\n            <div class=\"grid grid-cols-2 gap-4 max-w-md mx-auto mb-8 text-left\">\n                <div class=\"bg-slate-50 p-4 rounded-xl border border-slate-100\">\n                    <div class=\"text-xs text-slate-400 font-semibold mb-1\">시험 단원</div>\n                    <div class=\"text-sm font-bold text-slate-700 leading-tight\">화학 법칙 / 기권과 기온 / 역학 에너지</div>\n                </div>\n                <div class=\"bg-slate-50 p-4 rounded-xl border border-slate-100\">\n                    <div class=\"text-xs text-slate-400 font-semibold mb-1\">제한 시간</div>\n                    <div class=\"text-sm font-bold text-slate-700\">40분 (타이머 작동)</div>\n                </div>\n            </div>\n\n            <button onclick=\"startQuiz()\" class=\"w-full max-w-md bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-indigo-100 text-lg flex items-center justify-center space-x-2 mx-auto\">\n                <span>모의고사 시작하기</span>\n                <i data-lucide=\"play\" class=\"w-5 h-5\"></i>\n            </button>\n        </div>\n\n        <!-- 2. Quiz Play Screen -->\n        <div id=\"quiz-screen\" class=\"hidden grid grid-cols-1 lg:grid-cols-4 gap-6 my-4\">\n            \n            <!-- Question Sheet (Left 3 cols) -->\n            <div class=\"lg:col-span-3 flex flex-col space-y-6\">\n                \n                <!-- Progress & Current Status Info -->\n                <div class=\"bg-white rounded-xl border border-slate-200 p-4 shadow-sm\">\n                    <div class=\"flex justify-between items-center mb-2.5 text-xs font-semibold text-slate-400\">\n                        <span>전체 진행률</span>\n                        <span id=\"progress-text\" class=\"text-indigo-600\">0% 완료 (0/20 문제)</span>\n                    </div>\n                    <div class=\"w-full bg-slate-100 h-2.5 rounded-full overflow-hidden\">\n                        <div id=\"progress-bar\" class=\"bg-indigo-600 h-full transition-all duration-300 w-0\"></div>\n                    </div>\n                </div>\n\n                <!-- Main Question Card -->\n                <div class=\"bg-white rounded-2xl border border-slate-200 shadow-md p-6 md:p-8 flex flex-col min-h-[400px]\">\n                    <!-- Question Header -->\n                    <div class=\"flex justify-between items-start mb-6\">\n                        <span class=\"inline-block bg-slate-100 text-slate-700 font-bold px-3 py-1 rounded-full text-sm\">\n                            문제 <span id=\"current-q-num\">1</span>\n                        </span>\n                        <!-- Help Hint Accordion Button -->\n                        <button onclick=\"toggleHint()\" class=\"text-amber-600 hover:text-amber-700 font-semibold text-sm flex items-center space-x-1.5 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-100\">\n                            <i data-lucide=\"lightbulb\" class=\"w-4 h-4\"></i>\n                            <span>힌트 보기</span>\n                        </button>\n                    </div>\n\n                    <!-- Hint Box (Hidden by default) -->\n                    <div id=\"hint-box\" class=\"hidden mb-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-amber-900 text-sm\">\n                        <p class=\"font-bold mb-1\">💡 문제 힌트</p>\n                        <p id=\"hint-text\"></p>\n                    </div>\n\n                    <!-- Question Text -->\n                    <div class=\"mb-8\">\n                        <h3 id=\"question-text\" class=\"text-lg md:text-xl font-bold text-slate-900 leading-relaxed whitespace-pre-line\">\n                            질문 텍스트 공간\n                        </h3>\n                    </div>\n\n                    <!-- Options (Vertical Layout) -->\n                    <div id=\"options-container\" class=\"space-y-3.5 mb-8 flex-grow\">\n                        <!-- Dynamically filled with option buttons -->\n                    </div>\n\n                    <!-- Navigation controls -->\n                    <div class=\"flex justify-between items-center pt-6 border-t border-slate-100\">\n                        <button id=\"prev-btn\" onclick=\"prevQuestion()\" class=\"flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold transition-all disabled:opacity-40 disabled:hover:bg-transparent\">\n                            <i data-lucide=\"arrow-left\" class=\"w-4 h-4\"></i>\n                            <span>이전 문제</span>\n                        </button>\n\n                        <button id=\"next-btn\" onclick=\"nextQuestion()\" class=\"flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold transition-all\">\n                            <span>다음 문제</span>\n                            <i data-lucide=\"arrow-right\" class=\"w-4 h-4\"></i>\n                        </button>\n                    </div>\n                </div>\n            </div>\n\n            <!-- Quiz Sidebar / Navigator (Right 1 col) -->\n            <div class=\"lg:col-span-1 flex flex-col space-y-4\">\n                <!-- Question Navigation Panel -->\n                <div class=\"bg-white rounded-xl border border-slate-200 p-5 shadow-sm\">\n                    <h4 class=\"text-sm font-bold text-slate-800 mb-4 flex items-center justify-between\">\n                        <span>답안 작성 현황</span>\n                        <span id=\"answered-count-badge\" class=\"bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md text-xs\">0 / 20</span>\n                    </h4>\n                    <!-- Grid of 1-20 buttons -->\n                    <div class=\"grid grid-cols-5 gap-2.5 mb-5\" id=\"nav-grid\">\n                        <!-- Dynamically created -->\n                    </div>\n                    \n                    <div class=\"border-t border-slate-100 pt-4 flex flex-col space-y-3 text-xs\">\n                        <div class=\"flex items-center space-x-2 text-slate-500\">\n                            <span class=\"w-3 h-3 rounded-md bg-indigo-600 block\"></span>\n                            <span>선택한 문항</span>\n                        </div>\n                        <div class=\"flex items-center space-x-2 text-slate-500\">\n                            <span class=\"w-3 h-3 rounded-md border border-slate-300 bg-white block\"></span>\n                            <span>미선택 문항</span>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Useful Reminder / Tip Box -->\n                <div class=\"bg-gradient-to-br from-indigo-500 to-violet-600 text-white rounded-xl p-5 shadow-md\">\n                    <div class=\"flex items-start space-x-3\">\n                        <i data-lucide=\"info\" class=\"w-5 h-5 flex-shrink-0 mt-0.5\"></i>\n                        <div>\n                            <h4 class=\"font-bold text-sm mb-1\">중요 안내</h4>\n                            <p class=\"text-indigo-100 text-xs leading-relaxed\">\n                                모든 문제는 1학기 핵심 교육과정을 준수합니다. 기출 유형을 완벽하게 재구성한 핵심 문항들입니다.\n                            </p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n        <!-- 3. Final Report/Results Screen -->\n        <div id=\"results-screen\" class=\"hidden flex flex-col space-y-8 my-4\">\n            \n            <!-- Result Summary Card -->\n            <div class=\"bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-10 text-center max-w-3xl mx-auto w-full\">\n                <div class=\"inline-flex bg-emerald-50 text-emerald-600 p-4 rounded-full mb-6\" id=\"result-icon-box\">\n                    <i data-lucide=\"check-circle-2\" class=\"w-14 h-14\"></i>\n                </div>\n                <h2 class=\"text-2xl md:text-3xl font-extrabold text-slate-900 mb-1\">모의고사 채점 결과</h2>\n                <p id=\"time-taken-display\" class=\"text-sm text-slate-400 mb-6\">소요 시간: 15분 30초</p>\n\n                <!-- Big Score Showcase -->\n                <div class=\"bg-slate-50 border border-slate-100 rounded-2xl p-6 max-w-md mx-auto mb-8 flex items-center justify-around\">\n                    <div>\n                        <div class=\"text-xs text-slate-400 font-bold uppercase tracking-wider mb-1\">내 점수</div>\n                        <div class=\"text-4xl md:text-5xl font-extrabold text-indigo-600\"><span id=\"final-score\">85</span><span class=\"text-2xl text-slate-400\">점</span></div>\n                    </div>\n                    <div class=\"h-12 w-[1px] bg-slate-200\"></div>\n                    <div>\n                        <div class=\"text-xs text-slate-400 font-bold uppercase tracking-wider mb-1\">정답 개수</div>\n                        <div class=\"text-4xl md:text-5xl font-extrabold text-slate-800\"><span id=\"correct-count\">17</span><span class=\"text-2xl text-slate-400\">/20</span></div>\n                    </div>\n                </div>\n\n                <!-- Custom Performance Feedback Message -->\n                <div class=\"max-w-xl mx-auto bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-indigo-950 text-sm mb-8 leading-relaxed\">\n                    <span class=\"font-extrabold block text-base text-indigo-800 mb-1\" id=\"feedback-grade\">훌륭한 실력입니다! 🎉</span>\n                    <span id=\"feedback-message\">이 기세대로라면 실제 시험에서도 아주 좋은 성적을 받을 수 있을 거에요. 오답 정리를 통해 마지막 실수를 줄여봅시다.</span>\n                </div>\n\n                <div class=\"flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto\">\n                    <button onclick=\"restartQuiz()\" class=\"flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center space-x-2\">\n                        <i data-lucide=\"rotate-ccw\" class=\"w-5 h-5\"></i>\n                        <span>다시 도전하기</span>\n                    </button>\n                    <a href=\"#incorrect-analysis-header\" class=\"flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-xl transition-all flex items-center justify-center space-x-2\">\n                        <i data-lucide=\"book-open\" class=\"w-5 h-5\"></i>\n                        <span>상세 오답 정리 보기</span>\n                    </a>\n                </div>\n            </div>\n\n            <!-- Incorrect Answer Analysis Header -->\n            <div id=\"incorrect-analysis-header\" class=\"border-b border-slate-200 pb-4 max-w-3xl mx-auto w-full pt-4\">\n                <h3 class=\"text-xl font-bold text-slate-800 flex items-center space-x-2\">\n                    <i data-lucide=\"file-text\" class=\"w-5 h-5 text-indigo-600\"></i>\n                    <span>전체 문항 상세 해설 및 분석</span>\n                </h3>\n                <p class=\"text-slate-400 text-xs mt-1\">풀이 결과를 바탕으로 모든 정답과 오답 이유를 확인하고 취약한 개념을 보완하세요.</p>\n            </div>\n\n            <!-- Detailed Analysis List Container -->\n            <div id=\"detailed-analysis-list\" class=\"space-y-6 max-w-3xl mx-auto w-full\">\n                <!-- Dynamically rendered detailed analysis items -->\n            </div>\n        </div>\n    </main>\n\n    <!-- Footer -->\n    <footer class=\"bg-white border-t border-slate-200 py-6 mt-12\">\n        <div class=\"max-w-5xl mx-auto px-4 text-center text-slate-400 text-xs\">\n            <p>© 2026 중학교 3학년 과학 1학기 기말고사 완벽 대비 모의고사. All rights reserved.</p>\n        </div>\n    </footer>\n\n    <!-- Submit Confirm Modal -->\n    <div id=\"submit-modal\" class=\"hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4\">\n        <div class=\"bg-white rounded-2xl border border-slate-200 shadow-2xl p-6 max-w-md w-full text-center\">\n            <div class=\"inline-flex bg-amber-50 text-amber-500 p-3 rounded-full mb-4\">\n                <i data-lucide=\"alert-triangle\" class=\"w-10 h-10\"></i>\n            </div>\n            <h3 class=\"text-lg font-bold text-slate-900 mb-2\">시험을 끝내고 제출하시겠습니까?</h3>\n            <p id=\"modal-warning-text\" class=\"text-slate-500 text-sm mb-6\">풀지 않은 문제가 존재할 수 있습니다. 제출 시 최종 점수가 즉시 계산됩니다.</p>\n            \n            <div class=\"flex space-x-3\">\n                <button onclick=\"closeSubmitModal()\" class=\"flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl text-sm transition-all\">\n                    계속 풀기\n                </button>\n                <button onclick=\"submitQuiz()\" class=\"flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl text-sm transition-all shadow-md\">\n                    제출 완료\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <!-- Script Area -->\n    <script>\n        // Questions Data Array\n        const questions = [\n            {\n                question: \"다음 중 물질의 성질 자체가 변하여 새로운 물질로 변하는 '화학 변화'에 해당하는 현상은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"물이 끓어 김이 나고 수증기가 된다.\", rationale: \"물이 수증기로 변하는 것은 분자의 배열만 변하는 대표적인 물리 변화입니다.\", isCorrect: false },\n                    { text: \"김치가 익으면서 신맛이 강해진다.\", rationale: \"발효 과정을 통해 새로운 성분(산성 물질)이 만들어지므로 화학 변화에 해당합니다.\", isCorrect: true },\n                    { text: \"설탕이 물에 녹아 보이지 않게 된다.\", rationale: \"용해 현상은 설탕 분자가 물 분자 사이로 골고루 섞이는 물리 변화이며, 단맛이라는 성질은 그대로 유지됩니다.\", isCorrect: false },\n                    { text: \"유리컵이 떨어져 산산조각이 난다.\", rationale: \"모양만 변했을 뿐 유리라는 성질은 전혀 변하지 않았으므로 물리 변화입니다.\", isCorrect: false }\n                ],\n                hint: \"반응 전 물질의 성질과 전혀 다른 새로운 물질이 생성되는 현상을 찾아보세요.\"\n            },\n            {\n                question: \"탄산 칼슘과 묽은 염산이 반응하여 이산화 탄소 기체가 발생하는 실험을 하고자 합니다. 닫힌 용기와 열린 용기에서의 반응 전후 질량 변화를 옳게 설명한 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"열린 용기에서는 반응 후 질량이 감소하고, 닫힌 용기에서는 질량이 일정하게 유지된다.\", rationale: \"열린 용기에서는 생성된 이산화 탄소 기체가 공기 중으로 날아가 질량이 감소한 것처럼 보이지만, 닫힌 용기에서는 기체가 빠져나가지 못해 질량이 변하지 않습니다.\", isCorrect: true },\n                    { text: \"열린 용기와 닫힌 용기 모두 질량이 감소한다.\", rationale: \"닫힌 용기에서는 기체가 밖으로 나갈 수 없어 질량이 완벽히 보존됩니다.\", isCorrect: false },\n                    { text: \"열린 용기와 닫힌 용기 모두 질량이 증가한다.\", rationale: \"기체가 발생하는 반응에서는 질량이 증가하지 않으며, 열린 용기에서는 오히려 기체가 도망쳐 질량이 감소합니다.\", isCorrect: false },\n                    { text: \"두 용기 모두 반응 전후 질량이 일정하게 유지된다.\", rationale: \"열린 용기에서는 기체가 날아가 측정되는 질량이 감소하므로 두 용기의 측정 결과는 다릅니다.\", isCorrect: false }\n                ],\n                hint: \"기체가 발생하는 반응에서 기체가 밖으로 빠져나갈 수 있는지 여부를 고려해 보세요.\"\n            },\n            {\n                question: \"구리 가루를 공기 중에서 가열하여 산화 구리(II)를 합성할 때, 반응하는 구리와 산소의 질량비는 4 : 1입니다. 구리 가루 12 g을 완전히 반응시키기 위해 필요한 산소의 최소 질량은 얼마인가요?\",\n                answerOptions: [\n                    { text: \"2 g\", rationale: \"구리와 산소의 질량비가 4 : 1이므로, 구리 12 g에 필요한 산소는 3 g입니다.\", isCorrect: false },\n                    { text: \"3 g\", rationale: \"일정 성분비 법칙에 따라 구리와 산소는 4 : 1의 일정한 질량비로 반응하므로, 구리 12 g은 산소 3 g과 완전히 반응합니다.\", isCorrect: true },\n                    { text: \"4 g\", rationale: \"질량비 4 : 1을 대입하면 구리 12 g에 대해 산소 4 g은 과량입니다.\", isCorrect: false },\n                    { text: \"5 g\", rationale: \"산소가 5 g 반응하려면 구리는 20 g이 필요합니다.\", isCorrect: false }\n                ],\n                hint: \"일정 성분비 법칙에 따라 구리 질량의 4분의 1만큼 산소가 필요합니다.\"\n            },\n            {\n                question: \"온도와 압력이 일정할 때, 수소 기체와 산소 기체가 반응하여 수증기를 생성합니다. 기체 반응 법칙에 따른 수소 기체, 산소 기체, 수증기의 부피비는 얼마인가요?\",\n                answerOptions: [\n                    { text: \"1 : 1 : 2\", rationale: \"수소와 산소의 반응 부피비는 1:1이 아닌 2:1입니다.\", isCorrect: false },\n                    { text: \"2 : 1 : 2\", rationale: \"화학 반응식 2H₂ + O₂ → 2H₂O에서 계수비가 곧 부피비가 되므로 수소, 산소, 수증기의 부피비는 2 : 1 : 2입니다.\", isCorrect: true },\n                    { text: \"1 : 2 : 2\", rationale: \"산소의 부피가 수소의 부피보다 더 많이 소모될 수 없습니다.\", isCorrect: false },\n                    { text: \"2 : 2 : 1\", rationale: \"수증기는 수소와 같은 부피만큼 생성되므로 부피비의 마지막 숫자는 2가 되어야 합니다.\", isCorrect: false }\n                ],\n                hint: \"수증기 생성 반응의 화학 반응식을 쓰고, 계수의 비를 확인해 보세요.\"\n            },\n            {\n                question: \"화학 반응이 일어날 때 에너지가 출입합니다. 다음 중 주변의 열에너지를 흡수하여 주변 온도를 낮추는 '흡열 반응'에 해당하는 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"메테인(나무, 가스 등)의 연소 반응\", rationale: \"연소 반응은 빛과 열을 대량으로 방출하는 대표적인 발열 반응입니다.\", isCorrect: false },\n                    { text: \"염산과 수산화 나트륨 수용액의 중화 반응\", rationale: \"중화 반응 시에는 중화열이 발생하여 주변 온도가 올라가므로 발열 반응입니다.\", isCorrect: false },\n                    { text: \"철가루와 산소가 반응하여 녹이 스는 반응\", rationale: \"철이 녹스는 산화 반응은 미세하게 열을 방출하는 발열 반응입니다. (휴대용 손난로의 원리)\", isCorrect: false },\n                    { text: \"수산화 바륨과 염화 암모늄의 반응\", rationale: \"두 고체 물질이 반응하면서 주변의 열을 급격히 흡수하여 얼음판이 얼어붙을 정도로 온도가 내려가는 대표적인 흡열 반응입니다.\", isCorrect: true }\n                ],\n                hint: \"냉찜질 팩이나 온도가 시원해지는 화학 반응 실험을 떠올려 보세요.\"\n            },\n            {\n                question: \"메테인의 연소 반응을 나타낸 화학 반응식은 CH₄ + 2O₂ → CO₂ + 2H₂O 입니다. 이에 대한 설명으로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"반응 전과 후의 분자 총합은 변하지 않는다.\", rationale: \"반응물의 분자 수(메테인 1개 + 산소 2개 = 3개)와 생성물의 분자 수(이산화 탄소 1개 + 물 2개 = 3개)가 서로 같아 분자 총 개수는 변하지 않습니다.\", isCorrect: true },\n                    { text: \"반응 전후에 원자의 종류와 개수가 달라진다.\", rationale: \"화학 반응이 일어나도 원자는 새로 생기거나 없어지지 않고 종류와 개수가 보존됩니다.\", isCorrect: false },\n                    { text: \"반응물의 총질량은 생성물의 총질량보다 크다.\", rationale: \"질량 보존 법칙에 의해 반응 전 물질의 총질량과 반응 후 생성된 물질의 총질량은 완벽히 같습니다.\", isCorrect: false },\n                    { text: \"이 반응은 열을 흡수하여 주변 온도를 낮추는 반응이다.\", rationale: \"메테인의 연소는 격렬하게 열과 빛을 내는 대표적인 발열 반응입니다.\", isCorrect: false }\n                ],\n                hint: \"화학 반응식 좌우의 계수들을 더해보고 반응 전후 분자의 개수 변화를 살펴보세요.\"\n            },\n            {\n                question: \"기권을 높이에 따른 기온 변화를 기준으로 4개의 층으로 구분할 때, 높이 올라갈수록 기온이 상승하며 태양의 자외선을 흡수하는 오존층이 존재하는 층은 어디인가요?\",\n                answerOptions: [\n                    { text: \"대류권\", rationale: \"대류권은 위로 갈수록 지표가 방출하는 열이 적게 도달하므로 기온이 내려가는 층입니다.\", isCorrect: false },\n                    { text: \"성층권\", rationale: \"성층권에는 오존층이 존재하여 태양의 유해한 자외선을 흡수하므로 위로 갈수록 기온이 상승합니다.\", isCorrect: true },\n                    { text: \"중간권\", rationale: \"중간권은 위로 갈수록 기온이 내려가 기권 중 가장 최저 온도가 나타나는 층입니다.\", isCorrect: false },\n                    { text: \"열권\", rationale: \"열권은 위로 올라갈수록 기온이 급격히 상승하지만 오존층이 있는 곳은 아닙니다.\", isCorrect: false }\n                ],\n                hint: \"비행기의 항로로 이용되는 안정적인 층이자 자외선을 차단해주는 오존층의 위치를 떠올려 보세요.\"\n            },\n            {\n                question: \"대류권과 중간권은 둘 다 높이 올라갈수록 기온이 낮아져 대류 현상(공기의 위아래 섞임)이 활발하게 일어날 수 있는 불안정한 층입니다. 그럼에도 불구하고 기상 현상(비, 눈 등)이 '대류권'에서만 일어나는 결정적인 이유는 무엇인가요?\",\n                answerOptions: [\n                    { text: \"대류권에만 오존층이 존재하기 때문\", rationale: \"오존층은 성층권에 존재하므로 기상 현상과는 직접적인 관계가 없습니다.\", isCorrect: false },\n                    { text: \"대류권의 기압이 중간권보다 훨씬 낮기 때문\", rationale: \"지표면 부근인 대류권이 중간권보다 기압(공기의 밀도)이 훨씬 높습니다.\", isCorrect: false },\n                    { text: \"대류권에는 기상 현상의 원인이 되는 수증기가 집중되어 있기 때문\", rationale: \"기상 현상이 나타나려면 대류 현상뿐만 아니라 구름과 비를 만들 수 있는 '수증기'가 있어야 하는데, 수증기는 대부분 지표 근처인 대류권에 모여 있습니다.\", isCorrect: true },\n                    { text: \"대류권이 태양 복사 에너지를 가장 직접적으로 흡수하기 때문\", rationale: \"대류권 하부는 지구 복사 에너지를 주로 받으며, 이것이 대류권에서만 기상 현상이 발생하는 직접적 원인은 아닙니다.\", isCorrect: false }\n                ],\n                hint: \"비나 눈이 내리는 데 반드시 필요한 '물의 상태 변화'와 관련 있는 물질이 어디에 존재하는지 생각해 보세요.\"\n            },\n            {\n                question: \"지구의 복사 평형에 대한 설명으로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"지구가 흡수하는 태양 복사 에너지양보다 방출하는 지구 복사 에너지양이 더 많다.\", rationale: \"방출량이 더 많다면 지구의 온도는 계속 내려갔을 것입니다.\", isCorrect: false },\n                    { text: \"지구는 복사 에너지를 우주 공간으로 전혀 방출하지 않는다.\", rationale: \"지구도 지구 복사 에너지 형태로 열을 우주로 방출하고 있습니다.\", isCorrect: false },\n                    { text: \"지구가 흡수하는 태양 복사 에너지양과 방출하는 지구 복사 에너지양이 같아 평균 기온이 일정하게 유지된다.\", rationale: \"지구는 흡수하는 태양 복사 에너지양과 방출하는 지구 복사 에너지양이 같아 복사 평형 상태를 이루며 연평균 기온을 일정하게 유지합니다.\", isCorrect: true },\n                    { text: \"온실 효과가 커지면 지구 복사 평형이 깨져 지구 온도가 계속해서 낮아진다.\", rationale: \"온실 효과가 강해지면 대기가 열을 더 많이 가두어 복사 평형을 이루는 온도가 높아져 지구 온난화가 발생합니다.\", isCorrect: false }\n                ],\n                hint: \"지구의 연평균 온도가 오랜 세월 동안 비교적 일정하게 유지되는 원리를 생각해 보세요.\"\n            },\n            {\n                question: \"대기 중의 온실 기체가 지구 복사 에너지를 흡수했다가 다시 지표로 방출하여 지구를 따뜻하게 유지하는 현상을 온실 효과라고 합니다. 인류의 활동으로 인해 농도가 급격히 증가하여 지구 온난화를 일으키는 대표적인 온실 기체는 무엇인가요?\",\n                answerOptions: [\n                    { text: \"질소\", rationale: \"질소는 대기의 약 78%를 차지하는 가장 많은 기체이지만 온실 효과를 일으키지는 않습니다.\", isCorrect: false },\n                    { text: \"산소\", rationale: \"산소는 대기 성분 중 약 21%를 차지하며 온실 기체가 아닙니다.\", isCorrect: false },\n                    { text: \"이산화 탄소\", rationale: \"이산화 탄소는 화석 연료의 사용 등으로 급증하고 있으며, 지구 온난화를 유발하는 가장 대표적인 온실 기체입니다.\", isCorrect: true },\n                    { text: \"아르곤\", rationale: \"아르곤은 비활성 기체로 온실 효과와 무관합니다.\", isCorrect: false }\n                ],\n                hint: \"화석 연료(석탄, 석유)를 연수시킬 때 다량 배출되는 기체를 골라보세요.\"\n            },\n            {\n                question: \"현재 기온이 일정한 상태에서, 실내 공기 속에 포함된 실제 수증기량이 점점 증가할 때 나타나는 변화로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"상대 습도는 높아지고 이슬점은 낮아진다.\", rationale: \"실제 수증기량이 늘어나면 이슬점은 낮아지는 것이 아니라 높아집니다.\", isCorrect: false },\n                    { text: \"상대 습도는 높아지고 이슬점은 높아진다.\", rationale: \"기온이 일정하므로 포화 수증기량은 일정한데 실제 수증기량이 늘어나 상대 습도가 올라가고, 수증기가 많아졌으므로 응결이 시작되는 온도인 이슬점도 함께 높아집니다.\", isCorrect: true },\n                    { text: \"상대 습도는 낮아지고 이슬점은 높아진다.\", rationale: \"수증기량이 증가하면 공기가 더 축축해지므로 상대 습도는 증가해야 합니다.\", isCorrect: false },\n                    { text: \"상대 습도와 이슬점 모두 변화 없다.\", rationale: \"실제 수증기량의 변화는 상대 습도와 이슬점 모두에 직접적인 영향을 미칩니다.\", isCorrect: false }\n                ],\n                hint: \"이슬점은 실제 수증기량에만 비례하며, 상대 습도는 포화 수증기량 분의 실제 수증기량으로 계산됩니다.\"\n            },\n            {\n                question: \"하늘에 구름이 생성되는 과정을 순서대로 바르게 나열한 것은 무엇인가요?\\n(가) 단열 팽창  (나) 수증기 응결  (다) 공기 상승  (라) 기온 하강  (마) 이슬점 도달\",\n                answerOptions: [\n                    { text: \"(다) → (가) → (라) → (마) → (나)\", rationale: \"공기가 위로 상승하면서 기압이 낮아져 단열 팽창하고, 이로 인해 기온이 하강하여 이슬점에 도달하면 수증기가 응결해 구름이 됩니다.\", isCorrect: true },\n                    { text: \"(다) → (라) → (가) → (마) → (나)\", rationale: \"단열 팽창이 일어난 결과로 기온이 내려가는 것이므로 순서가 바뀌었습니다.\", isCorrect: false },\n                    { text: \"(가) → (다) → (라) → (나) → (마)\", rationale: \"공기가 먼저 위로 올라가는 과정(상승)이 첫 단계가 되어야 합니다.\", isCorrect: false },\n                    { text: \"(라) → (다) → (가) → (마) → (나)\", rationale: \"공기가 올라가기도 전에 기온이 먼저 스스로 하강하지 않습니다.\", isCorrect: false }\n                ],\n                hint: \"지표 근처의 가벼워진 공기가 위로 솟구쳐 올라가면서 주변 기압이 약해져 부피가 늘어나는 현상부터 시작합니다.\"\n            },\n            {\n                question: \"우리나라와 같은 중위도 및 고위도 지방의 구름에서 비가 내리는 원리를 설명하는 '빙정설'에 대한 설명으로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"구름 내부 온도가 모두 0℃ 이상으로 유지된다.\", rationale: \"빙정(얼음 알갱이)이 존재하려면 구름 상부의 온도가 영하 이하로 매우 낮아야 합니다.\", isCorrect: false },\n                    { text: \"따뜻한 물방울끼리 서로 충돌하고 합쳐지면서 비가 내린다.\", rationale: \"물방울끼리 병합되어 비가 내리는 이론은 저위도 열대 지방의 '병합설'에 해당합니다.\", isCorrect: false },\n                    { text: \"영하의 구름 속에서 얼음 알갱이(빙정)에 수증기가 달라붙어 성장한 후, 떨어지면서 녹아 비가 된다.\", rationale: \"빙정설에 따르면 구름 속 얼음 알갱이 주변의 수증기가 승화 과정을 통해 빙정에 달라붙어 커지고, 이것이 무거워져 떨어질 때 녹으면 비, 안 녹으면 눈이 됩니다.\", isCorrect: true },\n                    { text: \"저위도 열대 지방의 따뜻한 비를 설명하는 대표적인 이론이다.\", rationale: \"빙정설은 중위도 및 고위도 지방의 찬 비와 눈을 설명하는 이론입니다.\", isCorrect: false }\n                ],\n                hint: \"빙정(氷晶)이란 '얼음 결정'을 뜻합니다. 구름 속 얼음 알갱이가 어떤 역할을 하는지 생각해 보세요.\"\n            },\n            {\n                question: \"속력이 일정한 '등속 운동'을 하는 물체에 대한 설명으로 옳은 것을 고르세요.\",\n                answerOptions: [\n                    { text: \"시간이 흐를수록 물체의 속력이 점점 빨라진다.\", rationale: \"속력이 변하면 등속 운동이 아닌 가속도 운동입니다.\", isCorrect: false },\n                    { text: \"이동 거리가 시간에 비례하여 일정하게 증가한다.\", rationale: \"등속 운동에서는 속력이 일정하므로 이동 거리는 시간의 경과에 비례하여 곧게 증가하게 됩니다.\", isCorrect: true },\n                    { text: \"물체의 운동 방향으로 일정한 크기의 알짜힘이 계속 작용한다.\", rationale: \"운동 방향으로 힘이 계속 작용하면 속력이 변합니다. 등속 직선 운동을 하는 물체는 알짜힘이 0입니다.\", isCorrect: false },\n                    { text: \"시간에 따른 이동 거리 그래프는 완만한 곡선 모양이다.\", rationale: \"이동 거리가 시간에 비례하므로 그래프는 기울기가 일정한 직선 모양이어야 합니다.\", isCorrect: false }\n                ],\n                hint: \"1초당 이동하는 거리가 매초 일정하게 반복되는 상황을 연상해 보세요.\"\n            },\n            {\n                question: \"공기 저항이 없는 진공 상태에서 질량이 1 kg인 쇠구슬과 질량이 10 kg인 볼링공을 같은 높이에서 동시에 떨어뜨렸습니다. 두 물체의 운동에 대한 설명으로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"볼링공의 질량이 더 크기 때문에 쇠구슬보다 먼저 바닥에 도달한다.\", rationale: \"공기 저항이 없을 때 낙하 속도는 물체의 질량과 전혀 관계가 없으므로 동시에 도달합니다.\", isCorrect: false },\n                    { text: \"두 물체의 속력은 매초 9.8 m/s씩 일정하게 증가한다.\", rationale: \"지구 중력에 의해 낙하하는 모든 물체는 질량에 관계없이 매초 속력이 9.8 m/s씩 증가하는 등가속도 운동을 합니다.\", isCorrect: true },\n                    { text: \"질량이 큰 볼링공의 중력 가속도가 더 크다.\", rationale: \"중력 가속도는 질량과 무관하게 두 물체 모두 9.8 m/s²로 동일합니다.\", isCorrect: false },\n                    { text: \"공기 저항이 없으므로 속도가 변하지 않는 등속 운동을 한다.\", rationale: \"중력이라는 일정한 힘이 계속 작용하므로 속도가 일정하게 증가하는 등가속도 운동을 합니다.\", isCorrect: false }\n                ],\n                hint: \"피사의 사탑에서 깃털과 쇠구슬을 떨어뜨리는 유명한 낙하 실험(진공 상태) 결과를 생각해 보세요.\"\n            },\n            {\n                question: \"정지 상태에서 자유 낙하하는 물체가 있습니다. 공기 저항을 무시할 때, 낙하를 시작한 지 3초 후 이 물체의 속력은 얼마인가요? (단, 중력 가속도 상수는 9.8 m/s²입니다.)\",\n                answerOptions: [\n                    { text: \"9.8 m/s\", rationale: \"자유 낙하하는 물체의 1초 후 속력이 9.8 m/s입니다.\", isCorrect: false },\n                    { text: \"19.6 m/s\", rationale: \"2초 후 속력이 19.6 m/s입니다.\", isCorrect: false },\n                    { text: \"29.4 m/s\", rationale: \"자유 낙하 속력 공식 v = 9.8t에 따라, 3초 후 속력은 9.8 × 3 = 29.4 m/s가 됩니다.\", isCorrect: true },\n                    { text: \"39.2 m/s\", rationale: \"4초 후 속력이 39.2 m/s입니다.\", isCorrect: false }\n                ],\n                hint: \"속력(v)은 중력 가속도 상수(9.8)에 낙하 시간(t)을 곱해 구할 수 있습니다.\"\n            },\n            {\n                question: \"과학에서 정의하는 물리적인 '일'을 한 경우에 해당하는 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"무거운 가방을 어깨에 메고 버스를 타기 위해 제자리에 가만히 서 있는 경우\", rationale: \"힘은 들지만 가방의 이동 거리가 0이므로 한 일의 양은 0입니다.\", isCorrect: false },\n                    { text: \"무거운 책장을 힘껏 밀었으나 책장이 꼼짝도 하지 않은 경우\", rationale: \"가한 힘은 크지만 책장의 이동 거리가 0이므로 일의 양은 0입니다.\", isCorrect: false },\n                    { text: \"마찰이 없는 매끄러운 얼음판 위에서 일정한 속도로 계속 미끄러져 가는 경우\", rationale: \"이동 거리는 존재하지만 등속 운동이므로 물체에 가해진 알짜힘이 0입니다. 따라서 한 일은 0입니다.\", isCorrect: false },\n                    { text: \"바닥에 있는 상자를 위로 들어 올려 계단을 타고 올라가는 경우\", rationale: \"중력에 대항하여 위 방향으로 힘을 주고, 그 힘의 방향으로 상자가 위로 이동했으므로 물리적인 일을 한 것입니다.\", isCorrect: true }\n                ],\n                hint: \"과학에서의 일은 물체에 힘을 주어, 그 '힘의 방향'으로 '물체가 이동'해야 성립합니다.\"\n            },\n            {\n                question: \"질량이 2 kg인 물체가 4 m/s의 속력으로 운동하고 있습니다. 이 물체가 가지고 있는 운동 에너지는 몇 J인가요?\",\n                answerOptions: [\n                    { text: \"4 J\", rationale: \"속력의 제곱을 해주지 않은 잘못된 계산값입니다.\", isCorrect: false },\n                    { text: \"8 J\", rationale: \"공식 앞의 1/2을 생략하고 속력에 제곱을 하지 않았거나 계산 실수입니다.\", isCorrect: false },\n                    { text: \"16 J\", rationale: \"운동 에너지 공식 Ek = 1/2 * m * v²에 대입하면, 1/2 × 2 kg × (4 m/s)² = 16 J이 됩니다.\", isCorrect: true },\n                    { text: \"32 J\", rationale: \"공식의 1/2을 곱해주지 않고 계산한 값입니다.\", isCorrect: false }\n                ],\n                hint: \"운동 에너지 계산 공식 Ek = 1/2 * m * v²을 떠올려 보세요. (m은 질량, v는 속력)\"\n            },\n            {\n                question: \"질량이 5 kg인 물체가 지면(기준면)으로부터 2 m 높이에 정지해 있습니다. 이 물체가 지면에 대해 가지는 중력에 의한 위치 에너지는 몇 J인가요? (단, 중력 가속도 상수는 9.8입니다.)\",\n                answerOptions: [\n                    { text: \"10 J\", rationale: \"중력 가속도 상수를 곱하지 않고 단순히 질량과 높이만 곱한 값입니다.\", isCorrect: false },\n                    { text: \"49 J\", rationale: \"높이인 2를 곱하지 않고 9.8 × 5만 계산한 오답입니다.\", isCorrect: false },\n                    { text: \"98 J\", rationale: \"위치 에너지 공식 Ep = 9.8mh에 값을 대입하면, 9.8 × 5 kg × 2 m = 98 J이 됩니다.\", isCorrect: true },\n                    { text: \"196 J\", rationale: \"계산 과정에서 2배를 더 많이 곱한 값입니다.\", isCorrect: false }\n                ],\n                hint: \"위치 에너지 계산 공식 Ep = 9.8mh을 사용하세요. (m은 질량, h는 높이)\"\n            },\n            {\n                question: \"공기 저항을 무시할 때, 높은 곳에서 낙하하는 물체의 역학적 에너지 변화에 대한 설명으로 옳은 것은 무엇인가요?\",\n                answerOptions: [\n                    { text: \"위치 에너지는 감소하고 운동 에너지는 증가하지만, 두 에너지의 합인 역학적 에너지는 항상 일정하게 보존된다.\", rationale: \"낙하할수록 높이가 낮아져 위치 에너지는 줄고 속도가 빨라져 운동 에너지는 늘어나지만, 저항이 없을 때 이 둘의 합(역학적 에너지)은 항상 일정하게 보존됩니다.\", isCorrect: true },\n                    { text: \"낙하할수록 위치 에너지와 운동 에너지 모두 증가한다.\", rationale: \"높이가 낮아지므로 위치 에너지는 감소해야 합니다.\", isCorrect: false },\n                    { text: \"물체가 아래로 내려갈수록 역학적 에너지는 점점 증가한다.\", rationale: \"역학적 에너지는 증가하거나 감소하지 않고 일정한 값을 유지합니다.\", isCorrect: false },\n                    { text: \"낙하하는 도중에는 위치 에너지가 운동 에너지보다 항상 크다.\", rationale: \"낙하 시작 직후에는 위치 에너지가 더 크지만, 지면에 닿기 직전에는 운동 에너지가 더 커지므로 항상 크다고 볼 수는 없습니다.\", isCorrect: false }\n                ],\n                hint: \"역학적 에너지는 위치 에너지와 운동 에너지의 '합'을 의미합니다. 에너지 보존 법칙을 고려해 보세요.\"\n            }\n        ];\n\n        // App States\n        let currentQuestionIndex = 0;\n        let userAnswers = Array(questions.length).fill(null);\n        let timerInterval = null;\n        let timeLeft = 40 * 60; // 40 minutes in seconds\n        let isStarted = false;\n        let isSubmitted = false;\n\n        // Initialize Lucide Icons\n        window.onload = function() {\n            lucide.createIcons();\n            buildNavigationGrid();\n        };\n\n        // Start Quiz\n        function startQuiz() {\n            document.getElementById('intro-screen').classList.add('hidden');\n            document.getElementById('quiz-screen').classList.remove('hidden');\n            document.getElementById('quiz-header-status').classList.remove('hidden');\n            \n            isStarted = true;\n            currentQuestionIndex = 0;\n            userAnswers = Array(questions.length).fill(null);\n            \n            startTimer();\n            renderQuestion();\n            updateProgress();\n            buildNavigationGrid();\n        }\n\n        // Timer Function\n        function startTimer() {\n            clearInterval(timerInterval);\n            timerInterval = setInterval(() => {\n                if (timeLeft <= 0) {\n                    clearInterval(timerInterval);\n                    autoSubmit();\n                    return;\n                }\n                timeLeft--;\n                updateTimerDisplay();\n            }, 1000);\n        }\n\n        function updateTimerDisplay() {\n            const minutes = Math.floor(timeLeft / 60);\n            const seconds = timeLeft % 60;\n            const displayStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;\n            document.getElementById('timer-display').innerText = displayStr;\n            \n            // Warn if under 5 minutes\n            if (timeLeft < 300) {\n                const timerContainer = document.getElementById('timer-display').parentElement;\n                timerContainer.classList.remove('bg-rose-50', 'text-rose-700', 'border-rose-100');\n                timerContainer.classList.add('bg-rose-600', 'text-white', 'border-transparent', 'animate-pulse');\n            }\n        }\n\n        // Build Navigation Grid (1-20 sidebar)\n        function buildNavigationGrid() {\n            const gridContainer = document.getElementById('nav-grid');\n            gridContainer.innerHTML = '';\n            \n            for (let i = 0; i < questions.length; i++) {\n                const btn = document.createElement('button');\n                btn.type = 'button';\n                btn.innerText = i + 1;\n                btn.className = getNavButtonClass(i);\n                btn.onclick = () => selectQuestion(i);\n                gridContainer.appendChild(btn);\n            }\n            \n            // Update Answered Badge Count\n            const answeredCount = userAnswers.filter(ans => ans !== null).length;\n            document.getElementById('answered-count-badge').innerText = `${answeredCount} / ${questions.length}`;\n        }\n\n        // Determine CSS classes for navigation grid buttons\n        function getNavButtonClass(index) {\n            const baseClass = \"h-10 text-sm font-bold rounded-lg transition-all focus:outline-none flex items-center justify-center border \";\n            \n            if (index === currentQuestionIndex) {\n                return baseClass + \"border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-100\";\n            } else if (userAnswers[index] !== null) {\n                return baseClass + \"border-indigo-100 bg-indigo-50 text-indigo-700\";\n            } else {\n                return baseClass + \"border-slate-200 bg-white text-slate-600 hover:bg-slate-50\";\n            }\n        }\n\n        // Render Current Question\n        function renderQuestion() {\n            const q = questions[currentQuestionIndex];\n            \n            // Header Indicator\n            document.getElementById('current-q-num').innerText = currentQuestionIndex + 1;\n            \n            // Question Title\n            document.getElementById('question-text').innerText = q.question;\n            \n            // Hint Text\n            document.getElementById('hint-text').innerText = q.hint;\n            // Always collapse hint box when changing questions\n            document.getElementById('hint-box').classList.add('hidden');\n            \n            // Render Options\n            const container = document.getElementById('options-container');\n            container.innerHTML = '';\n            \n            q.answerOptions.forEach((option, idx) => {\n                const isSelected = userAnswers[currentQuestionIndex] === idx;\n                \n                const optionBtn = document.createElement('button');\n                optionBtn.type = 'button';\n                optionBtn.onclick = () => selectOption(idx);\n                optionBtn.className = `w-full text-left p-4 rounded-xl border transition-all flex items-start space-x-3 group relative ${\n                    isSelected \n                    ? 'border-indigo-600 bg-indigo-50/50 text-indigo-900 font-semibold shadow-sm' \n                    : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300'\n                }`;\n                \n                // Index Circle Badge\n                const numberCircle = isSelected \n                    ? `<span class=\"flex-shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center\">${idx + 1}</span>`\n                    : `<span class=\"flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-500 font-semibold text-xs flex items-center justify-center group-hover:bg-slate-200\">${idx + 1}</span>`;\n                \n                optionBtn.innerHTML = `\n                    ${numberCircle}\n                    <span class=\"text-sm md:text-base leading-snug pt-0.5\">${option.text}</span>\n                `;\n                \n                container.appendChild(optionBtn);\n            });\n            \n            // Update Nav Controls (prev / next buttons)\n            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;\n            \n            const nextBtn = document.getElementById('next-btn');\n            if (currentQuestionIndex === questions.length - 1) {\n                nextBtn.innerHTML = `<span>최종 제출</span><i data-lucide=\"check\" class=\"w-4 h-4\"></i>`;\n                nextBtn.onclick = openSubmitModal;\n                nextBtn.className = \"flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all shadow-md\";\n            } else {\n                nextBtn.innerHTML = `<span>다음 문제</span><i data-lucide=\"arrow-right\" class=\"w-4 h-4\"></i>`;\n                nextBtn.onclick = nextQuestion;\n                nextBtn.className = \"flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold transition-all\";\n            }\n            \n            lucide.createIcons();\n            buildNavigationGrid();\n        }\n\n        // Interaction Handlers\n        function selectOption(optionIndex) {\n            userAnswers[currentQuestionIndex] = optionIndex;\n            renderQuestion();\n            updateProgress();\n        }\n\n        function nextQuestion() {\n            if (currentQuestionIndex < questions.length - 1) {\n                currentQuestionIndex++;\n                renderQuestion();\n            }\n        }\n\n        function prevQuestion() {\n            if (currentQuestionIndex > 0) {\n                currentQuestionIndex--;\n                renderQuestion();\n            }\n        }\n\n        function selectQuestion(index) {\n            currentQuestionIndex = index;\n            renderQuestion();\n        }\n\n        function toggleHint() {\n            const hintBox = document.getElementById('hint-box');\n            hintBox.classList.toggle('hidden');\n        }\n\n        function updateProgress() {\n            const answeredCount = userAnswers.filter(ans => ans !== null).length;\n            const percent = Math.round((answeredCount / questions.length) * 100);\n            \n            document.getElementById('progress-bar').style.width = `${percent}%`;\n            document.getElementById('progress-text').innerText = `${percent}% 완료 (${answeredCount}/${questions.length} 문제)`;\n        }\n\n        // Modal Controls\n        function openSubmitModal() {\n            const unanswered = questions.length - userAnswers.filter(ans => ans !== null).length;\n            const warningText = document.getElementById('modal-warning-text');\n            \n            if (unanswered > 0) {\n                warningText.innerHTML = `아직 풀지 않은 문제가 <strong class=\"text-rose-600\">${unanswered}개</strong> 있습니다.<br>정말 제출하고 즉시 채점 결과를 확인하시겠습니까?`;\n            } else {\n                warningText.innerHTML = \"모든 문제를 해결하셨습니다! 제출하고 성적표와 오답 해설 노트를 확인해 보세요.\";\n            }\n            \n            document.getElementById('submit-modal').classList.remove('hidden');\n        }\n\n        function closeSubmitModal() {\n            document.getElementById('submit-modal').classList.add('hidden');\n        }\n\n        // Form Submission (Grading)\n        function autoSubmit() {\n            alert(\"제한 시간이 초과되어 시험이 자동으로 제출됩니다.\");\n            submitQuiz();\n        }\n\n        function submitQuiz() {\n            clearInterval(timerInterval);\n            closeSubmitModal();\n            \n            isSubmitted = true;\n            \n            // Calculate Results\n            let correctCount = 0;\n            questions.forEach((q, qIdx) => {\n                const userAns = userAnswers[qIdx];\n                if (userAns !== null && q.answerOptions[userAns].isCorrect) {\n                    correctCount++;\n                }\n            });\n            \n            const score = (correctCount / questions.length) * 100;\n            const timeTakenSec = (40 * 60) - timeLeft;\n            const minutesTaken = Math.floor(timeTakenSec / 60);\n            const secondsTaken = timeTakenSec % 60;\n            \n            // Hide Quiz Screen, Show Results\n            document.getElementById('quiz-screen').classList.add('hidden');\n            document.getElementById('quiz-header-status').classList.add('hidden');\n            document.getElementById('results-screen').classList.remove('hidden');\n            \n            // Set stats\n            document.getElementById('final-score').innerText = score;\n            document.getElementById('correct-count').innerText = correctCount;\n            document.getElementById('time-taken-display').innerText = `소요 시간: ${minutesTaken}분 ${secondsTaken}초`;\n            \n            // Apply customized grade messages\n            const gradeTitle = document.getElementById('feedback-grade');\n            const gradeDesc = document.getElementById('feedback-message');\n            const iconBox = document.getElementById('result-icon-box');\n            \n            if (score >= 90) {\n                gradeTitle.innerText = \"최상위권 보장! 완벽합니다 ⭐\";\n                gradeDesc.innerText = \"기념비적인 우수한 성적입니다! 완벽에 가까운 실력이며 실전에서도 100점을 기대할 수 있는 상태입니다.\";\n                iconBox.className = \"inline-flex bg-emerald-50 text-emerald-600 p-4 rounded-full mb-6\";\n                iconBox.innerHTML = `<i data-lucide=\"award\" class=\"w-14 h-14\"></i>`;\n            } else if (score >= 70) {\n                gradeTitle.innerText = \"훌륭한 실력입니다! 🎉\";\n                gradeDesc.innerText = \"개념을 대체로 정확하게 잘 이해하고 있습니다. 몇 가지 실수나 헷갈리는 부분들을 아래 상세 피드백에서 완벽하게 보정해 보세요.\";\n                iconBox.className = \"inline-flex bg-indigo-50 text-indigo-600 p-4 rounded-full mb-6\";\n                iconBox.innerHTML = `<i data-lucide=\"check-circle-2\" class=\"w-14 h-14\"></i>`;\n            } else if (score >= 50) {\n                gradeTitle.innerText = \"조금 더 집중해봅시다! 👍\";\n                gradeDesc.innerText = \"확실하지 않게 아는 애매한 상태의 문제들이 다소 있었습니다. 아래 오답 정리 목록을 통해 핵심 개념 이론을 다시 가다듬으세요.\";\n                iconBox.className = \"inline-flex bg-amber-50 text-amber-500 p-4 rounded-full mb-6\";\n                iconBox.innerHTML = `<i data-lucide=\"help-circle\" class=\"w-14 h-14\"></i>`;\n            } else {\n                gradeTitle.innerText = \"기초 보강이 필요해요 ✍️\";\n                gradeDesc.innerText = \"단원별 주요 핵심 개념을 명확하게 파악하는 학습이 시급합니다. 오답 해설 노트의 친절한 설명을 천천히 정독하는 것부터 시작해 봅시다.\";\n                iconBox.className = \"inline-flex bg-rose-50 text-rose-500 p-4 rounded-full mb-6\";\n                iconBox.innerHTML = `<i data-lucide=\"alert-circle\" class=\"w-14 h-14\"></i>`;\n            }\n            \n            // Build Detailed Analysis Accordions\n            buildDetailedAnalysis();\n            lucide.createIcons();\n            \n            // Scroll to Top\n            window.scrollTo({ top: 0, behavior: 'smooth' });\n        }\n\n        // Build detailed review for all questions at the bottom of result screen\n        function buildDetailedAnalysis() {\n            const listContainer = document.getElementById('detailed-analysis-list');\n            listContainer.innerHTML = '';\n            \n            questions.forEach((q, qIdx) => {\n                const userAnsIdx = userAnswers[qIdx];\n                const isCorrect = userAnsIdx !== null && q.answerOptions[userAnsIdx].isCorrect;\n                \n                const item = document.createElement('div');\n                item.className = `bg-white rounded-xl border p-5 shadow-sm transition-all duration-300 ${\n                    isCorrect ? 'border-emerald-200 hover:border-emerald-300' : 'border-rose-200 hover:border-rose-300'\n                }`;\n                \n                // Status Header\n                const statusBadge = isCorrect \n                    ? `<span class=\"inline-flex items-center space-x-1 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md\"><i data-lucide=\"check\" class=\"w-3.5 h-3.5\"></i><span>정답</span></span>`\n                    : `<span class=\"inline-flex items-center space-x-1 text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md\"><i data-lucide=\"x\" class=\"w-3.5 h-3.5\"></i><span>오답</span></span>`;\n                \n                // Render choices inside review\n                let choicesHtml = '';\n                q.answerOptions.forEach((option, oIdx) => {\n                    let optionStatusStyle = 'bg-slate-50 border-slate-150 text-slate-700';\n                    let optionIcon = '';\n                    \n                    if (option.isCorrect) {\n                        // Correct option highlighted in Green\n                        optionStatusStyle = 'bg-emerald-50 border-emerald-300 text-emerald-900 font-semibold';\n                        optionIcon = `<i data-lucide=\"check-circle-2\" class=\"w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5\"></i>`;\n                    } else if (oIdx === userAnsIdx && !option.isCorrect) {\n                        // User selected wrong option highlighted in Red\n                        optionStatusStyle = 'bg-rose-50 border-rose-200 text-rose-900 font-semibold';\n                        optionIcon = `<i data-lucide=\"alert-circle\" class=\"w-4 h-4 text-rose-500 flex-shrink-0 mt-0.5\"></i>`;\n                    }\n                    \n                    choicesHtml += `\n                        <div class=\"p-3.5 rounded-lg border text-xs md:text-sm flex items-start space-x-2.5 ${optionStatusStyle}\">\n                            ${optionIcon ? optionIcon : `<span class=\"w-4 h-4 bg-slate-200 text-slate-500 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5\">${oIdx+1}</span>`}\n                            <div class=\"flex-grow\">\n                                <p class=\"mb-1 leading-snug\">${option.text}</p>\n                                <p class=\"text-xs text-slate-400 mt-1 pl-1 border-l-2 border-slate-200\">${option.rationale}</p>\n                            </div>\n                        </div>\n                    `;\n                });\n                \n                item.innerHTML = `\n                    <div class=\"flex items-center justify-between mb-3 border-b border-slate-100 pb-2.5\">\n                        <span class=\"text-sm font-bold text-slate-400\">질문 ${qIdx + 1}</span>\n                        ${statusBadge}\n                    </div>\n                    <h4 class=\"text-sm md:text-base font-bold text-slate-900 mb-4 whitespace-pre-line leading-relaxed\">${q.question}</h4>\n                    \n                    <div class=\"space-y-2 mb-4\">\n                        ${choicesHtml}\n                    </div>\n                    \n                    <!-- Core Tip box for explanation -->\n                    <div class=\"bg-indigo-50/50 rounded-lg p-3 text-xs text-indigo-950 flex items-start space-x-2 border border-indigo-100/50\">\n                        <i data-lucide=\"sparkles\" class=\"w-4 h-4 text-indigo-600 flex-shrink-0 mt-0.5\"></i>\n                        <div>\n                            <span class=\"font-bold block text-indigo-800 mb-0.5\">정답 요약 정보</span>\n                            <span>이 문제의 정답은 <strong>${q.answerOptions.findIndex(o => o.isCorrect) + 1}번</strong>입니다. 힌트 원리였던 \"${q.hint}\"를 꼭 기억하세요.</span>\n                        </div>\n                    </div>\n                `;\n                \n                listContainer.appendChild(item);\n            });\n        }\n\n        // Restart Quiz / Reset State\n        function restartQuiz() {\n            isStarted = false;\n            isSubmitted = false;\n            timeLeft = 40 * 60;\n            currentQuestionIndex = 0;\n            userAnswers = Array(questions.length).fill(null);\n            \n            // Toggle screens\n            document.getElementById('results-screen').classList.add('hidden');\n            document.getElementById('intro-screen').classList.remove('hidden');\n            \n            // Clean up timers\n            clearInterval(timerInterval);\n            document.getElementById('timer-display').innerText = \"40:00\";\n            const timerContainer = document.getElementById('timer-display').parentElement;\n            timerContainer.className = \"flex items-center space-x-1.5 bg-rose-50 text-rose-700 px-3 py-1.5 rounded-full text-sm font-semibold border border-rose-100\";\n            \n            // Scroll to Top\n            window.scrollTo({ top: 0, behavior: 'smooth' });\n        }\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  }
-};
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -411,15 +1080,23 @@
                     }
                 } catch (e) {}
             }
-            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
+
+            studentProjectsMap = {};
+            const tmpl_quiz = document.getElementById('tmpl-quiz');
+            if (tmpl_quiz) {
+                studentProjectsMap['quiz'] = {
+                    title: "중3 과학 1학기 기말고사 모의고사",
+                    sourceCode: tmpl_quiz.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -438,7 +1115,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -449,11 +1125,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -466,9 +1140,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -504,7 +1176,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -517,19 +1188,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -542,18 +1210,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -577,14 +1235,13 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
 </html>
-
