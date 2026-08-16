@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 학생 AI 포트폴리오 전시대</title>
-    
-    <!-- Google Sites iframe 임베드 설정 -->
+    <title>임지우 학생의 AI 창작 포트폴리오 - 숭의여자중학교</title>
     <base target="_blank">
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg-main: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -31,52 +21,24 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            --border-subtle: #E2E8F0;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.18);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 18px 12px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6; padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-
-        /* Top Header Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 14px; box-shadow: var(--shadow-sm);
-        }
-        .profile-left { display: flex; align-items: center; gap: 14px; }
-        .profile-avatar {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
-        }
-        .profile-info h1 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
-        .profile-info p { font-size: 0.86rem; color: var(--text-secondary); }
-
-        .profile-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .student-select-box {
-            padding: 7px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle);
-            font-size: 0.85rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary);
-        }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.85rem; font-weight: 600; transition: var(--transition-smooth);
-        }
+        .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
+        .profile-left { display: flex; align-items: center; gap: 16px; }
+        .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+        .profile-info h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); }
+        .profile-info p { font-size: 0.88rem; color: var(--text-secondary); }
+        .profile-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .student-select-box { padding: 8px 14px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); font-size: 0.88rem; font-weight: 600; background: #FFFFFF; color: var(--text-primary); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth); }
         .btn-primary { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFFFFF; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); }
         .btn-secondary { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
@@ -84,88 +46,31 @@
         .btn-outline { background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .btn-outline:hover { background: var(--bg-subtle); color: var(--text-primary); }
         .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-            border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700;
-        }
-
-        /* 8 Slots Project Grid */
+        .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-
         .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        .slot-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
+        .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
-
-        /* Preview Screen (높이를 320px로 확장 및 상단 풀스크린 바로가기 오버레이) */
-        .slot-preview-box {
-            width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-        }
+        .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-
-        .preview-controls-overlay {
-            position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;
-        }
-        .preview-action-chip {
-            background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px);
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
-            color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
-
-        .empty-slot-box {
-            width: 100%; height: 320px; background: #F8FAFC; border-radius: var(--radius-md);
-            border: 2px dashed var(--border-subtle); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px;
-        }
+        .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
-
-        .slot-card-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;
-        }
-        .slot-footer-left { display: flex; gap: 6px; }
-
-        /* Fullscreen Large Interactive Play Modal */
-        .fullscreen-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
-        }
+        .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
-        .fullscreen-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh;
-            max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden;
-        }
-        .fullscreen-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 16px 24px;
-            background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
-        }
+        .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-
-        /* Upload Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle);
-        }
+        .modal-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); }
         .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle); }
@@ -173,31 +78,44 @@
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 140px; resize: vertical; }
-
-        .toast-box {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF;
-            padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
-            display: none; z-index: 4000; box-shadow: var(--shadow-lg);
-        }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 4000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
     <div class="portfolio-wrapper">
-        <!-- 1. Student Header Banner -->
+        <!-- Top Header Banner (학생별 고유 정보 자동 렌더링) -->
         <header class="profile-banner">
             <div class="profile-left">
-                <div class="profile-avatar" id="avatarLetter">박</div>
+                <div class="profile-avatar">임</div>
                 <div class="profile-info">
-                    <h1 id="studentTitleName">박채연 학생의 AI 창작 포트폴리오</h1>
-                    <p id="studentClassInfo">2026학년도 숭의여자중학교 3학년 6반</p>
+                    <h1>임지우 학생의 AI 창작 포트폴리오</h1>
+                    <p>2026학년도 숭의여자중학교 2학년 4반</p>
                 </div>
             </div>
-
             <div class="profile-actions">
-                <select id="studentSwitcher" class="student-select-box" title="학생 변경">
-                    <!-- Javascript generated students -->
+                <select id="studentSwitcher" class="student-select-box" onchange="location.href=this.value">
+                    <option value="minsol.html">3학년 1반 김민솔</option>
+                    <option value="chaeyeon.html">3학년 6반 박채연</option>
+                    <option value="seohyun.html">2학년 1반 김서현</option>
+                    <option value="haeun.html">3학년 2반 박하은</option>
+                    <option value="soyoon.html">3학년 3반 최소윤</option>
+                    <option value="seulon.html">2학년 2반 채슬온</option>
+                    <option value="hyoyoon.html">3학년 5반 김효윤</option>
+                    <option value="seyeoung.html">2학년 3반 신세영</option>
+                    <option value="jiwoo.html" selected>2학년 4반 임지우</option>
+                    <option value="heejung.html">1학년 2반 김희정</option>
+                    <option value="chaehee.html">1학년 2반 박채희</option>
+                    <option value="yoonha.html">2학년 5반 최윤하</option>
+                    <option value="hyuna.html">2학년 6반 장현아</option>
+                    <option value="sua.html">3학년 1반 김수아</option>
+                    <option value="yerin.html">3학년 4반 문예린</option>
+                    <option value="chaeyoon.html">3학년 5반 엄채윤</option>
+                    <option value="ayeon.html">3학년 2반 이아연</option>
+                    <option value="hayoon.html">3학년 3반 인하윤</option>
+                    <option value="yoona.html">3학년 6반 최윤아</option>
+                    <option value="younghyun.html">3학년 6반 송영현</option>
+                    <option value="chaehyun.html">3학년 6반 박채현</option>
                 </select>
                 <a href="https://eunseony75.github.io/2026sy/" target="_self" class="btn btn-outline">
                     <i class="fa-solid fa-house"></i> 동아리 전체 갤러리
@@ -205,39 +123,27 @@
             </div>
         </header>
 
-        <!-- 2. 8 Slots Curriculum Header -->
         <div class="slots-header">
             <div>
-                <h2 class="slots-title">
-                    <i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대
-                </h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">
-                    카드 우측 상단의 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 쾌적하게 즐길 수 있습니다.
-                </p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">우측 상단 <strong>[⛶ 크게 체험하기]</strong>를 누르면 전체화면 대형 창에서 실전 퀴즈 풀이 및 게임을 즐길 수 있습니다.</p>
             </div>
         </div>
 
-        <!-- 3. 8 Project Slots Grid -->
-        <div class="slots-grid" id="slotsGrid">
-            <!-- Dynamic 8 Topic Slots -->
-        </div>
+        <div class="slots-grid" id="slotsGrid"></div>
     </div>
 
-    <!-- 4. Fullscreen Interactive Player Modal (대형 화면 체험 모달) -->
+    <!-- Fullscreen Interactive Player Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <div class="fullscreen-container">
             <div class="fullscreen-header">
                 <div>
-                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">결과물 대형 화면 체험</h3>
-                    <span id="fullscreenStudentName" style="font-size: 0.82rem; color: var(--text-muted);"></span>
+                    <h3 id="fullscreenTitle" style="font-size: 1.15rem; font-weight: 700;">결과물 대형 화면 체험</h3>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">2학년 4반 임지우 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn" title="새 탭에서 전체화면으로 열기">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기
-                    </button>
-                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()">
-                        <i class="fa-solid fa-xmark"></i> 닫기 (ESC)
-                    </button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
             <div class="fullscreen-body">
@@ -258,11 +164,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: 중3 과학 운동과 에너지 20제 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="<!DOCTYPE html>... 제미나이 캔버스나 캔바에서 복사한 HTML 코드 또는 <img src='...'> 태그를 붙여넣기하세요." required></textarea>
+                        <textarea id="slotCodeInput" class="form-control form-textarea" placeholder="HTML 코드 또는 이미지 태그를 붙여넣기하세요." required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -273,12 +179,1145 @@
         </div>
     </div>
 
-    <div class="toast-box" id="toast">
-        <i class="fa-solid fa-check" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 저장되었습니다!</span>
+    <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
+
+    <!-- [내장 원본 소스코드 템플릿] -->
+    <template id="tmpl-game">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no"
+    >
+
+    <title>네온 테트리스 (Neon Tetris)</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0d0e15;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #00f0ff;
+            text-shadow:
+                0 0 10px #00f0ff,
+                0 0 20px #00f0ff;
+        }
+
+        #score-board {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #ff007f;
+            text-shadow: 0 0 8px #ff007f;
+        }
+
+        #game-container {
+            position: relative;
+            border: 4px solid #3d4360;
+            box-shadow: 0 0 20px rgba(61, 67, 96, 0.5);
+            background: #12131c;
+        }
+
+        canvas {
+            display: block;
+            background: #12131c;
+        }
+
+        #message {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(5, 6, 12, 0.88);
+            z-index: 10;
+        }
+
+        #message.show {
+            display: flex;
+        }
+
+        #message-title {
+            color: #ff007f;
+            font-size: 2rem;
+            text-shadow:
+                0 0 10px #ff007f,
+                0 0 20px #ff007f;
+        }
+
+        #message-text {
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        #restart-button {
+            margin-top: 8px;
+            padding: 12px 22px;
+            border: 2px solid #00f0ff;
+            border-radius: 10px;
+            background: rgba(0, 240, 255, 0.1);
+            color: #00f0ff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        #restart-button:active {
+            transform: scale(0.95);
+            background: rgba(0, 240, 255, 0.25);
+        }
+
+        #controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #3d4360;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 0;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            touch-action: manipulation;
+        }
+
+        .btn:active,
+        .btn.active {
+            transform: translateY(2px) scale(0.96);
+            border-color: #00f0ff;
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow:
+                0 0 10px rgba(0, 240, 255, 0.8),
+                inset 0 0 8px rgba(0, 240, 255, 0.3);
+        }
+
+        #rotate-btn {
+            color: #ffe600;
+        }
+
+        #drop-btn {
+            color: #ff007f;
+        }
+
+        #pause-btn {
+            color: #00f0ff;
+        }
+
+        #help {
+            margin-top: 12px;
+            color: #858aa5;
+            font-size: 0.75rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        @media (max-height: 760px) {
+            body {
+                justify-content: flex-start;
+                padding-top: 10px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                margin-bottom: 5px;
+            }
+
+            #score-board {
+                margin-bottom: 6px;
+            }
+
+            #controls {
+                margin-top: 10px;
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 10px 0;
+            }
+
+            #help {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>NEON TETRIS</h1>
+
+    <div id="score-board">
+        <span>점수: <strong id="score">0</strong></span>
+        <span>라인: <strong id="lines">0</strong></span>
+        <span>레벨: <strong id="level">1</strong></span>
+    </div>
+
+    <div id="game-container">
+        <canvas id="game"></canvas>
+
+        <div id="message">
+            <div id="message-title">GAME OVER</div>
+            <div id="message-text">다시 도전해 보세요!</div>
+            <button id="restart-button" type="button">다시 시작</button>
+        </div>
+    </div>
+
+    <div id="controls">
+        <button class="btn" id="left-btn" type="button">◀</button>
+        <button class="btn" id="rotate-btn" type="button">↻ 회전</button>
+        <button class="btn" id="right-btn" type="button">▶</button>
+
+        <button class="btn" id="down-btn" type="button">▼ 내리기</button>
+        <button class="btn" id="drop-btn" type="button">⤓ 바로 놓기</button>
+        <button class="btn" id="pause-btn" type="button">Ⅱ 정지</button>
+    </div>
+
+    <div id="help">
+        방향키: 이동 및 내리기<br>
+        ↑: 회전 · 스페이스바: 바로 놓기 · P: 일시정지
     </div>
 
     <script>
+        const canvas = document.getElementById("game");
+        const context = canvas.getContext("2d");
+
+        const scoreElement = document.getElementById("score");
+        const linesElement = document.getElementById("lines");
+        const levelElement = document.getElementById("level");
+
+        const messageElement = document.getElementById("message");
+        const messageTitleElement = document.getElementById("message-title");
+        const messageTextElement = document.getElementById("message-text");
+        const restartButton = document.getElementById("restart-button");
+        const pauseButton = document.getElementById("pause-btn");
+
+        const COLS = 10;
+        const ROWS = 20;
+
+        let blockSize = 26;
+
+        const COLORS = [
+            null,
+            "#00f0ff",
+            "#0066ff",
+            "#ff9f00",
+            "#ffe600",
+            "#00ff72",
+            "#b900ff",
+            "#ff007f"
+        ];
+
+        const SHAPES = [
+            [
+                [0, 0, 0, 0],
+                [1, 1, 1, 1],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+            ],
+            [
+                [2, 0, 0],
+                [2, 2, 2],
+                [0, 0, 0]
+            ],
+            [
+                [0, 0, 3],
+                [3, 3, 3],
+                [0, 0, 0]
+            ],
+            [
+                [4, 4],
+                [4, 4]
+            ],
+            [
+                [0, 5, 5],
+                [5, 5, 0],
+                [0, 0, 0]
+            ],
+            [
+                [0, 6, 0],
+                [6, 6, 6],
+                [0, 0, 0]
+            ],
+            [
+                [7, 7, 0],
+                [0, 7, 7],
+                [0, 0, 0]
+            ]
+        ];
+
+        let board;
+        let player;
+
+        let score = 0;
+        let clearedLines = 0;
+        let level = 1;
+
+        let dropCounter = 0;
+        let dropInterval = 800;
+        let lastTime = 0;
+
+        let gameOver = false;
+        let paused = false;
+        let animationId = null;
+
+        function resizeCanvas() {
+            const maximumHeight = window.innerHeight < 760 ? 390 : 520;
+            const maximumWidth = Math.min(window.innerWidth - 30, 320);
+
+            blockSize = Math.floor(
+                Math.min(maximumWidth / COLS, maximumHeight / ROWS)
+            );
+
+            blockSize = Math.max(blockSize, 18);
+
+            canvas.width = COLS * blockSize;
+            canvas.height = ROWS * blockSize;
+
+            context.setTransform(
+                blockSize,
+                0,
+                0,
+                blockSize,
+                0,
+                0
+            );
+
+            draw();
+        }
+
+        function createBoard(width, height) {
+            const matrix = [];
+
+            while (height > 0) {
+                matrix.push(new Array(width).fill(0));
+                height--;
+            }
+
+            return matrix;
+        }
+
+        function createPiece() {
+            const shapeIndex = Math.floor(Math.random() * SHAPES.length);
+
+            return SHAPES[shapeIndex].map(row => [...row]);
+        }
+
+        function resetPlayer() {
+            player.matrix = createPiece();
+            player.position.y = 0;
+            player.position.x =
+                Math.floor(COLS / 2) -
+                Math.ceil(player.matrix[0].length / 2);
+
+            if (collide(board, player)) {
+                endGame();
+            }
+        }
+
+        function collide(arena, currentPlayer) {
+            const matrix = currentPlayer.matrix;
+            const position = currentPlayer.position;
+
+            for (let y = 0; y < matrix.length; y++) {
+                for (let x = 0; x < matrix[y].length; x++) {
+                    if (
+                        matrix[y][x] !== 0 &&
+                        (
+                            arena[y + position.y] === undefined ||
+                            arena[y + position.y][x + position.x] === undefined ||
+                            arena[y + position.y][x + position.x] !== 0
+                        )
+                    ) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        function merge(arena, currentPlayer) {
+            currentPlayer.matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value !== 0) {
+                        arena[y + currentPlayer.position.y]
+                            [x + currentPlayer.position.x] = value;
+                    }
+                });
+            });
+        }
+
+        function clearLines() {
+            let rowMultiplier = 1;
+            let linesThisTurn = 0;
+
+            outer:
+            for (let y = board.length - 1; y >= 0; y--) {
+                for (let x = 0; x < board[y].length; x++) {
+                    if (board[y][x] === 0) {
+                        continue outer;
+                    }
+                }
+
+                const clearedRow = board.splice(y, 1)[0].fill(0);
+                board.unshift(clearedRow);
+
+                y++;
+                linesThisTurn++;
+                score += rowMultiplier * 100 * level;
+                rowMultiplier *= 2;
+            }
+
+            if (linesThisTurn > 0) {
+                clearedLines += linesThisTurn;
+                level = Math.floor(clearedLines / 10) + 1;
+                dropInterval = Math.max(100, 800 - (level - 1) * 70);
+
+                updateScoreBoard();
+            }
+        }
+
+        function rotateMatrix(matrix, direction) {
+            for (let y = 0; y < matrix.length; y++) {
+                for (let x = 0; x < y; x++) {
+                    [
+                        matrix[x][y],
+                        matrix[y][x]
+                    ] = [
+                        matrix[y][x],
+                        matrix[x][y]
+                    ];
+                }
+            }
+
+            if (direction > 0) {
+                matrix.forEach(row => row.reverse());
+            } else {
+                matrix.reverse();
+            }
+        }
+
+        function rotatePlayer(direction = 1) {
+            if (gameOver || paused) {
+                return;
+            }
+
+            const originalX = player.position.x;
+            let offset = 1;
+
+            rotateMatrix(player.matrix, direction);
+
+            while (collide(board, player)) {
+                player.position.x += offset;
+
+                offset = -(offset + (offset > 0 ? 1 : -1));
+
+                if (Math.abs(offset) > player.matrix[0].length) {
+                    rotateMatrix(player.matrix, -direction);
+                    player.position.x = originalX;
+                    return;
+                }
+            }
+
+            draw();
+        }
+
+        function movePlayer(direction) {
+            if (gameOver || paused) {
+                return;
+            }
+
+            player.position.x += direction;
+
+            if (collide(board, player)) {
+                player.position.x -= direction;
+            }
+
+            draw();
+        }
+
+        function dropPlayer(manualDrop = false) {
+            if (gameOver || paused) {
+                return;
+            }
+
+            player.position.y++;
+
+            if (collide(board, player)) {
+                player.position.y--;
+                merge(board, player);
+                clearLines();
+                resetPlayer();
+            } else if (manualDrop) {
+                score += 1;
+                updateScoreBoard();
+            }
+
+            dropCounter = 0;
+            draw();
+        }
+
+        function hardDrop() {
+            if (gameOver || paused) {
+                return;
+            }
+
+            let distance = 0;
+
+            while (!collide(board, player)) {
+                player.position.y++;
+                distance++;
+            }
+
+            player.position.y--;
+            distance--;
+
+            score += Math.max(0, distance) * 2;
+
+            merge(board, player);
+            clearLines();
+            resetPlayer();
+
+            dropCounter = 0;
+            updateScoreBoard();
+            draw();
+        }
+
+        function drawCell(x, y, value) {
+            const color = COLORS[value];
+
+            context.fillStyle = color;
+            context.fillRect(
+                x + 0.08,
+                y + 0.08,
+                0.84,
+                0.84
+            );
+
+            context.strokeStyle = color;
+            context.lineWidth = 0.08;
+            context.shadowColor = color;
+            context.shadowBlur = blockSize * 0.35;
+
+            context.strokeRect(
+                x + 0.1,
+                y + 0.1,
+                0.8,
+                0.8
+            );
+
+            context.shadowBlur = 0;
+
+            const gradient = context.createLinearGradient(
+                x,
+                y,
+                x + 1,
+                y + 1
+            );
+
+            gradient.addColorStop(0, "rgba(255,255,255,0.45)");
+            gradient.addColorStop(0.45, "rgba(255,255,255,0.05)");
+            gradient.addColorStop(1, "rgba(0,0,0,0.25)");
+
+            context.fillStyle = gradient;
+            context.fillRect(
+                x + 0.14,
+                y + 0.14,
+                0.72,
+                0.72
+            );
+        }
+
+        function drawMatrix(matrix, offset) {
+            matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value !== 0) {
+                        drawCell(
+                            x + offset.x,
+                            y + offset.y,
+                            value
+                        );
+                    }
+                });
+            });
+        }
+
+        function drawGrid() {
+            context.strokeStyle = "rgba(255,255,255,0.035)";
+            context.lineWidth = 0.02;
+
+            for (let x = 0; x <= COLS; x++) {
+                context.beginPath();
+                context.moveTo(x, 0);
+                context.lineTo(x, ROWS);
+                context.stroke();
+            }
+
+            for (let y = 0; y <= ROWS; y++) {
+                context.beginPath();
+                context.moveTo(0, y);
+                context.lineTo(COLS, y);
+                context.stroke();
+            }
+        }
+
+        function drawGhostPiece() {
+            if (!player || !player.matrix || gameOver) {
+                return;
+            }
+
+            const ghost = {
+                matrix: player.matrix,
+                position: {
+                    x: player.position.x,
+                    y: player.position.y
+                }
+            };
+
+            while (!collide(board, ghost)) {
+                ghost.position.y++;
+            }
+
+            ghost.position.y--;
+
+            context.globalAlpha = 0.18;
+            drawMatrix(ghost.matrix, ghost.position);
+            context.globalAlpha = 1;
+        }
+
+        function draw() {
+            if (!context || !board || !player) {
+                return;
+            }
+
+            context.fillStyle = "#12131c";
+            context.fillRect(0, 0, COLS, ROWS);
+
+            drawGrid();
+            drawMatrix(board, { x: 0, y: 0 });
+            drawGhostPiece();
+            drawMatrix(player.matrix, player.position);
+        }
+
+        function updateScoreBoard() {
+            scoreElement.textContent = score;
+            linesElement.textContent = clearedLines;
+            levelElement.textContent = level;
+        }
+
+        function update(time = 0) {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+
+            if (!paused && !gameOver) {
+                dropCounter += deltaTime;
+
+                if (dropCounter > dropInterval) {
+                    dropPlayer();
+                }
+            }
+
+            draw();
+
+            if (!gameOver) {
+                animationId = requestAnimationFrame(update);
+            }
+        }
+
+        function togglePause() {
+            if (gameOver) {
+                return;
+            }
+
+            paused = !paused;
+
+            if (paused) {
+                pauseButton.textContent = "▶ 계속";
+                showMessage(
+                    "일시정지",
+                    "계속하려면 정지 버튼이나 P키를 누르세요.",
+                    false
+                );
+            } else {
+                pauseButton.textContent = "Ⅱ 정지";
+                hideMessage();
+                lastTime = performance.now();
+            }
+        }
+
+        function showMessage(title, text, showRestart = true) {
+            messageTitleElement.textContent = title;
+            messageTextElement.textContent = text;
+            restartButton.style.display = showRestart ? "block" : "none";
+            messageElement.classList.add("show");
+        }
+
+        function hideMessage() {
+            messageElement.classList.remove("show");
+        }
+
+        function endGame() {
+            gameOver = true;
+
+            showMessage(
+                "GAME OVER",
+                `최종 점수는 ${score}점입니다!`,
+                true
+            );
+
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        }
+
+        function startGame() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+
+            board = createBoard(COLS, ROWS);
+
+            player = {
+                position: { x: 0, y: 0 },
+                matrix: null
+            };
+
+            score = 0;
+            clearedLines = 0;
+            level = 1;
+            dropInterval = 800;
+            dropCounter = 0;
+            lastTime = performance.now();
+
+            gameOver = false;
+            paused = false;
+
+            pauseButton.textContent = "Ⅱ 정지";
+
+            hideMessage();
+            updateScoreBoard();
+            resetPlayer();
+            resizeCanvas();
+
+            animationId = requestAnimationFrame(update);
+        }
+
+        function bindAction(buttonId, action, repeat = false) {
+            const button = document.getElementById(buttonId);
+            let repeatTimer = null;
+            let repeatIntervalTimer = null;
+
+            function startAction(event) {
+                event.preventDefault();
+
+                button.classList.add("active");
+                action();
+
+                if (repeat) {
+                    repeatTimer = setTimeout(() => {
+                        repeatIntervalTimer = setInterval(action, 90);
+                    }, 250);
+                }
+            }
+
+            function stopAction(event) {
+                if (event) {
+                    event.preventDefault();
+                }
+
+                button.classList.remove("active");
+
+                clearTimeout(repeatTimer);
+                clearInterval(repeatIntervalTimer);
+
+                repeatTimer = null;
+                repeatIntervalTimer = null;
+            }
+
+            button.addEventListener("pointerdown", startAction);
+            button.addEventListener("pointerup", stopAction);
+            button.addEventListener("pointercancel", stopAction);
+            button.addEventListener("pointerleave", stopAction);
+        }
+
+        document.addEventListener("keydown", event => {
+            const blockedKeys = [
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowDown",
+                "ArrowUp",
+                "Space"
+            ];
+
+            if (blockedKeys.includes(event.code)) {
+                event.preventDefault();
+            }
+
+            if (event.code === "ArrowLeft") {
+                movePlayer(-1);
+            } else if (event.code === "ArrowRight") {
+                movePlayer(1);
+            } else if (event.code === "ArrowDown") {
+                dropPlayer(true);
+            } else if (event.code === "ArrowUp") {
+                rotatePlayer(1);
+            } else if (event.code === "Space") {
+                hardDrop();
+            } else if (event.code === "KeyP") {
+                togglePause();
+            } else if (
+                event.code === "Enter" &&
+                gameOver
+            ) {
+                startGame();
+            }
+        });
+
+        bindAction("left-btn", () => movePlayer(-1), true);
+        bindAction("right-btn", () => movePlayer(1), true);
+        bindAction("down-btn", () => dropPlayer(true), true);
+        bindAction("rotate-btn", () => rotatePlayer(1));
+        bindAction("drop-btn", hardDrop);
+        bindAction("pause-btn", togglePause);
+
+        restartButton.addEventListener("click", startGame);
+        window.addEventListener("resize", resizeCanvas);
+
+        document.addEventListener("visibilitychange", () => {
+            if (
+                document.hidden &&
+                !paused &&
+                !gameOver
+            ) {
+                togglePause();
+            }
+        });
+
+        startGame();
+    </script>
+</body>
+</html>
+    </template>
+    <template id="tmpl-meal-app">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏫 숭의여자중학교 오늘의 급식</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 구글 폰트 (Pretendard & 푸근한 고딕 느낌의 Jua 폰트 추가) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+    }
+    .font-jua {
+      font-family: 'Jua', sans-serif;
+    }
+    /* 중요: 메뉴 안의 \n 줄바꿈이 웹 화면에서 그대로 반영되도록 설정 */
+    .menu-text {
+      white-space: pre-line;
+    }
+    /* 카드에 부드러운 흔들림 효과 애니메이션 (마우스 호버) */
+    .card-hover:hover {
+      transform: translateY(-4px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-peach-50 to-orange-50 min-h-screen flex items-center justify-center p-4">
+
+  <!-- 꿀조합 파스텔 피치/오렌지 테마 Tailwind 커스텀 확장 정의 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            peach: {
+              50: '#fff6f1',
+              100: '#ffece3',
+              200: '#ffd5c3',
+              300: '#ffb295',
+              400: '#ff845e',
+              500: '#ff5c2e', // 메인 포인트 피치색
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- 메인 모바일 카드 컨테이너 -->
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-peach-100 overflow-hidden card-hover transition-all duration-300">
+    
+    <!-- 상단 헤더 영역 -->
+    <div class="bg-gradient-to-r from-peach-300 to-peach-400 p-6 text-center text-white relative">
+      <!-- 귀여운 밥그릇 일러스트 느낌의 아이콘과 풍선 장식 -->
+      <div class="absolute top-2 right-4 text-3xl opacity-20">🍳</div>
+      <div class="absolute bottom-2 left-4 text-3xl opacity-20">🍓</div>
+      
+      <p class="text-xs font-semibold tracking-wider bg-white/20 inline-block px-3 py-1 rounded-full mb-2">오늘 뭐 먹지? 😋</p>
+      <h1 class="text-2xl font-jua tracking-wide drop-shadow-md">
+        🏫 숭의여자중학교 오늘의 급식
+      </h1>
+    </div>
+
+    <!-- 메인 입력 및 출력 영역 -->
+    <div class="p-6 space-y-6">
+      
+      <!-- 날짜 선택 및 조회 영역 -->
+      <div class="bg-peach-50 p-4 rounded-2xl border border-peach-100">
+        <label for="meal-date" class="block text-xs font-semibold text-peach-500 mb-1.5 ml-1">날짜를 골라주세요 👇</label>
+        <div class="flex items-center gap-2">
+          <!-- 날짜 달력 선택창 -->
+          <input 
+            type="date" 
+            id="meal-date" 
+            class="flex-1 px-3 py-2.5 rounded-xl border border-peach-200 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-peach-400 focus:border-transparent text-sm bg-white cursor-pointer"
+          >
+          <!-- 급식 조회 버튼 -->
+          <button 
+            id="search-btn" 
+            class="bg-peach-400 hover:bg-peach-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-peach-200 active:scale-95 transition-all duration-150 text-sm whitespace-nowrap"
+          >
+            급식 조회
+          </button>
+        </div>
+      </div>
+
+      <!-- 로딩 인디케이터 (요청 중 표시) -->
+      <div id="loading-spinner" class="hidden py-12 text-center">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-peach-400 border-t-transparent mb-3"></div>
+        <p class="text-sm text-gray-500 font-medium">급식 요리사가 식단을 찾고 있어요... 👩‍🍳</p>
+      </div>
+
+      <!-- 에러 및 없는 날 메시지 창 -->
+      <div id="error-card" class="hidden bg-red-50 border border-red-200 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-2">🥣</div>
+        <p id="error-message" class="text-red-500 font-semibold text-sm leading-relaxed">
+          오늘은 급식이 없습니다.
+        </p>
+        <p class="text-xs text-red-400 mt-1">주말, 공휴일 또는 방학 기간일 수 있어요.</p>
+      </div>
+
+      <!-- 성공 시 급식 결과 카드 영역 -->
+      <div id="meal-card" class="hidden space-y-5">
+        
+        <!-- 급식 칼로리 카드 -->
+        <div class="bg-gradient-to-r from-orange-50 to-peach-50 border border-peach-100 rounded-2xl p-4 flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🔥</span>
+            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">오늘의 칼로리</span>
+          </div>
+          <span id="meal-calories" class="font-jua text-lg text-peach-500 tracking-wide">
+            000 Kcal
+          </span>
+        </div>
+
+        <!-- 메뉴 목록 카드 -->
+        <div class="bg-white border-2 border-dashed border-peach-200 rounded-2xl p-5 relative overflow-hidden">
+          <!-- 귀여운 숭의 캐릭터 느낌의 마크 (스푼포크 모양 데코) -->
+          <div class="absolute -right-2 -bottom-2 text-5xl opacity-5 pointer-events-none">🍴</div>
+          
+          <div class="border-b border-peach-100 pb-3 mb-4 flex justify-between items-center">
+            <h3 class="font-jua text-lg text-peach-500 flex items-center gap-1.5">
+              <span>🍱</span> 오늘의 식단 메뉴
+            </h3>
+            <span class="text-[10px] bg-peach-100 text-peach-500 font-bold px-2 py-0.5 rounded-full">중식</span>
+          </div>
+          
+          <!-- 중요: white-space: pre-line 이 적용된 식단 표시 태그 -->
+          <p id="meal-menu" class="menu-text text-gray-700 font-medium text-base text-center leading-loose tracking-wide py-2">
+            맛있는 급식 준비 중...
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 하단 패밀리 로고 & 카피라이트 -->
+    <div class="bg-gray-50 py-4 px-6 border-t border-gray-100 text-center text-[11px] text-gray-400">
+      ❤️ 본 앱은 숭의여자중학교 학생들을 위해 제작되었습니다. ❤️<br>
+      <span class="opacity-80">숭의여중 급식 알리미 v1.0.0</span>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. 숭의여자중학교 NEIS 급식 API 설정
+    const NEIS_API_URL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
+    const EDUCATION_OFFICE_CODE = "B10";
+    const SCHOOL_CODE = "7132148";
+
+    // DOM 요소들 가져오기
+    const dateInput = document.getElementById('meal-date');
+    const searchBtn = document.getElementById('search-btn');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const errorCard = document.getElementById('error-card');
+    const errorMessage = document.getElementById('error-message');
+    const mealCard = document.getElementById('meal-card');
+    const mealCalories = document.getElementById('meal-calories');
+    const mealMenu = document.getElementById('meal-menu');
+
+    // 2. 초기 날짜 셋팅 (오늘 날짜)
+    const getTodayDateString = () => {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+
+    // YYYY-MM-DD 형식의 문자열을 YYYYMMDD로 변환하는 함수
+    const convertDateToYYYYMMDD = (dateStr) => {
+      return dateStr.replace(/-/g, '');
+    };
+
+    // NEIS 메뉴의 <br> 태그와 알레르기 번호를 보기 좋게 정리하는 함수
+    const cleanMealMenu = (menu) => {
+      return menu
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/\s*\([\d.]+\)/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .trim();
+    };
+
+    // 3. 급식 정보 불러오는 메인 API 함수
+    const fetchMealData = async (selectedDate) => {
+      // 로딩 중 UI 처리
+      mealCard.classList.add('hidden');
+      errorCard.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
+
+      const yyyymmdd = convertDateToYYYYMMDD(selectedDate);
+      const params = new URLSearchParams({
+        Type: 'json',
+        pIndex: '1',
+        pSize: '10',
+        ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
+        SD_SCHUL_CODE: SCHOOL_CODE,
+        MLSV_YMD: yyyymmdd,
+        MMEAL_SC_CODE: '2'
+      });
+      const apiEndpoint = `${NEIS_API_URL}?${params.toString()}`;
+
+      // API를 보낼 때 타임아웃 처리를 포함한 지연 처리를 위해 AbortController 사용 가능성 대비
+      try {
+        const response = await fetch(apiEndpoint);
+        
+        if (!response.ok) {
+          throw new Error("서버 응답 오류 (상태 코드: " + response.status + ")");
+        }
+
+        const data = await response.json();
+
+        // 4. NEIS 응답에서 중식 정보 추출
+        const mealRows = data.mealServiceDietInfo?.[1]?.row;
+
+        if (mealRows && mealRows.length > 0) {
+          const lunch = mealRows.find(meal => meal.MMEAL_SC_CODE === '2') || mealRows[0];
+
+          mealCalories.textContent = lunch.CAL_INFO || "칼로리 정보 없음";
+          mealMenu.textContent = cleanMealMenu(lunch.DDISH_NM || "메뉴 정보가 없습니다.");
+
+          // UI 전환
+          loadingSpinner.classList.add('hidden');
+          mealCard.classList.remove('hidden');
+        } else {
+          // 급식 정보가 없는 날
+          errorMessage.textContent = "선택한 날짜에는 급식 정보가 없습니다.";
+
+          // UI 전환
+          loadingSpinner.classList.add('hidden');
+          errorCard.classList.remove('hidden');
+        }
+      } catch (error) {
+        // 네트워크 연결 실패 등 예외 에러 발생 시
+        console.error("급식 정보 조회 에러:", error);
+        errorMessage.textContent = "급식 정보를 가져오는 도중 문제가 발생했습니다. 잠시 후 다시 조회해 주세요.";
+        
+        loadingSpinner.classList.add('hidden');
+        errorCard.classList.remove('hidden');
+      }
+    };
+
+    // 5. 이벤트 리스너 등록
+    
+    // 급식 조회 버튼 클릭 시 호출
+    searchBtn.addEventListener('click', () => {
+      if (!dateInput.value) {
+        // 날짜가 입력되지 않았을 경우, 사용자 경고 모달/토스트 대신 인풋에 바운스 포커스
+        dateInput.focus();
+        return;
+      }
+      fetchMealData(dateInput.value);
+    });
+
+    // 날짜 입력이 달라졌을 때도 즉시 자동 조회 지원
+    dateInput.addEventListener('change', () => {
+      if (dateInput.value) {
+        fetchMealData(dateInput.value);
+      }
+    });
+
+    // 6. 최초 웹 페이지 시작 시 구동 코드
+    window.addEventListener('DOMContentLoaded', () => {
+      const todayDate = getTodayDateString();
+      dateInput.value = todayDate; // 인풋창에 오늘 날짜 기본 입력
+      fetchMealData(todayDate);    // 오늘 날짜로 즉시 급식 API 호출 실행
+    });
+  </script>
+</body>
+</html>
+    </template>
+    <script>
+        const STUDENT_INFO = { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 };
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -290,46 +1329,14 @@
             { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', bg: 'var(--p-piebrain-bg)', color: 'var(--p-piebrain-text)', border: 'var(--p-piebrain-border)' }
         ];
 
-        const STUDENTS = [
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6 },
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1 },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1 },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2 },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3 },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2 },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3 },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4 },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2 },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2 },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5 },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6 },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4 },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2 },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3 },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6 },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
-        ];
-
-        let currentStudent = STUDENTS.find(function(s) { return s.name === '임지우'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            detectStudentFromUrl();
-            populateStudentDropdown();
             loadStudentProjects();
             renderSlots();
-
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeFullscreen();
-            });
-
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenCode) return;
                 const newWin = window.open('', '_blank');
@@ -338,75 +1345,8 @@
             });
         });
 
-        function detectStudentFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const nameParam = params.get('name') || params.get('id');
-            if (nameParam) {
-                const found = STUDENTS.find(s => s.name === decodeURIComponent(nameParam) || s.id === nameParam);
-                if (found) currentStudent = found;
-            }
-        }
-
-        function populateStudentDropdown() {
-            const select = document.getElementById('studentSwitcher');
-            select.innerHTML = '';
-            STUDENTS.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                if (s.id === currentStudent.id) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                const selected = STUDENTS.find(s => s.id === e.target.value);
-                if (selected) {
-                    currentStudent = selected;
-                    updateStudentProfileUI();
-                    renderSlots();
-                }
-            });
-
-            updateStudentProfileUI();
-        }
-
-        function updateStudentProfileUI() {
-            document.getElementById('avatarLetter').textContent = currentStudent.name.charAt(0);
-            document.getElementById('studentTitleName').textContent = `${currentStudent.name} 학생의 AI 창작 포트폴리오`;
-            document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
-        }
-
-                // Built-in Genuine Student Projects
-        const DEFAULT_STUDENT_DATA = {
-            's_3_6_chaeyeon': {
-                'quiz': {
-                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                },
-                'meal-app': {
-                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
-                    sourceCode: "",
-                    updatedAt: '2026-07-01'
-                }
-            }
-        };
-
-        const DEFAULT_STUDENT_DATA = {
-  "game": {
-    "title": "네온 테트리스 (Neon Tetris)",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta\n        name=\"viewport\"\n        content=\"width=device-width, initial-scale=1.0, user-scalable=no\"\n    >\n\n    <title>네온 테트리스 (Neon Tetris)</title>\n\n    <style>\n        * {\n            box-sizing: border-box;\n            user-select: none;\n            -webkit-user-select: none;\n            margin: 0;\n            padding: 0;\n        }\n\n        body {\n            background: #0d0e15;\n            color: #fff;\n            font-family: Arial, sans-serif;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n            min-height: 100vh;\n            overflow: hidden;\n            touch-action: none;\n        }\n\n        h1 {\n            font-size: 1.8rem;\n            margin-bottom: 10px;\n            color: #00f0ff;\n            text-shadow:\n                0 0 10px #00f0ff,\n                0 0 20px #00f0ff;\n        }\n\n        #score-board {\n            display: flex;\n            gap: 18px;\n            margin-bottom: 10px;\n            font-size: 1rem;\n            color: #ff007f;\n            text-shadow: 0 0 8px #ff007f;\n        }\n\n        #game-container {\n            position: relative;\n            border: 4px solid #3d4360;\n            box-shadow: 0 0 20px rgba(61, 67, 96, 0.5);\n            background: #12131c;\n        }\n\n        canvas {\n            display: block;\n            background: #12131c;\n        }\n\n        #message {\n            position: absolute;\n            inset: 0;\n            display: none;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n            gap: 12px;\n            padding: 20px;\n            text-align: center;\n            background: rgba(5, 6, 12, 0.88);\n            z-index: 10;\n        }\n\n        #message.show {\n            display: flex;\n        }\n\n        #message-title {\n            color: #ff007f;\n            font-size: 2rem;\n            text-shadow:\n                0 0 10px #ff007f,\n                0 0 20px #ff007f;\n        }\n\n        #message-text {\n            color: #fff;\n            font-size: 1rem;\n            line-height: 1.5;\n        }\n\n        #restart-button {\n            margin-top: 8px;\n            padding: 12px 22px;\n            border: 2px solid #00f0ff;\n            border-radius: 10px;\n            background: rgba(0, 240, 255, 0.1);\n            color: #00f0ff;\n            font-size: 1rem;\n            font-weight: bold;\n            cursor: pointer;\n            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);\n        }\n\n        #restart-button:active {\n            transform: scale(0.95);\n            background: rgba(0, 240, 255, 0.25);\n        }\n\n        #controls {\n            display: grid;\n            grid-template-columns: repeat(3, 1fr);\n            gap: 12px;\n            width: 100%;\n            max-width: 320px;\n            margin-top: 20px;\n            padding: 0 10px;\n        }\n\n        .btn {\n            background: rgba(255, 255, 255, 0.05);\n            border: 2px solid #3d4360;\n            color: #fff;\n            font-size: 1.2rem;\n            font-weight: bold;\n            padding: 15px 0;\n            border-radius: 12px;\n            text-align: center;\n            cursor: pointer;\n            transition: all 0.1s ease;\n            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);\n            touch-action: manipulation;\n        }\n\n        .btn:active,\n        .btn.active {\n            transform: translateY(2px) scale(0.96);\n            border-color: #00f0ff;\n            background: rgba(0, 240, 255, 0.15);\n            box-shadow:\n                0 0 10px rgba(0, 240, 255, 0.8),\n                inset 0 0 8px rgba(0, 240, 255, 0.3);\n        }\n\n        #rotate-btn {\n            color: #ffe600;\n        }\n\n        #drop-btn {\n            color: #ff007f;\n        }\n\n        #pause-btn {\n            color: #00f0ff;\n        }\n\n        #help {\n            margin-top: 12px;\n            color: #858aa5;\n            font-size: 0.75rem;\n            text-align: center;\n            line-height: 1.5;\n        }\n\n        @media (max-height: 760px) {\n            body {\n                justify-content: flex-start;\n                padding-top: 10px;\n            }\n\n            h1 {\n                font-size: 1.4rem;\n                margin-bottom: 5px;\n            }\n\n            #score-board {\n                margin-bottom: 6px;\n            }\n\n            #controls {\n                margin-top: 10px;\n                gap: 8px;\n            }\n\n            .btn {\n                padding: 10px 0;\n            }\n\n            #help {\n                display: none;\n            }\n        }\n    </style>\n</head>\n\n<body>\n    <h1>NEON TETRIS</h1>\n\n    <div id=\"score-board\">\n        <span>점수: <strong id=\"score\">0</strong></span>\n        <span>라인: <strong id=\"lines\">0</strong></span>\n        <span>레벨: <strong id=\"level\">1</strong></span>\n    </div>\n\n    <div id=\"game-container\">\n        <canvas id=\"game\"></canvas>\n\n        <div id=\"message\">\n            <div id=\"message-title\">GAME OVER</div>\n            <div id=\"message-text\">다시 도전해 보세요!</div>\n            <button id=\"restart-button\" type=\"button\">다시 시작</button>\n        </div>\n    </div>\n\n    <div id=\"controls\">\n        <button class=\"btn\" id=\"left-btn\" type=\"button\">◀</button>\n        <button class=\"btn\" id=\"rotate-btn\" type=\"button\">↻ 회전</button>\n        <button class=\"btn\" id=\"right-btn\" type=\"button\">▶</button>\n\n        <button class=\"btn\" id=\"down-btn\" type=\"button\">▼ 내리기</button>\n        <button class=\"btn\" id=\"drop-btn\" type=\"button\">⤓ 바로 놓기</button>\n        <button class=\"btn\" id=\"pause-btn\" type=\"button\">Ⅱ 정지</button>\n    </div>\n\n    <div id=\"help\">\n        방향키: 이동 및 내리기<br>\n        ↑: 회전 · 스페이스바: 바로 놓기 · P: 일시정지\n    </div>\n\n    <script>\n        const canvas = document.getElementById(\"game\");\n        const context = canvas.getContext(\"2d\");\n\n        const scoreElement = document.getElementById(\"score\");\n        const linesElement = document.getElementById(\"lines\");\n        const levelElement = document.getElementById(\"level\");\n\n        const messageElement = document.getElementById(\"message\");\n        const messageTitleElement = document.getElementById(\"message-title\");\n        const messageTextElement = document.getElementById(\"message-text\");\n        const restartButton = document.getElementById(\"restart-button\");\n        const pauseButton = document.getElementById(\"pause-btn\");\n\n        const COLS = 10;\n        const ROWS = 20;\n\n        let blockSize = 26;\n\n        const COLORS = [\n            null,\n            \"#00f0ff\",\n            \"#0066ff\",\n            \"#ff9f00\",\n            \"#ffe600\",\n            \"#00ff72\",\n            \"#b900ff\",\n            \"#ff007f\"\n        ];\n\n        const SHAPES = [\n            [\n                [0, 0, 0, 0],\n                [1, 1, 1, 1],\n                [0, 0, 0, 0],\n                [0, 0, 0, 0]\n            ],\n            [\n                [2, 0, 0],\n                [2, 2, 2],\n                [0, 0, 0]\n            ],\n            [\n                [0, 0, 3],\n                [3, 3, 3],\n                [0, 0, 0]\n            ],\n            [\n                [4, 4],\n                [4, 4]\n            ],\n            [\n                [0, 5, 5],\n                [5, 5, 0],\n                [0, 0, 0]\n            ],\n            [\n                [0, 6, 0],\n                [6, 6, 6],\n                [0, 0, 0]\n            ],\n            [\n                [7, 7, 0],\n                [0, 7, 7],\n                [0, 0, 0]\n            ]\n        ];\n\n        let board;\n        let player;\n\n        let score = 0;\n        let clearedLines = 0;\n        let level = 1;\n\n        let dropCounter = 0;\n        let dropInterval = 800;\n        let lastTime = 0;\n\n        let gameOver = false;\n        let paused = false;\n        let animationId = null;\n\n        function resizeCanvas() {\n            const maximumHeight = window.innerHeight < 760 ? 390 : 520;\n            const maximumWidth = Math.min(window.innerWidth - 30, 320);\n\n            blockSize = Math.floor(\n                Math.min(maximumWidth / COLS, maximumHeight / ROWS)\n            );\n\n            blockSize = Math.max(blockSize, 18);\n\n            canvas.width = COLS * blockSize;\n            canvas.height = ROWS * blockSize;\n\n            context.setTransform(\n                blockSize,\n                0,\n                0,\n                blockSize,\n                0,\n                0\n            );\n\n            draw();\n        }\n\n        function createBoard(width, height) {\n            const matrix = [];\n\n            while (height > 0) {\n                matrix.push(new Array(width).fill(0));\n                height--;\n            }\n\n            return matrix;\n        }\n\n        function createPiece() {\n            const shapeIndex = Math.floor(Math.random() * SHAPES.length);\n\n            return SHAPES[shapeIndex].map(row => [...row]);\n        }\n\n        function resetPlayer() {\n            player.matrix = createPiece();\n            player.position.y = 0;\n            player.position.x =\n                Math.floor(COLS / 2) -\n                Math.ceil(player.matrix[0].length / 2);\n\n            if (collide(board, player)) {\n                endGame();\n            }\n        }\n\n        function collide(arena, currentPlayer) {\n            const matrix = currentPlayer.matrix;\n            const position = currentPlayer.position;\n\n            for (let y = 0; y < matrix.length; y++) {\n                for (let x = 0; x < matrix[y].length; x++) {\n                    if (\n                        matrix[y][x] !== 0 &&\n                        (\n                            arena[y + position.y] === undefined ||\n                            arena[y + position.y][x + position.x] === undefined ||\n                            arena[y + position.y][x + position.x] !== 0\n                        )\n                    ) {\n                        return true;\n                    }\n                }\n            }\n\n            return false;\n        }\n\n        function merge(arena, currentPlayer) {\n            currentPlayer.matrix.forEach((row, y) => {\n                row.forEach((value, x) => {\n                    if (value !== 0) {\n                        arena[y + currentPlayer.position.y]\n                            [x + currentPlayer.position.x] = value;\n                    }\n                });\n            });\n        }\n\n        function clearLines() {\n            let rowMultiplier = 1;\n            let linesThisTurn = 0;\n\n            outer:\n            for (let y = board.length - 1; y >= 0; y--) {\n                for (let x = 0; x < board[y].length; x++) {\n                    if (board[y][x] === 0) {\n                        continue outer;\n                    }\n                }\n\n                const clearedRow = board.splice(y, 1)[0].fill(0);\n                board.unshift(clearedRow);\n\n                y++;\n                linesThisTurn++;\n                score += rowMultiplier * 100 * level;\n                rowMultiplier *= 2;\n            }\n\n            if (linesThisTurn > 0) {\n                clearedLines += linesThisTurn;\n                level = Math.floor(clearedLines / 10) + 1;\n                dropInterval = Math.max(100, 800 - (level - 1) * 70);\n\n                updateScoreBoard();\n            }\n        }\n\n        function rotateMatrix(matrix, direction) {\n            for (let y = 0; y < matrix.length; y++) {\n                for (let x = 0; x < y; x++) {\n                    [\n                        matrix[x][y],\n                        matrix[y][x]\n                    ] = [\n                        matrix[y][x],\n                        matrix[x][y]\n                    ];\n                }\n            }\n\n            if (direction > 0) {\n                matrix.forEach(row => row.reverse());\n            } else {\n                matrix.reverse();\n            }\n        }\n\n        function rotatePlayer(direction = 1) {\n            if (gameOver || paused) {\n                return;\n            }\n\n            const originalX = player.position.x;\n            let offset = 1;\n\n            rotateMatrix(player.matrix, direction);\n\n            while (collide(board, player)) {\n                player.position.x += offset;\n\n                offset = -(offset + (offset > 0 ? 1 : -1));\n\n                if (Math.abs(offset) > player.matrix[0].length) {\n                    rotateMatrix(player.matrix, -direction);\n                    player.position.x = originalX;\n                    return;\n                }\n            }\n\n            draw();\n        }\n\n        function movePlayer(direction) {\n            if (gameOver || paused) {\n                return;\n            }\n\n            player.position.x += direction;\n\n            if (collide(board, player)) {\n                player.position.x -= direction;\n            }\n\n            draw();\n        }\n\n        function dropPlayer(manualDrop = false) {\n            if (gameOver || paused) {\n                return;\n            }\n\n            player.position.y++;\n\n            if (collide(board, player)) {\n                player.position.y--;\n                merge(board, player);\n                clearLines();\n                resetPlayer();\n            } else if (manualDrop) {\n                score += 1;\n                updateScoreBoard();\n            }\n\n            dropCounter = 0;\n            draw();\n        }\n\n        function hardDrop() {\n            if (gameOver || paused) {\n                return;\n            }\n\n            let distance = 0;\n\n            while (!collide(board, player)) {\n                player.position.y++;\n                distance++;\n            }\n\n            player.position.y--;\n            distance--;\n\n            score += Math.max(0, distance) * 2;\n\n            merge(board, player);\n            clearLines();\n            resetPlayer();\n\n            dropCounter = 0;\n            updateScoreBoard();\n            draw();\n        }\n\n        function drawCell(x, y, value) {\n            const color = COLORS[value];\n\n            context.fillStyle = color;\n            context.fillRect(\n                x + 0.08,\n                y + 0.08,\n                0.84,\n                0.84\n            );\n\n            context.strokeStyle = color;\n            context.lineWidth = 0.08;\n            context.shadowColor = color;\n            context.shadowBlur = blockSize * 0.35;\n\n            context.strokeRect(\n                x + 0.1,\n                y + 0.1,\n                0.8,\n                0.8\n            );\n\n            context.shadowBlur = 0;\n\n            const gradient = context.createLinearGradient(\n                x,\n                y,\n                x + 1,\n                y + 1\n            );\n\n            gradient.addColorStop(0, \"rgba(255,255,255,0.45)\");\n            gradient.addColorStop(0.45, \"rgba(255,255,255,0.05)\");\n            gradient.addColorStop(1, \"rgba(0,0,0,0.25)\");\n\n            context.fillStyle = gradient;\n            context.fillRect(\n                x + 0.14,\n                y + 0.14,\n                0.72,\n                0.72\n            );\n        }\n\n        function drawMatrix(matrix, offset) {\n            matrix.forEach((row, y) => {\n                row.forEach((value, x) => {\n                    if (value !== 0) {\n                        drawCell(\n                            x + offset.x,\n                            y + offset.y,\n                            value\n                        );\n                    }\n                });\n            });\n        }\n\n        function drawGrid() {\n            context.strokeStyle = \"rgba(255,255,255,0.035)\";\n            context.lineWidth = 0.02;\n\n            for (let x = 0; x <= COLS; x++) {\n                context.beginPath();\n                context.moveTo(x, 0);\n                context.lineTo(x, ROWS);\n                context.stroke();\n            }\n\n            for (let y = 0; y <= ROWS; y++) {\n                context.beginPath();\n                context.moveTo(0, y);\n                context.lineTo(COLS, y);\n                context.stroke();\n            }\n        }\n\n        function drawGhostPiece() {\n            if (!player || !player.matrix || gameOver) {\n                return;\n            }\n\n            const ghost = {\n                matrix: player.matrix,\n                position: {\n                    x: player.position.x,\n                    y: player.position.y\n                }\n            };\n\n            while (!collide(board, ghost)) {\n                ghost.position.y++;\n            }\n\n            ghost.position.y--;\n\n            context.globalAlpha = 0.18;\n            drawMatrix(ghost.matrix, ghost.position);\n            context.globalAlpha = 1;\n        }\n\n        function draw() {\n            if (!context || !board || !player) {\n                return;\n            }\n\n            context.fillStyle = \"#12131c\";\n            context.fillRect(0, 0, COLS, ROWS);\n\n            drawGrid();\n            drawMatrix(board, { x: 0, y: 0 });\n            drawGhostPiece();\n            drawMatrix(player.matrix, player.position);\n        }\n\n        function updateScoreBoard() {\n            scoreElement.textContent = score;\n            linesElement.textContent = clearedLines;\n            levelElement.textContent = level;\n        }\n\n        function update(time = 0) {\n            const deltaTime = time - lastTime;\n            lastTime = time;\n\n            if (!paused && !gameOver) {\n                dropCounter += deltaTime;\n\n                if (dropCounter > dropInterval) {\n                    dropPlayer();\n                }\n            }\n\n            draw();\n\n            if (!gameOver) {\n                animationId = requestAnimationFrame(update);\n            }\n        }\n\n        function togglePause() {\n            if (gameOver) {\n                return;\n            }\n\n            paused = !paused;\n\n            if (paused) {\n                pauseButton.textContent = \"▶ 계속\";\n                showMessage(\n                    \"일시정지\",\n                    \"계속하려면 정지 버튼이나 P키를 누르세요.\",\n                    false\n                );\n            } else {\n                pauseButton.textContent = \"Ⅱ 정지\";\n                hideMessage();\n                lastTime = performance.now();\n            }\n        }\n\n        function showMessage(title, text, showRestart = true) {\n            messageTitleElement.textContent = title;\n            messageTextElement.textContent = text;\n            restartButton.style.display = showRestart ? \"block\" : \"none\";\n            messageElement.classList.add(\"show\");\n        }\n\n        function hideMessage() {\n            messageElement.classList.remove(\"show\");\n        }\n\n        function endGame() {\n            gameOver = true;\n\n            showMessage(\n                \"GAME OVER\",\n                `최종 점수는 ${score}점입니다!`,\n                true\n            );\n\n            if (animationId) {\n                cancelAnimationFrame(animationId);\n            }\n        }\n\n        function startGame() {\n            if (animationId) {\n                cancelAnimationFrame(animationId);\n            }\n\n            board = createBoard(COLS, ROWS);\n\n            player = {\n                position: { x: 0, y: 0 },\n                matrix: null\n            };\n\n            score = 0;\n            clearedLines = 0;\n            level = 1;\n            dropInterval = 800;\n            dropCounter = 0;\n            lastTime = performance.now();\n\n            gameOver = false;\n            paused = false;\n\n            pauseButton.textContent = \"Ⅱ 정지\";\n\n            hideMessage();\n            updateScoreBoard();\n            resetPlayer();\n            resizeCanvas();\n\n            animationId = requestAnimationFrame(update);\n        }\n\n        function bindAction(buttonId, action, repeat = false) {\n            const button = document.getElementById(buttonId);\n            let repeatTimer = null;\n            let repeatIntervalTimer = null;\n\n            function startAction(event) {\n                event.preventDefault();\n\n                button.classList.add(\"active\");\n                action();\n\n                if (repeat) {\n                    repeatTimer = setTimeout(() => {\n                        repeatIntervalTimer = setInterval(action, 90);\n                    }, 250);\n                }\n            }\n\n            function stopAction(event) {\n                if (event) {\n                    event.preventDefault();\n                }\n\n                button.classList.remove(\"active\");\n\n                clearTimeout(repeatTimer);\n                clearInterval(repeatIntervalTimer);\n\n                repeatTimer = null;\n                repeatIntervalTimer = null;\n            }\n\n            button.addEventListener(\"pointerdown\", startAction);\n            button.addEventListener(\"pointerup\", stopAction);\n            button.addEventListener(\"pointercancel\", stopAction);\n            button.addEventListener(\"pointerleave\", stopAction);\n        }\n\n        document.addEventListener(\"keydown\", event => {\n            const blockedKeys = [\n                \"ArrowLeft\",\n                \"ArrowRight\",\n                \"ArrowDown\",\n                \"ArrowUp\",\n                \"Space\"\n            ];\n\n            if (blockedKeys.includes(event.code)) {\n                event.preventDefault();\n            }\n\n            if (event.code === \"ArrowLeft\") {\n                movePlayer(-1);\n            } else if (event.code === \"ArrowRight\") {\n                movePlayer(1);\n            } else if (event.code === \"ArrowDown\") {\n                dropPlayer(true);\n            } else if (event.code === \"ArrowUp\") {\n                rotatePlayer(1);\n            } else if (event.code === \"Space\") {\n                hardDrop();\n            } else if (event.code === \"KeyP\") {\n                togglePause();\n            } else if (\n                event.code === \"Enter\" &&\n                gameOver\n            ) {\n                startGame();\n            }\n        });\n\n        bindAction(\"left-btn\", () => movePlayer(-1), true);\n        bindAction(\"right-btn\", () => movePlayer(1), true);\n        bindAction(\"down-btn\", () => dropPlayer(true), true);\n        bindAction(\"rotate-btn\", () => rotatePlayer(1));\n        bindAction(\"drop-btn\", hardDrop);\n        bindAction(\"pause-btn\", togglePause);\n\n        restartButton.addEventListener(\"click\", startGame);\n        window.addEventListener(\"resize\", resizeCanvas);\n\n        document.addEventListener(\"visibilitychange\", () => {\n            if (\n                document.hidden &&\n                !paused &&\n                !gameOver\n            ) {\n                togglePause();\n            }\n        });\n\n        startGame();\n    </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  },
-  "meal-app": {
-    "title": "🏫 숭의여자중학교 오늘의 급식",
-    "sourceCode": "<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>🏫 숭의여자중학교 오늘의 급식</title>\n  <!-- Tailwind CSS CDN -->\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <!-- 구글 폰트 (Pretendard & 푸근한 고딕 느낌의 Jua 폰트 추가) -->\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Jua&family=Pretendard:wght@400;600;700&display=swap\" rel=\"stylesheet\">\n  <style>\n    body {\n      font-family: 'Pretendard', sans-serif;\n    }\n    .font-jua {\n      font-family: 'Jua', sans-serif;\n    }\n    /* 중요: 메뉴 안의 \\n 줄바꿈이 웹 화면에서 그대로 반영되도록 설정 */\n    .menu-text {\n      white-space: pre-line;\n    }\n    /* 카드에 부드러운 흔들림 효과 애니메이션 (마우스 호버) */\n    .card-hover:hover {\n      transform: translateY(-4px);\n      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n    }\n  </style>\n</head>\n<body class=\"bg-gradient-to-br from-peach-50 to-orange-50 min-h-screen flex items-center justify-center p-4\">\n\n  <!-- 꿀조합 파스텔 피치/오렌지 테마 Tailwind 커스텀 확장 정의 -->\n  <script>\n    tailwind.config = {\n      theme: {\n        extend: {\n          colors: {\n            peach: {\n              50: '#fff6f1',\n              100: '#ffece3',\n              200: '#ffd5c3',\n              300: '#ffb295',\n              400: '#ff845e',\n              500: '#ff5c2e', // 메인 포인트 피치색\n            },\n          },\n        },\n      },\n    }\n  </script>\n\n  <!-- 메인 모바일 카드 컨테이너 -->\n  <div class=\"w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-peach-100 overflow-hidden card-hover transition-all duration-300\">\n    \n    <!-- 상단 헤더 영역 -->\n    <div class=\"bg-gradient-to-r from-peach-300 to-peach-400 p-6 text-center text-white relative\">\n      <!-- 귀여운 밥그릇 일러스트 느낌의 아이콘과 풍선 장식 -->\n      <div class=\"absolute top-2 right-4 text-3xl opacity-20\">🍳</div>\n      <div class=\"absolute bottom-2 left-4 text-3xl opacity-20\">🍓</div>\n      \n      <p class=\"text-xs font-semibold tracking-wider bg-white/20 inline-block px-3 py-1 rounded-full mb-2\">오늘 뭐 먹지? 😋</p>\n      <h1 class=\"text-2xl font-jua tracking-wide drop-shadow-md\">\n        🏫 숭의여자중학교 오늘의 급식\n      </h1>\n    </div>\n\n    <!-- 메인 입력 및 출력 영역 -->\n    <div class=\"p-6 space-y-6\">\n      \n      <!-- 날짜 선택 및 조회 영역 -->\n      <div class=\"bg-peach-50 p-4 rounded-2xl border border-peach-100\">\n        <label for=\"meal-date\" class=\"block text-xs font-semibold text-peach-500 mb-1.5 ml-1\">날짜를 골라주세요 👇</label>\n        <div class=\"flex items-center gap-2\">\n          <!-- 날짜 달력 선택창 -->\n          <input \n            type=\"date\" \n            id=\"meal-date\" \n            class=\"flex-1 px-3 py-2.5 rounded-xl border border-peach-200 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-peach-400 focus:border-transparent text-sm bg-white cursor-pointer\"\n          >\n          <!-- 급식 조회 버튼 -->\n          <button \n            id=\"search-btn\" \n            class=\"bg-peach-400 hover:bg-peach-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-peach-200 active:scale-95 transition-all duration-150 text-sm whitespace-nowrap\"\n          >\n            급식 조회\n          </button>\n        </div>\n      </div>\n\n      <!-- 로딩 인디케이터 (요청 중 표시) -->\n      <div id=\"loading-spinner\" class=\"hidden py-12 text-center\">\n        <div class=\"inline-block animate-spin rounded-full h-8 w-8 border-4 border-peach-400 border-t-transparent mb-3\"></div>\n        <p class=\"text-sm text-gray-500 font-medium\">급식 요리사가 식단을 찾고 있어요... 👩‍🍳</p>\n      </div>\n\n      <!-- 에러 및 없는 날 메시지 창 -->\n      <div id=\"error-card\" class=\"hidden bg-red-50 border border-red-200 rounded-2xl p-5 text-center\">\n        <div class=\"text-3xl mb-2\">🥣</div>\n        <p id=\"error-message\" class=\"text-red-500 font-semibold text-sm leading-relaxed\">\n          오늘은 급식이 없습니다.\n        </p>\n        <p class=\"text-xs text-red-400 mt-1\">주말, 공휴일 또는 방학 기간일 수 있어요.</p>\n      </div>\n\n      <!-- 성공 시 급식 결과 카드 영역 -->\n      <div id=\"meal-card\" class=\"hidden space-y-5\">\n        \n        <!-- 급식 칼로리 카드 -->\n        <div class=\"bg-gradient-to-r from-orange-50 to-peach-50 border border-peach-100 rounded-2xl p-4 flex justify-between items-center\">\n          <div class=\"flex items-center gap-2\">\n            <span class=\"text-xl\">🔥</span>\n            <span class=\"text-xs font-semibold text-gray-500 uppercase tracking-wider\">오늘의 칼로리</span>\n          </div>\n          <span id=\"meal-calories\" class=\"font-jua text-lg text-peach-500 tracking-wide\">\n            000 Kcal\n          </span>\n        </div>\n\n        <!-- 메뉴 목록 카드 -->\n        <div class=\"bg-white border-2 border-dashed border-peach-200 rounded-2xl p-5 relative overflow-hidden\">\n          <!-- 귀여운 숭의 캐릭터 느낌의 마크 (스푼포크 모양 데코) -->\n          <div class=\"absolute -right-2 -bottom-2 text-5xl opacity-5 pointer-events-none\">🍴</div>\n          \n          <div class=\"border-b border-peach-100 pb-3 mb-4 flex justify-between items-center\">\n            <h3 class=\"font-jua text-lg text-peach-500 flex items-center gap-1.5\">\n              <span>🍱</span> 오늘의 식단 메뉴\n            </h3>\n            <span class=\"text-[10px] bg-peach-100 text-peach-500 font-bold px-2 py-0.5 rounded-full\">중식</span>\n          </div>\n          \n          <!-- 중요: white-space: pre-line 이 적용된 식단 표시 태그 -->\n          <p id=\"meal-menu\" class=\"menu-text text-gray-700 font-medium text-base text-center leading-loose tracking-wide py-2\">\n            맛있는 급식 준비 중...\n          </p>\n        </div>\n\n      </div>\n\n    </div>\n\n    <!-- 하단 패밀리 로고 & 카피라이트 -->\n    <div class=\"bg-gray-50 py-4 px-6 border-t border-gray-100 text-center text-[11px] text-gray-400\">\n      ❤️ 본 앱은 숭의여자중학교 학생들을 위해 제작되었습니다. ❤️<br>\n      <span class=\"opacity-80\">숭의여중 급식 알리미 v1.0.0</span>\n    </div>\n\n  </div>\n\n  <script>\n    // 1. 숭의여자중학교 NEIS 급식 API 설정\n    const NEIS_API_URL = \"https://open.neis.go.kr/hub/mealServiceDietInfo\";\n    const EDUCATION_OFFICE_CODE = \"B10\";\n    const SCHOOL_CODE = \"7132148\";\n\n    // DOM 요소들 가져오기\n    const dateInput = document.getElementById('meal-date');\n    const searchBtn = document.getElementById('search-btn');\n    const loadingSpinner = document.getElementById('loading-spinner');\n    const errorCard = document.getElementById('error-card');\n    const errorMessage = document.getElementById('error-message');\n    const mealCard = document.getElementById('meal-card');\n    const mealCalories = document.getElementById('meal-calories');\n    const mealMenu = document.getElementById('meal-menu');\n\n    // 2. 초기 날짜 셋팅 (오늘 날짜)\n    const getTodayDateString = () => {\n      const today = new Date();\n      const year = today.getFullYear();\n      const month = String(today.getMonth() + 1).padStart(2, '0');\n      const day = String(today.getDate()).padStart(2, '0');\n      return `${year}-${month}-${day}`;\n    };\n\n    // YYYY-MM-DD 형식의 문자열을 YYYYMMDD로 변환하는 함수\n    const convertDateToYYYYMMDD = (dateStr) => {\n      return dateStr.replace(/-/g, '');\n    };\n\n    // NEIS 메뉴의 <br> 태그와 알레르기 번호를 보기 좋게 정리하는 함수\n    const cleanMealMenu = (menu) => {\n      return menu\n        .replace(/<br\\s*\\/?>/gi, '\\n')\n        .replace(/\\s*\\([\\d.]+\\)/g, '')\n        .replace(/&amp;/g, '&')\n        .replace(/&lt;/g, '<')\n        .replace(/&gt;/g, '>')\n        .trim();\n    };\n\n    // 3. 급식 정보 불러오는 메인 API 함수\n    const fetchMealData = async (selectedDate) => {\n      // 로딩 중 UI 처리\n      mealCard.classList.add('hidden');\n      errorCard.classList.add('hidden');\n      loadingSpinner.classList.remove('hidden');\n\n      const yyyymmdd = convertDateToYYYYMMDD(selectedDate);\n      const params = new URLSearchParams({\n        Type: 'json',\n        pIndex: '1',\n        pSize: '10',\n        ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,\n        SD_SCHUL_CODE: SCHOOL_CODE,\n        MLSV_YMD: yyyymmdd,\n        MMEAL_SC_CODE: '2'\n      });\n      const apiEndpoint = `${NEIS_API_URL}?${params.toString()}`;\n\n      // API를 보낼 때 타임아웃 처리를 포함한 지연 처리를 위해 AbortController 사용 가능성 대비\n      try {\n        const response = await fetch(apiEndpoint);\n        \n        if (!response.ok) {\n          throw new Error(\"서버 응답 오류 (상태 코드: \" + response.status + \")\");\n        }\n\n        const data = await response.json();\n\n        // 4. NEIS 응답에서 중식 정보 추출\n        const mealRows = data.mealServiceDietInfo?.[1]?.row;\n\n        if (mealRows && mealRows.length > 0) {\n          const lunch = mealRows.find(meal => meal.MMEAL_SC_CODE === '2') || mealRows[0];\n\n          mealCalories.textContent = lunch.CAL_INFO || \"칼로리 정보 없음\";\n          mealMenu.textContent = cleanMealMenu(lunch.DDISH_NM || \"메뉴 정보가 없습니다.\");\n\n          // UI 전환\n          loadingSpinner.classList.add('hidden');\n          mealCard.classList.remove('hidden');\n        } else {\n          // 급식 정보가 없는 날\n          errorMessage.textContent = \"선택한 날짜에는 급식 정보가 없습니다.\";\n\n          // UI 전환\n          loadingSpinner.classList.add('hidden');\n          errorCard.classList.remove('hidden');\n        }\n      } catch (error) {\n        // 네트워크 연결 실패 등 예외 에러 발생 시\n        console.error(\"급식 정보 조회 에러:\", error);\n        errorMessage.textContent = \"급식 정보를 가져오는 도중 문제가 발생했습니다. 잠시 후 다시 조회해 주세요.\";\n        \n        loadingSpinner.classList.add('hidden');\n        errorCard.classList.remove('hidden');\n      }\n    };\n\n    // 5. 이벤트 리스너 등록\n    \n    // 급식 조회 버튼 클릭 시 호출\n    searchBtn.addEventListener('click', () => {\n      if (!dateInput.value) {\n        // 날짜가 입력되지 않았을 경우, 사용자 경고 모달/토스트 대신 인풋에 바운스 포커스\n        dateInput.focus();\n        return;\n      }\n      fetchMealData(dateInput.value);\n    });\n\n    // 날짜 입력이 달라졌을 때도 즉시 자동 조회 지원\n    dateInput.addEventListener('change', () => {\n      if (dateInput.value) {\n        fetchMealData(dateInput.value);\n      }\n    });\n\n    // 6. 최초 웹 페이지 시작 시 구동 코드\n    window.addEventListener('DOMContentLoaded', () => {\n      const todayDate = getTodayDateString();\n      dateInput.value = todayDate; // 인풋창에 오늘 날짜 기본 입력\n      fetchMealData(todayDate);    // 오늘 날짜로 즉시 급식 API 호출 실행\n    });\n  </script>\n</body>\n</html>",
-    "updatedAt": "2026-07-01"
-  }
-};
-
         function loadStudentProjects() {
-            const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
+            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -416,15 +1356,31 @@
                     }
                 } catch (e) {}
             }
-            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
+
+            studentProjectsMap = {};
+            const tmpl_game = document.getElementById('tmpl-game');
+            if (tmpl_game) {
+                studentProjectsMap['game'] = {
+                    title: "네온 테트리스 (Neon Tetris)",
+                    sourceCode: tmpl_game.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
+            const tmpl_meal_app = document.getElementById('tmpl-meal-app');
+            if (tmpl_meal_app) {
+                studentProjectsMap['meal-app'] = {
+                    title: "🏫 숭의여자중학교 오늘의 급식",
+                    sourceCode: tmpl_meal_app.innerHTML.trim(),
+                    updatedAt: '2026-07-01'
+                };
+            }
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + currentStudent.id, JSON.stringify(studentProjectsMap));
+            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
         }
 
         function renderSlots() {
-            loadStudentProjects();
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
 
@@ -443,7 +1399,6 @@
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
                             <h3 class="slot-title">${escapeHtml(project.title)}</h3>
-                            
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
@@ -454,11 +1409,9 @@
                             </div>
                         </div>
                         <div class="slot-card-footer">
-                            <div class="slot-footer-left">
-                                <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                    <i class="fa-solid fa-play"></i> 전체화면 실행
-                                </button>
-                            </div>
+                            <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
+                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                            </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
                                     <i class="fa-solid fa-pen"></i> 수정
@@ -471,9 +1424,7 @@
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            openFullscreen(project.title, project.sourceCode);
-                        });
+                        btn.addEventListener('click', () => openFullscreen(project.title, project.sourceCode));
                     });
                 } else {
                     card.innerHTML = `
@@ -509,7 +1460,6 @@
         function openFullscreen(title, sourceCode) {
             currentFullscreenCode = sourceCode;
             document.getElementById('fullscreenTitle').textContent = title;
-            document.getElementById('fullscreenStudentName').textContent = `${currentStudent.grade}학년 ${currentStudent.classNum}반 ${currentStudent.name} 학생 작품`;
             document.getElementById('fullscreenIframe').srcdoc = sourceCode;
             document.getElementById('fullscreenModal').classList.add('active');
         }
@@ -522,19 +1472,16 @@
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 등록 및 수정`;
-
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
                 document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${currentStudent.name} 학생의 ${topic.name} 창작 과제`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 창작 과제`;
                 document.getElementById('slotCodeInput').value = '';
             }
-
             document.getElementById('slotModal').classList.add('active');
         }
 
@@ -547,18 +1494,8 @@
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             const sourceCode = document.getElementById('slotCodeInput').value.trim();
-
-            if (!title || !sourceCode) {
-                alert('제목과 소스코드를 입력해주세요.');
-                return;
-            }
-
-            studentProjectsMap[topicId] = {
-                title,
-                sourceCode,
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
-
+            if (!title || !sourceCode) { alert('제목과 소스코드를 입력해주세요.'); return; }
+            studentProjectsMap[topicId] = { title, sourceCode, updatedAt: new Date().toISOString().split('T')[0] };
             saveStudentProjects();
             closeModal();
             renderSlots();
@@ -582,14 +1519,13 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
 
         function escapeHtmlAttr(str) {
             if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
     </script>
 </body>
 </html>
-
