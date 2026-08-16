@@ -314,7 +314,7 @@
             { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6 }
         ];
 
-        let currentStudent = STUDENTS.find(s => s.name === '채슬온') || STUDENTS[0];
+        let currentStudent = STUDENTS.find(function(s) { return s.name === '채슬온'; }) || STUDENTS[0];
         let studentProjectsMap = {};
         let currentFullscreenCode = '';
 
@@ -376,15 +376,42 @@
             document.getElementById('studentClassInfo').textContent = `2026학년도 숭의여자중학교 ${currentStudent.grade}학년 ${currentStudent.classNum}반`;
         }
 
+                // Built-in Genuine Student Projects
+        const DEFAULT_STUDENT_DATA = {
+            's_3_6_chaeyeon': {
+                'quiz': {
+                    title: '以? 怨쇳븰 [?대룞怨??먮꼫吏] 1?숆린 湲곕쭚怨좎궗 20??紐⑥쓽怨좎궗 (???梨꾩젏 ??',
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                },
+                'meal-app': {
+                    title: '??쓽?ъ옄以묓븰援??ㅻ뒛??湲됱떇 & ?곸뼇 ?뚮━誘???,
+                    sourceCode: "",
+                    updatedAt: '2026-07-01'
+                }
+            }
+        };
+
+        const DEFAULT_STUDENT_DATA = {
+  "game": {
+    "title": "AI 체스 대결",
+    "sourceCode": "<!DOCTYPE html>\n\n<html lang=\"ko\">\n\n<head>\n\n    <meta charset=\"UTF-8\">\n\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n    <title>AI 체스 대결</title>\n\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css\">\n\n    <style>\n\n        body {\n\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n\n            background-color: #f0f2f5;\n\n            display: flex;\n\n            flex-direction: column;\n\n            align-items: center;\n\n            justify-content: center;\n\n            min-height: 100vh;\n\n            margin: 0;\n\n        }\n\n        h1 {\n\n            color: #333;\n\n            margin-bottom: 5px;\n\n        }\n\n        #status-panel {\n\n            margin-bottom: 15px;\n\n            font-size: 1.1rem;\n\n            font-weight: bold;\n\n            color: #555;\n\n            height: 25px;\n\n        }\n\n        #board {\n\n            width: 450px;\n\n            box-shadow: 0 8px 16px rgba(0,0,0,0.2);\n\n            border-radius: 4px;\n\n            overflow: hidden;\n\n        }\n\n        #ai-analysis {\n\n            margin-top: 15px;\n\n            font-size: 1rem;\n\n            color: #0066cc;\n\n            font-weight: bold;\n\n            height: 24px;\n\n            text-align: center;\n\n        }\n\n        .buttons {\n\n            margin-top: 15px;\n\n        }\n\n        button {\n\n            padding: 8px 16px;\n\n            font-size: 0.9rem;\n\n            font-weight: bold;\n\n            background-color: #4f46e5;\n\n            color: white;\n\n            border: none;\n\n            border-radius: 4px;\n\n            cursor: pointer;\n\n        }\n\n        button:hover {\n\n            background-color: #4338ca;\n\n        }\n\n    </style>\n\n</head>\n\n<body>\n\n\n\n    <h1>AI 체스 대결</h1>\n\n    <div id=\"status-panel\">당신의 차례입니다. (백색 기물)</div>\n\n    \n\n    <div id=\"board\"></div>\n\n    \n\n    <div id=\"ai-analysis\"></div>\n\n    \n\n    <div class=\"buttons\">\n\n        <button onclick=\"resetGame()\">게임 재시작</button>\n\n    </div>\n\n\n\n    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>\n\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js\"></script>\n\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js\"></script>\n\n\n\n    <script>\n\n        let board = null;\n\n        const game = new Chess();\n\n        const statusEl = document.getElementById('status-panel');\n\n        const analysisEl = document.getElementById('ai-analysis');\n\n\n\n        // 각 기물의 가치 점수 (AI 분석용)\n\n        const pieceValues = { p: 10, n: 30, b: 30, r: 50, q: 90, k: 900 };\n\n\n\n        // 현재 판세(승률)를 간이 계산하는 함수\n\n        function evaluateBoard() {\n\n            let totalEvaluation = 0;\n\n            const boardState = game.board();\n\n            \n\n            for (let i = 0; i < 8; i++) {\n\n                for (let j = 0; j < 8; j++) {\n\n                    const piece = boardState[i][j];\n\n                    if (piece) {\n\n                        // 백색 기물은 더하고, 흑색(AI) 기물은 뺌\n\n                        const value = pieceValues[piece.type];\n\n                        totalEvaluation += (piece.color === 'w') ? value : -value;\n\n                    }\n\n                }\n\n            }\n\n            return totalEvaluation;\n\n        }\n\n\n\n        // 유저가 기물을 드래그하기 시작할 때 규칙 체크\n\n        function onDragStart(source, piece, position, orientation) {\n\n            // 게임이 끝났거나, AI 턴(흑색)일 때 드래그 막기\n\n            if (game.game_over() || piece.search(/^b/) !== -1) return false;\n\n        }\n\n\n\n        // 유저가 기물을 내려놓았을 때 (착수)\n\n        function onDrop(source, target) {\n\n            // 이동이 올바른지 chess.js로 검증\n\n            const move = game.move({\n\n                from: source,\n\n                to: target,\n\n                promotion: 'q' // 폰이 끝까지 가면 퀸으로 자동 승급\n\n            });\n\n\n\n            // 올바르지 않은 이동이면 제자리로 원복\n\n            if (move === null) return 'snapback';\n\n\n\n            updateStatus();\n\n            \n\n            // 유저 턴이 끝나면 AI 작동 예정 연출\n\n            if (!game.game_over()) {\n\n                statusEl.innerText = \"AI가 형세를 분석 중입니다...\";\n\n                setTimeout(makeAiMove, 500); // 유저 입력 후 자연스러운 딜레이\n\n            }\n\n        }\n\n\n\n        // 기물 이동 애니메이션이 끝난 후 보드 동기화\n\n        function onSnapEnd() {\n\n            board.position(game.fen());\n\n        }\n\n\n\n        // AI 계산 및 착수\n\n        function makeAiMove() {\n\n            const possibleMoves = game.moves();\n\n\n\n            // 게임이 끝났으면 종료\n\n            if (possibleMoves.length === 0) return;\n\n\n\n            // [시각 효과] 승률 계산 중인 듯한 로딩 애니메이션 연출\n\n            let progress = 0;\n\n            analysisEl.innerText = \"AI 승률 분석률: 0%\";\n\n\n\n            const interval = setInterval(() => {\n\n                progress += Math.floor(Math.random() * 20) + 10;\n\n                if (progress >= 100) {\n\n                    clearInterval(interval);\n\n                    \n\n                    // 실제 AI 최적의 수 결정 (1단계 앞을 보는 미니맥스 기반 가중치 계산)\n\n                    let bestMove = null;\n\n                    let bestValue = Number.MAX_SAFE_INTEGER; // AI(흑)는 점수가 낮을수록(유리할수록) 좋음\n\n\n\n                    // 가능한 모든 수를 대입해보며 가장 유리한 판세 찾기\n\n                    possibleMoves.forEach(move => {\n\n                        game.move(move);\n\n                        let boardValue = evaluateBoard();\n\n                        game.undo();\n\n\n\n                        if (boardValue < bestValue) {\n\n                            bestValue = boardValue;\n\n                            bestMove = move;\n\n                        }\n\n                    });\n\n\n\n                    // 만약 동점 상황이 많다면 무작위 요소 가미\n\n                    if (!bestMove) {\n\n                        bestMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];\n\n                    }\n\n\n\n                    // 판세 점수를 기반으로 한 예측 승률(%) 환산 연출\n\n                    // 기본 50%에서 현재 기물 점수차(bestValue)를 반영\n\n                    let aiWinRate = 50 - Math.round(bestValue / 5);\n\n                    aiWinRate = Math.min(95, Math.max(5, aiWinRate)); // 최소 5% ~ 최대 95% 제한\n\n\n\n                    analysisEl.innerText = `🤖 AI 예측 승률: ${aiWinRate}% (추천 수: ${bestMove})`;\n\n\n\n                    // AI 실제 착수\n\n                    game.move(bestMove);\n\n                    board.position(game.fen());\n\n                    updateStatus();\n\n                } else {\n\n                    analysisEl.innerText = `AI 연산 분석 중... ${progress}%`;\n\n                }\n\n            }, 80);\n\n        }\n\n\n\n        // 게임 상태(체크, 체크메이트 등) 업데이트\n\n        function updateStatus() {\n\n            let status = '';\n\n\n\n            let moveColor = '백색 (당신)';\n\n            if (game.turn() === 'b') {\n\n                moveColor = '흑색 (AI)';\n\n            }\n\n\n\n            if (game.in_checkmate()) {\n\n                status = `게임 종료! ${moveColor}가 체크메이트(외통수)를 당했습니다.`;\n\n                analysisEl.innerText = \"\";\n\n            } else if (game.in_draw()) {\n\n                status = '게임 종료! 무승부(Draw)입니다.';\n\n                analysisEl.innerText = \"\";\n\n            } else {\n\n                status = `${moveColor}의 차례입니다.`;\n\n                if (game.in_check()) {\n\n                    status += ' (체크!)';\n\n                }\n\n            }\n\n\n\n            statusEl.innerText = status;\n\n        }\n\n\n\n        // 게임 초기화\n\n        function resetGame() {\n\n            game.reset();\n\n            board.start();\n\n            statusEl.innerText = \"당신의 차례입니다. (백색 기물)\";\n\n            analysisEl.innerText = \"\";\n\n        }\n\n\n\n        // 보드 구성 설정\n\n        const config = {\n\n            draggable: true,\n\n            position: 'start',\n\n            onDragStart: onDragStart,\n\n            onDrop: onDrop,\n\n            onSnapEnd: onSnapEnd,\n\n            pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' // 기본 체스말 테마\n\n        };\n\n\n\n        board = Chessboard('board', config);\n\n    </script>\n\n</body>\n\n</html>",
+    "updatedAt": "2026-07-01"
+  }
+};
+
         function loadStudentProjects() {
             const saved = localStorage.getItem('2026sy_student_slots_' + currentStudent.id);
             if (saved) {
                 try {
-                    studentProjectsMap = JSON.parse(saved);
-                    return;
+                    const parsed = JSON.parse(saved);
+                    if (Object.keys(parsed).length > 0) {
+                        studentProjectsMap = parsed;
+                        return;
+                    }
                 } catch (e) {}
             }
-            studentProjectsMap = {};
+            studentProjectsMap = JSON.parse(JSON.stringify(DEFAULT_STUDENT_DATA));
         }
 
         function saveStudentProjects() {
@@ -560,3 +587,4 @@
     </script>
 </body>
 </html>
+
