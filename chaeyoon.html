@@ -205,174 +205,8 @@
 
     <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
 
-    <template id="tmpl_meal_app">
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 오늘의 급식</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        /* 줄바꿈 문자(\n)가 화면에 올바르게 줄바꿈으로 보이도록 하는 필수 스타일 */
-        .menu-text {
-            white-space: pre-line;
-        }
-    </style>
-</head>
-<body class="bg-amber-50/60 min-h-screen flex items-center justify-center p-4">
-
-    <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-peach-100/40 border border-peach-100 p-6 space-y-6 text-center">
-        
-        <header class="space-y-2">
-            <h1 class="text-2xl font-bold text-slate-800 tracking-tight flex items-center justify-center gap-2">
-                🏫 숭의여자중학교 오늘의 급식
-            </h1>
-            <p class="text-xs text-stone-400 font-medium">맛있고 건강한 하루의 시작!</p>
-        </header>
-
-        <div class="flex items-center gap-2 bg-stone-50 p-2 rounded-2xl border border-stone-100">
-            <input type="date" id="datePicker" 
-                   class="flex-1 bg-transparent px-3 py-2 text-stone-700 font-medium focus:outline-none cursor-pointer rounded-xl hover:bg-stone-100 transition-colors">
-            <button id="searchBtn" 
-                    class="bg-rose-400 hover:bg-rose-500 text-white font-bold px-5 py-2.5 rounded-xl transition-all duration-200 transform active:scale-95 shadow-md shadow-rose-200 text-sm whitespace-nowrap">
-                급식 조회
-            </button>
-        </div>
-
-        <main id="lunchCard" class="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-6 min-h-[220px] flex flex-col justify-center items-center transition-all duration-300">
-            <div id="loadingState" class="text-stone-400 text-sm animate-pulse">
-                급식 정보를 불러오는 중입니다...
-            </div>
-            
-            <div id="resultState" class="hidden w-full space-y-4">
-                <div class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full" id="caloriesBadge">
-                    000 Kcal
-                </div>
-                <div id="menuText" class="menu-text text-stone-700 font-medium text-base leading-relaxed bg-white/80 rounded-xl p-4 shadow-sm border border-emerald-50">
-                    식단 메뉴가 이곳에 표시됩니다.
-                </div>
-            </div>
-
-            <div id="errorState" class="hidden text-rose-500 font-medium text-sm space-y-2">
-                <span class="text-3xl">⚠️</span>
-                <p id="errorMessage" class="pt-1">오늘은 급식이 없습니다.</p>
-            </div>
-        </main>
-
-        <footer class="text-[11px] text-stone-400">
-            ⓒ 숭의여자중학교 급식 알리미앱
-        </footer>
-    </div>
-
-    <script>
-        // 나이스 교육정보 개방포털 급식 API 설정
-        const API_URL = "https://2026sy.eunseony75.workers.dev";
-const EDUCATION_OFFICE_CODE = "B10"; // 서울특별시교육청
-        const SCHOOL_CODE = "7132148";       // 숭의여자중학교
-
-        // DOM 요소 가져오기
-        const datePicker = document.getElementById('datePicker');
-        const searchBtn = document.getElementById('searchBtn');
-        const loadingState = document.getElementById('loadingState');
-        const resultState = document.getElementById('resultState');
-        const errorState = document.getElementById('errorState');
-        const caloriesBadge = document.getElementById('caloriesBadge');
-        const menuText = document.getElementById('menuText');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // 페이지 최초 로드시 오늘 날짜 설정 및 자동 조회
-        window.addEventListener('DOMContentLoaded', () => {
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            
-            // 달력 input에 오늘 날짜 세팅 (YYYY-MM-DD 형식)
-            datePicker.value = `${yyyy}-${mm}-${dd}`;
-            
-            // 즉시 오늘 급식 불러오기
-            fetchLunchInfo();
-        });
-
-        // 급식 조회 함수
-        async function fetchLunchInfo() {
-            const rawDate = datePicker.value;
-            if (!rawDate) {
-                alert("날짜를 선택해 주세요!");
-                return;
-            }
-
-            // 하이픈(-)을 제거하여 YYYYMMDD 형태로 변환
-            const formattedDate = rawDate.replace(/-/g, '');
-
-            // 화면 상태 초기화 (로딩 표시)
-            loadingState.classList.remove('hidden');
-            resultState.classList.add('hidden');
-            errorState.classList.add('hidden');
-
-            try {
-                // 나이스 API 요청 주소 생성
-                const params = new URLSearchParams({
-Type: "json",
-                    pIndex: "1",
-                    pSize: "10",
-                    ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
-                    SD_SCHUL_CODE: SCHOOL_CODE,
-                    MLSV_YMD: formattedDate
-                });
-                const requestUrl = `${API_URL}?${params.toString()}`;
-                
-                const response = await fetch(requestUrl);
-                if (!response.ok) {
-                    throw new Error("서버 응답 오류");
-                }
-
-                const data = await response.json();
-
-                // 로딩 숨기기
-                loadingState.classList.add('hidden');
-
-                // 나이스 API는 조회 결과가 있을 때 두 번째 배열에 식단 행을 반환함
-                const mealRows = data.mealServiceDietInfo?.[1]?.row;
-
-                if (Array.isArray(mealRows) && mealRows.length > 0) {
-                    const meal = mealRows[0];
-                    const cleanMenu = (meal.DDISH_NM || "")
-                        .replace(/<br\s*\/?\s*>/gi, "\n")
-                        .replace(/&amp;/g, "&")
-                        .replace(/&lt;/g, "<")
-                        .replace(/&gt;/g, ">");
-
-                    caloriesBadge.textContent = meal.CAL_INFO || "열량 정보 없음";
-                    menuText.textContent = cleanMenu || "메뉴 정보가 없습니다.";
-                    resultState.classList.remove('hidden');
-                } else {
-                    const apiMessage = data.RESULT?.MESSAGE;
-                    errorMessage.textContent = apiMessage || "선택한 날짜에는 급식이 없습니다.";
-                    errorState.classList.remove('hidden');
-                }
-
-            } catch (error) {
-                // 네트워크 에러 등 예외 처리
-                loadingState.classList.add('hidden');
-                errorMessage.textContent = "급식 정보를 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.";
-                errorState.classList.remove('hidden');
-                console.error(error);
-            }
-        }
-
-        // 버튼 클릭 이벤트 및 달력 날짜 변경 이벤트 연동
-        searchBtn.addEventListener('click', fetchLunchInfo);
-        datePicker.addEventListener('change', fetchLunchInfo);
-    </script>
-</body>
-</html>
-    </template>
+    <!-- [100% 스타일 격리형 소스코드 보관소] -->
+    <script type="text/plain" id="code_meal_app">PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImtvIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+7Iit7J2Y7Jes7J6Q7KSR7ZWZ6rWQIOyYpOuKmOydmCDquInsi508L3RpdGxlPgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLnRhaWx3aW5kY3NzLmNvbSI+PC9zY3JpcHQ+CiAgICA8bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU5vdG8rU2FucytLUjp3Z2h0QDQwMDs1MDA7NzAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0Ij4KICAgIDxzdHlsZT4KICAgICAgICBib2R5IHsKICAgICAgICAgICAgZm9udC1mYW1pbHk6ICdOb3RvIFNhbnMgS1InLCBzYW5zLXNlcmlmOwogICAgICAgIH0KICAgICAgICAvKiDspITrsJTqv4gg66y47J6QKFxuKeqwgCDtmZTrqbTsl5Ag7Jis67CU66W06rKMIOykhOuwlOq/iOycvOuhnCDrs7TsnbTrj4TroZ0g7ZWY64qUIO2VhOyImCDsiqTtg4DsnbwgKi8KICAgICAgICAubWVudS10ZXh0IHsKICAgICAgICAgICAgd2hpdGUtc3BhY2U6IHByZS1saW5lOwogICAgICAgIH0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHkgY2xhc3M9ImJnLWFtYmVyLTUwLzYwIG1pbi1oLXNjcmVlbiBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBwLTQiPgoKICAgIDxkaXYgY2xhc3M9InctZnVsbCBtYXgtdy1tZCBiZy13aGl0ZSByb3VuZGVkLTN4bCBzaGFkb3cteGwgc2hhZG93LXBlYWNoLTEwMC80MCBib3JkZXIgYm9yZGVyLXBlYWNoLTEwMCBwLTYgc3BhY2UteS02IHRleHQtY2VudGVyIj4KICAgICAgICAKICAgICAgICA8aGVhZGVyIGNsYXNzPSJzcGFjZS15LTIiPgogICAgICAgICAgICA8aDEgY2xhc3M9InRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LXNsYXRlLTgwMCB0cmFja2luZy10aWdodCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBnYXAtMiI+CiAgICAgICAgICAgICAgICDwn4+rIOyIreydmOyXrOyekOykke2Vmeq1kCDsmKTripjsnZgg6riJ7IudCiAgICAgICAgICAgIDwvaDE+CiAgICAgICAgICAgIDxwIGNsYXNzPSJ0ZXh0LXhzIHRleHQtc3RvbmUtNDAwIGZvbnQtbWVkaXVtIj7rp5vsnojqs6Ag6rG06rCV7ZWcIO2VmOujqOydmCDsi5zsnpEhPC9wPgogICAgICAgIDwvaGVhZGVyPgoKICAgICAgICA8ZGl2IGNsYXNzPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBiZy1zdG9uZS01MCBwLTIgcm91bmRlZC0yeGwgYm9yZGVyIGJvcmRlci1zdG9uZS0xMDAiPgogICAgICAgICAgICA8aW5wdXQgdHlwZT0iZGF0ZSIgaWQ9ImRhdGVQaWNrZXIiIAogICAgICAgICAgICAgICAgICAgY2xhc3M9ImZsZXgtMSBiZy10cmFuc3BhcmVudCBweC0zIHB5LTIgdGV4dC1zdG9uZS03MDAgZm9udC1tZWRpdW0gZm9jdXM6b3V0bGluZS1ub25lIGN1cnNvci1wb2ludGVyIHJvdW5kZWQteGwgaG92ZXI6Ymctc3RvbmUtMTAwIHRyYW5zaXRpb24tY29sb3JzIj4KICAgICAgICAgICAgPGJ1dHRvbiBpZD0ic2VhcmNoQnRuIiAKICAgICAgICAgICAgICAgICAgICBjbGFzcz0iYmctcm9zZS00MDAgaG92ZXI6Ymctcm9zZS01MDAgdGV4dC13aGl0ZSBmb250LWJvbGQgcHgtNSBweS0yLjUgcm91bmRlZC14bCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0yMDAgdHJhbnNmb3JtIGFjdGl2ZTpzY2FsZS05NSBzaGFkb3ctbWQgc2hhZG93LXJvc2UtMjAwIHRleHQtc20gd2hpdGVzcGFjZS1ub3dyYXAiPgogICAgICAgICAgICAgICAg6riJ7IudIOyhsO2ajAogICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgPG1haW4gaWQ9Imx1bmNoQ2FyZCIgY2xhc3M9ImJnLWVtZXJhbGQtNTAvNjAgYm9yZGVyIGJvcmRlci1lbWVyYWxkLTEwMCByb3VuZGVkLTJ4bCBwLTYgbWluLWgtWzIyMHB4XSBmbGV4IGZsZXgtY29sIGp1c3RpZnktY2VudGVyIGl0ZW1zLWNlbnRlciB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDAiPgogICAgICAgICAgICA8ZGl2IGlkPSJsb2FkaW5nU3RhdGUiIGNsYXNzPSJ0ZXh0LXN0b25lLTQwMCB0ZXh0LXNtIGFuaW1hdGUtcHVsc2UiPgogICAgICAgICAgICAgICAg6riJ7IudIOygleuztOulvCDrtojrn6zsmKTripQg7KSR7J6F64uI64ukLi4uCiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAKICAgICAgICAgICAgPGRpdiBpZD0icmVzdWx0U3RhdGUiIGNsYXNzPSJoaWRkZW4gdy1mdWxsIHNwYWNlLXktNCI+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJpbmxpbmUtYmxvY2sgYmctZW1lcmFsZC0xMDAgdGV4dC1lbWVyYWxkLTgwMCB0ZXh0LXhzIGZvbnQtYm9sZCBweC0zIHB5LTEuNSByb3VuZGVkLWZ1bGwiIGlkPSJjYWxvcmllc0JhZGdlIj4KICAgICAgICAgICAgICAgICAgICAwMDAgS2NhbAogICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICA8ZGl2IGlkPSJtZW51VGV4dCIgY2xhc3M9Im1lbnUtdGV4dCB0ZXh0LXN0b25lLTcwMCBmb250LW1lZGl1bSB0ZXh0LWJhc2UgbGVhZGluZy1yZWxheGVkIGJnLXdoaXRlLzgwIHJvdW5kZWQteGwgcC00IHNoYWRvdy1zbSBib3JkZXIgYm9yZGVyLWVtZXJhbGQtNTAiPgogICAgICAgICAgICAgICAgICAgIOyLneuLqCDrqZTribTqsIAg7J206rOz7JeQIO2RnOyLnOuQqeuLiOuLpC4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KCiAgICAgICAgICAgIDxkaXYgaWQ9ImVycm9yU3RhdGUiIGNsYXNzPSJoaWRkZW4gdGV4dC1yb3NlLTUwMCBmb250LW1lZGl1bSB0ZXh0LXNtIHNwYWNlLXktMiI+CiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzcz0idGV4dC0zeGwiPuKaoO+4jzwvc3Bhbj4KICAgICAgICAgICAgICAgIDxwIGlkPSJlcnJvck1lc3NhZ2UiIGNsYXNzPSJwdC0xIj7smKTripjsnYAg6riJ7Iud7J20IOyXhuyKteuLiOuLpC48L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvbWFpbj4KCiAgICAgICAgPGZvb3RlciBjbGFzcz0idGV4dC1bMTFweF0gdGV4dC1zdG9uZS00MDAiPgogICAgICAgICAgICDik5Ig7Iit7J2Y7Jes7J6Q7KSR7ZWZ6rWQIOq4ieyLnSDslYzrpqzrr7jslbEKICAgICAgICA8L2Zvb3Rlcj4KICAgIDwvZGl2PgoKICAgIDxzY3JpcHQ+CiAgICAgICAgLy8g64KY7J207IqkIOq1kOycoeygleuztCDqsJzrsKntj6zthLgg6riJ7IudIEFQSSDshKTsoJUKICAgICAgICBjb25zdCBBUElfVVJMID0gImh0dHBzOi8vMjAyNnN5LmV1bnNlb255NzUud29ya2Vycy5kZXYiOwpjb25zdCBFRFVDQVRJT05fT0ZGSUNFX0NPREUgPSAiQjEwIjsgLy8g7ISc7Jq47Yq567OE7Iuc6rWQ7Jyh7LKtCiAgICAgICAgY29uc3QgU0NIT09MX0NPREUgPSAiNzEzMjE0OCI7ICAgICAgIC8vIOyIreydmOyXrOyekOykke2Vmeq1kAoKICAgICAgICAvLyBET00g7JqU7IaMIOqwgOyguOyYpOq4sAogICAgICAgIGNvbnN0IGRhdGVQaWNrZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZGF0ZVBpY2tlcicpOwogICAgICAgIGNvbnN0IHNlYXJjaEJ0biA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWFyY2hCdG4nKTsKICAgICAgICBjb25zdCBsb2FkaW5nU3RhdGUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbG9hZGluZ1N0YXRlJyk7CiAgICAgICAgY29uc3QgcmVzdWx0U3RhdGUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncmVzdWx0U3RhdGUnKTsKICAgICAgICBjb25zdCBlcnJvclN0YXRlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2Vycm9yU3RhdGUnKTsKICAgICAgICBjb25zdCBjYWxvcmllc0JhZGdlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NhbG9yaWVzQmFkZ2UnKTsKICAgICAgICBjb25zdCBtZW51VGV4dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtZW51VGV4dCcpOwogICAgICAgIGNvbnN0IGVycm9yTWVzc2FnZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlcnJvck1lc3NhZ2UnKTsKCiAgICAgICAgLy8g7Y6Y7J207KeAIOy1nOy0iCDroZzrk5zsi5wg7Jik64qYIOuCoOynnCDshKTsoJUg67CPIOyekOuPmSDsobDtmowKICAgICAgICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsICgpID0+IHsKICAgICAgICAgICAgY29uc3QgdG9kYXkgPSBuZXcgRGF0ZSgpOwogICAgICAgICAgICBjb25zdCB5eXl5ID0gdG9kYXkuZ2V0RnVsbFllYXIoKTsKICAgICAgICAgICAgY29uc3QgbW0gPSBTdHJpbmcodG9kYXkuZ2V0TW9udGgoKSArIDEpLnBhZFN0YXJ0KDIsICcwJyk7CiAgICAgICAgICAgIGNvbnN0IGRkID0gU3RyaW5nKHRvZGF5LmdldERhdGUoKSkucGFkU3RhcnQoMiwgJzAnKTsKICAgICAgICAgICAgCiAgICAgICAgICAgIC8vIOuLrOugpSBpbnB1dOyXkCDsmKTripgg64Kg7KecIOyEuO2MhSAoWVlZWS1NTS1ERCDtmJXsi50pCiAgICAgICAgICAgIGRhdGVQaWNrZXIudmFsdWUgPSBgJHt5eXl5fS0ke21tfS0ke2RkfWA7CiAgICAgICAgICAgIAogICAgICAgICAgICAvLyDsponsi5wg7Jik64qYIOq4ieyLnSDrtojrn6zsmKTquLAKICAgICAgICAgICAgZmV0Y2hMdW5jaEluZm8oKTsKICAgICAgICB9KTsKCiAgICAgICAgLy8g6riJ7IudIOyhsO2ajCDtlajsiJgKICAgICAgICBhc3luYyBmdW5jdGlvbiBmZXRjaEx1bmNoSW5mbygpIHsKICAgICAgICAgICAgY29uc3QgcmF3RGF0ZSA9IGRhdGVQaWNrZXIudmFsdWU7CiAgICAgICAgICAgIGlmICghcmF3RGF0ZSkgewogICAgICAgICAgICAgICAgYWxlcnQoIuuCoOynnOulvCDshKDtg53tlbQg7KO87IS47JqUISIpOwogICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICB9CgogICAgICAgICAgICAvLyDtlZjsnbTtlIgoLSnsnYQg7KCc6rGw7ZWY7JesIFlZWVlNTUREIO2Yle2DnOuhnCDrs4DtmZgKICAgICAgICAgICAgY29uc3QgZm9ybWF0dGVkRGF0ZSA9IHJhd0RhdGUucmVwbGFjZSgvLS9nLCAnJyk7CgogICAgICAgICAgICAvLyDtmZTrqbQg7IOB7YOcIOy0iOq4sO2ZlCAo66Gc65SpIO2RnOyLnCkKICAgICAgICAgICAgbG9hZGluZ1N0YXRlLmNsYXNzTGlzdC5yZW1vdmUoJ2hpZGRlbicpOwogICAgICAgICAgICByZXN1bHRTdGF0ZS5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKICAgICAgICAgICAgZXJyb3JTdGF0ZS5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKCiAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICAvLyDrgpjsnbTsiqQgQVBJIOyalOyyrSDso7zshowg7IOd7ISxCiAgICAgICAgICAgICAgICBjb25zdCBwYXJhbXMgPSBuZXcgVVJMU2VhcmNoUGFyYW1zKHsKVHlwZTogImpzb24iLAogICAgICAgICAgICAgICAgICAgIHBJbmRleDogIjEiLAogICAgICAgICAgICAgICAgICAgIHBTaXplOiAiMTAiLAogICAgICAgICAgICAgICAgICAgIEFUUFRfT0ZDRENfU0NfQ09ERTogRURVQ0FUSU9OX09GRklDRV9DT0RFLAogICAgICAgICAgICAgICAgICAgIFNEX1NDSFVMX0NPREU6IFNDSE9PTF9DT0RFLAogICAgICAgICAgICAgICAgICAgIE1MU1ZfWU1EOiBmb3JtYXR0ZWREYXRlCiAgICAgICAgICAgICAgICB9KTsKICAgICAgICAgICAgICAgIGNvbnN0IHJlcXVlc3RVcmwgPSBgJHtBUElfVVJMfT8ke3BhcmFtcy50b1N0cmluZygpfWA7CiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2gocmVxdWVzdFVybCk7CiAgICAgICAgICAgICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7CiAgICAgICAgICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKCLshJzrsoQg7J2R64u1IOyYpOulmCIpOwogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7CgogICAgICAgICAgICAgICAgLy8g66Gc65SpIOyIqOq4sOq4sAogICAgICAgICAgICAgICAgbG9hZGluZ1N0YXRlLmNsYXNzTGlzdC5hZGQoJ2hpZGRlbicpOwoKICAgICAgICAgICAgICAgIC8vIOuCmOydtOyKpCBBUEnripQg7KGw7ZqMIOqysOqzvOqwgCDsnojsnYQg65WMIOuRkCDrsojsp7gg67Cw7Je07JeQIOyLneuLqCDtlonsnYQg67CY7ZmY7ZWoCiAgICAgICAgICAgICAgICBjb25zdCBtZWFsUm93cyA9IGRhdGEubWVhbFNlcnZpY2VEaWV0SW5mbz8uWzFdPy5yb3c7CgogICAgICAgICAgICAgICAgaWYgKEFycmF5LmlzQXJyYXkobWVhbFJvd3MpICYmIG1lYWxSb3dzLmxlbmd0aCA+IDApIHsKICAgICAgICAgICAgICAgICAgICBjb25zdCBtZWFsID0gbWVhbFJvd3NbMF07CiAgICAgICAgICAgICAgICAgICAgY29uc3QgY2xlYW5NZW51ID0gKG1lYWwuRERJU0hfTk0gfHwgIiIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC88YnJccypcLz9ccyo+L2dpLCAiXG4iKQogICAgICAgICAgICAgICAgICAgICAgICAucmVwbGFjZSgvJmFtcDsvZywgIiYiKQogICAgICAgICAgICAgICAgICAgICAgICAucmVwbGFjZSgvJmx0Oy9nLCAiPCIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC8mZ3Q7L2csICI+Iik7CgogICAgICAgICAgICAgICAgICAgIGNhbG9yaWVzQmFkZ2UudGV4dENvbnRlbnQgPSBtZWFsLkNBTF9JTkZPIHx8ICLsl7Trn4kg7KCV67O0IOyXhuydjCI7CiAgICAgICAgICAgICAgICAgICAgbWVudVRleHQudGV4dENvbnRlbnQgPSBjbGVhbk1lbnUgfHwgIuuplOuJtCDsoJXrs7TqsIAg7JeG7Iq164uI64ukLiI7CiAgICAgICAgICAgICAgICAgICAgcmVzdWx0U3RhdGUuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgIGNvbnN0IGFwaU1lc3NhZ2UgPSBkYXRhLlJFU1VMVD8uTUVTU0FHRTsKICAgICAgICAgICAgICAgICAgICBlcnJvck1lc3NhZ2UudGV4dENvbnRlbnQgPSBhcGlNZXNzYWdlIHx8ICLshKDtg53tlZwg64Kg7Kec7JeQ64qUIOq4ieyLneydtCDsl4bsirXri4jri6QuIjsKICAgICAgICAgICAgICAgICAgICBlcnJvclN0YXRlLmNsYXNzTGlzdC5yZW1vdmUoJ2hpZGRlbicpOwogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgICAgICAgICAgIC8vIOuEpO2KuOybjO2BrCDsl5Drn6wg65OxIOyYiOyZuCDsspjrpqwKICAgICAgICAgICAgICAgIGxvYWRpbmdTdGF0ZS5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKICAgICAgICAgICAgICAgIGVycm9yTWVzc2FnZS50ZXh0Q29udGVudCA9ICLquInsi50g7KCV67O066W8IOqwgOyguOyYpOyngCDrqrvtlojsirXri4jri6QuIOyeoOyLnCDtm4Qg64uk7IucIOyLnOuPhO2VtCDso7zshLjsmpQuIjsKICAgICAgICAgICAgICAgIGVycm9yU3RhdGUuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgICAgICBjb25zb2xlLmVycm9yKGVycm9yKTsKICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgLy8g67KE7Yq8IO2BtOumrSDsnbTrsqTtirgg67CPIOuLrOugpSDrgqDsp5wg67OA6rK9IOydtOuypO2KuCDsl7Drj5kKICAgICAgICBzZWFyY2hCdG4uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCBmZXRjaEx1bmNoSW5mbyk7CiAgICAgICAgZGF0ZVBpY2tlci5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCBmZXRjaEx1bmNoSW5mbyk7CiAgICA8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+</script>
     <script>
         const STUDENT_INFO = { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5 };
         const TOPICS = [
@@ -390,6 +224,13 @@ Type: "json",
         let carouselIndexes = {};
         let multiFilePayloads = [];
         let currentFullscreenItem = null;
+
+        function decodeUtf8Base64(b64) {
+            const bin = atob(b64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            return new TextDecoder('utf-8').decode(bytes);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadStudentProjects();
@@ -457,11 +298,12 @@ Type: "json",
         function loadStudentProjects() {
             studentProjectsMap = {};
 
-            const el_tmpl_meal_app = document.getElementById('tmpl_meal_app');
-            if (el_tmpl_meal_app) {
+            const el_code_meal_app = document.getElementById('code_meal_app');
+            if (el_code_meal_app) {
+                const decodedCode = decodeUtf8Base64(el_code_meal_app.textContent.trim());
                 studentProjectsMap['meal-app'] = {
                     title: "숭의여자중학교 오늘의 급식",
-                    items: [{ name: "숭의여자중학교 오늘의 급식", type: 'html', data: el_tmpl_meal_app.innerHTML.trim() }],
+                    items: [{ name: "숭의여자중학교 오늘의 급식", type: 'html', data: decodedCode }],
                     updatedAt: '2026-07-01'
                 };
             }
