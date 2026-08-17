@@ -236,7 +236,7 @@
         async function saveStorage(val) {
             try {
                 localStorage.setItem(DB_KEY, JSON.stringify(val));
-            } catch(e) { console.warn('LocalStorage quota or err', e); }
+            } catch(e) {}
         }
 
         async function loadStorage() {
@@ -271,6 +271,42 @@
             return null;
         }
 
+        async function fetchGitHubCloudUploads() {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/uploads`;
+                const res = await fetch(url, {
+                    headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github+json' }
+                });
+                if (!res.ok) return;
+                const files = await res.json();
+                if (!Array.isArray(files)) return;
+
+                const myFiles = files.filter(f => f.name.startsWith(STUDENT_INFO.id + '_'));
+                if (!myFiles.length) return;
+
+                const imageItems = [];
+                const slideItems = [];
+
+                myFiles.forEach(f => {
+                    const ext = f.name.split('.').pop().toLowerCase();
+                    const fileUrl = `https://eunseony75.github.io/2026sy/${f.path}`;
+                    const rawName = decodeURIComponent(f.name.replace(STUDENT_INFO.id + '_', '').replace(/^\d+_/, ''));
+                    if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) {
+                        imageItems.push({ name: rawName, type: 'image', data: fileUrl });
+                    } else if (['pdf', 'ppt', 'pptx'].includes(ext)) {
+                        slideItems.push({ name: rawName, type: (ext === 'pdf' ? 'pdf' : 'pptx'), data: fileUrl });
+                    }
+                });
+
+                if (imageItems.length > 0 && !studentProjectsMap['ai-image']) {
+                    studentProjectsMap['ai-image'] = { title: `${STUDENT_INFO.name} 학생의 AI 이미지 작품`, items: imageItems, updatedAt: '2026-08-17' };
+                }
+                if (slideItems.length > 0 && !studentProjectsMap['ai-slide']) {
+                    studentProjectsMap['ai-slide'] = { title: `${STUDENT_INFO.name} 학생의 슬라이드 과제`, items: slideItems, updatedAt: '2026-08-17' };
+                }
+            } catch(e) { console.warn('GitHub uploads sync check', e); }
+        }
+
         function decodeUtf8Base64(b64) {
             try {
                 const bin = atob(b64);
@@ -282,6 +318,8 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             await loadStudentProjects();
+            renderSlots();
+            await fetchGitHubCloudUploads();
             renderSlots();
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeFullscreen(); closeModal(); } });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
