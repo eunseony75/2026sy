@@ -205,177 +205,8 @@
 
     <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
 
-    <template id="tmpl_meal_app">
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숭의여자중학교 오늘의 급식</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-    <style>
-        body {
-            font-family: 'Pretendard', sans-serif;
-        }
-    </style>
-</head>
-<body class="bg-amber-50/60 min-h-screen flex flex-col items-center justify-center p-4">
-
-    <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-orange-100/50 border border-orange-100 p-6 space-y-6">
-        
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl font-black text-slate-800 tracking-tight">
-                🏫 숭의여자중학교 오늘의 급식
-            </h1>
-            <p class="text-xs font-medium text-orange-400 bg-orange-50 inline-block px-3 py-1 rounded-full">
-                맛있는 급식 먹고 힘내요! ✨
-            </p>
-        </div>
-
-        <hr class="border-dashed border-orange-100">
-
-        <div class="flex gap-2 items-center">
-            <input type="date" id="meal-date" 
-                   class="flex-1 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-300 focus:bg-white transition-all">
-            <button id="search-btn" 
-                    class="px-5 py-3 rounded-2xl bg-orange-400 hover:bg-orange-500 text-white font-bold shadow-md shadow-orange-200 transition-all active:scale-95 whitespace-nowrap">
-                급식 조회
-            </button>
-        </div>
-
-        <div id="meal-card" class="bg-orange-50/50 rounded-2xl p-5 border border-orange-100/70 min-h-[200px] flex flex-col justify-center">
-            <div id="loading-view" class="text-center text-slate-400 font-medium py-8 hidden">
-                <p class="animate-bounce mb-2">🍱</p>
-                <p class="text-sm">오늘의 메뉴를 불러오는 중이에요...</p>
-            </div>
-
-            <div id="success-view" class="space-y-4">
-                <div class="flex justify-between items-center bg-white px-4 py-2 rounded-xl border border-orange-100/50">
-                    <span class="text-xs font-bold text-orange-400">🔥 총 칼로리</span>
-                    <span id="calories-info" class="text-sm font-black text-slate-700">000 Kcal</span>
-                </div>
-                <div class="bg-white p-5 rounded-xl border border-orange-100/50 shadow-inner">
-                    <p id="menu-list" class="text-center text-slate-700 font-medium leading-relaxed tracking-wide text-[15px]" style="white-space: pre-line;"></p>
-                </div>
-            </div>
-
-            <div id="error-view" class="hidden text-center py-6 space-y-2">
-                <p class="text-3xl">🫥</p>
-                <p id="error-message" class="text-sm font-bold text-rose-500 bg-rose-50 px-4 py-2 rounded-xl inline-block"></p>
-            </div>
-        </div>
-
-        <p class="text-center text-[11px] text-slate-400">
-            ※ 위 정보는 학교 사정에 따라 변경될 수 있습니다.
-        </p>
-    </div>
-
-    <script>
-        const API_URL = "https://2026sy.eunseony75.workers.dev";
-const EDUCATION_OFFICE_CODE = "B10";
-        const SCHOOL_CODE = "7132148";
-
-        // HTML 요소 가져오기
-        const mealDateInput = document.getElementById('meal-date');
-        const searchBtn = document.getElementById('search-btn');
-        const loadingView = document.getElementById('loading-view');
-        const successView = document.getElementById('success-view');
-        const errorView = document.getElementById('error-view');
-        const menuList = document.getElementById('menu-list');
-        const caloriesInfo = document.getElementById('calories-info');
-        const errorMessage = document.getElementById('error-message');
-
-        // 화면 상태 전환 함수
-        function showView(status) {
-            loadingView.classList.add('hidden');
-            successView.classList.add('hidden');
-            errorView.classList.add('hidden');
-
-            if (status === 'loading') loadingView.classList.remove('hidden');
-            if (status === 'success') successView.classList.remove('hidden');
-            if (status === 'error') errorView.classList.remove('hidden');
-        }
-
-        // 2. 급식 데이터 Fetch 함수
-        async function fetchMealData() {
-            const rawDate = mealDateInput.value;
-            if (!rawDate) {
-                alert('날짜를 선택해 주세요!');
-                return;
-            }
-
-            // 하이픈(-) 제거하여 YYYYMMDD 형식으로 변환
-            const formattedDate = rawDate.replace(/-/g, '');
-            
-            showView('loading');
-
-            try {
-                const params = new URLSearchParams({
-Type: "json",
-                    pIndex: "1",
-                    pSize: "10",
-                    ATPT_OFCDC_SC_CODE: EDUCATION_OFFICE_CODE,
-                    SD_SCHUL_CODE: SCHOOL_CODE,
-                    MLSV_YMD: formattedDate
-                });
-                const response = await fetch(`${API_URL}?${params.toString()}`);
-
-                if (!response.ok) {
-                    throw new Error(`API 응답 오류: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const mealRows = data.mealServiceDietInfo?.[1]?.row;
-
-                if (Array.isArray(mealRows) && mealRows.length > 0) {
-                    const meal = mealRows.find(item => String(item.MMEAL_SC_CODE) === "2") || mealRows[0];
-                    const cleanMenu = (meal.DDISH_NM || "")
-                        .replace(/<br\s*\/?\s*>/gi, "\n")
-                        .replace(/&amp;/g, "&")
-                        .replace(/&lt;/g, "<")
-                        .replace(/&gt;/g, ">");
-                    // 성공 시 화면에 데이터 넣기
-                    menuList.textContent = cleanMenu;
-                    caloriesInfo.textContent = meal.CAL_INFO || "칼로리 정보 없음";
-                    showView('success');
-                } else {
-                    // 실패 시 에러 메시지 노출 (서버 메시지 우선, 없을 시 기본 문구)
-                    errorMessage.textContent = data.RESULT?.MESSAGE || "오늘은 급식이 없습니다.";
-                    showView('error');
-                }
-            } catch (error) {
-                console.error(error);
-                errorMessage.textContent = "급식 정보를 불러오지 못했습니다. 잠시 후 다시 조회해 주세요.";
-                showView('error');
-            }
-        }
-
-        // 4. 페이지 초기화 및 오늘 날짜 설정 로직
-        function initPage() {
-            const today = new Date();
-            const year = today.getFullYear();
-            // 월과 일은 항상 2자리 숫자가 되도록 처리
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            
-            const todayString = `${year}-${month}-${day}`;
-            mealDateInput.value = todayString;
-
-            // 즉시 오늘 급식 불러오기
-            fetchMealData();
-        }
-
-        // 이벤트 리스너 연결
-        searchBtn.addEventListener('click', fetchMealData);
-        mealDateInput.addEventListener('change', fetchMealData); // 날짜 변경 시에도 즉시 조회
-
-        // 페이지 로드 시 자동 실행
-        window.addEventListener('DOMContentLoaded', initPage);
-    </script>
-</body>
-</html>
-    </template>
+    <!-- [100% 스타일 격리형 소스코드 보관소] -->
+    <script type="text/plain" id="code_meal_app">PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImtvIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+7Iit7J2Y7Jes7J6Q7KSR7ZWZ6rWQIOyYpOuKmOydmCDquInsi508L3RpdGxlPgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLnRhaWx3aW5kY3NzLmNvbSI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGFzPSJzdHlsZSIgY3Jvc3NvcmlnaW4gaHJlZj0iaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL29yaW9uY2FjdHVzL3ByZXRlbmRhcmRAdjEuMy45L2Rpc3Qvd2ViL3N0YXRpYy9wcmV0ZW5kYXJkLmNzcyIgLz4KICAgIDxzdHlsZT4KICAgICAgICBib2R5IHsKICAgICAgICAgICAgZm9udC1mYW1pbHk6ICdQcmV0ZW5kYXJkJywgc2Fucy1zZXJpZjsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5IGNsYXNzPSJiZy1hbWJlci01MC82MCBtaW4taC1zY3JlZW4gZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcC00Ij4KCiAgICA8ZGl2IGNsYXNzPSJ3LWZ1bGwgbWF4LXctbWQgYmctd2hpdGUgcm91bmRlZC0zeGwgc2hhZG93LXhsIHNoYWRvdy1vcmFuZ2UtMTAwLzUwIGJvcmRlciBib3JkZXItb3JhbmdlLTEwMCBwLTYgc3BhY2UteS02Ij4KICAgICAgICAKICAgICAgICA8ZGl2IGNsYXNzPSJ0ZXh0LWNlbnRlciBzcGFjZS15LTIiPgogICAgICAgICAgICA8aDEgY2xhc3M9InRleHQtMnhsIGZvbnQtYmxhY2sgdGV4dC1zbGF0ZS04MDAgdHJhY2tpbmctdGlnaHQiPgogICAgICAgICAgICAgICAg8J+PqyDsiK3snZjsl6zsnpDspJHtlZnqtZAg7Jik64qY7J2YIOq4ieyLnQogICAgICAgICAgICA8L2gxPgogICAgICAgICAgICA8cCBjbGFzcz0idGV4dC14cyBmb250LW1lZGl1bSB0ZXh0LW9yYW5nZS00MDAgYmctb3JhbmdlLTUwIGlubGluZS1ibG9jayBweC0zIHB5LTEgcm91bmRlZC1mdWxsIj4KICAgICAgICAgICAgICAgIOunm+yeiOuKlCDquInsi50g66i56rOgIO2emOuCtOyalCEg4pyoCiAgICAgICAgICAgIDwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGhyIGNsYXNzPSJib3JkZXItZGFzaGVkIGJvcmRlci1vcmFuZ2UtMTAwIj4KCiAgICAgICAgPGRpdiBjbGFzcz0iZmxleCBnYXAtMiBpdGVtcy1jZW50ZXIiPgogICAgICAgICAgICA8aW5wdXQgdHlwZT0iZGF0ZSIgaWQ9Im1lYWwtZGF0ZSIgCiAgICAgICAgICAgICAgICAgICBjbGFzcz0iZmxleC0xIHB4LTQgcHktMyByb3VuZGVkLTJ4bCBiZy1zbGF0ZS01MCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCB0ZXh0LXNsYXRlLTcwMCBmb250LXNlbWlib2xkIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1vcmFuZ2UtMzAwIGZvY3VzOmJnLXdoaXRlIHRyYW5zaXRpb24tYWxsIj4KICAgICAgICAgICAgPGJ1dHRvbiBpZD0ic2VhcmNoLWJ0biIgCiAgICAgICAgICAgICAgICAgICAgY2xhc3M9InB4LTUgcHktMyByb3VuZGVkLTJ4bCBiZy1vcmFuZ2UtNDAwIGhvdmVyOmJnLW9yYW5nZS01MDAgdGV4dC13aGl0ZSBmb250LWJvbGQgc2hhZG93LW1kIHNoYWRvdy1vcmFuZ2UtMjAwIHRyYW5zaXRpb24tYWxsIGFjdGl2ZTpzY2FsZS05NSB3aGl0ZXNwYWNlLW5vd3JhcCI+CiAgICAgICAgICAgICAgICDquInsi50g7KGw7ZqMCiAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgIDwvZGl2PgoKICAgICAgICA8ZGl2IGlkPSJtZWFsLWNhcmQiIGNsYXNzPSJiZy1vcmFuZ2UtNTAvNTAgcm91bmRlZC0yeGwgcC01IGJvcmRlciBib3JkZXItb3JhbmdlLTEwMC83MCBtaW4taC1bMjAwcHhdIGZsZXggZmxleC1jb2wganVzdGlmeS1jZW50ZXIiPgogICAgICAgICAgICA8ZGl2IGlkPSJsb2FkaW5nLXZpZXciIGNsYXNzPSJ0ZXh0LWNlbnRlciB0ZXh0LXNsYXRlLTQwMCBmb250LW1lZGl1bSBweS04IGhpZGRlbiI+CiAgICAgICAgICAgICAgICA8cCBjbGFzcz0iYW5pbWF0ZS1ib3VuY2UgbWItMiI+8J+NsTwvcD4KICAgICAgICAgICAgICAgIDxwIGNsYXNzPSJ0ZXh0LXNtIj7smKTripjsnZgg66mU64m066W8IOu2iOufrOyYpOuKlCDspJHsnbTsl5DsmpQuLi48L3A+CiAgICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgICAgPGRpdiBpZD0ic3VjY2Vzcy12aWV3IiBjbGFzcz0ic3BhY2UteS00Ij4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZsZXgganVzdGlmeS1iZXR3ZWVuIGl0ZW1zLWNlbnRlciBiZy13aGl0ZSBweC00IHB5LTIgcm91bmRlZC14bCBib3JkZXIgYm9yZGVyLW9yYW5nZS0xMDAvNTAiPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzPSJ0ZXh0LXhzIGZvbnQtYm9sZCB0ZXh0LW9yYW5nZS00MDAiPvCflKUg7LSdIOy5vOuhnOumrDwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICA8c3BhbiBpZD0iY2Fsb3JpZXMtaW5mbyIgY2xhc3M9InRleHQtc20gZm9udC1ibGFjayB0ZXh0LXNsYXRlLTcwMCI+MDAwIEtjYWw8L3NwYW4+CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImJnLXdoaXRlIHAtNSByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItb3JhbmdlLTEwMC81MCBzaGFkb3ctaW5uZXIiPgogICAgICAgICAgICAgICAgICAgIDxwIGlkPSJtZW51LWxpc3QiIGNsYXNzPSJ0ZXh0LWNlbnRlciB0ZXh0LXNsYXRlLTcwMCBmb250LW1lZGl1bSBsZWFkaW5nLXJlbGF4ZWQgdHJhY2tpbmctd2lkZSB0ZXh0LVsxNXB4XSIgc3R5bGU9IndoaXRlLXNwYWNlOiBwcmUtbGluZTsiPjwvcD4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KCiAgICAgICAgICAgIDxkaXYgaWQ9ImVycm9yLXZpZXciIGNsYXNzPSJoaWRkZW4gdGV4dC1jZW50ZXIgcHktNiBzcGFjZS15LTIiPgogICAgICAgICAgICAgICAgPHAgY2xhc3M9InRleHQtM3hsIj7wn6ulPC9wPgogICAgICAgICAgICAgICAgPHAgaWQ9ImVycm9yLW1lc3NhZ2UiIGNsYXNzPSJ0ZXh0LXNtIGZvbnQtYm9sZCB0ZXh0LXJvc2UtNTAwIGJnLXJvc2UtNTAgcHgtNCBweS0yIHJvdW5kZWQteGwgaW5saW5lLWJsb2NrIj48L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgoKICAgICAgICA8cCBjbGFzcz0idGV4dC1jZW50ZXIgdGV4dC1bMTFweF0gdGV4dC1zbGF0ZS00MDAiPgogICAgICAgICAgICDigLsg7JyEIOygleuztOuKlCDtlZnqtZAg7IKs7KCV7JeQIOuUsOudvCDrs4Dqsr3rkKAg7IiYIOyeiOyKteuLiOuLpC4KICAgICAgICA8L3A+CiAgICA8L2Rpdj4KCiAgICA8c2NyaXB0PgogICAgICAgIGNvbnN0IEFQSV9VUkwgPSAiaHR0cHM6Ly8yMDI2c3kuZXVuc2Vvbnk3NS53b3JrZXJzLmRldiI7CmNvbnN0IEVEVUNBVElPTl9PRkZJQ0VfQ09ERSA9ICJCMTAiOwogICAgICAgIGNvbnN0IFNDSE9PTF9DT0RFID0gIjcxMzIxNDgiOwoKICAgICAgICAvLyBIVE1MIOyalOyGjCDqsIDsoLjsmKTquLAKICAgICAgICBjb25zdCBtZWFsRGF0ZUlucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21lYWwtZGF0ZScpOwogICAgICAgIGNvbnN0IHNlYXJjaEJ0biA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWFyY2gtYnRuJyk7CiAgICAgICAgY29uc3QgbG9hZGluZ1ZpZXcgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbG9hZGluZy12aWV3Jyk7CiAgICAgICAgY29uc3Qgc3VjY2Vzc1ZpZXcgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc3VjY2Vzcy12aWV3Jyk7CiAgICAgICAgY29uc3QgZXJyb3JWaWV3ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2Vycm9yLXZpZXcnKTsKICAgICAgICBjb25zdCBtZW51TGlzdCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtZW51LWxpc3QnKTsKICAgICAgICBjb25zdCBjYWxvcmllc0luZm8gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2Fsb3JpZXMtaW5mbycpOwogICAgICAgIGNvbnN0IGVycm9yTWVzc2FnZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlcnJvci1tZXNzYWdlJyk7CgogICAgICAgIC8vIO2ZlOuptCDsg4Htg5wg7KCE7ZmYIO2VqOyImAogICAgICAgIGZ1bmN0aW9uIHNob3dWaWV3KHN0YXR1cykgewogICAgICAgICAgICBsb2FkaW5nVmlldy5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKICAgICAgICAgICAgc3VjY2Vzc1ZpZXcuY2xhc3NMaXN0LmFkZCgnaGlkZGVuJyk7CiAgICAgICAgICAgIGVycm9yVmlldy5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKCiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdsb2FkaW5nJykgbG9hZGluZ1ZpZXcuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdzdWNjZXNzJykgc3VjY2Vzc1ZpZXcuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdlcnJvcicpIGVycm9yVmlldy5jbGFzc0xpc3QucmVtb3ZlKCdoaWRkZW4nKTsKICAgICAgICB9CgogICAgICAgIC8vIDIuIOq4ieyLnSDrjbDsnbTthLAgRmV0Y2gg7ZWo7IiYCiAgICAgICAgYXN5bmMgZnVuY3Rpb24gZmV0Y2hNZWFsRGF0YSgpIHsKICAgICAgICAgICAgY29uc3QgcmF3RGF0ZSA9IG1lYWxEYXRlSW5wdXQudmFsdWU7CiAgICAgICAgICAgIGlmICghcmF3RGF0ZSkgewogICAgICAgICAgICAgICAgYWxlcnQoJ+uCoOynnOulvCDshKDtg53tlbQg7KO87IS47JqUIScpOwogICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICB9CgogICAgICAgICAgICAvLyDtlZjsnbTtlIgoLSkg7KCc6rGw7ZWY7JesIFlZWVlNTUREIO2YleyLneycvOuhnCDrs4DtmZgKICAgICAgICAgICAgY29uc3QgZm9ybWF0dGVkRGF0ZSA9IHJhd0RhdGUucmVwbGFjZSgvLS9nLCAnJyk7CiAgICAgICAgICAgIAogICAgICAgICAgICBzaG93VmlldygnbG9hZGluZycpOwoKICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGNvbnN0IHBhcmFtcyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMoewpUeXBlOiAianNvbiIsCiAgICAgICAgICAgICAgICAgICAgcEluZGV4OiAiMSIsCiAgICAgICAgICAgICAgICAgICAgcFNpemU6ICIxMCIsCiAgICAgICAgICAgICAgICAgICAgQVRQVF9PRkNEQ19TQ19DT0RFOiBFRFVDQVRJT05fT0ZGSUNFX0NPREUsCiAgICAgICAgICAgICAgICAgICAgU0RfU0NIVUxfQ09ERTogU0NIT09MX0NPREUsCiAgICAgICAgICAgICAgICAgICAgTUxTVl9ZTUQ6IGZvcm1hdHRlZERhdGUKICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChgJHtBUElfVVJMfT8ke3BhcmFtcy50b1N0cmluZygpfWApOwoKICAgICAgICAgICAgICAgIGlmICghcmVzcG9uc2Uub2spIHsKICAgICAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEFQSSDsnZHri7Ug7Jik66WYOiAke3Jlc3BvbnNlLnN0YXR1c31gKTsKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpOwogICAgICAgICAgICAgICAgY29uc3QgbWVhbFJvd3MgPSBkYXRhLm1lYWxTZXJ2aWNlRGlldEluZm8/LlsxXT8ucm93OwoKICAgICAgICAgICAgICAgIGlmIChBcnJheS5pc0FycmF5KG1lYWxSb3dzKSAmJiBtZWFsUm93cy5sZW5ndGggPiAwKSB7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgbWVhbCA9IG1lYWxSb3dzLmZpbmQoaXRlbSA9PiBTdHJpbmcoaXRlbS5NTUVBTF9TQ19DT0RFKSA9PT0gIjIiKSB8fCBtZWFsUm93c1swXTsKICAgICAgICAgICAgICAgICAgICBjb25zdCBjbGVhbk1lbnUgPSAobWVhbC5ERElTSF9OTSB8fCAiIikKICAgICAgICAgICAgICAgICAgICAgICAgLnJlcGxhY2UoLzxiclxzKlwvP1xzKj4vZ2ksICJcbiIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC8mYW1wOy9nLCAiJiIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC8mbHQ7L2csICI8IikKICAgICAgICAgICAgICAgICAgICAgICAgLnJlcGxhY2UoLyZndDsvZywgIj4iKTsKICAgICAgICAgICAgICAgICAgICAvLyDshLHqs7Ug7IucIO2ZlOuptOyXkCDrjbDsnbTthLAg64Sj6riwCiAgICAgICAgICAgICAgICAgICAgbWVudUxpc3QudGV4dENvbnRlbnQgPSBjbGVhbk1lbnU7CiAgICAgICAgICAgICAgICAgICAgY2Fsb3JpZXNJbmZvLnRleHRDb250ZW50ID0gbWVhbC5DQUxfSU5GTyB8fCAi7Lm866Gc66asIOygleuztCDsl4bsnYwiOwogICAgICAgICAgICAgICAgICAgIHNob3dWaWV3KCdzdWNjZXNzJyk7CiAgICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgIC8vIOyLpO2MqCDsi5wg7JeQ65+sIOuplOyLnOyngCDrhbjstpwgKOyEnOuyhCDrqZTsi5zsp4Ag7Jqw7ISgLCDsl4bsnYQg7IucIOq4sOuzuCDrrLjqtawpCiAgICAgICAgICAgICAgICAgICAgZXJyb3JNZXNzYWdlLnRleHRDb250ZW50ID0gZGF0YS5SRVNVTFQ/Lk1FU1NBR0UgfHwgIuyYpOuKmOydgCDquInsi53snbQg7JeG7Iq164uI64ukLiI7CiAgICAgICAgICAgICAgICAgICAgc2hvd1ZpZXcoJ2Vycm9yJyk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgICAgICAgICAgICBjb25zb2xlLmVycm9yKGVycm9yKTsKICAgICAgICAgICAgICAgIGVycm9yTWVzc2FnZS50ZXh0Q29udGVudCA9ICLquInsi50g7KCV67O066W8IOu2iOufrOyYpOyngCDrqrvtlojsirXri4jri6QuIOyeoOyLnCDtm4Qg64uk7IucIOyhsO2ajO2VtCDso7zshLjsmpQuIjsKICAgICAgICAgICAgICAgIHNob3dWaWV3KCdlcnJvcicpOwogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICAvLyA0LiDtjpjsnbTsp4Ag7LSI6riw7ZmUIOuwjyDsmKTripgg64Kg7KecIOyEpOyglSDroZzsp4EKICAgICAgICBmdW5jdGlvbiBpbml0UGFnZSgpIHsKICAgICAgICAgICAgY29uc3QgdG9kYXkgPSBuZXcgRGF0ZSgpOwogICAgICAgICAgICBjb25zdCB5ZWFyID0gdG9kYXkuZ2V0RnVsbFllYXIoKTsKICAgICAgICAgICAgLy8g7JuU6rO8IOydvOydgCDtla3sg4EgMuyekOumrCDsiKvsnpDqsIAg65CY64+E66GdIOyymOumrAogICAgICAgICAgICBjb25zdCBtb250aCA9IFN0cmluZyh0b2RheS5nZXRNb250aCgpICsgMSkucGFkU3RhcnQoMiwgJzAnKTsKICAgICAgICAgICAgY29uc3QgZGF5ID0gU3RyaW5nKHRvZGF5LmdldERhdGUoKSkucGFkU3RhcnQoMiwgJzAnKTsKICAgICAgICAgICAgCiAgICAgICAgICAgIGNvbnN0IHRvZGF5U3RyaW5nID0gYCR7eWVhcn0tJHttb250aH0tJHtkYXl9YDsKICAgICAgICAgICAgbWVhbERhdGVJbnB1dC52YWx1ZSA9IHRvZGF5U3RyaW5nOwoKICAgICAgICAgICAgLy8g7KaJ7IucIOyYpOuKmCDquInsi50g67aI65+s7Jik6riwCiAgICAgICAgICAgIGZldGNoTWVhbERhdGEoKTsKICAgICAgICB9CgogICAgICAgIC8vIOydtOuypO2KuCDrpqzsiqTrhIgg7Jew6rKwCiAgICAgICAgc2VhcmNoQnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZmV0Y2hNZWFsRGF0YSk7CiAgICAgICAgbWVhbERhdGVJbnB1dC5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCBmZXRjaE1lYWxEYXRhKTsgLy8g64Kg7KecIOuzgOqyvSDsi5zsl5Drj4Qg7KaJ7IucIOyhsO2ajAoKICAgICAgICAvLyDtjpjsnbTsp4Ag66Gc65OcIOyLnCDsnpDrj5kg7Iuk7ZaJCiAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBpbml0UGFnZSk7CiAgICA8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+</script>
     <script>
         const STUDENT_INFO = { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 };
         const TOPICS = [
@@ -393,6 +224,13 @@ Type: "json",
         let carouselIndexes = {};
         let multiFilePayloads = [];
         let currentFullscreenItem = null;
+
+        function decodeUtf8Base64(b64) {
+            const bin = atob(b64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            return new TextDecoder('utf-8').decode(bytes);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadStudentProjects();
@@ -460,11 +298,12 @@ Type: "json",
         function loadStudentProjects() {
             studentProjectsMap = {};
 
-            const el_tmpl_meal_app = document.getElementById('tmpl_meal_app');
-            if (el_tmpl_meal_app) {
+            const el_code_meal_app = document.getElementById('code_meal_app');
+            if (el_code_meal_app) {
+                const decodedCode = decodeUtf8Base64(el_code_meal_app.textContent.trim());
                 studentProjectsMap['meal-app'] = {
                     title: "숭의여자중학교 오늘의 급식",
-                    items: [{ name: "숭의여자중학교 오늘의 급식", type: 'html', data: el_tmpl_meal_app.innerHTML.trim() }],
+                    items: [{ name: "숭의여자중학교 오늘의 급식", type: 'html', data: decodedCode }],
                     updatedAt: '2026-07-01'
                 };
             }
