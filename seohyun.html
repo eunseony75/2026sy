@@ -205,7 +205,6 @@
 
     <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
 
-    <!-- [내장 원본 소스코드 템플릿 보관소] -->
     <template id="tmpl_quiz">
 <!DOCTYPE html>
 <html lang="ko">
@@ -938,7 +937,7 @@ window.onload = initQuiz;
 </body>
 </html>
     </template>
-    <template id="tmpl_ai_slide">
+    <template id="tmpl_game">
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -2061,6 +2060,766 @@ window.onload = initQuiz;
 </body>
 </html>
     </template>
+    <template id="tmpl_ai_slide">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세상을 바꾼 위대한 천문학자들</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;family=Nanum+Myeongjo:wght@700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. 기본 설정 및 테마 정의 */
+        :root {
+            --primary-blue: #0A1931; /* 깊은 우주 배경색 */
+            --accent-gold: #FFD700;  /* 별빛 골드 포인트 */
+            --text-cream: #FDFCF0;   /* 눈이 편안한 미색 텍스트 */
+            --secondary-navy: #185ADB;
+            --soft-blue: #EFEFEF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            place-items: center;
+            padding: 40px 0;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--primary-blue);
+            color: var(--text-cream);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* 배경 디자인: 추상적 우주 느낌 */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(24, 90, 219, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 30%);
+            z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* 타이틀 스타일 */
+        h1 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 80px;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--accent-gold);
+        }
+
+        .slide-title {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 48px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+            width: fit-content;
+        }
+
+        p, li { font-size: 22px; line-height: 1.6; color: var(--text-cream); }
+
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* 레이아웃: Two Column */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 레이아웃: Tiled Content */
+        .tiled-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .tile {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid var(--accent-gold);
+            text-align: center;
+        }
+
+        .tile i { font-size: 50px; color: var(--accent-gold); margin-bottom: 20px; }
+
+        /* 특수 레이아웃: Bleed Image Right */
+        .bleed-image-layout {
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+        }
+
+        .bleed-image-layout .content-container { padding: 60px; }
+        .bleed-image-layout .image-container { height: 720px; }
+        .bleed-image-layout img.bleed-image-side { 
+            width: 100%; height: 720px; object-fit: cover; 
+        }
+
+        /* 강조 숫자 */
+        .highlight-number {
+            font-size: 150px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        /* 섹션 타이틀 */
+        .section-title-layout {
+            text-align: center;
+            align-items: center;
+        }
+
+        .section-title-layout hr {
+            width: 100px;
+            border: 2px solid var(--accent-gold);
+            margin: 30px auto;
+        }
+
+        /* 테이블 스타일 */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background: var(--secondary-navy); padding: 20px; text-align: left; font-size: 24px; color: var(--accent-gold); }
+        td { padding: 20px; border-bottom: 1px solid rgba(255, 215, 0, 0.2); font-size: 20px; }
+
+        /* 차트: Area Chart for Trends */
+        .area-chart-container { height: 350px; width: 100%; position: relative; margin-top: 20px; }
+        .chart-label { position: absolute; font-size: 14px; color: var(--soft-blue); }
+
+        /* 인용구 */
+        .quote-layout blockquote {
+            font-size: 38px;
+            font-style: italic;
+            text-align: center;
+            border-left: none;
+            position: relative;
+            padding: 40px;
+        }
+        .quote-layout blockquote::before { content: '"'; font-size: 100px; position: absolute; left: 0; top: 0; color: var(--accent-gold); opacity: 0.5; }
+    </style>
+<style>
+  :where(.slide-attributions) {
+    padding: 60px;
+  }
+  .attribution-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .attribution-list__item {
+    align-items: center;
+    border-bottom: 1px solid #757575;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 90px 1fr;
+    padding: 15px 0;
+    margin: 0 !important;
+  }
+  .attribution-list__item::before {
+    display: none;
+  }
+  .attribution-list__item::after {
+    display: none;
+  }
+  .attribution-list__item:last-child {
+    border-bottom: none;
+  }
+  .attribution-list__item .attribution__thumbnail {
+    height: 50px;
+    width: 90px;
+  }
+  .attribution__thumbnail .attribution__thumbnail__image {
+    border-radius: 8px;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  .attribution__details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .attribution__details .attribution__raw-url {
+    color: inherit;
+    font-size: 13px;
+    margin: 0;
+    word-break: break-all;
+  }
+  .attribution__details .attribution__title {
+    color: inherit;
+    font-size: 16px;
+    margin: 0;
+  }
+  .attribution__details .attribution__title > .attribution__link {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+</style><style>
+  /* The container that fills available space. It's the positioning context. */
+  #slideshow-holder {
+      position: relative;
+      flex-grow: 1; /* Replaces flex-grow Tailwind class for clarity */
+      width: 100%;
+      padding: 1rem; /* Replaces p-4 Tailwind class */
+  }
+
+  /* The element that is scaled and centered. */
+  #slideshow-wrapper {
+      width: 1280px;
+      height: 720px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+      transform: translate(-50%, -50%) scale(var(--scale-factor, 1));
+      transition: transform 0.3s ease-in-out;
+      /* Visual styles moved here from the holder */
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      overflow: hidden;
+  }
+
+  /* Update slide container styles */
+  .slide-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+  /* Make the active slide visible */
+  .slide-container.active {
+      opacity: 1;
+      pointer-events: auto;
+  }
+</style><script src="https://cdn.tailwindcss.com/3.4.17"></script><script>
+  tailwind.config = {
+    darkMode: 'class',
+    corePlugins: {
+      preflight: false,
+    },
+  }
+</script><style>*, ::before, ::after {--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x:  ;--tw-pan-y:  ;--tw-pinch-zoom:  ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position:  ;--tw-gradient-via-position:  ;--tw-gradient-to-position:  ;--tw-ordinal:  ;--tw-slashed-zero:  ;--tw-numeric-figure:  ;--tw-numeric-spacing:  ;--tw-numeric-fraction:  ;--tw-ring-inset:  ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / 0.5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur:  ;--tw-brightness:  ;--tw-contrast:  ;--tw-grayscale:  ;--tw-hue-rotate:  ;--tw-invert:  ;--tw-saturate:  ;--tw-sepia:  ;--tw-drop-shadow:  ;--tw-backdrop-blur:  ;--tw-backdrop-brightness:  ;--tw-backdrop-contrast:  ;--tw-backdrop-grayscale:  ;--tw-backdrop-hue-rotate:  ;--tw-backdrop-invert:  ;--tw-backdrop-opacity:  ;--tw-backdrop-saturate:  ;--tw-backdrop-sepia:  ;--tw-contain-size:  ;--tw-contain-layout:  ;--tw-contain-paint:  ;--tw-contain-style:  
+}::backdrop {--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x:  ;--tw-pan-y:  ;--tw-pinch-zoom:  ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position:  ;--tw-gradient-via-position:  ;--tw-gradient-to-position:  ;--tw-ordinal:  ;--tw-slashed-zero:  ;--tw-numeric-figure:  ;--tw-numeric-spacing:  ;--tw-numeric-fraction:  ;--tw-ring-inset:  ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / 0.5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur:  ;--tw-brightness:  ;--tw-contrast:  ;--tw-grayscale:  ;--tw-hue-rotate:  ;--tw-invert:  ;--tw-saturate:  ;--tw-sepia:  ;--tw-drop-shadow:  ;--tw-backdrop-blur:  ;--tw-backdrop-brightness:  ;--tw-backdrop-contrast:  ;--tw-backdrop-grayscale:  ;--tw-backdrop-hue-rotate:  ;--tw-backdrop-invert:  ;--tw-backdrop-opacity:  ;--tw-backdrop-saturate:  ;--tw-backdrop-sepia:  ;--tw-contain-size:  ;--tw-contain-layout:  ;--tw-contain-paint:  ;--tw-contain-style:  
+}.absolute {position: absolute
+}.relative {position: relative
+}.left-4 {left: 1rem
+}.right-4 {right: 1rem
+}.top-1\/2 {top: 50%
+}.top-4 {top: 1rem
+}.z-20 {z-index: 20
+}.flex {display: flex
+}.hidden {display: none
+}.h-5 {height: 1.25rem
+}.h-6 {height: 1.5rem
+}.h-screen {height: 100vh
+}.w-5 {width: 1.25rem
+}.w-6 {width: 1.5rem
+}.w-full {width: 100%
+}.flex-shrink-0 {flex-shrink: 0
+}.-translate-y-1\/2 {--tw-translate-y: -50%;transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}.cursor-pointer {cursor: pointer
+}.flex-col {flex-direction: column
+}.items-center {align-items: center
+}.justify-center {justify-content: center
+}.space-x-2 > :not([hidden]) ~ :not([hidden]) {--tw-space-x-reverse: 0;margin-right: calc(0.5rem * var(--tw-space-x-reverse));margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+}.rounded-full {border-radius: 9999px
+}.rounded-md {border-radius: 0.375rem
+}.border-none {border-style: none
+}.bg-gray-100 {--tw-bg-opacity: 1;background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
+}.bg-white {--tw-bg-opacity: 1;background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+}.bg-white\/50 {background-color: rgb(255 255 255 / 0.5)
+}.p-2 {padding: 0.5rem
+}.p-4 {padding: 1rem
+}.font-sans {font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}.text-sm {font-size: 0.875rem;line-height: 1.25rem
+}.font-medium {font-weight: 500
+}.leading-\[0\] {line-height: 0
+}.text-gray-600 {--tw-text-opacity: 1;color: rgb(75 85 99 / var(--tw-text-opacity, 1))
+}.text-gray-700 {--tw-text-opacity: 1;color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+}.shadow-md {--tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}.backdrop-blur-sm {--tw-backdrop-blur: blur(4px);-webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}.transition-all {transition-property: all;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-duration: 150ms
+}.transition-colors {transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-duration: 150ms
+}.duration-300 {transition-duration: 300ms
+}.hover\:bg-gray-100:hover {--tw-bg-opacity: 1;background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
+}.hover\:text-black:hover {--tw-text-opacity: 1;color: rgb(0 0 0 / var(--tw-text-opacity, 1))
+}.disabled\:cursor-not-allowed:disabled {cursor: not-allowed
+}.disabled\:opacity-50:disabled {opacity: 0.5
+}.dark\:bg-gray-800:is(.dark *) {--tw-bg-opacity: 1;background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1))
+}.dark\:bg-gray-800\/50:is(.dark *) {background-color: rgb(31 41 55 / 0.5)
+}.dark\:bg-gray-900:is(.dark *) {--tw-bg-opacity: 1;background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1))
+}.dark\:text-gray-300:is(.dark *) {--tw-text-opacity: 1;color: rgb(209 213 219 / var(--tw-text-opacity, 1))
+}.dark\:text-gray-400:is(.dark *) {--tw-text-opacity: 1;color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+}.dark\:hover\:bg-gray-700:hover:is(.dark *) {--tw-bg-opacity: 1;background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1))
+}.dark\:hover\:text-white:hover:is(.dark *) {--tw-text-opacity: 1;color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+}</style></head>
+<body class="bg-gray-100 dark:bg-gray-900 flex flex-col h-screen transition-colors duration-300">
+
+<!-- Slide 1: Title_Slide -->
+
+
+<!-- Slide 2: Section_Title -->
+
+
+<!-- Slide 3: Image_Right_Text_Left (Copernicus) -->
+
+
+<!-- Slide 4: Rounded_Image_and_Text (Galileo) -->
+
+
+<!-- Slide 5: Two_Column_Tiled_Text (Kepler) -->
+
+
+<!-- Slide 6: Highlighted_Numbers (Newton) -->
+
+
+<!-- Slide 7: Section_Title -->
+
+
+<!-- Slide 8: Bleed_Image_Right (Leavitt) -->
+
+
+<!-- Slide 9: Area_Chart_For_Trends (Hubble) -->
+
+
+<!-- Slide 10: Tiled_Images (Vera Rubin) -->
+
+
+<!-- Slide 11: Tiled_Text_With_Icons (Impact) -->
+
+
+<!-- Slide 12: Q&A -->
+
+
+
+
+<button id="theme-toggle" class="absolute top-4 right-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-2 rounded-full shadow-md text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 z-20 border-none leading-[0] cursor-pointer">
+    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"></path></svg>
+</button>
+
+<div id="nav-controls" class="relative flex-shrink-0 w-full flex justify-center items-center p-4">
+    <span id="slide-counter" class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-medium text-gray-600 dark:text-gray-400 font-sans">Slide 1 of 14</span>
+    <div class="flex items-center space-x-2">
+        <button id="prev-slide" class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 p-2 rounded-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md border-none leading-[0] cursor-pointer" disabled="">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="next-slide" class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 p-2 rounded-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md border-none leading-[0] cursor-pointer">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+    </div>
+</div>
+
+<div id="slideshow-holder"><div id="slideshow-wrapper" style="--scale-factor: 1.2972222222222223;"><div class="slide-container active" id="slide1">
+    <div class="content-area" style="text-align: center;">
+        <p style="letter-spacing: 5px; color: var(--accent-gold);">SCIENCE LECTURE SERIES</p>
+        <h1>우주를 바꾼<br>위대한 거인들</h1>
+        <p style="font-size: 28px; margin-top: 30px;">천문학자들의 발자취를 따라 떠나는 시간 여행</p>
+        <p style="margin-top: 50px; font-weight: 700;">강사: 우주 탐험 전문가</p>
+    </div>
+</div><div class="slide-container" id="slide2">
+    <div class="section-title-layout content-area">
+        <h2 style="font-size: 60px;">Part 1.<br>상식을 뒤엎은 용기</h2>
+        <hr>
+        <p>"지구가 중심이 아니라고?"<br>모두가 믿던 진실에 질문을 던진 사람들</p>
+    </div>
+</div><div class="slide-container" id="slide3">
+    <h2 class="slide-title">니콜라우스 코페르니쿠스</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>지동설: "태양이 중심이다!"</h3>
+                <ul>
+                    <li>당시 당연했던 '천동설'을 과학적으로 반박</li>
+                    <li>지구도 단지 태양 주위를 도는 행성임을 주장</li>
+                    <li><strong>사회적 영향:</strong> 인간 중심적 세계관에서 우주 중심적 세계관으로의 대전환 (코페르니쿠스적 전환)</li>
+                    <li><strong>천문학적 영향:</strong> 현대 천문학의 기초가 되는 '지동설' 확립</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <!-- Portrait of Nicolaus Copernicus -->
+                <img alt="코페르니쿠스 초상화" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Nikolaus_Kopernikus_MOT.jpg">
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide4">
+    <h2 class="slide-title">갈릴레오 갈릴레이</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="border-radius: 50%; width: 450px; height: 450px; margin: 0 auto;">
+                <!-- Galileo Galilei holding a telescope -->
+                <img alt="갈릴레오와 망원경" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Galileo_Galilei_%281564-1642%29_holding_a_telescope._Oil_paintin_Wellcome_V0017869.jpg">
+            </div>
+            <div>
+                <h3>"그래도 지구는 돈다"</h3>
+                <p>망원경을 직접 제작하여 밤하늘을 최초로 관측한 과학자</p>
+                <ul style="margin-top: 20px;">
+                    <li><strong>주요 발견:</strong> 목성의 4개 위성 발견, 금성의 위상 변화 관측</li>
+                    <li><strong>영향:</strong> 지동설의 강력한 증거를 제시함</li>
+                    <li>종교 재판을 받으면서도 끝까지 과학적 진실을 지키려 노력했던 상징적 인물</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide5">
+    <h2 class="slide-title">요하네스 케플러</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
+                <h3 style="color: var(--accent-gold);">행성 운동의 3법칙</h3>
+                <p>완벽한 원이라고 믿었던 행성의 궤도가 사실은 <strong>'타원'</strong>임을 수학적으로 증명했습니다.</p>
+                <ul style="font-size: 18px;">
+                    <li>1법칙: 타원 궤도의 법칙</li>
+                    <li>2법칙: 면적 속도 일정의 법칙</li>
+                    <li>3법칙: 조화의 법칙</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <!-- Diagram of Johannes Kepler's planetary orbits -->
+                <img alt="케플러의 타원 궤도" src="https://theaveragescientist.co.uk/wp-content/uploads/2023/05/Keplers-First-Law.png">
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide6">
+    <h2 class="slide-title">아이작 뉴턴</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="text-align: center;">
+                <div class="highlight-number">1687</div>
+                <p>만유인력의 법칙 발표</p>
+            </div>
+            <div>
+                <h3>우주의 질서를 세운 중력</h3>
+                <p>사과가 떨어지는 이유와 달이 지구 주위를 도는 이유가 같다는 것을 발견했습니다.</p>
+                <ul style="margin-top: 20px;">
+                    <li><strong>사회적 영향:</strong> 우주가 예측 가능한 법칙에 따라 움직인다는 '기계론적 세계관' 형성</li>
+                    <li><strong>천문학적 영향:</strong> 천체의 움직임을 물리 법칙으로 완벽하게 설명함</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide7">
+    <div class="section-title-layout content-area">
+        <h2 style="font-size: 60px;">Part 2.<br>더 넓은 우주로의 확장</h2>
+        <hr>
+        <p>우리는 얼마나 작고,<br>우주는 얼마나 거대한지 깨닫게 해준 영웅들</p>
+    </div>
+</div><div class="slide-container bleed-image-layout" id="slide8">
+    <div class="content-container">
+        <h2 class="slide-title" style="border: none; padding: 0;">헨리에타 스완 리빗</h2>
+        <div class="content-area">
+            <h3>우주의 거리 측정법을 찾다</h3>
+            <p>변광성의 주기와 밝기 관계를 발견하여 멀리 떨어진 별까지의 거리를 잴 수 있는 '표준 촛불'을 제공했습니다.</p>
+            <p style="margin-top: 20px; color: var(--accent-gold); font-weight: 700;">"그녀가 없었다면 허블도, 현대 우주론도 없었을 것입니다."</p>
+            <p style="font-size: 18px; opacity: 0.8;">당시 여성 과학자로서의 차별을 딛고 얻어낸 위대한 업적입니다.</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <!-- Portrait of Henrietta Swan Leavitt -->
+        <img class="bleed-image-side" alt="헨리에타 리빗" src="https://assets-us-01.kc-usercontent.com/9dd25524-761a-000d-d79f-86a5086d4774/39b9a40a-4d5a-45da-b036-81e1eb513fb2/leavitt1a.jpg?w=450&amp;h=490&amp;auto=format&amp;q=75&amp;fit=crop">
+    </div>
+</div><div class="slide-container" id="slide9">
+    <h2 class="slide-title">에드윈 허블과 팽창하는 우주</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>우주는 지금도 커지고 있다!</h3>
+                <p>먼 은하들이 우리로부터 멀어지고 있다는 사실을 발견하여 우주 팽창을 증명했습니다.</p>
+                <ul>
+                    <li><strong>대발견:</strong> 우리 은하가 우주의 전부가 아님을 확인</li>
+                    <li><strong>빅뱅 이론:</strong> 우주가 한 점(빅뱅)에서 시작되었음을 시사함</li>
+                </ul>
+            </div>
+            <div class="area-chart-container">
+                <!-- Simplified Area Chart for Hubble's Law Concept -->
+                <svg viewBox="0 0 400 200" style="width: 100%; height: 100%;">
+                    <defs>
+                        <lineargradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent-gold)" stop-opacity="0.6"></stop>
+                            <stop offset="100%" stop-color="var(--accent-gold)" stop-opacity="0"></stop>
+                        </lineargradient>
+                    </defs>
+                    <path d="M 0 180 L 100 140 L 200 110 L 300 70 L 400 30 L 400 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+                    <polyline points="0,180 100,140 200,110 300,70 400,30" fill="none" stroke="var(--accent-gold)" stroke-width="4"></polyline>
+                    <text x="350" y="20" fill="var(--accent-gold)" font-size="12">우주 팽창 속도</text>
+                    <text x="0" y="195" fill="var(--soft-blue)" font-size="10">과거</text>
+                    <text x="370" y="195" fill="var(--soft-blue)" font-size="10">현재</text>
+                </svg>
+                <p style="text-align: center; font-size: 14px;">[ 허블-르메트르 법칙 시각화 ]</p>
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide10">
+    <h2 class="slide-title">베라 루빈: 보이지 않는 우주</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="border-top-color: #3B82F6;">
+                <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
+                    <!-- Vera Rubin working at an astronomical observatory -->
+                    <img alt="베라 루빈" src="https://rubinobservatory.org/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Frubin-obs-prod-assets_heroes%2F_1920x1067_crop_center-center_none%2F20211206-Vera-Rubin.jpg&amp;w=3840&amp;q=90">
+                </div>
+                <h4>관측의 대가</h4>
+                <p style="font-size: 16px;">은하 회전 속도를 정밀 측정했습니다.</p>
+            </div>
+            <div class="tile" style="border-top-color: #A855F7;">
+                <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
+                    <!-- Hubble Deep Field or Andromeda galaxy photo -->
+                    <img alt="은하" src="https://cdn.esahubble.org/archives/images/screen/heic0512d.jpg">
+                </div>
+                <h4>암흑 물질 발견</h4>
+                <p style="font-size: 16px;">보이지 않지만 거대한 질량이 있음을 증명했습니다.</p>
+            </div>
+            <div class="tile" style="border-top-color: #10B981;">
+                <div class="icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                <h4>우주의 비밀</h4>
+                <p style="font-size: 16px;">우주 질량의 85%는 아직 우리가 모르는 물질입니다.</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; text-align: center;">"우리는 우주의 아주 작은 부분만 보고 있을 뿐입니다."</p>
+    </div>
+</div><div class="slide-container" id="slide11">
+    <h2 class="slide-title">천문학이 우리 삶에 준 선물</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>GPS &amp; 내비게이션</h3>
+                <p>먼 퀘이사와 은하를 이용한 좌표 결정 기술이 여러분의 스마트폰 지도가 되었습니다.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-wifi"></i>
+                <h3>Wi-Fi 기술</h3>
+                <p>블랙홀에서 오는 전파 신호를 분석하던 기술이 무선 인터넷의 핵심이 되었습니다.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-camera"></i>
+                <h3>디지털 카메라</h3>
+                <p>별빛을 포착하기 위해 만든 정밀 센서(CCD)가 지금의 폰 카메라가 되었습니다.</p>
+            </div>
+        </div>
+    </div>
+</div><div class="slide-container" id="slide12" style="background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url(&#39;https://cdn.eso.org/images/large/eso0932a.jpg&#39;); background-size: cover;">
+    <div class="content-area" style="text-align: center;">
+        <h1 style="color: var(--accent-gold); font-size: 100px;">Questions?</h1>
+        <p style="font-size: 32px; margin-top: 20px;">여러분의 질문이 새로운 천문학의 시작입니다.</p>
+        <div style="margin-top: 60px;">
+            <p>궁금한 점이 있다면 언제든 손을 들어주세요!</p>
+            <p style="font-weight: 700; color: var(--accent-gold);">다음 우주의 주인공은 바로 여러분입니다.</p>
+        </div>
+    </div>
+</div><div class="slide-container slide-attributions" id="slide-attributions-1"><h2 class="slide-title">Image Sources</h2><div class="content-area"><ul class="attribution-list"><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTkxQUeacSrwCIewfLJv7jx6avrs_cdtucygN-h7k8w0x5E2FHRokYL9N6QMltM" alt="Thumbnail for en.wikipedia.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://upload.wikimedia.org/wikipedia/commons/e/e2/Nikolaus_Kopernikus_MOT.jpg</p><p class="attribution__title">Source: <a href="https://en.wikipedia.org/wiki/Nicolaus_Copernicus" target="_blank" class="attribution__link">en.wikipedia.org</a></p></div></li><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTusSG_eLry04COBsX1qNgB0KDCTDn4LNN10tlGar9PJjmb6X8xy1p8gv3QjK-w" alt="Thumbnail for commons.wikimedia.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://upload.wikimedia.org/wikipedia/commons/6/6f/Galileo_Galilei_%281564-1642%29_holding_a_telescope._Oil_paintin_Wellcome_V0017869.jpg</p><p class="attribution__title">Source: <a href="https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_holding_a_telescope._Oil_paintin_Wellcome_V0017869.jpg" target="_blank" class="attribution__link">commons.wikimedia.org</a></p></div></li><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ3SNDI9yDQZbvvDZMUR1HKZjR8Qn0Bl_bLGvgfpygv_t4Ug1j4vIXry6_qyWP" alt="Thumbnail for theaveragescientist.co.uk"></div><div class="attribution__details"><p class="attribution__raw-url">https://theaveragescientist.co.uk/wp-content/uploads/2023/05/Keplers-First-Law.png</p><p class="attribution__title">Source: <a href="https://theaveragescientist.co.uk/2023/05/03/keplers-laws-of-planetary-motion-part-1/" target="_blank" class="attribution__link">theaveragescientist.co.uk</a></p></div></li><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJuuxbkFlf5-wuL3wN7riMP2STiC4z-I1trIRqWcCAj0N6LufnB8vyY4hu9vYc" alt="Thumbnail for www.lindahall.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://assets-us-01.kc-usercontent.com/9dd25524-761a-000d-d79f-86a5086d4774/39b9a40a-4d5a-45da-b036-81e1eb513fb2/leavitt1a.jpg?w=450&amp;h=490&amp;auto=format&amp;q=75&amp;fit=crop</p><p class="attribution__title">Source: <a href="https://www.lindahall.org/about/news/scientist-of-the-day/henrietta-swan-leavitt/" target="_blank" class="attribution__link">www.lindahall.org</a></p></div></li><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-vyhUcnMXzdBsdFpEmXcY6bDlk-fAFdJZUMmJUsDbaf5v5FHpFpf33-j64z2L" alt="Thumbnail for rubinobservatory.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://rubinobservatory.org/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Frubin-obs-prod-assets_heroes%2F_1920x1067_crop_center-center_none%2F20211206-Vera-Rubin.jpg&amp;w=3840&amp;q=90</p><p class="attribution__title">Source: <a href="https://rubinobservatory.org/about/vera-rubin" target="_blank" class="attribution__link">rubinobservatory.org</a></p></div></li><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQfoIenyak7LvYov7LZY_i2v0u-oour7H8V_vtJZ2bQDuf9rRJ0AGZprpP9GVl7" alt="Thumbnail for esahubble.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://cdn.esahubble.org/archives/images/screen/heic0512d.jpg</p><p class="attribution__title">Source: <a href="https://esahubble.org/images/heic0512d/" target="_blank" class="attribution__link">esahubble.org</a></p></div></li></ul></div></div><div class="slide-container slide-attributions" id="slide-attributions-2"><h2 class="slide-title">Image Sources</h2><div class="content-area"><ul class="attribution-list"><li class="attribution-list__item"><div class="attribution__thumbnail"><img class="attribution__thumbnail__image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS71EVzRtlNO6mqbuuaT8Lj6A5IL0lYsF_HwTME8ILBA9ohRQuMYH8TeduWzeLy" alt="Thumbnail for www.eso.org"></div><div class="attribution__details"><p class="attribution__raw-url">https://cdn.eso.org/images/large/eso0932a.jpg</p><p class="attribution__title">Source: <a href="https://www.eso.org/public/images/eso0932a/" target="_blank" class="attribution__link">www.eso.org</a></p></div></li></ul></div></div></div></div><script>
+/**
+ * Fetches an image blob using a method that attempts to bypass CORS issues
+ * by adding 'alr=yes' to the URL and following redirects.
+ */
+async function fetchFifeImageBlobUsingAlr(urlString) {
+  if (urlString.startsWith('blob:') || urlString.startsWith('data:')) {
+      throw new Error('Input URL is already a blob or data URL.');
+  }
+  let url = new URL(urlString, window.location.href);
+  url.searchParams.set('alr', 'yes');
+  for (let i = 0; i < 5; i++) {
+      const response = await fetch(url.toString(), { credentials: 'include' });
+      if (!response.ok) throw new Error(`Fetch received not OK response: ${response.status}`);
+      if (!response.headers.get('content-type')?.startsWith('text/plain')) {
+          const blob = await response.blob();
+          if (blob.size > 0 && blob.type.startsWith('image/')) return blob;
+          // This will now correctly throw an error for non-image types like fonts.
+          else throw new Error('Fetched blob is not a valid image.');
+      }
+      url = new URL(await response.text());
+  }
+  throw new Error('Exceeded maximum number of redirects.');
+}
+
+async function updateImageSourcesUsingAlr() {
+  // Get all img elements on the page.
+  const allImages = Array.from(document.querySelectorAll('img'));
+
+  // Use Promise.all to handle all updates concurrently for better performance.
+  await Promise.all(allImages.map(async (img) => {
+    // Only proceed if the img tag has a valid 'src' attribute with a
+    // googleusercontent URL.
+    if (img.src && img.src.includes('googleusercontent')) {
+      try {
+        const blob = await fetchFifeImageBlobUsingAlr(img.src);
+        // Create a new URL from the Blob and set it as the image's source.
+        img.src = URL.createObjectURL(blob);
+      } catch (error) {
+        // Do nothing.
+      }
+    }
+  }));
+}
+
+async function updateBackgroundImagesUsingAlr() {
+  // Find all elements with a googleusercontent background image.
+  const elementsToProcess = document.querySelectorAll('[style*="googleusercontent"]');
+  const urlRegex = /url\((['"]?)(https?:\/\/.*?googleusercontent.*?)\1\)/;
+
+  if (elementsToProcess.length > 0) {
+
+      const promises = Array.from(elementsToProcess).map(element => {
+          return new Promise(async (resolve) => {
+              const style = element.style.backgroundImage;
+              const match = style.match(urlRegex);
+
+              if (match && match[2]) {
+                  const originalUrl = match[2];
+                  try {
+                      const blob = await fetchFifeImageBlobUsingAlr(originalUrl);
+                      const blobUrl = URL.createObjectURL(blob);
+
+                      // Directly update the element's style property.
+                      const newBackgroundImage = style.replace(originalUrl, blobUrl);
+                      element.style.backgroundImage = newBackgroundImage;
+                  } catch (error) {
+                      // Do nothing.
+                  }
+              }
+              resolve();
+          });
+      });
+
+      // Wait for all images to be processed.
+      await Promise.all(promises);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await Promise.all([
+      updateImageSourcesUsingAlr(),
+      updateBackgroundImagesUsingAlr()
+    ]);
+    initializeSlideshowUI();
+});
+
+// --- SLIDESHOW LOGIC ---
+function initializeSlideshowUI() {
+    const slides = document.querySelectorAll('.slide-container');
+    const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+    const slideCounter = document.getElementById('slide-counter');
+    let currentSlide = 0;
+
+    function updateUI() {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        prevButton.disabled = currentSlide === 0;
+        nextButton.disabled = currentSlide === slides.length - 1;
+        slideCounter.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+    }
+
+    function showNextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            updateUI();
+        }
+    }
+
+    function showPrevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateUI();
+        }
+    }
+
+    nextButton.addEventListener('click', showNextSlide);
+    prevButton.addEventListener('click', showPrevSlide);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') showNextSlide();
+        else if (e.key === 'ArrowLeft') showPrevSlide();
+    });
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const htmlEl = document.documentElement;
+
+    function setTheme(isDark) {
+        htmlEl.classList.toggle('dark', isDark);
+        darkIcon.classList.toggle('hidden', isDark);
+        lightIcon.classList.toggle('hidden', !isDark);
+        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    }
+    const isDarkMode = localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    setTheme(isDarkMode);
+    themeToggleBtn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark')));
+
+    function updateScale() {
+        const baseWidth = 1280;
+        const baseHeight = 720;
+        const slideshowWrapper = document.getElementById('slideshow-wrapper');
+        const slideshowHolder = document.getElementById('slideshow-holder');
+
+        // The available space is the dimensions of the holder div.
+        const availableWidth = slideshowHolder.clientWidth;
+        const availableHeight = slideshowHolder.clientHeight;
+
+        // Calculate the scale ratio based on both width and height
+        const scaleX = availableWidth / baseWidth;
+        const scaleY = availableHeight / baseHeight;
+
+        // Use the smaller of the two ratios to ensure it fits
+        const finalScale = Math.min(scaleX, scaleY);
+
+        slideshowWrapper.style.setProperty('--scale-factor', finalScale);
+    }
+
+    updateUI();
+    updateScale();
+    window.addEventListener('resize', updateScale);
+}
+</script></body></html>
+    </template>
     <template id="tmpl_meal_app">
 <!DOCTYPE html>
 <html lang="ko">
@@ -2399,11 +3158,19 @@ Type: "json",
                     updatedAt: '2026-07-01'
                 };
             }
+            const el_tmpl_game = document.getElementById('tmpl_game');
+            if (el_tmpl_game) {
+                studentProjectsMap['game'] = {
+                    title: "럭셔리 블랙 & 골드 솔리테어 (Solitaire)",
+                    items: [{ name: "럭셔리 블랙 & 골드 솔리테어 (Solitaire)", type: 'html', data: el_tmpl_game.innerHTML.trim() }],
+                    updatedAt: '2026-07-01'
+                };
+            }
             const el_tmpl_ai_slide = document.getElementById('tmpl_ai_slide');
             if (el_tmpl_ai_slide) {
                 studentProjectsMap['ai-slide'] = {
-                    title: "럭셔리 블랙 & 골드 솔리테어 (Solitaire)",
-                    items: [{ name: "럭셔리 블랙 & 골드 솔리테어 (Solitaire)", type: 'html', data: el_tmpl_ai_slide.innerHTML.trim() }],
+                    title: "세상을 바꾼 위대한 천문학자들",
+                    items: [{ name: "세상을 바꾼 위대한 천문학자들", type: 'html', data: el_tmpl_ai_slide.innerHTML.trim() }],
                     updatedAt: '2026-07-01'
                 };
             }
