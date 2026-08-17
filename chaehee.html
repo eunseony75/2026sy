@@ -53,7 +53,7 @@
         .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
-        .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
+        .slot-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
         .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
         .carousel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, 0.92); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--text-primary); z-index: 10; cursor: pointer; transition: var(--transition-smooth); }
@@ -137,8 +137,8 @@
 
         <div class="slots-header">
             <div>
-                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">이미지 여러 장(다중 파일), 동영상, 슬라이드, 코드를 <strong>한 번에 등록하고 슬라이드로 감상</strong>할 수 있습니다.</p>
+                <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 프로젝트 결과물 업로드</h2>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">퀴즈, 게임, 앱, 이미지, 동영상, 슬라이드 등 프로젝트 결과물을 직접 체험하고 파일을 업로드할 수 있습니다.</p>
             </div>
         </div>
 
@@ -172,17 +172,17 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: AI 생성 캐릭터 일러스트 시리즈 / 중3 과학 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: AI 생성 캐릭터 일러스트 / 중3 과학 모의고사" required>
                     </div>
                     <div class="upload-tab-buttons">
-                        <button type="button" class="tab-btn active" id="tabBtnFile" onclick="switchUploadTab('file')"><i class="fa-solid fa-images"></i> 파일 여러 개 올리기 (JPG/PNG/MP4/PDF/PPTX)</button>
+                        <button type="button" class="tab-btn active" id="tabBtnFile" onclick="switchUploadTab('file')"><i class="fa-solid fa-file-arrow-up"></i> 파일 올리기 (JPG/PNG/MP4/PDF/PPTX/HTML)</button>
                         <button type="button" class="tab-btn" id="tabBtnCode" onclick="switchUploadTab('code')"><i class="fa-solid fa-code"></i> 코드 / 링크 직접 입력</button>
                     </div>
                     <div id="tabContentFile">
                         <div class="drop-zone" onclick="document.getElementById('fileUploadInput').click()">
-                            <i class="fa-solid fa-photo-film"></i>
-                            <p style="font-weight: 700; font-size: 0.95rem;">파일들을 클릭하여 여러 개 선택하거나 여기로 끌어다 놓으세요</p>
-                            <span style="font-size: 0.76rem; color: var(--text-muted);">여러 장의 이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX) 동시 선택 가능</span>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p style="font-weight: 700; font-size: 0.95rem;">파일을 클릭하여 선택하거나 여기로 끌어다 놓으세요</p>
+                            <span style="font-size: 0.76rem; color: var(--text-muted);">이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX), 웹 소스(HTML) 여러 개 선택 가능</span>
                             <input type="file" id="fileUploadInput" multiple style="display:none;" accept="image/*,video/*,application/pdf,.ppt,.pptx,.html,.htm" onchange="handleMultipleFiles(event)">
                         </div>
                         <div id="fileListPreview" class="file-list-preview"></div>
@@ -204,8 +204,8 @@
 
     <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
 
-    <!-- [내장 원본 소스코드 템플릿] -->
-    <template id="tmpl-meal-app">
+    <!-- [내장 원본 소스코드 템플릿 보관소] -->
+    <template id="tmpl_meal_app">
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -424,6 +424,18 @@ Type: "json",
             renderSlots();
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
+            document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
+                if (!currentFullscreenItem) return;
+                const newWin = window.open('', '_blank');
+                if (currentFullscreenItem.type === 'image') {
+                    newWin.document.write('<img src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
+                } else if (currentFullscreenItem.type === 'video') {
+                    newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
+                } else {
+                    newWin.document.write(currentFullscreenItem.data);
+                }
+                newWin.document.close();
+            });
         });
 
         function switchUploadTab(tab) {
@@ -446,7 +458,7 @@ Type: "json",
             const listContainer = document.getElementById('fileListPreview');
             listContainer.innerHTML = '';
             multiFilePayloads = [];
-            files.forEach((file, idx) => {
+            files.forEach((file) => {
                 const ext = file.name.split('.').pop().toLowerCase();
                 const reader = new FileReader();
                 let fType = 'html';
@@ -471,25 +483,26 @@ Type: "json",
         }
 
         function loadStudentProjects() {
+            studentProjectsMap = {};
+
+            const el_tmpl_meal_app = document.getElementById('tmpl_meal_app');
+            if (el_tmpl_meal_app) {
+                studentProjectsMap['meal-app'] = {
+                    title: "숭의여자중학교 오늘의 급식",
+                    items: [{ name: "숭의여자중학교 오늘의 급식", type: 'html', data: el_tmpl_meal_app.innerHTML.trim() }],
+                    updatedAt: '2026-07-01'
+                };
+            }
             const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    if (Object.keys(parsed).length > 0) {
-                        studentProjectsMap = parsed;
-                        return;
+                    for (const k in parsed) {
+                        if (parsed[k] && parsed[k].items && parsed[k].items.length > 0) {
+                            studentProjectsMap[k] = parsed[k];
+                        }
                     }
                 } catch (e) {}
-            }
-
-            studentProjectsMap = {};
-            const tmpl_meal_app = document.getElementById('tmpl-meal-app');
-            if (tmpl_meal_app) {
-                studentProjectsMap['meal-app'] = {
-                    title: "숭의여자중학교 오늘의 급식",
-                    items: [{ name: '기본 결과물', type: 'html', data: tmpl_meal_app.innerHTML.trim() }],
-                    updatedAt: '2026-07-01'
-                };
             }
         }
 
@@ -512,11 +525,11 @@ Type: "json",
                     const activeItem = project.items[curIdx % totalItems];
 
                     let mediaHtml = '';
-                    if (activeItem.type === 'image' || activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
+                    if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
                         mediaHtml = `<img src="${activeItem.data}" alt="${escapeHtmlAttr(activeItem.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
-                    } else if (activeItem.type === 'video' || activeItem.data.startsWith('data:video/')) {
+                    } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:video/'))) {
                         mediaHtml = `<video controls style="width:100%; max-height:100%;" src="${activeItem.data}"></video>`;
-                    } else if (activeItem.type === 'pdf' || activeItem.data.startsWith('data:application/pdf')) {
+                    } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:application/pdf'))) {
                         mediaHtml = `<iframe class="slot-iframe" src="${activeItem.data}"></iframe>`;
                     } else {
                         mediaHtml = `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(activeItem.data)}"></iframe>`;
@@ -543,7 +556,7 @@ Type: "json",
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
-                                        <i class="fa-solid fa-expand"></i> 크게 보기
+                                        <i class="fa-solid fa-expand"></i> 크게 체험하기
                                     </button>
                                 </div>
                                 ${mediaHtml}
@@ -582,7 +595,7 @@ Type: "json",
                                 <i class="${topic.icon}"></i>
                                 <span style="font-size:0.88rem; font-weight:600;">아직 등록된 작품이 없습니다.</span>
                                 <button class="btn btn-primary btn-sm" onclick="openEditModal('${topic.id}')">
-                                    <i class="fa-solid fa-images"></i> 내 파일/작품 여러 개 올리기
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> 파일 올리기
                                 </button>
                             </div>
                         </div>
@@ -608,18 +621,18 @@ Type: "json",
         }
 
         function openFullscreen(project, topicId) {
-            currentFullscreenItem = project;
+            const curIdx = carouselIndexes[topicId] || 0;
+            const activeItem = project.items[curIdx % project.items.length];
+            currentFullscreenItem = activeItem;
             document.getElementById('fullscreenTitle').textContent = project.title;
             const fsBody = document.getElementById('fullscreenBody');
             fsBody.innerHTML = '';
-            const curIdx = carouselIndexes[topicId] || 0;
-            const activeItem = project.items[curIdx % project.items.length];
 
-            if (activeItem.type === 'image' || activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
+            if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
                 fsBody.innerHTML = `<img src="${activeItem.data}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
-            } else if (activeItem.type === 'video' || activeItem.data.startsWith('data:video/')) {
+            } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:video/'))) {
                 fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${activeItem.data}"></video>`;
-            } else if (activeItem.type === 'pdf' || activeItem.data.startsWith('data:application/pdf')) {
+            } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:application/pdf'))) {
                 fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
             } else {
                 const iframe = document.createElement('iframe');
@@ -644,12 +657,12 @@ Type: "json",
             document.getElementById('fileListPreview').innerHTML = '';
             switchUploadTab('file');
             document.getElementById('modalTopicId').value = topicId;
-            document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 다중 파일 업로드/수정`;
+            document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 파일 등록/수정`;
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 작품 시리즈`;
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 과제`;
             }
             document.getElementById('slotModal').classList.add('active');
         }
