@@ -87,7 +87,7 @@
         .drop-zone { border: 2px dashed var(--p-quiz-border); background: #F8FAFC; border-radius: var(--radius-md); padding: 30px 20px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .drop-zone:hover { background: #F5F3FF; border-color: var(--p-quiz-accent); }
         .drop-zone i { font-size: 2.6rem; color: var(--p-quiz-accent); }
-        .file-list-preview { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; max-height: 150px; overflow-y: auto; }
+        .file-list-preview { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; max-height: 180px; overflow-y: auto; }
         .file-item-tag { display: flex; justify-content: space-between; align-items: center; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 8px 14px; border-radius: var(--radius-md); font-size: 0.84rem; color: #065F46; font-weight: 600; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-label { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); }
@@ -233,50 +233,20 @@
         let isReadingFiles = false;
         let currentFullscreenItem = null;
 
-        const DB_NAME = '2026sy_StudentStorageDB_v4';
-        const DB_VERSION = 1;
-        let dbInstance = null;
+        const DB_KEY = '2026sy_student_storage_' + STUDENT_INFO.id;
 
-        function openDB() {
-            return new Promise((resolve) => {
-                if (dbInstance) return resolve(dbInstance);
-                const req = indexedDB.open(DB_NAME, DB_VERSION);
-                req.onupgradeneeded = (e) => {
-                    const db = e.target.result;
-                    if (!db.objectStoreNames.contains('student_slots')) db.createObjectStore('student_slots');
-                };
-                req.onsuccess = (e) => { dbInstance = e.target.result; resolve(dbInstance); };
-                req.onerror = (e) => { resolve(null); };
-            });
+        async function saveStorage(val) {
+            try {
+                localStorage.setItem(DB_KEY, JSON.stringify(val));
+            } catch(e) { console.warn('LocalStorage quota or err', e); }
         }
 
-        async function saveToDB(key, val) {
-            const db = await openDB();
-            if (!db) {
-                try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){}
-                return;
-            }
-            return new Promise((resolve) => {
-                const tx = db.transaction('student_slots', 'readwrite');
-                const store = tx.objectStore('student_slots');
-                store.put(val, key);
-                tx.oncomplete = () => resolve(true);
-                tx.onerror = () => resolve(false);
-            });
-        }
-
-        async function loadFromDB(key) {
-            const db = await openDB();
-            if (!db) {
-                try { const item = localStorage.getItem(key); return item ? JSON.parse(item) : null; } catch(e){ return null; }
-            }
-            return new Promise((resolve) => {
-                const tx = db.transaction('student_slots', 'readonly');
-                const store = tx.objectStore('student_slots');
-                const req = store.get(key);
-                req.onsuccess = () => resolve(req.result || null);
-                req.onerror = () => resolve(null);
-            });
+        async function loadStorage() {
+            try {
+                const raw = localStorage.getItem(DB_KEY);
+                if (raw) return JSON.parse(raw);
+            } catch(e) {}
+            return null;
         }
 
         async function uploadFileToGitHub(fileName, base64Content) {
@@ -299,7 +269,7 @@
                     })
                 });
                 if (res.ok) return `https://eunseony75.github.io/2026sy/${targetPath}`;
-            } catch(e) { console.warn('Background sync failed', e); }
+            } catch(e) { console.warn('Background GitHub upload error', e); }
             return null;
         }
 
@@ -322,7 +292,7 @@
                 if (d.startsWith('data:')) {
                     const a = document.createElement('a');
                     a.href = d;
-                    a.download = currentFullscreenItem.name || 'presentation';
+                    a.download = currentFullscreenItem.name || 'file';
                     a.click();
                 } else if (d.startsWith('http')) {
                     window.open(d, '_blank');
@@ -367,10 +337,10 @@
 
                 const reader = new FileReader();
                 reader.onload = (re) => {
-                    multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result, rawFile: file });
+                    multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result });
                     const tag = document.createElement('div');
                     tag.className = 'file-item-tag';
-                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()} (즉시 바로보기)</span>`;
+                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${escapeHtml(file.name)} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()}</span>`;
                     listContainer.appendChild(tag);
                     readCount++;
                     if (readCount === files.length) isReadingFiles = false;
@@ -407,34 +377,30 @@
                     updatedAt: '2026-07-01'
                 };
             }
-            const dbData = await loadFromDB('2026sy_student_slots_' + STUDENT_INFO.id);
-            if (dbData) {
-                for (const k in dbData) {
-                    if (dbData[k] && dbData[k].items && dbData[k].items.length > 0) {
-                        studentProjectsMap[k] = dbData[k];
+            const saved = await loadStorage();
+            if (saved) {
+                for (const k in saved) {
+                    if (saved[k] && saved[k].items && saved[k].items.length > 0) {
+                        studentProjectsMap[k] = saved[k];
                     }
                 }
             }
         }
 
-        async function saveStudentProjects() {
-            await saveToDB('2026sy_student_slots_' + STUDENT_INFO.id, studentProjectsMap);
-        }
-
         function getDocumentViewerHtml(item) {
             const d = (typeof item.data === 'string') ? item.data.trim() : '';
 
-            // 1. If it contains HTML markup or code structure, ALWAYS execute as iframe!
+            // 1. HTML Markup or Source Code -> ALWAYS iframe
             if (d.startsWith('<!DOCTYPE') || d.startsWith('<html') || d.startsWith('<div') || d.startsWith('<script') || (d.startsWith('<') && d.includes('>'))) {
                 return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
             }
 
-            // 2. Exact PDF format
+            // 2. PDF
             if (item.type === 'pdf' || d.startsWith('data:application/pdf') || (d.startsWith('http') && d.toLowerCase().endsWith('.pdf'))) {
                 return `<iframe class="slot-iframe" src="${d}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
             }
 
-            // 3. Exact PPTX format
+            // 3. PPTX
             if (item.type === 'pptx' || d.includes('presentationml') || (d.startsWith('http') && (d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')))) {
                 return `
                     <div style="text-align:center; padding:24px 16px; background:#FFF7ED; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
@@ -446,17 +412,17 @@
                 `;
             }
 
-            // 4. Exact Image format
+            // 4. Image
             if (item.type === 'image' || d.startsWith('data:image/') || (d.startsWith('http') && /\.(jpe?g|png|gif|webp|svg)$/i.test(d))) {
                 return `<img src="${d}" alt="${escapeHtmlAttr(item.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
             }
 
-            // 5. Exact Video format
+            // 5. Video
             if (item.type === 'video' || d.startsWith('data:video/') || (d.startsWith('http') && /\.(mp4|webm|mov)$/i.test(d))) {
                 return `<video controls style="width:100%; max-height:100%;" src="${d}"></video>`;
             }
 
-            // Default fallback: iframe
+            // Fallback iframe
             return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
         }
 
@@ -547,7 +513,6 @@
                             </button>
                         </div>
                     `;
-
                 }
 
                 grid.appendChild(card);
@@ -616,7 +581,7 @@
             isReadingFiles = false;
             document.getElementById('fileUploadInput').value = '';
             document.getElementById('fileListPreview').innerHTML = '';
-            switchUploadTab('code');
+            switchUploadTab('file');
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 파일 등록/수정`;
             const existing = studentProjectsMap[topicId];
@@ -653,7 +618,7 @@
 
             if (multiFilePayloads && multiFilePayloads.length > 0) {
                 saveBtn.disabled = true;
-                saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 업로드 중...';
+                saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 동기화 중...';
                 for (const fItem of multiFilePayloads) {
                     if (fItem.data && fItem.data.startsWith('data:')) {
                         uploadFileToGitHub(fItem.name, fItem.data);
@@ -690,16 +655,16 @@
                 updatedAt: new Date().toISOString().split('T')[0]
             };
 
-            await saveStudentProjects();
+            await saveStorage(studentProjectsMap);
             closeModal();
             renderSlots();
-            showToast(`[${title}] 파일이 등록되어 바로보기가 지원됩니다!`);
+            showToast(`[${title}] 파일이 영구 저장되었습니다!`);
         }
 
         async function deleteSlot(topicId) {
             if (!confirm('이 프로젝트 결과물을 삭제하시겠습니까?')) return;
             delete studentProjectsMap[topicId];
-            await saveStudentProjects();
+            await saveStorage(studentProjectsMap);
             renderSlots();
             showToast('삭제되었습니다.');
         }
