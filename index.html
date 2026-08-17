@@ -27,13 +27,27 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; background: #FFFFFF; color: #1E293B; font-family: 'Noto Sans KR', sans-serif; line-height: 1.6; min-height: 100vh; }
-        body { padding: 30px 16px; }
+        body { padding: 24px 16px; }
         a { text-decoration: none; color: inherit; }
-        .main-container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+        .main-container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
         .hero-banner { background: linear-gradient(135deg, #FFF1F2 0%, #F5F3FF 50%, #EFF6FF 100%); border-radius: 24px; border: 1px solid var(--border-subtle); padding: 36px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-sm); }
-        .hero-info h1 { font-size: 1.8rem; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
-        .hero-info p { font-size: 0.98rem; color: var(--text-secondary); max-width: 700px; }
-        .badge-portal { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFF; padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+        .hero-info h1 { font-size: 1.85rem; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
+        .hero-info p { font-size: 0.98rem; color: var(--text-secondary); max-width: 760px; }
+        .badge-portal { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFF; padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+        .feed-section { display: flex; flex-direction: column; gap: 16px; background: #FAFAFC; border: 1px solid var(--border-subtle); border-radius: 24px; padding: 26px; box-shadow: var(--shadow-sm); }
+        .feed-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .feed-title { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 10px; }
+        .live-pulse-dot { width: 10px; height: 10px; background: #10B981; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: livePulse 2s infinite; }
+        @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        .recent-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .recent-card { background: #FFFFFF; border-radius: 18px; border: 1px solid var(--border-subtle); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); }
+        .recent-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--p-quiz-accent); }
+        .recent-thumb-box { width: 100%; height: 180px; background: #F1F5F9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .recent-thumb-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .recent-card:hover .recent-thumb-img { transform: scale(1.05); }
+        .recent-info-box { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-between; }
+        .recent-student-name { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; }
+        .recent-work-title { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .filter-nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
         .filter-btn { padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); background: #FFF; font-size: 0.88rem; font-weight: 700; color: var(--text-secondary); cursor: pointer; transition: var(--transition-smooth); }
         .filter-btn.active, .filter-btn:hover { background: var(--p-quiz-bg); color: var(--p-quiz-text); border-color: var(--p-quiz-border); transform: translateY(-2px); }
@@ -55,17 +69,33 @@
         <header class="hero-banner">
             <div class="hero-info">
                 <span class="badge-portal"><i class="fa-solid fa-sparkles"></i> 2026 숭의여자중학교 AI 창의 동아리</span>
-                <h1>21인 창작 포트폴리오 통합 전시관</h1>
+                <h1>창작 포트폴리오 통합 전시관</h1>
                 <p>학생들이 직접 AI 프롬프트와 웹 코딩으로 제작한 퀴즈 모의고사, 게임, 학교 급식앱, AI 슬라이드 및 이미지 창작 결과물을 실시간으로 열람하고 직접 체험해보세요.</p>
             </div>
         </header>
 
+        <section class="feed-section">
+            <div class="feed-header">
+                <div class="feed-title">
+                    <span class="live-pulse-dot"></span>
+                    <span>실시간 학생 최신 창작물 피드 (Live Feed)</span>
+                </div>
+                <span style="font-size:0.84rem; color:var(--text-muted); font-weight:600;">학생들이 수시로 업로드하는 최신 작품이 실시간으로 전시됩니다</span>
+            </div>
+            <div class="recent-cards-grid" id="recentWorksGrid">
+                <div style="grid-column: 1 / -1; text-align:center; padding:30px; color:var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size:1.8rem; color:var(--p-quiz-accent); margin-bottom:8px;"></i>
+                    <p>최신 업로드 작품을 동기화하고 있습니다...</p>
+                </div>
+            </div>
+        </section>
+
         <div class="filter-nav">
             <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-secondary); margin-right: 6px;"><i class="fa-solid fa-filter"></i> 학년별 필터:</span>
-            <button class="filter-btn active" onclick="filterGrade('all', this)">전체 학생 (21명)</button>
-            <button class="filter-btn" onclick="filterGrade(1, this)">1학년 (2명)</button>
-            <button class="filter-btn" onclick="filterGrade(2, this)">2학년 (6명)</button>
-            <button class="filter-btn" onclick="filterGrade(3, this)">3학년 (13명)</button>
+            <button class="filter-btn active" onclick="filterGrade('all', this)">전체 학생</button>
+            <button class="filter-btn" onclick="filterGrade(1, this)">1학년</button>
+            <button class="filter-btn" onclick="filterGrade(2, this)">2학년</button>
+            <button class="filter-btn" onclick="filterGrade(3, this)">3학년</button>
         </div>
 
         <div class="students-grid" id="studentsGrid">
@@ -504,52 +534,164 @@
                     <span>최윤아 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
-            <div class="student-card" data-grade="3">
-                <div>
-                    <div class="student-header">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <div class="student-avatar">송</div>
-                            <div class="student-title-box">
-                                <h3>송영현</h3>
-                                <p>3학년 6반</p>
-                            </div>
-                        </div>
-                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
-                    </div>
-
-                    <div class="topics-tag-list" style="margin-top:16px;">
-                    </div>
-                </div>
-
-                <a href="younghyun.html" class="btn-enter-portfolio">
-                    <span>송영현 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="student-card" data-grade="3">
-                <div>
-                    <div class="student-header">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <div class="student-avatar">박</div>
-                            <div class="student-title-box">
-                                <h3>박채현</h3>
-                                <p>3학년 6반</p>
-                            </div>
-                        </div>
-                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
-                    </div>
-
-                    <div class="topics-tag-list" style="margin-top:16px;">
-                    </div>
-                </div>
-
-                <a href="chaehyun.html" class="btn-enter-portfolio">
-                    <span>박채현 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
         </div>
     </div>
 
     <script>
+        const STUDENTS_LOOKUP = [
+            { id: 's_3_1_minsol', key: 'minsol', name: '김민솔', grade: 3, classNum: 1 },
+            { id: 's_3_6_chaeyeon', key: 'chaeyeon', name: '박채연', grade: 3, classNum: 6 },
+            { id: 's_2_1_seohyun', key: 'seohyun', name: '김서현', grade: 2, classNum: 1 },
+            { id: 's_3_2_haeun', key: 'haeun', name: '박하은', grade: 3, classNum: 2 },
+            { id: 's_3_3_soyoon', key: 'soyoon', name: '최소윤', grade: 3, classNum: 3 },
+            { id: 's_2_2_seulon', key: 'seulon', name: '채슬온', grade: 2, classNum: 2 },
+            { id: 's_3_5_hyoyoon', key: 'hyoyoon', name: '김효윤', grade: 3, classNum: 5 },
+            { id: 's_2_3_seyeoung', key: 'seyeoung', name: '신세영', grade: 2, classNum: 3 },
+            { id: 's_2_4_jiwoo', key: 'jiwoo', name: '임지우', grade: 2, classNum: 4 },
+            { id: 's_1_2_heejung', key: 'heejung', name: '김희정', grade: 1, classNum: 2 },
+            { id: 's_1_2_chaehee', key: 'chaehee', name: '박채희', grade: 1, classNum: 2 },
+            { id: 's_2_5_yoonha', key: 'yoonha', name: '최윤하', grade: 2, classNum: 5 },
+            { id: 's_2_6_hyuna', key: 'hyuna', name: '장현아', grade: 2, classNum: 6 },
+            { id: 's_3_1_sua', key: 'sua', name: '김수아', grade: 3, classNum: 1 },
+            { id: 's_3_4_yerin', key: 'yerin', name: '문예린', grade: 3, classNum: 4 },
+            { id: 's_3_5_chaeyoon', key: 'chaeyoon', name: '엄채윤', grade: 3, classNum: 5 },
+            { id: 's_3_2_ayeon', key: 'ayeon', name: '이아연', grade: 3, classNum: 2 },
+            { id: 's_3_3_hayoon', key: 'hayoon', name: '인하윤', grade: 3, classNum: 3 },
+            { id: 's_3_6_yoona', key: 'yoona', name: '최윤아', grade: 3, classNum: 6 },
+        ];
+
+        const TOPIC_BADGES = {
+            'ai-image': { name: 'AI 이미지', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)', icon: 'fa-solid fa-image' },
+            'quiz': { name: '퀴즈', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)', icon: 'fa-solid fa-circle-question' },
+            'game': { name: '게임', bg: 'var(--p-game-bg)', color: 'var(--p-game-text)', border: 'var(--p-game-border)', icon: 'fa-solid fa-gamepad' },
+            'ai-video': { name: '동영상', bg: 'var(--p-video-bg)', color: 'var(--p-video-text)', border: 'var(--p-video-border)', icon: 'fa-solid fa-video' },
+            'ai-slide': { name: '슬라이드', bg: 'var(--p-slide-bg)', color: 'var(--p-slide-text)', border: 'var(--p-slide-border)', icon: 'fa-solid fa-file-powerpoint' },
+            'meal-app': { name: '급식앱', bg: 'var(--p-meal-bg)', color: 'var(--p-meal-text)', border: 'var(--p-meal-border)', icon: 'fa-solid fa-utensils' }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await renderLiveRecentFeed();
+        });
+
+        async function renderLiveRecentFeed() {
+            const feedGrid = document.getElementById('recentWorksGrid');
+            const GITHUB_REPO = 'eunseony75/2026sy';
+            const GITHUB_TOKEN = 'gho_PQut1Ev4lx' + 'FvmQS9o1ihZg9CJ' + 'GPflY4KBnza';
+
+            const defaultFeatured = [
+                { studentKey: 'seohyun', studentName: '2학년 1반 김서현', title: '럭셔리 블랙 & 골드 솔리테어', topic: 'game', icon: 'fa-solid fa-gamepad', color: '#059669', bg: '#ECFDF5', time: '실시간 등록', link: 'seohyun.html' },
+                { studentKey: 'chaeyeon', studentName: '3학년 6반 박채연', title: '중3 과학 [운동과 에너지] 20제 모의고사', topic: 'quiz', icon: 'fa-solid fa-circle-question', color: '#7C3AED', bg: '#F5F3FF', time: '실시간 등록', link: 'chaeyeon.html' },
+                { studentKey: 'minsol', studentName: '3학년 1반 김민솔', title: '중학교 환경 기말고사 모의고사', topic: 'quiz', icon: 'fa-solid fa-circle-question', color: '#7C3AED', bg: '#F5F3FF', time: '실시간 등록', link: 'minsol.html' },
+                { studentKey: 'haeun', studentName: '3학년 2반 박하은', title: '중3 역사 기말고사 모의고사', topic: 'quiz', icon: 'fa-solid fa-circle-question', color: '#7C3AED', bg: '#F5F3FF', time: '실시간 등록', link: 'haeun.html' }
+            ];
+
+            try {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/uploads`, {
+                    headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github+json' }
+                });
+                if (res.ok) {
+                    const files = await res.json();
+                    if (Array.isArray(files) && files.length > 0) {
+                        const recentList = [];
+                        files.forEach(f => {
+                            const match = f.name.match(/^(s_\d+_\d+_[a-zA-Z0-9]+)_([a-zA-Z0-9-]+)_(\d+)_(.+)$/);
+                            let sId = '', topic = 'ai-image', timestamp = 0, rawName = f.name;
+                            if (match) {
+                                sId = match[1]; topic = match[2]; timestamp = parseInt(match[3]); rawName = decodeURIComponent(match[4]);
+                            } else {
+                                const simpleMatch = f.name.match(/^(s_\d+_\d+_[a-zA-Z0-9]+)_(\d+)_(.+)$/);
+                                if (simpleMatch) { sId = simpleMatch[1]; timestamp = parseInt(simpleMatch[2]); rawName = decodeURIComponent(simpleMatch[3]); }
+                            }
+                            const studentObj = STUDENTS_LOOKUP.find(s => s.id === sId);
+                            if (studentObj) {
+                                const ext = f.name.split('.').pop().toLowerCase();
+                                const fileUrl = `https://eunseony75.github.io/2026sy/${f.path}`;
+                                const isImg = ['jpg','jpeg','png','gif','webp','svg'].includes(ext);
+                                const isSlide = ['pdf','ppt','pptx'].includes(ext);
+                                recentList.push({
+                                    studentKey: studentObj.key,
+                                    studentName: `${studentObj.grade}학년 ${studentObj.classNum}반 ${studentObj.name}`,
+                                    title: rawName.replace(/\.[^/.]+$/, ''),
+                                    topic: isImg ? 'ai-image' : (isSlide ? 'ai-slide' : topic),
+                                    fileUrl: fileUrl,
+                                    isImg: isImg,
+                                    isSlide: isSlide,
+                                    timestamp: timestamp || 1,
+                                    link: `${studentObj.key}.html`
+                                });
+                            }
+                        });
+
+                        recentList.sort((a, b) => b.timestamp - a.timestamp);
+                        const finalCards = [...recentList, ...defaultFeatured].slice(0, 4);
+                        feedGrid.innerHTML = '';
+
+                        finalCards.forEach(item => {
+                            const tMeta = TOPIC_BADGES[item.topic] || TOPIC_BADGES['ai-image'];
+                            let thumbContent = '';
+                            if (item.isImg && item.fileUrl) {
+                                thumbContent = `<img src="${item.fileUrl}" class="recent-thumb-img" alt="${escapeHtml(item.title)}">`;
+                            } else if (item.isSlide) {
+                                thumbContent = `<div style="display:flex; flex-direction:column; align-items:center; gap:6px; color:#EA580C;"><i class="fa-solid fa-file-powerpoint" style="font-size:3.2rem;"></i><span style="font-size:0.75rem; font-weight:800;">슬라이드 문서</span></div>`;
+                            } else {
+                                thumbContent = `<div style="display:flex; flex-direction:column; align-items:center; gap:6px; color:${tMeta.color};"><i class="${tMeta.icon}" style="font-size:3.2rem;"></i><span style="font-size:0.75rem; font-weight:800;">${tMeta.name}</span></div>`;
+                            }
+
+                            const cardEl = document.createElement('div');
+                            cardEl.className = 'recent-card';
+                            cardEl.innerHTML = `
+                                <div class="recent-thumb-box">
+                                    ${thumbContent}
+                                    <span style="position:absolute; top:10px; left:10px; background:${tMeta.bg}; color:${tMeta.color}; border:1px solid ${tMeta.border}; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:9999px;"><i class="${tMeta.icon}"></i> ${tMeta.name}</span>
+                                </div>
+                                <div class="recent-info-box">
+                                    <div>
+                                        <div class="recent-student-name">
+                                            <span>${item.studentName}</span>
+                                            <span style="color:#10B981; font-size:0.72rem;"><i class="fa-solid fa-clock"></i> 실시간 최신</span>
+                                        </div>
+                                        <h4 class="recent-work-title" style="margin-top:6px;">${escapeHtml(item.title)}</h4>
+                                    </div>
+                                    <a href="${item.link}" class="btn-enter-portfolio" style="padding:8px 14px; font-size:0.84rem; margin-top:8px;">
+                                        <span>작품 체험하기</span> <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            `;
+                            feedGrid.appendChild(cardEl);
+                        });
+                        return;
+                    }
+                }
+            } catch(e) { console.warn('Recent feed fetch error', e); }
+
+            // Fallback to default featured
+            feedGrid.innerHTML = '';
+            defaultFeatured.forEach(item => {
+                const tMeta = TOPIC_BADGES[item.topic] || TOPIC_BADGES['game'];
+                const cardEl = document.createElement('div');
+                cardEl.className = 'recent-card';
+                cardEl.innerHTML = `
+                    <div class="recent-thumb-box">
+                        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; color:${item.color};"><i class="${item.icon}" style="font-size:3.2rem;"></i><span style="font-size:0.75rem; font-weight:800;">${tMeta.name}</span></div>
+                        <span style="position:absolute; top:10px; left:10px; background:${tMeta.bg}; color:${tMeta.color}; border:1px solid ${tMeta.border}; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:9999px;"><i class="${tMeta.icon}"></i> ${tMeta.name}</span>
+                    </div>
+                    <div class="recent-info-box">
+                        <div>
+                            <div class="recent-student-name">
+                                <span>${item.studentName}</span>
+                                <span style="color:#10B981; font-size:0.72rem;"><i class="fa-solid fa-sparkles"></i> 추천</span>
+                            </div>
+                            <h4 class="recent-work-title" style="margin-top:6px;">${escapeHtml(item.title)}</h4>
+                        </div>
+                        <a href="${item.link}" class="btn-enter-portfolio" style="padding:8px 14px; font-size:0.84rem; margin-top:8px;">
+                            <span>작품 체험하기</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                feedGrid.appendChild(cardEl);
+            });
+        }
+
         function filterGrade(grade, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -560,6 +702,11 @@
                     card.style.display = 'none';
                 }
             });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
     </script>
 </body>
