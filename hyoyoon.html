@@ -50,7 +50,7 @@
         .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important; gap: 24px; width: 100%; }
+        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important; gap: 22px; width: 100%; }
         .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
@@ -233,7 +233,7 @@
         let isReadingFiles = false;
         let currentFullscreenItem = null;
 
-        const DB_NAME = '2026sy_StudentStorageDB';
+        const DB_NAME = '2026sy_StudentStorageDB_v4';
         const DB_VERSION = 1;
         let dbInstance = null;
 
@@ -422,16 +422,20 @@
         }
 
         function getDocumentViewerHtml(item) {
-            const d = item.data || '';
-            const isPdf = item.type === 'pdf' || (typeof d === 'string' && (d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf')));
-            const isPptx = item.type === 'pptx' || (typeof d === 'string' && (d.includes('presentationml') || d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')));
-            const isImage = item.type === 'image' || (typeof d === 'string' && (d.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(d.trim())));
-            const isVideo = item.type === 'video' || (typeof d === 'string' && (d.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(d.trim())));
+            const d = (typeof item.data === 'string') ? item.data.trim() : '';
 
-            if (isPdf) {
+            // 1. If it contains HTML markup or code structure, ALWAYS execute as iframe!
+            if (d.startsWith('<!DOCTYPE') || d.startsWith('<html') || d.startsWith('<div') || d.startsWith('<script') || (d.startsWith('<') && d.includes('>'))) {
+                return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
+            }
+
+            // 2. Exact PDF format
+            if (item.type === 'pdf' || d.startsWith('data:application/pdf') || (d.startsWith('http') && d.toLowerCase().endsWith('.pdf'))) {
                 return `<iframe class="slot-iframe" src="${d}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
             }
-            if (isPptx) {
+
+            // 3. Exact PPTX format
+            if (item.type === 'pptx' || d.includes('presentationml') || (d.startsWith('http') && (d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')))) {
                 return `
                     <div style="text-align:center; padding:24px 16px; background:#FFF7ED; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
                         <i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:#EA580C;"></i>
@@ -441,12 +445,18 @@
                     </div>
                 `;
             }
-            if (isImage) {
+
+            // 4. Exact Image format
+            if (item.type === 'image' || d.startsWith('data:image/') || (d.startsWith('http') && /\.(jpe?g|png|gif|webp|svg)$/i.test(d))) {
                 return `<img src="${d}" alt="${escapeHtmlAttr(item.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
             }
-            if (isVideo) {
+
+            // 5. Exact Video format
+            if (item.type === 'video' || d.startsWith('data:video/') || (d.startsWith('http') && /\.(mp4|webm|mov)$/i.test(d))) {
                 return `<video controls style="width:100%; max-height:100%;" src="${d}"></video>`;
             }
+
+            // Default fallback: iframe
             return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
         }
 
@@ -537,6 +547,7 @@
                             </button>
                         </div>
                     `;
+
                 }
 
                 grid.appendChild(card);
@@ -559,15 +570,16 @@
             const fsBody = document.getElementById('fullscreenBody');
             fsBody.innerHTML = '';
 
-            const d = activeItem.data || '';
-            const isPdf = activeItem.type === 'pdf' || (typeof d === 'string' && (d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf')));
-            const isPptx = activeItem.type === 'pptx' || (typeof d === 'string' && (d.includes('presentationml') || d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')));
-            const isImage = activeItem.type === 'image' || (typeof d === 'string' && (d.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(d.trim())));
-            const isVideo = activeItem.type === 'video' || (typeof d === 'string' && (d.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(d.trim())));
-
-            if (isPdf) {
+            const d = (typeof activeItem.data === 'string') ? activeItem.data.trim() : '';
+            if (d.startsWith('<!DOCTYPE') || d.startsWith('<html') || d.startsWith('<div') || d.startsWith('<script') || (d.startsWith('<') && d.includes('>'))) {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'fullscreen-iframe';
+                iframe.sandbox = 'allow-scripts allow-forms allow-modals allow-same-origin';
+                iframe.srcdoc = d;
+                fsBody.appendChild(iframe);
+            } else if (activeItem.type === 'pdf' || d.startsWith('data:application/pdf') || (d.startsWith('http') && d.toLowerCase().endsWith('.pdf'))) {
                 fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${d}"></iframe>`;
-            } else if (isPptx) {
+            } else if (activeItem.type === 'pptx' || d.includes('presentationml') || (d.startsWith('http') && (d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')))) {
                 fsBody.innerHTML = `
                     <div style="text-align:center; padding:40px;">
                         <i class="fa-solid fa-file-powerpoint" style="font-size:5.5rem; color:#EA580C; margin-bottom:16px;"></i>
@@ -578,9 +590,9 @@
                         </a>
                     </div>
                 `;
-            } else if (isImage) {
+            } else if (activeItem.type === 'image' || d.startsWith('data:image/') || (d.startsWith('http') && /\.(jpe?g|png|gif|webp|svg)$/i.test(d))) {
                 fsBody.innerHTML = `<img src="${d}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
-            } else if (isVideo) {
+            } else if (activeItem.type === 'video' || d.startsWith('data:video/') || (d.startsWith('http') && /\.(mp4|webm|mov)$/i.test(d))) {
                 fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${d}"></video>`;
             } else {
                 const iframe = document.createElement('iframe');
@@ -656,8 +668,9 @@
                 const rawCode = document.getElementById('slotCodeInput').value.trim();
                 if (rawCode) {
                     let fType = 'html';
-                    if (rawCode.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(rawCode.trim())) fType = 'image';
-                    else if (rawCode.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(rawCode.trim())) fType = 'video';
+                    if (rawCode.startsWith('<!DOCTYPE') || rawCode.startsWith('<html') || rawCode.startsWith('<div') || (rawCode.startsWith('<') && rawCode.includes('>'))) fType = 'html';
+                    else if (rawCode.startsWith('data:image/') || (rawCode.startsWith('http') && /\.(jpe?g|png|gif|webp|svg)$/i.test(rawCode.trim()))) fType = 'image';
+                    else if (rawCode.startsWith('data:video/') || (rawCode.startsWith('http') && /\.(mp4|webm|mov)$/i.test(rawCode.trim()))) fType = 'video';
                     else if (rawCode.startsWith('data:application/pdf') || rawCode.toLowerCase().endsWith('.pdf')) fType = 'pdf';
                     else if (rawCode.includes('presentationml') || /\.pptx?$/i.test(rawCode.trim())) fType = 'pptx';
                     items.push({ name: title, type: fType, data: rawCode });
