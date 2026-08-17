@@ -27,7 +27,8 @@
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background: #FFFFFF !important; background-color: #FFFFFF !important; color: #1E293B !important; line-height: 1.6; padding: 20px 14px; min-height: 100vh; position: relative; }
+        html, body { width: 100% !important; background: #FFFFFF !important; background-color: #FFFFFF !important; color: #1E293B !important; font-family: 'Noto Sans KR', sans-serif; line-height: 1.6; min-height: 100vh; position: relative; }
+        body { padding: 20px 14px; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
         .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; position: relative; }
@@ -49,7 +50,7 @@
         .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important; gap: 24px; width: 100%; }
         .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
@@ -660,9 +661,8 @@
                 saveBtn.disabled = true;
                 saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 업로드 중...';
                 for (const fItem of multiFilePayloads) {
-                    // Keep local Base64 for instant zero-delay rendering, while uploading to GitHub in background!
                     if (fItem.data && fItem.data.startsWith('data:')) {
-                        uploadFileToGitHub(fItem.name, fItem.data); // non-blocking background upload
+                        uploadFileToGitHub(fItem.name, fItem.data);
                     }
                     items.push({
                         name: fItem.name,
