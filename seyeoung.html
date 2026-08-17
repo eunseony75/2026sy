@@ -236,23 +236,18 @@
         const DB_KEY = '2026sy_student_storage_' + STUDENT_INFO.id;
 
         async function saveStorage(val) {
-            try {
-                localStorage.setItem(DB_KEY, JSON.stringify(val));
-            } catch(e) {}
+            try { localStorage.setItem(DB_KEY, JSON.stringify(val)); } catch(e) {}
         }
 
         async function loadStorage() {
-            try {
-                const raw = localStorage.getItem(DB_KEY);
-                if (raw) return JSON.parse(raw);
-            } catch(e) {}
+            try { const raw = localStorage.getItem(DB_KEY); if (raw) return JSON.parse(raw); } catch(e) {}
             return null;
         }
 
-        async function uploadFileToGitHub(fileName, base64Content) {
+        async function uploadFileToGitHub(topicId, fileName, base64Content) {
             const cleanBase64 = base64Content.replace(/^data:[^;]+;base64,/, '');
             const safeFileName = encodeURIComponent(fileName.replace(/\s+/g, '_'));
-            const targetPath = `uploads/${STUDENT_INFO.id}_${Date.now()}_${safeFileName}`;
+            const targetPath = `uploads/${STUDENT_INFO.id}_${topicId}_${Date.now()}_${safeFileName}`;
             const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${targetPath}`;
 
             try {
@@ -264,7 +259,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        message: `Upload ${fileName} for ${STUDENT_INFO.name}`,
+                        message: `Upload ${topicId} [${fileName}] for ${STUDENT_INFO.name}`,
                         content: cleanBase64
                     })
                 });
@@ -286,27 +281,45 @@
                 const myFiles = files.filter(f => f.name.startsWith(STUDENT_INFO.id + '_'));
                 if (!myFiles.length) return;
 
-                const imageItems = [];
-                const slideItems = [];
+                const topicGroups = {};
+                TOPICS.forEach(t => topicGroups[t.id] = []);
 
                 myFiles.forEach(f => {
                     const ext = f.name.split('.').pop().toLowerCase();
                     const fileUrl = `https://eunseony75.github.io/2026sy/${f.path}`;
-                    const rawName = decodeURIComponent(f.name.replace(STUDENT_INFO.id + '_', '').replace(/^\d+_/, ''));
-                    if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) {
-                        imageItems.push({ name: rawName, type: 'image', data: fileUrl });
-                    } else if (['pdf', 'ppt', 'pptx'].includes(ext)) {
-                        slideItems.push({ name: rawName, type: (ext === 'pdf' ? 'pdf' : 'pptx'), data: fileUrl });
+                    const rawName = decodeURIComponent(f.name.replace(STUDENT_INFO.id + '_', '').replace(/^[a-z0-9_-]+_\d+_/, ''));
+                    let assignedTopic = '';
+                    for (const t of TOPICS) {
+                        if (f.name.includes(`_${t.id}_`)) { assignedTopic = t.id; break; }
+                    }
+                    if (!assignedTopic) {
+                        if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) assignedTopic = 'ai-image';
+                        else if (['pdf', 'ppt', 'pptx'].includes(ext)) assignedTopic = 'ai-slide';
+                        else if (['mp4', 'webm', 'mov'].includes(ext)) assignedTopic = 'ai-video';
+                        else assignedTopic = 'game';
+                    }
+                    let fType = 'html';
+                    if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) fType = 'image';
+                    else if (['pdf'].includes(ext)) fType = 'pdf';
+                    else if (['ppt', 'pptx'].includes(ext)) fType = 'pptx';
+                    else if (['mp4', 'webm', 'mov'].includes(ext)) fType = 'video';
+
+                    if (topicGroups[assignedTopic]) {
+                        topicGroups[assignedTopic].push({ name: rawName, type: fType, data: fileUrl });
                     }
                 });
 
-                if (imageItems.length > 0 && !studentProjectsMap['ai-image']) {
-                    studentProjectsMap['ai-image'] = { title: `${STUDENT_INFO.name} 학생의 AI 이미지 작품`, items: imageItems, updatedAt: '2026-08-17' };
+                for (const tId in topicGroups) {
+                    if (topicGroups[tId].length > 0 && !studentProjectsMap[tId]) {
+                        const topicObj = TOPICS.find(t => t.id === tId);
+                        studentProjectsMap[tId] = {
+                            title: `${STUDENT_INFO.name} 학생의 ${topicObj ? topicObj.name : tId} 과제`,
+                            items: topicGroups[tId],
+                            updatedAt: '2026-08-17'
+                        };
+                    }
                 }
-                if (slideItems.length > 0 && !studentProjectsMap['ai-slide']) {
-                    studentProjectsMap['ai-slide'] = { title: `${STUDENT_INFO.name} 학생의 슬라이드 과제`, items: slideItems, updatedAt: '2026-08-17' };
-                }
-            } catch(e) { console.warn('GitHub uploads sync check', e); }
+            } catch(e) { console.warn('Universal Cloud uploads sync check', e); }
         }
 
         function decodeUtf8Base64(b64) {
@@ -659,7 +672,7 @@
                 saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 동기화 중...';
                 for (const fItem of multiFilePayloads) {
                     if (fItem.data && fItem.data.startsWith('data:')) {
-                        uploadFileToGitHub(fItem.name, fItem.data);
+                        uploadFileToGitHub(topicId, fItem.name, fItem.data);
                     }
                     items.push({
                         name: fItem.name,
@@ -696,7 +709,7 @@
             await saveStorage(studentProjectsMap);
             closeModal();
             renderSlots();
-            showToast(`[${title}] 파일이 영구 저장되었습니다!`);
+            showToast(`[${title}] 파일이 깃허브에 영구 저장되었습니다!`);
         }
 
         async function deleteSlot(topicId) {
