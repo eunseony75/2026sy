@@ -73,9 +73,9 @@
         .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: flex-start; z-index: 99999; padding: 30px 14px; overflow-y: auto; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: flex-start; z-index: 99999; padding: 20px 14px; overflow-y: auto; }
         .modal-overlay.active { display: flex; }
-        .modal-container { background: #FFFFFF; border-radius: 22px; width: 100%; max-width: 660px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); margin: 20px auto 40px auto; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-container { background: #FFFFFF; border-radius: 22px; width: 100%; max-width: 660px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); margin: 10px auto 40px auto; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes popIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); background: #F8FAFC; border-top-left-radius: 22px; border-top-right-radius: 22px; }
         .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
@@ -222,7 +222,56 @@
         let studentProjectsMap = {};
         let carouselIndexes = {};
         let multiFilePayloads = [];
+        let isReadingFiles = false;
         let currentFullscreenItem = null;
+
+        const DB_NAME = '2026sy_StudentStorageDB';
+        const DB_VERSION = 1;
+        let dbInstance = null;
+
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                if (dbInstance) return resolve(dbInstance);
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('student_slots')) {
+                        db.createObjectStore('student_slots');
+                    }
+                };
+                req.onsuccess = (e) => { dbInstance = e.target.result; resolve(dbInstance); };
+                req.onerror = (e) => { console.warn('IndexedDB unavailable, falling back'); resolve(null); };
+            });
+        }
+
+        async function saveToDB(key, val) {
+            const db = await openDB();
+            if (!db) {
+                try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){}
+                return;
+            }
+            return new Promise((resolve) => {
+                const tx = db.transaction('student_slots', 'readwrite');
+                const store = tx.objectStore('student_slots');
+                store.put(val, key);
+                tx.oncomplete = () => resolve(true);
+                tx.onerror = () => resolve(false);
+            });
+        }
+
+        async function loadFromDB(key) {
+            const db = await openDB();
+            if (!db) {
+                try { const item = localStorage.getItem(key); return item ? JSON.parse(item) : null; } catch(e){ return null; }
+            }
+            return new Promise((resolve) => {
+                const tx = db.transaction('student_slots', 'readonly');
+                const store = tx.objectStore('student_slots');
+                const req = store.get(key);
+                req.onsuccess = () => resolve(req.result || null);
+                req.onerror = () => resolve(null);
+            });
+        }
 
         function decodeUtf8Base64(b64) {
             try {
@@ -233,8 +282,8 @@
             } catch(e) { return ''; }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadStudentProjects();
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadStudentProjects();
             renderSlots();
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeFullscreen(); closeModal(); } });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
@@ -244,6 +293,8 @@
                     newWin.document.write('<img src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
                 } else if (currentFullscreenItem.type === 'video') {
                     newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
+                } else if (currentFullscreenItem.type === 'pdf') {
+                    newWin.location.href = currentFullscreenItem.data;
                 } else {
                     newWin.document.write(currentFullscreenItem.data);
                 }
@@ -271,6 +322,9 @@
             const listContainer = document.getElementById('fileListPreview');
             listContainer.innerHTML = '';
             multiFilePayloads = [];
+            isReadingFiles = true;
+            let readCount = 0;
+
             files.forEach((file) => {
                 const ext = file.name.split('.').pop().toLowerCase();
                 let fType = 'html';
@@ -284,8 +338,14 @@
                     multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result });
                     const tag = document.createElement('div');
                     tag.className = 'file-item-tag';
-                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem;">${fType.toUpperCase()}</span>`;
+                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()}</span>`;
                     listContainer.appendChild(tag);
+                    readCount++;
+                    if (readCount === files.length) isReadingFiles = false;
+                };
+                reader.onerror = () => {
+                    readCount++;
+                    if (readCount === files.length) isReadingFiles = false;
                 };
                 if (['html', 'htm'].includes(ext)) {
                     reader.readAsText(file);
@@ -295,7 +355,7 @@
             });
         }
 
-        function loadStudentProjects() {
+        async function loadStudentProjects() {
             studentProjectsMap = {};
             const el_code_meal_app = document.getElementById('code_meal_app');
             if (el_code_meal_app) {
@@ -306,25 +366,18 @@
                     updatedAt: '2026-07-01'
                 };
             }
-            const saved = localStorage.getItem('2026sy_student_slots_' + STUDENT_INFO.id);
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    for (const k in parsed) {
-                        if (parsed[k] && parsed[k].items && parsed[k].items.length > 0) {
-                            studentProjectsMap[k] = parsed[k];
-                        }
+            const dbData = await loadFromDB('2026sy_student_slots_' + STUDENT_INFO.id);
+            if (dbData) {
+                for (const k in dbData) {
+                    if (dbData[k] && dbData[k].items && dbData[k].items.length > 0) {
+                        studentProjectsMap[k] = dbData[k];
                     }
-                } catch (e) {}
+                }
             }
         }
 
-        function saveStudentProjects() {
-            try {
-                localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
-            } catch(e) {
-                console.warn('LocalStorage limit exceeded, data stored in session.');
-            }
+        async function saveStudentProjects() {
+            await saveToDB('2026sy_student_slots_' + STUDENT_INFO.id, studentProjectsMap);
         }
 
         function renderSlots() {
@@ -472,6 +525,7 @@
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
             multiFilePayloads = [];
+            isReadingFiles = false;
             document.getElementById('fileUploadInput').value = '';
             document.getElementById('fileListPreview').innerHTML = '';
             switchUploadTab('file');
@@ -483,6 +537,9 @@
             } else {
                 document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 과제`;
             }
+            const saveBtn = document.getElementById('saveSubmitBtn');
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = '<i class="fa-solid fa-check"></i> 저장하기';
             document.getElementById('slotModal').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -491,11 +548,19 @@
             document.getElementById('slotModal').classList.remove('active');
         }
 
-        function handleSaveSlot(e) {
-            if (e) e.preventDefault();
+        async function handleSaveSlot(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            const saveBtn = document.getElementById('saveSubmitBtn');
+            if (isReadingFiles) {
+                saveBtn.disabled = true;
+                saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 파일 읽는 중...';
+                while(isReadingFiles) { await new Promise(r => setTimeout(r, 100)); }
+            }
+
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             let items = [];
+
             if (multiFilePayloads && multiFilePayloads.length > 0) {
                 items = multiFilePayloads;
             } else {
@@ -509,22 +574,33 @@
                     items.push({ name: title, type: fType, data: rawCode });
                 }
             }
-            if (!title || !items.length) { alert('작품 제목과 업로드할 파일을 등록해주세요.'); return; }
+
+            if (!title || !items.length) {
+                alert('작품 제목과 업로드할 파일을 등록해주세요.');
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="fa-solid fa-check"></i> 저장하기';
+                return;
+            }
+
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 저장 중...';
+
             studentProjectsMap[topicId] = {
                 title,
                 items,
                 updatedAt: new Date().toISOString().split('T')[0]
             };
-            saveStudentProjects();
+
+            await saveStudentProjects();
             closeModal();
             renderSlots();
             showToast(`[${title}] 파일이 성공적으로 등록되었습니다!`);
         }
 
-        function deleteSlot(topicId) {
+        async function deleteSlot(topicId) {
             if (!confirm('이 프로젝트 결과물을 삭제하시겠습니까?')) return;
             delete studentProjectsMap[topicId];
-            saveStudentProjects();
+            await saveStudentProjects();
             renderSlots();
             showToast('삭제되었습니다.');
         }
