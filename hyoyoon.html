@@ -139,7 +139,7 @@
         <div class="slots-header">
             <div>
                 <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 프로젝트 결과물 업로드</h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">퀴즈, 게임, 앱, 이미지, 동영상, 슬라이드 등 프로젝트 결과물을 직접 체험하고 파일을 업로드할 수 있습니다.</p>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">퀴즈, 게임, 앱, 이미지, 동영상, 슬라이드(PDF/PPTX) 등 프로젝트 결과물을 직접 체험하고 실시간으로 열람할 수 있습니다.</p>
             </div>
         </div>
 
@@ -154,7 +154,7 @@
                     <span style="font-size: 0.82rem; color: var(--text-muted);">3학년 5반 김효윤 학생 작품</span>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기</button>
+                    <button class="btn btn-outline btn-sm" id="fullscreenNewTabBtn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 새 창에서 열기 / 다운로드</button>
                     <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
@@ -183,7 +183,7 @@
                         <div class="drop-zone" onclick="document.getElementById('fileUploadInput').click()">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <p style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">파일을 클릭하여 선택하거나 여기로 끌어다 놓으세요</p>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX), 웹 소스(HTML) 모두 지원</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX 바로보기 지원), 웹 소스(HTML) 모두 지원</span>
                             <input type="file" id="fileUploadInput" multiple style="display:none;" accept="*/*" onchange="handleMultipleFiles(event)">
                         </div>
                         <div id="fileListPreview" class="file-list-preview"></div>
@@ -245,7 +245,7 @@
                     if (!db.objectStoreNames.contains('student_slots')) db.createObjectStore('student_slots');
                 };
                 req.onsuccess = (e) => { dbInstance = e.target.result; resolve(dbInstance); };
-                req.onerror = () => resolve(null);
+                req.onerror = (e) => { resolve(null); };
             });
         }
 
@@ -280,7 +280,8 @@
 
         async function uploadFileToGitHub(fileName, base64Content) {
             const cleanBase64 = base64Content.replace(/^data:[^;]+;base64,/, '');
-            const targetPath = `uploads/${STUDENT_INFO.id}_${Date.now()}_${encodeURIComponent(fileName)}`;
+            const safeFileName = encodeURIComponent(fileName.replace(/\s+/g, '_'));
+            const targetPath = `uploads/${STUDENT_INFO.id}_${Date.now()}_${safeFileName}`;
             const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${targetPath}`;
 
             try {
@@ -318,17 +319,21 @@
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeFullscreen(); closeModal(); } });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenItem) return;
-                const newWin = window.open('', '_blank');
-                if (currentFullscreenItem.type === 'image') {
-                    newWin.document.write('<img src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
-                } else if (currentFullscreenItem.type === 'video') {
-                    newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
-                } else if (currentFullscreenItem.type === 'pdf') {
-                    newWin.location.href = currentFullscreenItem.data;
+                if (currentFullscreenItem.data && currentFullscreenItem.data.startsWith('http')) {
+                    window.open(currentFullscreenItem.data, '_blank');
                 } else {
-                    newWin.document.write(currentFullscreenItem.data);
+                    const newWin = window.open('', '_blank');
+                    if (currentFullscreenItem.type === 'image') {
+                        newWin.document.write('<img src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
+                    } else if (currentFullscreenItem.type === 'video') {
+                        newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
+                    } else if (currentFullscreenItem.type === 'pdf') {
+                        newWin.location.href = currentFullscreenItem.data;
+                    } else {
+                        newWin.document.write(currentFullscreenItem.data);
+                    }
+                    newWin.document.close();
                 }
-                newWin.document.close();
             });
         });
 
@@ -368,7 +373,7 @@
                     multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result, rawFile: file });
                     const tag = document.createElement('div');
                     tag.className = 'file-item-tag';
-                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()}</span>`;
+                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()} (바로보기 지원)</span>`;
                     listContainer.appendChild(tag);
                     readCount++;
                     if (readCount === files.length) isReadingFiles = false;
@@ -419,6 +424,27 @@
             await saveToDB('2026sy_student_slots_' + STUDENT_INFO.id, studentProjectsMap);
         }
 
+        function getDocumentViewerHtml(item) {
+            if (item.type === 'pdf' || (typeof item.data === 'string' && (item.data.startsWith('data:application/pdf') || item.data.toLowerCase().endsWith('.pdf')))) {
+                return `<iframe class="slot-iframe" src="${item.data}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
+            }
+            if (item.type === 'pptx' || (typeof item.data === 'string' && item.data.toLowerCase().match(/\.pptx?/))) {
+                if (item.data.startsWith('http')) {
+                    const msViewerUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(item.data);
+                    return `<iframe class="slot-iframe" src="${msViewerUrl}"></iframe>`;
+                } else {
+                    return `<div style="text-align:center; padding:30px 16px; background:#FFF7ED; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;"><i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:#EA580C;"></i><p style="font-weight:800; font-size:1.05rem; color:#1E293B;">${escapeHtml(item.name || '파워포인트 슬라이드')}</p><span style="font-size:0.82rem; color:#C2410C; font-weight:600;">PPTX 슬라이드쇼 바로보기 준비 완료</span></div>`;
+                }
+            }
+            if (item.type === 'image' || (typeof item.data === 'string' && (item.data.startsWith('data:image/') || item.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
+                return `<img src="${item.data}" alt="${escapeHtmlAttr(item.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
+            }
+            if (item.type === 'video' || (typeof item.data === 'string' && (item.data.startsWith('data:video/') || item.data.match(/\.(mp4|webm|mov)/i)))) {
+                return `<video controls style="width:100%; max-height:100%;" src="${item.data}"></video>`;
+            }
+            return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(item.data)}"></iframe>`;
+        }
+
         function renderSlots() {
             const grid = document.getElementById('slotsGrid');
             grid.innerHTML = '';
@@ -433,18 +459,7 @@
                     const totalItems = project.items.length;
                     const activeItem = project.items[curIdx % totalItems];
 
-                    let mediaHtml = '';
-                    if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
-                        mediaHtml = `<img src="${activeItem.data}" alt="${escapeHtmlAttr(activeItem.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
-                    } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:video/') || activeItem.data.match(/\.(mp4|webm|mov)/i)))) {
-                        mediaHtml = `<video controls style="width:100%; max-height:100%;" src="${activeItem.data}"></video>`;
-                    } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.match(/\.pdf/i)))) {
-                        mediaHtml = `<iframe class="slot-iframe" src="${activeItem.data}"></iframe>`;
-                    } else if (activeItem.type === 'pptx' || (typeof activeItem.data === 'string' && activeItem.data.match(/\.pptx?/i))) {
-                        mediaHtml = `<div style="text-align:center; padding:20px;"><i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:var(--p-slide-text); margin-bottom:10px;"></i><p style="font-weight:700; font-size:1rem;">${escapeHtml(activeItem.name || project.title)}</p><span style="font-size:0.82rem; color:var(--text-muted);">파워포인트 슬라이드 파일 등록됨</span></div>`;
-                    } else {
-                        mediaHtml = `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(activeItem.data)}"></iframe>`;
-                    }
+                    const mediaHtml = getDocumentViewerHtml(activeItem);
 
                     let navControls = '';
                     if (totalItems > 1) {
@@ -467,7 +482,7 @@
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
-                                        <i class="fa-solid fa-expand"></i> 크게 체험하기
+                                        <i class="fa-solid fa-expand"></i> 크게 보기 / 슬라이드쇼
                                     </button>
                                 </div>
                                 ${mediaHtml}
@@ -476,7 +491,7 @@
                         </div>
                         <div class="slot-card-footer">
                             <button class="btn btn-secondary btn-sm play-fullscreen-btn" data-topic="${topic.id}">
-                                <i class="fa-solid fa-play"></i> 전체화면 실행
+                                <i class="fa-solid fa-play"></i> 전체화면 실행 / 보기
                             </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
@@ -539,12 +554,19 @@
             const fsBody = document.getElementById('fullscreenBody');
             fsBody.innerHTML = '';
 
-            if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
+            if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.toLowerCase().endsWith('.pdf')))) {
+                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
+            } else if (activeItem.type === 'pptx' || (typeof activeItem.data === 'string' && activeItem.data.toLowerCase().match(/\.pptx?/))) {
+                if (activeItem.data.startsWith('http')) {
+                    const msViewerUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(activeItem.data);
+                    fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${msViewerUrl}"></iframe>`;
+                } else {
+                    fsBody.innerHTML = `<div style="text-align:center; padding:40px;"><i class="fa-solid fa-file-powerpoint" style="font-size:5rem; color:#EA580C; margin-bottom:16px;"></i><h2>${escapeHtml(activeItem.name || project.title)}</h2><p style="margin:16px 0; color:#475569;">파워포인트 슬라이드 파일이 안전하게 등록되었습니다.</p><a href="${activeItem.data}" download="${escapeHtmlAttr(activeItem.name || 'presentation.pptx')}" class="btn btn-primary"><i class="fa-solid fa-download"></i> PPTX 슬라이드 다운로드 및 열기</a></div>`;
+                }
+            } else if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
                 fsBody.innerHTML = `<img src="${activeItem.data}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
             } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:video/') || activeItem.data.match(/\.(mp4|webm|mov)/i)))) {
                 fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${activeItem.data}"></video>`;
-            } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.match(/\.pdf/i)))) {
-                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
             } else {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'fullscreen-iframe';
@@ -642,7 +664,7 @@
             await saveStudentProjects();
             closeModal();
             renderSlots();
-            showToast(`[${title}] 깃허브 클라우드에 성공적으로 등록되었습니다!`);
+            showToast(`[${title}] 파일이 등록되어 바로보기가 지원됩니다!`);
         }
 
         async function deleteSlot(topicId) {
