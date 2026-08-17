@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-main: #FFFFFF !important; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
             --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
@@ -27,10 +27,10 @@
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background: #FFFFFF !important; background-color: #FFFFFF !important; color: #1E293B !important; line-height: 1.6; padding: 20px 14px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #FFFFFF !important; background-color: #FFFFFF !important; color: #1E293B !important; line-height: 1.6; padding: 20px 14px; min-height: 100vh; position: relative; }
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-        .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+        .portfolio-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; position: relative; }
         .profile-banner { background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-sm); }
         .profile-left { display: flex; align-items: center; gap: 16px; }
         .profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
@@ -67,15 +67,15 @@
         .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
         .empty-slot-box i { font-size: 2.4rem; color: var(--p-quiz-accent); }
         .slot-card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px; }
-        .fullscreen-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.78); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; }
+        .fullscreen-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.82); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; }
         .fullscreen-modal.active { display: flex; }
         .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
         .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
         .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-start; z-index: 9999; padding: 50px 16px; overflow-y: auto; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: flex-start; z-index: 99999; padding: 30px 14px; overflow-y: auto; }
         .modal-overlay.active { display: flex; }
-        .modal-container { background: #FFFFFF; border-radius: 22px; width: 100%; max-width: 660px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); margin: auto; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-container { background: #FFFFFF; border-radius: 22px; width: 100%; max-width: 660px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); margin: 20px auto 40px auto; animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes popIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); background: #F8FAFC; border-top-left-radius: 22px; border-top-right-radius: 22px; }
         .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
@@ -86,13 +86,13 @@
         .drop-zone { border: 2px dashed var(--p-quiz-border); background: #F8FAFC; border-radius: var(--radius-md); padding: 30px 20px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .drop-zone:hover { background: #F5F3FF; border-color: var(--p-quiz-accent); }
         .drop-zone i { font-size: 2.6rem; color: var(--p-quiz-accent); }
-        .file-list-preview { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; max-height: 140px; overflow-y: auto; }
+        .file-list-preview { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; max-height: 150px; overflow-y: auto; }
         .file-item-tag { display: flex; justify-content: space-between; align-items: center; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 8px 14px; border-radius: var(--radius-md); font-size: 0.84rem; color: #065F46; font-weight: 600; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-label { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); }
         .form-control { width: 100%; padding: 10px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.9rem; }
         .form-textarea { font-family: 'Fira Code', monospace; min-height: 130px; resize: vertical; }
-        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 12000; box-shadow: var(--shadow-lg); }
+        .toast-box { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFF; padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600; display: none; z-index: 120000; box-shadow: var(--shadow-lg); }
         .toast-box.active { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
@@ -166,9 +166,9 @@
         <div class="modal-container">
             <div class="modal-header">
                 <h3 id="modalTopicTitle" style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">프로젝트 결과물 등록</h3>
-                <button class="btn btn-outline btn-sm" onclick="closeModal()">✕</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="closeModal()">✕</button>
             </div>
-            <form id="slotForm">
+            <form id="slotForm" onsubmit="handleSaveSlot(event)">
                 <input type="hidden" id="modalTopicId" value="">
                 <div class="modal-body">
                     <div class="form-group">
@@ -183,8 +183,8 @@
                         <div class="drop-zone" onclick="document.getElementById('fileUploadInput').click()">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <p style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">파일을 클릭하여 선택하거나 여기로 끌어다 놓으세요</p>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX), 웹 소스(HTML) 여러 개 선택 가능</span>
-                            <input type="file" id="fileUploadInput" multiple style="display:none;" accept="image/*,video/*,application/pdf,.ppt,.pptx,.html,.htm" onchange="handleMultipleFiles(event)">
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX), 웹 소스(HTML) 모두 지원</span>
+                            <input type="file" id="fileUploadInput" multiple style="display:none;" accept="*/*" onchange="handleMultipleFiles(event)">
                         </div>
                         <div id="fileListPreview" class="file-list-preview"></div>
                     </div>
@@ -197,7 +197,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline" onclick="closeModal()">취소</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> 저장하기</button>
+                    <button type="submit" class="btn btn-primary" id="saveSubmitBtn"><i class="fa-solid fa-check"></i> 저장하기</button>
                 </div>
             </form>
         </div>
@@ -205,7 +205,6 @@
 
     <div class="toast-box" id="toast"><i class="fa-solid fa-check" style="color: #34D399;"></i> <span id="toastMsg">성공적으로 저장되었습니다!</span></div>
 
-    <!-- [100% 스타일 격리형 소스코드 보관소] -->
     <script type="text/plain" id="code_meal_app">PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImtvIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+7Iit7J2Y7Jes7J6Q7KSR7ZWZ6rWQIOyYpOuKmOydmCDquInsi508L3RpdGxlPgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLnRhaWx3aW5kY3NzLmNvbSI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGFzPSJzdHlsZSIgY3Jvc3NvcmlnaW4gaHJlZj0iaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL29yaW9uY2FjdHVzL3ByZXRlbmRhcmRAdjEuMy45L2Rpc3Qvd2ViL3N0YXRpYy9wcmV0ZW5kYXJkLmNzcyIgLz4KICAgIDxzdHlsZT4KICAgICAgICBib2R5IHsKICAgICAgICAgICAgZm9udC1mYW1pbHk6ICdQcmV0ZW5kYXJkJywgc2Fucy1zZXJpZjsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5IGNsYXNzPSJiZy1hbWJlci01MC82MCBtaW4taC1zY3JlZW4gZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcC00Ij4KCiAgICA8ZGl2IGNsYXNzPSJ3LWZ1bGwgbWF4LXctbWQgYmctd2hpdGUgcm91bmRlZC0zeGwgc2hhZG93LXhsIHNoYWRvdy1vcmFuZ2UtMTAwLzUwIGJvcmRlciBib3JkZXItb3JhbmdlLTEwMCBwLTYgc3BhY2UteS02Ij4KICAgICAgICAKICAgICAgICA8ZGl2IGNsYXNzPSJ0ZXh0LWNlbnRlciBzcGFjZS15LTIiPgogICAgICAgICAgICA8aDEgY2xhc3M9InRleHQtMnhsIGZvbnQtYmxhY2sgdGV4dC1zbGF0ZS04MDAgdHJhY2tpbmctdGlnaHQiPgogICAgICAgICAgICAgICAg8J+PqyDsiK3snZjsl6zsnpDspJHtlZnqtZAg7Jik64qY7J2YIOq4ieyLnQogICAgICAgICAgICA8L2gxPgogICAgICAgICAgICA8cCBjbGFzcz0idGV4dC14cyBmb250LW1lZGl1bSB0ZXh0LW9yYW5nZS00MDAgYmctb3JhbmdlLTUwIGlubGluZS1ibG9jayBweC0zIHB5LTEgcm91bmRlZC1mdWxsIj4KICAgICAgICAgICAgICAgIOunm+yeiOuKlCDquInsi50g66i56rOgIO2emOuCtOyalCEg4pyoCiAgICAgICAgICAgIDwvcD4KICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGhyIGNsYXNzPSJib3JkZXItZGFzaGVkIGJvcmRlci1vcmFuZ2UtMTAwIj4KCiAgICAgICAgPGRpdiBjbGFzcz0iZmxleCBnYXAtMiBpdGVtcy1jZW50ZXIiPgogICAgICAgICAgICA8aW5wdXQgdHlwZT0iZGF0ZSIgaWQ9Im1lYWwtZGF0ZSIgCiAgICAgICAgICAgICAgICAgICBjbGFzcz0iZmxleC0xIHB4LTQgcHktMyByb3VuZGVkLTJ4bCBiZy1zbGF0ZS01MCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCB0ZXh0LXNsYXRlLTcwMCBmb250LXNlbWlib2xkIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1vcmFuZ2UtMzAwIGZvY3VzOmJnLXdoaXRlIHRyYW5zaXRpb24tYWxsIj4KICAgICAgICAgICAgPGJ1dHRvbiBpZD0ic2VhcmNoLWJ0biIgCiAgICAgICAgICAgICAgICAgICAgY2xhc3M9InB4LTUgcHktMyByb3VuZGVkLTJ4bCBiZy1vcmFuZ2UtNDAwIGhvdmVyOmJnLW9yYW5nZS01MDAgdGV4dC13aGl0ZSBmb250LWJvbGQgc2hhZG93LW1kIHNoYWRvdy1vcmFuZ2UtMjAwIHRyYW5zaXRpb24tYWxsIGFjdGl2ZTpzY2FsZS05NSB3aGl0ZXNwYWNlLW5vd3JhcCI+CiAgICAgICAgICAgICAgICDquInsi50g7KGw7ZqMCiAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgIDwvZGl2PgoKICAgICAgICA8ZGl2IGlkPSJtZWFsLWNhcmQiIGNsYXNzPSJiZy1vcmFuZ2UtNTAvNTAgcm91bmRlZC0yeGwgcC01IGJvcmRlciBib3JkZXItb3JhbmdlLTEwMC83MCBtaW4taC1bMjAwcHhdIGZsZXggZmxleC1jb2wganVzdGlmeS1jZW50ZXIiPgogICAgICAgICAgICA8ZGl2IGlkPSJsb2FkaW5nLXZpZXciIGNsYXNzPSJ0ZXh0LWNlbnRlciB0ZXh0LXNsYXRlLTQwMCBmb250LW1lZGl1bSBweS04IGhpZGRlbiI+CiAgICAgICAgICAgICAgICA8cCBjbGFzcz0iYW5pbWF0ZS1ib3VuY2UgbWItMiI+8J+NsTwvcD4KICAgICAgICAgICAgICAgIDxwIGNsYXNzPSJ0ZXh0LXNtIj7smKTripjsnZgg66mU64m066W8IOu2iOufrOyYpOuKlCDspJHsnbTsl5DsmpQuLi48L3A+CiAgICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgICAgPGRpdiBpZD0ic3VjY2Vzcy12aWV3IiBjbGFzcz0ic3BhY2UteS00Ij4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZsZXgganVzdGlmeS1iZXR3ZWVuIGl0ZW1zLWNlbnRlciBiZy13aGl0ZSBweC00IHB5LTIgcm91bmRlZC14bCBib3JkZXIgYm9yZGVyLW9yYW5nZS0xMDAvNTAiPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzPSJ0ZXh0LXhzIGZvbnQtYm9sZCB0ZXh0LW9yYW5nZS00MDAiPvCflKUg7LSdIOy5vOuhnOumrDwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICA8c3BhbiBpZD0iY2Fsb3JpZXMtaW5mbyIgY2xhc3M9InRleHQtc20gZm9udC1ibGFjayB0ZXh0LXNsYXRlLTcwMCI+MDAwIEtjYWw8L3NwYW4+CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImJnLXdoaXRlIHAtNSByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItb3JhbmdlLTEwMC81MCBzaGFkb3ctaW5uZXIiPgogICAgICAgICAgICAgICAgICAgIDxwIGlkPSJtZW51LWxpc3QiIGNsYXNzPSJ0ZXh0LWNlbnRlciB0ZXh0LXNsYXRlLTcwMCBmb250LW1lZGl1bSBsZWFkaW5nLXJlbGF4ZWQgdHJhY2tpbmctd2lkZSB0ZXh0LVsxNXB4XSIgc3R5bGU9IndoaXRlLXNwYWNlOiBwcmUtbGluZTsiPjwvcD4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KCiAgICAgICAgICAgIDxkaXYgaWQ9ImVycm9yLXZpZXciIGNsYXNzPSJoaWRkZW4gdGV4dC1jZW50ZXIgcHktNiBzcGFjZS15LTIiPgogICAgICAgICAgICAgICAgPHAgY2xhc3M9InRleHQtM3hsIj7wn6ulPC9wPgogICAgICAgICAgICAgICAgPHAgaWQ9ImVycm9yLW1lc3NhZ2UiIGNsYXNzPSJ0ZXh0LXNtIGZvbnQtYm9sZCB0ZXh0LXJvc2UtNTAwIGJnLXJvc2UtNTAgcHgtNCBweS0yIHJvdW5kZWQteGwgaW5saW5lLWJsb2NrIj48L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgoKICAgICAgICA8cCBjbGFzcz0idGV4dC1jZW50ZXIgdGV4dC1bMTFweF0gdGV4dC1zbGF0ZS00MDAiPgogICAgICAgICAgICDigLsg7JyEIOygleuztOuKlCDtlZnqtZAg7IKs7KCV7JeQIOuUsOudvCDrs4Dqsr3rkKAg7IiYIOyeiOyKteuLiOuLpC4KICAgICAgICA8L3A+CiAgICA8L2Rpdj4KCiAgICA8c2NyaXB0PgogICAgICAgIGNvbnN0IEFQSV9VUkwgPSAiaHR0cHM6Ly8yMDI2c3kuZXVuc2Vvbnk3NS53b3JrZXJzLmRldiI7CmNvbnN0IEVEVUNBVElPTl9PRkZJQ0VfQ09ERSA9ICJCMTAiOwogICAgICAgIGNvbnN0IFNDSE9PTF9DT0RFID0gIjcxMzIxNDgiOwoKICAgICAgICAvLyBIVE1MIOyalOyGjCDqsIDsoLjsmKTquLAKICAgICAgICBjb25zdCBtZWFsRGF0ZUlucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21lYWwtZGF0ZScpOwogICAgICAgIGNvbnN0IHNlYXJjaEJ0biA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWFyY2gtYnRuJyk7CiAgICAgICAgY29uc3QgbG9hZGluZ1ZpZXcgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbG9hZGluZy12aWV3Jyk7CiAgICAgICAgY29uc3Qgc3VjY2Vzc1ZpZXcgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc3VjY2Vzcy12aWV3Jyk7CiAgICAgICAgY29uc3QgZXJyb3JWaWV3ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2Vycm9yLXZpZXcnKTsKICAgICAgICBjb25zdCBtZW51TGlzdCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtZW51LWxpc3QnKTsKICAgICAgICBjb25zdCBjYWxvcmllc0luZm8gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2Fsb3JpZXMtaW5mbycpOwogICAgICAgIGNvbnN0IGVycm9yTWVzc2FnZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlcnJvci1tZXNzYWdlJyk7CgogICAgICAgIC8vIO2ZlOuptCDsg4Htg5wg7KCE7ZmYIO2VqOyImAogICAgICAgIGZ1bmN0aW9uIHNob3dWaWV3KHN0YXR1cykgewogICAgICAgICAgICBsb2FkaW5nVmlldy5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKICAgICAgICAgICAgc3VjY2Vzc1ZpZXcuY2xhc3NMaXN0LmFkZCgnaGlkZGVuJyk7CiAgICAgICAgICAgIGVycm9yVmlldy5jbGFzc0xpc3QuYWRkKCdoaWRkZW4nKTsKCiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdsb2FkaW5nJykgbG9hZGluZ1ZpZXcuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdzdWNjZXNzJykgc3VjY2Vzc1ZpZXcuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJyk7CiAgICAgICAgICAgIGlmIChzdGF0dXMgPT09ICdlcnJvcicpIGVycm9yVmlldy5jbGFzc0xpc3QucmVtb3ZlKCdoaWRkZW4nKTsKICAgICAgICB9CgogICAgICAgIC8vIDIuIOq4ieyLnSDrjbDsnbTthLAgRmV0Y2gg7ZWo7IiYCiAgICAgICAgYXN5bmMgZnVuY3Rpb24gZmV0Y2hNZWFsRGF0YSgpIHsKICAgICAgICAgICAgY29uc3QgcmF3RGF0ZSA9IG1lYWxEYXRlSW5wdXQudmFsdWU7CiAgICAgICAgICAgIGlmICghcmF3RGF0ZSkgewogICAgICAgICAgICAgICAgYWxlcnQoJ+uCoOynnOulvCDshKDtg53tlbQg7KO87IS47JqUIScpOwogICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICB9CgogICAgICAgICAgICAvLyDtlZjsnbTtlIgoLSkg7KCc6rGw7ZWY7JesIFlZWVlNTUREIO2YleyLneycvOuhnCDrs4DtmZgKICAgICAgICAgICAgY29uc3QgZm9ybWF0dGVkRGF0ZSA9IHJhd0RhdGUucmVwbGFjZSgvLS9nLCAnJyk7CiAgICAgICAgICAgIAogICAgICAgICAgICBzaG93VmlldygnbG9hZGluZycpOwoKICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGNvbnN0IHBhcmFtcyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMoewpUeXBlOiAianNvbiIsCiAgICAgICAgICAgICAgICAgICAgcEluZGV4OiAiMSIsCiAgICAgICAgICAgICAgICAgICAgcFNpemU6ICIxMCIsCiAgICAgICAgICAgICAgICAgICAgQVRQVF9PRkNEQ19TQ19DT0RFOiBFRFVDQVRJT05fT0ZGSUNFX0NPREUsCiAgICAgICAgICAgICAgICAgICAgU0RfU0NIVUxfQ09ERTogU0NIT09MX0NPREUsCiAgICAgICAgICAgICAgICAgICAgTUxTVl9ZTUQ6IGZvcm1hdHRlZERhdGUKICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChgJHtBUElfVVJMfT8ke3BhcmFtcy50b1N0cmluZygpfWApOwoKICAgICAgICAgICAgICAgIGlmICghcmVzcG9uc2Uub2spIHsKICAgICAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEFQSSDsnZHri7Ug7Jik66WYOiAke3Jlc3BvbnNlLnN0YXR1c31gKTsKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpOwogICAgICAgICAgICAgICAgY29uc3QgbWVhbFJvd3MgPSBkYXRhLm1lYWxTZXJ2aWNlRGlldEluZm8/LlsxXT8ucm93OwoKICAgICAgICAgICAgICAgIGlmIChBcnJheS5pc0FycmF5KG1lYWxSb3dzKSAmJiBtZWFsUm93cy5sZW5ndGggPiAwKSB7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgbWVhbCA9IG1lYWxSb3dzLmZpbmQoaXRlbSA9PiBTdHJpbmcoaXRlbS5NTUVBTF9TQ19DT0RFKSA9PT0gIjIiKSB8fCBtZWFsUm93c1swXTsKICAgICAgICAgICAgICAgICAgICBjb25zdCBjbGVhbk1lbnUgPSAobWVhbC5ERElTSF9OTSB8fCAiIikKICAgICAgICAgICAgICAgICAgICAgICAgLnJlcGxhY2UoLzxiclxzKlwvP1xzKj4vZ2ksICJcbiIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC8mYW1wOy9nLCAiJiIpCiAgICAgICAgICAgICAgICAgICAgICAgIC5yZXBsYWNlKC8mbHQ7L2csICI8IikKICAgICAgICAgICAgICAgICAgICAgICAgLnJlcGxhY2UoLyZndDsvZywgIj4iKTsKICAgICAgICAgICAgICAgICAgICAvLyDshLHqs7Ug7IucIO2ZlOuptOyXkCDrjbDsnbTthLAg64Sj6riwCiAgICAgICAgICAgICAgICAgICAgbWVudUxpc3QudGV4dENvbnRlbnQgPSBjbGVhbk1lbnU7CiAgICAgICAgICAgICAgICAgICAgY2Fsb3JpZXNJbmZvLnRleHRDb250ZW50ID0gbWVhbC5DQUxfSU5GTyB8fCAi7Lm866Gc66asIOygleuztCDsl4bsnYwiOwogICAgICAgICAgICAgICAgICAgIHNob3dWaWV3KCdzdWNjZXNzJyk7CiAgICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgIC8vIOyLpO2MqCDsi5wg7JeQ65+sIOuplOyLnOyngCDrhbjstpwgKOyEnOuyhCDrqZTsi5zsp4Ag7Jqw7ISgLCDsl4bsnYQg7IucIOq4sOuzuCDrrLjqtawpCiAgICAgICAgICAgICAgICAgICAgZXJyb3JNZXNzYWdlLnRleHRDb250ZW50ID0gZGF0YS5SRVNVTFQ/Lk1FU1NBR0UgfHwgIuyYpOuKmOydgCDquInsi53snbQg7JeG7Iq164uI64ukLiI7CiAgICAgICAgICAgICAgICAgICAgc2hvd1ZpZXcoJ2Vycm9yJyk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgICAgICAgICAgICBjb25zb2xlLmVycm9yKGVycm9yKTsKICAgICAgICAgICAgICAgIGVycm9yTWVzc2FnZS50ZXh0Q29udGVudCA9ICLquInsi50g7KCV67O066W8IOu2iOufrOyYpOyngCDrqrvtlojsirXri4jri6QuIOyeoOyLnCDtm4Qg64uk7IucIOyhsO2ajO2VtCDso7zshLjsmpQuIjsKICAgICAgICAgICAgICAgIHNob3dWaWV3KCdlcnJvcicpOwogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICAvLyA0LiDtjpjsnbTsp4Ag7LSI6riw7ZmUIOuwjyDsmKTripgg64Kg7KecIOyEpOyglSDroZzsp4EKICAgICAgICBmdW5jdGlvbiBpbml0UGFnZSgpIHsKICAgICAgICAgICAgY29uc3QgdG9kYXkgPSBuZXcgRGF0ZSgpOwogICAgICAgICAgICBjb25zdCB5ZWFyID0gdG9kYXkuZ2V0RnVsbFllYXIoKTsKICAgICAgICAgICAgLy8g7JuU6rO8IOydvOydgCDtla3sg4EgMuyekOumrCDsiKvsnpDqsIAg65CY64+E66GdIOyymOumrAogICAgICAgICAgICBjb25zdCBtb250aCA9IFN0cmluZyh0b2RheS5nZXRNb250aCgpICsgMSkucGFkU3RhcnQoMiwgJzAnKTsKICAgICAgICAgICAgY29uc3QgZGF5ID0gU3RyaW5nKHRvZGF5LmdldERhdGUoKSkucGFkU3RhcnQoMiwgJzAnKTsKICAgICAgICAgICAgCiAgICAgICAgICAgIGNvbnN0IHRvZGF5U3RyaW5nID0gYCR7eWVhcn0tJHttb250aH0tJHtkYXl9YDsKICAgICAgICAgICAgbWVhbERhdGVJbnB1dC52YWx1ZSA9IHRvZGF5U3RyaW5nOwoKICAgICAgICAgICAgLy8g7KaJ7IucIOyYpOuKmCDquInsi50g67aI65+s7Jik6riwCiAgICAgICAgICAgIGZldGNoTWVhbERhdGEoKTsKICAgICAgICB9CgogICAgICAgIC8vIOydtOuypO2KuCDrpqzsiqTrhIgg7Jew6rKwCiAgICAgICAgc2VhcmNoQnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZmV0Y2hNZWFsRGF0YSk7CiAgICAgICAgbWVhbERhdGVJbnB1dC5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCBmZXRjaE1lYWxEYXRhKTsgLy8g64Kg7KecIOuzgOqyvSDsi5zsl5Drj4Qg7KaJ7IucIOyhsO2ajAoKICAgICAgICAvLyDtjpjsnbTsp4Ag66Gc65OcIOyLnCDsnpDrj5kg7Iuk7ZaJCiAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBpbml0UGFnZSk7CiAgICA8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+</script>
     <script>
         const STUDENT_INFO = { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1 };
@@ -226,16 +225,17 @@
         let currentFullscreenItem = null;
 
         function decodeUtf8Base64(b64) {
-            const bin = atob(b64);
-            const bytes = new Uint8Array(bin.length);
-            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-            return new TextDecoder('utf-8').decode(bytes);
+            try {
+                const bin = atob(b64);
+                const bytes = new Uint8Array(bin.length);
+                for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+                return new TextDecoder('utf-8').decode(bytes);
+            } catch(e) { return ''; }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadStudentProjects();
             renderSlots();
-            document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeFullscreen(); closeModal(); } });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenItem) return;
@@ -273,13 +273,13 @@
             multiFilePayloads = [];
             files.forEach((file) => {
                 const ext = file.name.split('.').pop().toLowerCase();
-                const reader = new FileReader();
                 let fType = 'html';
                 if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) fType = 'image';
                 else if (['mp4', 'webm', 'mov'].includes(ext)) fType = 'video';
                 else if (['pdf'].includes(ext)) fType = 'pdf';
                 else if (['ppt', 'pptx'].includes(ext)) fType = 'pptx';
 
+                const reader = new FileReader();
                 reader.onload = (re) => {
                     multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result });
                     const tag = document.createElement('div');
@@ -287,17 +287,16 @@
                     tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem;">${fType.toUpperCase()}</span>`;
                     listContainer.appendChild(tag);
                 };
-                if (fType === 'image' || fType === 'video' || fType === 'pdf') {
-                    reader.readAsDataURL(file);
-                } else {
+                if (['html', 'htm'].includes(ext)) {
                     reader.readAsText(file);
+                } else {
+                    reader.readAsDataURL(file);
                 }
             });
         }
 
         function loadStudentProjects() {
             studentProjectsMap = {};
-
             const el_code_meal_app = document.getElementById('code_meal_app');
             if (el_code_meal_app) {
                 const decodedCode = decodeUtf8Base64(el_code_meal_app.textContent.trim());
@@ -321,7 +320,11 @@
         }
 
         function saveStudentProjects() {
-            localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
+            try {
+                localStorage.setItem('2026sy_student_slots_' + STUDENT_INFO.id, JSON.stringify(studentProjectsMap));
+            } catch(e) {
+                console.warn('LocalStorage limit exceeded, data stored in session.');
+            }
         }
 
         function renderSlots() {
@@ -341,10 +344,12 @@
                     let mediaHtml = '';
                     if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
                         mediaHtml = `<img src="${activeItem.data}" alt="${escapeHtmlAttr(activeItem.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
-                    } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:video/'))) {
+                    } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:video/') || activeItem.data.match(/\.(mp4|webm|mov)/i)))) {
                         mediaHtml = `<video controls style="width:100%; max-height:100%;" src="${activeItem.data}"></video>`;
-                    } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:application/pdf'))) {
+                    } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.match(/\.pdf/i)))) {
                         mediaHtml = `<iframe class="slot-iframe" src="${activeItem.data}"></iframe>`;
+                    } else if (activeItem.type === 'pptx' || (typeof activeItem.data === 'string' && activeItem.data.match(/\.pptx?/i))) {
+                        mediaHtml = `<div style="text-align:center; padding:20px;"><i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:var(--p-slide-text); margin-bottom:10px;"></i><p style="font-weight:700; font-size:1rem;">${escapeHtml(activeItem.name || project.title)}</p><span style="font-size:0.82rem; color:var(--text-muted);">파워포인트 슬라이드 파일 등록됨</span></div>`;
                     } else {
                         mediaHtml = `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(activeItem.data)}"></iframe>`;
                     }
@@ -444,9 +449,9 @@
 
             if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
                 fsBody.innerHTML = `<img src="${activeItem.data}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
-            } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:video/'))) {
+            } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:video/') || activeItem.data.match(/\.(mp4|webm|mov)/i)))) {
                 fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${activeItem.data}"></video>`;
-            } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && activeItem.data.startsWith('data:application/pdf'))) {
+            } else if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.match(/\.pdf/i)))) {
                 fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
             } else {
                 const iframe = document.createElement('iframe');
@@ -479,6 +484,7 @@
                 document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 과제`;
             }
             document.getElementById('slotModal').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function closeModal() {
@@ -486,7 +492,7 @@
         }
 
         function handleSaveSlot(e) {
-            e.preventDefault();
+            if (e) e.preventDefault();
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
             let items = [];
@@ -499,10 +505,11 @@
                     if (rawCode.match(/\.(jpeg|jpg|gif|png|webp)/i) || rawCode.startsWith('data:image/')) fType = 'image';
                     else if (rawCode.match(/\.(mp4|webm|mov)/i) || rawCode.startsWith('data:video/')) fType = 'video';
                     else if (rawCode.match(/\.pdf/i) || rawCode.startsWith('data:application/pdf')) fType = 'pdf';
+                    else if (rawCode.match(/\.pptx?/i)) fType = 'pptx';
                     items.push({ name: title, type: fType, data: rawCode });
                 }
             }
-            if (!title || !items.length) { alert('제목과 파일(또는 코드/링크)을 1개 이상 등록해주세요.'); return; }
+            if (!title || !items.length) { alert('작품 제목과 업로드할 파일을 등록해주세요.'); return; }
             studentProjectsMap[topicId] = {
                 title,
                 items,
@@ -511,7 +518,7 @@
             saveStudentProjects();
             closeModal();
             renderSlots();
-            showToast(`총 ${items.length}개의 파일이 성공적으로 등록되었습니다!`);
+            showToast(`[${title}] 파일이 성공적으로 등록되었습니다!`);
         }
 
         function deleteSlot(topicId) {
