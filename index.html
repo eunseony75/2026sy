@@ -495,7 +495,7 @@
                     <i class="fa-solid fa-address-book"></i> Feature 2
                 </div>
                 <h2 class="section-title">학생별 포트폴리오 & 8대 주제 연동</h2>
-                <p class="section-sub">학생 카드의 <strong>8개 프로젝트 주제 태그</strong>를 누르면 해당 학생 구글 사이트 페이지의 해당 섹션으로 즉시 이동합니다.</p>
+                <p class="section-sub">학생 카드의 <strong>[전체 페이지]</strong> 버튼이나 태그를 누르면 해당 학생의 깃허브 전용 포트폴리오로 바로 이동합니다.</p>
             </div>
 
             <!-- 검색 바 -->
@@ -717,27 +717,27 @@
 
         // 2. 숭의여자중학교 21명 학생 목록 및 구글 사이트 실제 URL 매핑
         const STUDENTS_MASTER = [
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%EB%AF%BC%EC%86%94' },
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%B0%95%EC%B1%84%EC%97%B0' },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%EC%84%9C%ED%98%84' },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%B0%95%ED%95%98%EC%9D%80' },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%B5%9C%EC%86%8C%EC%9C%A4' },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%B1%84%EC%8A%AC%EC%98%A8' },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%ED%9A%A8%EC%9C%A4' },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%8B%A0%EC%84%B8%EC%98%81' },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%9E%84%EC%A7%80%EC%9A%B0' },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%ED%9D%AC%EC%A0%95' },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%B0%95%EC%B1%84%ED%9D%AC' },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%B5%9C%EC%9C%A4%ED%95%98' },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%9E%A5%ED%98%84%EC%95%84' },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%EC%88%98%EC%95%84' },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%AC%B8%EC%98%88%EB%A6%B0' },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%97%84%EC%B1%84%EC%9C%A4' },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%9D%B4%EC%95%84%EC%97%B0' },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%9D%B8%ED%95%98%EC%9C%A4' },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%B5%9C%EC%9C%A4%EC%95%84' },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EC%86%A1%EC%98%81%ED%98%84' },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6, siteUrl: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%B0%95%EC%B1%84%EC%97%B0' }
+            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1, siteUrl: 'minsol.html' },
+            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6, siteUrl: 'chaeyeon.html' },
+            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1, siteUrl: 'seohyun.html' },
+            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2, siteUrl: 'haeun.html' },
+            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3, siteUrl: 'soyoon.html' },
+            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2, siteUrl: 'seulon.html' },
+            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5, siteUrl: 'hyoyoon.html' },
+            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3, siteUrl: 'seyeoung.html' },
+            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4, siteUrl: 'jiwoo.html' },
+            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2, siteUrl: 'heejung.html' },
+            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2, siteUrl: 'chaehee.html' },
+            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5, siteUrl: 'yoonha.html' },
+            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6, siteUrl: 'hyuna.html' },
+            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1, siteUrl: 'sua.html' },
+            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4, siteUrl: 'yerin.html' },
+            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5, siteUrl: 'chaeyoon.html' },
+            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2, siteUrl: 'ayeon.html' },
+            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3, siteUrl: 'hayoon.html' },
+            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6, siteUrl: 'yoona.html' },
+            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6, siteUrl: 'younghyun.html' },
+            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6, siteUrl: 'chaehyun.html' }
         ];
 
         // 3. 실제 학생 페이지에서 스크랩한 진짜 결과물 데이터셋
@@ -1015,7 +1015,7 @@
                     </div>
 
                     <div class="student-card-actions">
-                        <a href="${student.siteUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="구글 사이트 개인 페이지 열기">
+                        <a href="${student.siteUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="학생 깃허브 포트폴리오 열기">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i> 전체 페이지
                         </a>
                         <button class="btn btn-primary btn-sm upload-for-student-btn" data-id="${student.id}" title="새 결과물 등록하기">
