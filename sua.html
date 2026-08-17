@@ -56,7 +56,12 @@
         .slot-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; line-height: 1.35; }
         .slot-preview-box { width: 100%; height: 320px; background: #FAFAFC; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
         .slot-iframe { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; }
+        .carousel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, 0.92); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--text-primary); z-index: 10; cursor: pointer; transition: var(--transition-smooth); }
+        .carousel-nav-btn:hover { background: var(--p-quiz-accent); color: #FFF; }
+        .carousel-btn-prev { left: 8px; }
+        .carousel-btn-next { right: 8px; }
+        .carousel-indicator { position: absolute; bottom: 8px; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(4px); color: #FFF; padding: 2px 10px; border-radius: var(--radius-full); font-size: 0.72rem; font-weight: 700; z-index: 10; }
+        .preview-controls-overlay { position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 15; }
         .preview-action-chip { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); box-shadow: var(--shadow-sm); cursor: pointer; transition: var(--transition-smooth); }
         .preview-action-chip:hover { background: var(--p-quiz-accent); color: #FFF; transform: translateY(-1px); }
         .empty-slot-box { width: 100%; height: 320px; background: #F8FAFC; border: 2px dashed var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); text-align: center; padding: 20px; }
@@ -66,7 +71,7 @@
         .fullscreen-modal.active { display: flex; }
         .fullscreen-container { background: #FFFFFF; border-radius: var(--radius-lg); width: 95vw; height: 92vh; max-width: 1300px; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); overflow: hidden; }
         .fullscreen-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-subtle); }
-        .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; display: flex; align-items: center; justify-content: center; }
+        .fullscreen-body { flex: 1; width: 100%; height: 100%; position: relative; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .fullscreen-iframe { width: 100%; height: 100%; border: none; }
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
@@ -80,6 +85,8 @@
         .drop-zone { border: 2px dashed var(--p-quiz-border); background: #F8FAFC; border-radius: var(--radius-md); padding: 24px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .drop-zone:hover { background: #F5F3FF; border-color: var(--p-quiz-accent); }
         .drop-zone i { font-size: 2.2rem; color: var(--p-quiz-accent); }
+        .file-list-preview { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; max-height: 140px; overflow-y: auto; }
+        .file-item-tag { display: flex; justify-content: space-between; align-items: center; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 6px 12px; border-radius: var(--radius-md); font-size: 0.82rem; color: #065F46; }
         .form-group { display: flex; flex-direction: column; gap: 5px; }
         .form-label { font-size: 0.84rem; font-weight: 600; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem; }
@@ -90,7 +97,6 @@
 </head>
 <body>
     <div class="portfolio-wrapper">
-        <!-- Top Header Banner -->
         <header class="profile-banner">
             <div class="profile-left">
                 <div class="profile-avatar">김</div>
@@ -132,7 +138,7 @@
         <div class="slots-header">
             <div>
                 <h2 class="slots-title"><i class="fa-solid fa-cubes" style="color: var(--p-quiz-text);"></i> 8대 프로젝트 결과물 전시대</h2>
-                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">이미지(PNG/JPG), 동영상(MP4), 슬라이드(PPTX/PDF), HTML 코드 등 <strong>다양한 형식의 파일을 직접 업로드</strong>하고 체험할 수 있습니다.</p>
+                <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 2px;">이미지 여러 장(다중 파일), 동영상, 슬라이드, 코드를 <strong>한 번에 등록하고 슬라이드로 감상</strong>할 수 있습니다.</p>
             </div>
         </div>
 
@@ -151,9 +157,7 @@
                     <button class="btn btn-primary btn-sm" onclick="closeFullscreen()"><i class="fa-solid fa-xmark"></i> 닫기 (ESC)</button>
                 </div>
             </div>
-            <div class="fullscreen-body" id="fullscreenBody">
-                <iframe id="fullscreenIframe" class="fullscreen-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin"></iframe>
-            </div>
+            <div class="fullscreen-body" id="fullscreenBody"></div>
         </div>
     </div>
 
@@ -168,26 +172,21 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">작품 제목 *</label>
-                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: AI 생성 캐릭터 일러스트 / 중3 과학 모의고사" required>
+                        <input type="text" id="slotTitleInput" class="form-control" placeholder="예: AI 생성 캐릭터 일러스트 시리즈 / 중3 과학 모의고사" required>
                     </div>
-                    <!-- Upload Method Tabs -->
                     <div class="upload-tab-buttons">
-                        <button type="button" class="tab-btn active" id="tabBtnFile" onclick="switchUploadTab('file')"><i class="fa-solid fa-cloud-arrow-up"></i> 내 PC 파일 올리기 (JPG/PNG/MP4/PDF/PPTX/HTML)</button>
+                        <button type="button" class="tab-btn active" id="tabBtnFile" onclick="switchUploadTab('file')"><i class="fa-solid fa-images"></i> 파일 여러 개 올리기 (JPG/PNG/MP4/PDF/PPTX)</button>
                         <button type="button" class="tab-btn" id="tabBtnCode" onclick="switchUploadTab('code')"><i class="fa-solid fa-code"></i> 코드 / 링크 직접 입력</button>
                     </div>
-                    <!-- Tab 1: File Drop Zone -->
                     <div id="tabContentFile">
                         <div class="drop-zone" onclick="document.getElementById('fileUploadInput').click()">
-                            <i class="fa-solid fa-file-arrow-up"></i>
-                            <p style="font-weight: 700; font-size: 0.95rem;">파일을 클릭하여 선택하거나 여기로 끌어다 놓으세요</p>
-                            <span style="font-size: 0.76rem; color: var(--text-muted);">지원 파일: 이미지(JPG, PNG, GIF), 동영상(MP4, WebM), 문서(PDF, PPT, PPTX), 웹(HTML, HTM)</span>
-                            <input type="file" id="fileUploadInput" style="display:none;" accept="image/*,video/*,application/pdf,.ppt,.pptx,.html,.htm" onchange="handleFileSelection(event)">
+                            <i class="fa-solid fa-photo-film"></i>
+                            <p style="font-weight: 700; font-size: 0.95rem;">파일들을 클릭하여 여러 개 선택하거나 여기로 끌어다 놓으세요</p>
+                            <span style="font-size: 0.76rem; color: var(--text-muted);">여러 장의 이미지(JPG/PNG), 동영상(MP4), 슬라이드(PDF/PPTX) 동시 선택 가능</span>
+                            <input type="file" id="fileUploadInput" multiple style="display:none;" accept="image/*,video/*,application/pdf,.ppt,.pptx,.html,.htm" onchange="handleMultipleFiles(event)">
                         </div>
-                        <div id="selectedFileInfo" style="display:none; margin-top:10px; padding:10px 14px; background:#ECFDF5; border:1px solid #A7F3D0; border-radius:var(--radius-md); font-size:0.84rem; color:#065F46;">
-                            <i class="fa-solid fa-check-circle"></i> <span id="selectedFileName">선택된 파일</span>
-                        </div>
+                        <div id="fileListPreview" class="file-list-preview"></div>
                     </div>
-                    <!-- Tab 2: Text Code / Link Input -->
                     <div id="tabContentCode" style="display:none;">
                         <div class="form-group">
                             <label class="form-label">소스코드 / 캔바 링크 / 웹 이미지 주소</label>
@@ -391,27 +390,15 @@ Type: "json",
         ];
 
         let studentProjectsMap = {};
+        let carouselIndexes = {};
+        let multiFilePayloads = [];
         let currentFullscreenItem = null;
-        let uploadedPayload = '';
-        let uploadedType = 'html';
 
         document.addEventListener('DOMContentLoaded', () => {
             loadStudentProjects();
             renderSlots();
             document.getElementById('slotForm').addEventListener('submit', handleSaveSlot);
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
-            document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
-                if (!currentFullscreenItem) return;
-                const newWin = window.open('', '_blank');
-                if (currentFullscreenItem.fileType === 'image') {
-                    newWin.document.write('<img src="' + currentFullscreenItem.sourceCode + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
-                } else if (currentFullscreenItem.fileType === 'video') {
-                    newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.sourceCode + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
-                } else {
-                    newWin.document.write(currentFullscreenItem.sourceCode);
-                }
-                newWin.document.close();
-            });
         });
 
         function switchUploadTab(tab) {
@@ -428,34 +415,34 @@ Type: "json",
             }
         }
 
-        function handleFileSelection(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            document.getElementById('selectedFileName').textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
-            document.getElementById('selectedFileInfo').style.display = 'block';
-            const ext = file.name.split('.').pop().toLowerCase();
-            const reader = new FileReader();
-            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) {
-                uploadedType = 'image';
-                reader.onload = (re) => { uploadedPayload = re.target.result; };
-                reader.readAsDataURL(file);
-            } else if (['mp4', 'webm', 'mov'].includes(ext)) {
-                uploadedType = 'video';
-                reader.onload = (re) => { uploadedPayload = re.target.result; };
-                reader.readAsDataURL(file);
-            } else if (['pdf'].includes(ext)) {
-                uploadedType = 'pdf';
-                reader.onload = (re) => { uploadedPayload = re.target.result; };
-                reader.readAsDataURL(file);
-            } else if (['ppt', 'pptx'].includes(ext)) {
-                uploadedType = 'pptx';
-                reader.onload = (re) => { uploadedPayload = file.name; };
-                reader.readAsText(file);
-            } else {
-                uploadedType = 'html';
-                reader.onload = (re) => { uploadedPayload = re.target.result; };
-                reader.readAsText(file);
-            }
+        function handleMultipleFiles(e) {
+            const files = Array.from(e.target.files);
+            if (!files.length) return;
+            const listContainer = document.getElementById('fileListPreview');
+            listContainer.innerHTML = '';
+            multiFilePayloads = [];
+            files.forEach((file, idx) => {
+                const ext = file.name.split('.').pop().toLowerCase();
+                const reader = new FileReader();
+                let fType = 'html';
+                if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) fType = 'image';
+                else if (['mp4', 'webm', 'mov'].includes(ext)) fType = 'video';
+                else if (['pdf'].includes(ext)) fType = 'pdf';
+                else if (['ppt', 'pptx'].includes(ext)) fType = 'pptx';
+
+                reader.onload = (re) => {
+                    multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result });
+                    const tag = document.createElement('div');
+                    tag.className = 'file-item-tag';
+                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem;">${fType.toUpperCase()}</span>`;
+                    listContainer.appendChild(tag);
+                };
+                if (fType === 'image' || fType === 'video' || fType === 'pdf') {
+                    reader.readAsDataURL(file);
+                } else {
+                    reader.readAsText(file);
+                }
+            });
         }
 
         function loadStudentProjects() {
@@ -475,8 +462,7 @@ Type: "json",
             if (tmpl_meal_app) {
                 studentProjectsMap['meal-app'] = {
                     title: "숭의여자중학교 오늘의 급식",
-                    sourceCode: tmpl_meal_app.innerHTML.trim(),
-                    fileType: 'html',
+                    items: [{ name: '기본 결과물', type: 'html', data: tmpl_meal_app.innerHTML.trim() }],
                     updatedAt: '2026-07-01'
                 };
             }
@@ -495,26 +481,36 @@ Type: "json",
                 const card = document.createElement('div');
                 card.className = 'slot-card';
 
-                if (project && project.sourceCode) {
-                    let previewHtml = '';
-                    const fType = project.fileType || 'html';
-                    if (fType === 'image' || project.sourceCode.startsWith('data:image/') || project.sourceCode.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
-                        previewHtml = `<img src="${project.sourceCode}" alt="${escapeHtmlAttr(project.title)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
-                    } else if (fType === 'video' || project.sourceCode.startsWith('data:video/')) {
-                        previewHtml = `<video controls style="width:100%; max-height:100%;" src="${project.sourceCode}"></video>`;
-                    } else if (fType === 'pdf' || project.sourceCode.startsWith('data:application/pdf')) {
-                        previewHtml = `<iframe class="slot-iframe" src="${project.sourceCode}"></iframe>`;
-                    } else if (fType === 'pptx') {
-                        previewHtml = `<div style="text-align:center; padding:20px;"><i class="fa-solid fa-file-powerpoint" style="font-size:3rem; color:var(--p-slide-text); margin-bottom:8px;"></i><p style="font-weight:700;">${escapeHtml(project.title)}</p><span style="font-size:0.8rem; color:var(--text-muted);">파워포인트 슬라이드 파일</span></div>`;
+                if (project && project.items && project.items.length > 0) {
+                    const curIdx = carouselIndexes[topic.id] || 0;
+                    const totalItems = project.items.length;
+                    const activeItem = project.items[curIdx % totalItems];
+
+                    let mediaHtml = '';
+                    if (activeItem.type === 'image' || activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
+                        mediaHtml = `<img src="${activeItem.data}" alt="${escapeHtmlAttr(activeItem.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
+                    } else if (activeItem.type === 'video' || activeItem.data.startsWith('data:video/')) {
+                        mediaHtml = `<video controls style="width:100%; max-height:100%;" src="${activeItem.data}"></video>`;
+                    } else if (activeItem.type === 'pdf' || activeItem.data.startsWith('data:application/pdf')) {
+                        mediaHtml = `<iframe class="slot-iframe" src="${activeItem.data}"></iframe>`;
                     } else {
-                        previewHtml = `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(project.sourceCode)}"></iframe>`;
+                        mediaHtml = `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(activeItem.data)}"></iframe>`;
+                    }
+
+                    let navControls = '';
+                    if (totalItems > 1) {
+                        navControls = `
+                            <button class="carousel-nav-btn carousel-btn-prev" onclick="changeSlide('${topic.id}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="carousel-nav-btn carousel-btn-next" onclick="changeSlide('${topic.id}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                            <span class="carousel-indicator">${(curIdx % totalItems) + 1} / ${totalItems}</span>
+                        `;
                     }
 
                     card.innerHTML = `
                         <div>
                             <div class="slot-card-header">
                                 <span class="badge-pill" style="background:${topic.bg}; color:${topic.color}; border:1px solid ${topic.border};">
-                                    <i class="${topic.icon}"></i> ${topic.name}
+                                    <i class="${topic.icon}"></i> ${topic.name} ${totalItems > 1 ? `(${totalItems}개 파일)` : ''}
                                 </span>
                                 <span style="font-size:0.75rem; color:var(--text-muted);">${project.updatedAt || '완료'}</span>
                             </div>
@@ -525,7 +521,8 @@ Type: "json",
                                         <i class="fa-solid fa-expand"></i> 크게 보기
                                     </button>
                                 </div>
-                                ${previewHtml}
+                                ${mediaHtml}
+                                ${navControls}
                             </div>
                         </div>
                         <div class="slot-card-footer">
@@ -534,7 +531,7 @@ Type: "json",
                             </button>
                             <div style="display:flex; gap:6px;">
                                 <button class="btn btn-outline btn-sm" onclick="openEditModal('${topic.id}')">
-                                    <i class="fa-solid fa-pen"></i> 파일 변경/수정
+                                    <i class="fa-solid fa-pen"></i> 파일 추가/수정
                                 </button>
                                 <button class="btn btn-outline btn-sm" style="color:var(--p-image-text);" onclick="deleteSlot('${topic.id}')">
                                     <i class="fa-solid fa-trash"></i> 삭제
@@ -544,7 +541,7 @@ Type: "json",
                     `;
 
                     card.querySelectorAll('.play-fullscreen-btn').forEach(btn => {
-                        btn.addEventListener('click', () => openFullscreen(project));
+                        btn.addEventListener('click', () => openFullscreen(project, topic.id));
                     });
                 } else {
                     card.innerHTML = `
@@ -560,7 +557,7 @@ Type: "json",
                                 <i class="${topic.icon}"></i>
                                 <span style="font-size:0.88rem; font-weight:600;">아직 등록된 작품이 없습니다.</span>
                                 <button class="btn btn-primary btn-sm" onclick="openEditModal('${topic.id}')">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i> 내 파일/작품 올리기
+                                    <i class="fa-solid fa-images"></i> 내 파일/작품 여러 개 올리기
                                 </button>
                             </div>
                         </div>
@@ -577,23 +574,33 @@ Type: "json",
             });
         }
 
-        function openFullscreen(project) {
+        function changeSlide(topicId, step) {
+            const project = studentProjectsMap[topicId];
+            if (!project || !project.items || !project.items.length) return;
+            const len = project.items.length;
+            carouselIndexes[topicId] = ((carouselIndexes[topicId] || 0) + step + len) % len;
+            renderSlots();
+        }
+
+        function openFullscreen(project, topicId) {
             currentFullscreenItem = project;
             document.getElementById('fullscreenTitle').textContent = project.title;
             const fsBody = document.getElementById('fullscreenBody');
             fsBody.innerHTML = '';
-            const fType = project.fileType || 'html';
-            if (fType === 'image' || project.sourceCode.startsWith('data:image/') || project.sourceCode.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
-                fsBody.innerHTML = `<img src="${project.sourceCode}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
-            } else if (fType === 'video' || project.sourceCode.startsWith('data:video/')) {
-                fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${project.sourceCode}"></video>`;
-            } else if (fType === 'pdf' || project.sourceCode.startsWith('data:application/pdf')) {
-                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${project.sourceCode}"></iframe>`;
+            const curIdx = carouselIndexes[topicId] || 0;
+            const activeItem = project.items[curIdx % project.items.length];
+
+            if (activeItem.type === 'image' || activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)) {
+                fsBody.innerHTML = `<img src="${activeItem.data}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
+            } else if (activeItem.type === 'video' || activeItem.data.startsWith('data:video/')) {
+                fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${activeItem.data}"></video>`;
+            } else if (activeItem.type === 'pdf' || activeItem.data.startsWith('data:application/pdf')) {
+                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
             } else {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'fullscreen-iframe';
                 iframe.sandbox = 'allow-scripts allow-forms allow-modals allow-same-origin';
-                iframe.srcdoc = project.sourceCode;
+                iframe.srcdoc = activeItem.data;
                 fsBody.appendChild(iframe);
             }
             document.getElementById('fullscreenModal').classList.add('active');
@@ -607,20 +614,17 @@ Type: "json",
         function openEditModal(topicId) {
             const topic = TOPICS.find(t => t.id === topicId);
             if (!topic) return;
-            uploadedPayload = '';
-            uploadedType = 'html';
+            multiFilePayloads = [];
             document.getElementById('fileUploadInput').value = '';
-            document.getElementById('selectedFileInfo').style.display = 'none';
+            document.getElementById('fileListPreview').innerHTML = '';
             switchUploadTab('file');
             document.getElementById('modalTopicId').value = topicId;
-            document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 파일 등록/업로드`;
+            document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 다중 파일 업로드/수정`;
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
-                document.getElementById('slotCodeInput').value = existing.sourceCode || '';
             } else {
-                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 과제`;
-                document.getElementById('slotCodeInput').value = '';
+                document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 작품 시리즈`;
             }
             document.getElementById('slotModal').classList.add('active');
         }
@@ -633,25 +637,29 @@ Type: "json",
             e.preventDefault();
             const topicId = document.getElementById('modalTopicId').value;
             const title = document.getElementById('slotTitleInput').value.trim();
-            let finalCode = uploadedPayload || document.getElementById('slotCodeInput').value.trim();
-            let finalType = uploadedType;
-            if (!uploadedPayload) {
-                if (finalCode.match(/\.(jpeg|jpg|gif|png|webp)/i) || finalCode.startsWith('data:image/')) finalType = 'image';
-                else if (finalCode.match(/\.(mp4|webm|mov)/i) || finalCode.startsWith('data:video/')) finalType = 'video';
-                else if (finalCode.match(/\.pdf/i) || finalCode.startsWith('data:application/pdf')) finalType = 'pdf';
-                else finalType = 'html';
+            let items = [];
+            if (multiFilePayloads && multiFilePayloads.length > 0) {
+                items = multiFilePayloads;
+            } else {
+                const rawCode = document.getElementById('slotCodeInput').value.trim();
+                if (rawCode) {
+                    let fType = 'html';
+                    if (rawCode.match(/\.(jpeg|jpg|gif|png|webp)/i) || rawCode.startsWith('data:image/')) fType = 'image';
+                    else if (rawCode.match(/\.(mp4|webm|mov)/i) || rawCode.startsWith('data:video/')) fType = 'video';
+                    else if (rawCode.match(/\.pdf/i) || rawCode.startsWith('data:application/pdf')) fType = 'pdf';
+                    items.push({ name: title, type: fType, data: rawCode });
+                }
             }
-            if (!title || !finalCode) { alert('제목과 파일(또는 코드/링크)을 입력해주세요.'); return; }
+            if (!title || !items.length) { alert('제목과 파일(또는 코드/링크)을 1개 이상 등록해주세요.'); return; }
             studentProjectsMap[topicId] = {
                 title,
-                sourceCode: finalCode,
-                fileType: finalType,
+                items,
                 updatedAt: new Date().toISOString().split('T')[0]
             };
             saveStudentProjects();
             closeModal();
             renderSlots();
-            showToast('파일이 성공적으로 등록되었습니다!');
+            showToast(`총 ${items.length}개의 파일이 성공적으로 등록되었습니다!`);
         }
 
         function deleteSlot(topicId) {
