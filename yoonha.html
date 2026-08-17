@@ -50,7 +50,7 @@
         .badge-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; }
         .slots-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .slots-title { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important; gap: 24px; width: 100%; }
+        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important; gap: 24px; width: 100%; }
         .slot-card { background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative; }
         .slot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .slot-card-header { display: flex; justify-content: space-between; align-items: center; }
@@ -423,10 +423,10 @@
 
         function getDocumentViewerHtml(item) {
             const d = item.data || '';
-            const isPdf = item.type === 'pdf' || d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf');
-            const isPptx = item.type === 'pptx' || d.includes('presentationml') || d.toLowerCase().match(/\.pptx?/);
-            const isImage = item.type === 'image' || d.startsWith('data:image/') || d.match(/\.(jpeg|jpg|gif|png|webp)/i);
-            const isVideo = item.type === 'video' || d.startsWith('data:video/') || d.match(/\.(mp4|webm|mov)/i);
+            const isPdf = item.type === 'pdf' || (typeof d === 'string' && (d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf')));
+            const isPptx = item.type === 'pptx' || (typeof d === 'string' && (d.includes('presentationml') || d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')));
+            const isImage = item.type === 'image' || (typeof d === 'string' && (d.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(d.trim())));
+            const isVideo = item.type === 'video' || (typeof d === 'string' && (d.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(d.trim())));
 
             if (isPdf) {
                 return `<iframe class="slot-iframe" src="${d}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
@@ -447,7 +447,7 @@
             if (isVideo) {
                 return `<video controls style="width:100%; max-height:100%;" src="${d}"></video>`;
             }
-            return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
+            return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals allow-same-origin" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
         }
 
         function renderSlots() {
@@ -487,7 +487,7 @@
                             <div class="slot-preview-box" style="margin-top:8px;">
                                 <div class="preview-controls-overlay">
                                     <button class="preview-action-chip play-fullscreen-btn" data-topic="${topic.id}">
-                                        <i class="fa-solid fa-expand"></i> 크게 보기 / 슬라이드쇼
+                                        <i class="fa-solid fa-expand"></i> 크게 보기 / 플레이
                                     </button>
                                 </div>
                                 ${mediaHtml}
@@ -560,10 +560,10 @@
             fsBody.innerHTML = '';
 
             const d = activeItem.data || '';
-            const isPdf = activeItem.type === 'pdf' || d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf');
-            const isPptx = activeItem.type === 'pptx' || d.includes('presentationml') || d.toLowerCase().match(/\.pptx?/);
-            const isImage = activeItem.type === 'image' || d.startsWith('data:image/') || d.match(/\.(jpeg|jpg|gif|png|webp)/i);
-            const isVideo = activeItem.type === 'video' || d.startsWith('data:video/') || d.match(/\.(mp4|webm|mov)/i);
+            const isPdf = activeItem.type === 'pdf' || (typeof d === 'string' && (d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf')));
+            const isPptx = activeItem.type === 'pptx' || (typeof d === 'string' && (d.includes('presentationml') || d.toLowerCase().endsWith('.pptx') || d.toLowerCase().endsWith('.ppt')));
+            const isImage = activeItem.type === 'image' || (typeof d === 'string' && (d.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(d.trim())));
+            const isVideo = activeItem.type === 'video' || (typeof d === 'string' && (d.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(d.trim())));
 
             if (isPdf) {
                 fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${d}"></iframe>`;
@@ -604,14 +604,16 @@
             isReadingFiles = false;
             document.getElementById('fileUploadInput').value = '';
             document.getElementById('fileListPreview').innerHTML = '';
-            switchUploadTab('file');
+            switchUploadTab('code');
             document.getElementById('modalTopicId').value = topicId;
             document.getElementById('modalTopicTitle').textContent = `[${topic.name}] 결과물 파일 등록/수정`;
             const existing = studentProjectsMap[topicId];
             if (existing) {
                 document.getElementById('slotTitleInput').value = existing.title || '';
+                document.getElementById('slotCodeInput').value = (existing.items && existing.items[0]) ? existing.items[0].data : '';
             } else {
                 document.getElementById('slotTitleInput').value = `${STUDENT_INFO.name} 학생의 ${topic.name} 과제`;
+                document.getElementById('slotCodeInput').value = '';
             }
             const saveBtn = document.getElementById('saveSubmitBtn');
             saveBtn.disabled = false;
@@ -654,10 +656,10 @@
                 const rawCode = document.getElementById('slotCodeInput').value.trim();
                 if (rawCode) {
                     let fType = 'html';
-                    if (rawCode.match(/\.(jpeg|jpg|gif|png|webp)/i) || rawCode.startsWith('data:image/')) fType = 'image';
-                    else if (rawCode.match(/\.(mp4|webm|mov)/i) || rawCode.startsWith('data:video/')) fType = 'video';
-                    else if (rawCode.match(/\.pdf/i) || rawCode.startsWith('data:application/pdf')) fType = 'pdf';
-                    else if (rawCode.match(/\.pptx?/i) || rawCode.includes('presentationml')) fType = 'pptx';
+                    if (rawCode.startsWith('data:image/') || /\.(jpe?g|png|gif|webp|svg)$/i.test(rawCode.trim())) fType = 'image';
+                    else if (rawCode.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(rawCode.trim())) fType = 'video';
+                    else if (rawCode.startsWith('data:application/pdf') || rawCode.toLowerCase().endsWith('.pdf')) fType = 'pdf';
+                    else if (rawCode.includes('presentationml') || /\.pptx?$/i.test(rawCode.trim())) fType = 'pptx';
                     items.push({ name: title, type: fType, data: rawCode });
                 }
             }
