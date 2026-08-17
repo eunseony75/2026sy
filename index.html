@@ -3,37 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 숭의여자중학교 AI 창의 포트폴리오 통합 전시관</title>
-    
-    <!-- Google Sites iframe 임베드 시 새 탭에서 열리도록 기본 타겟 설정 -->
-    <base target="_blank">
-
-    <!-- Google Fonts (Noto Sans KR & Outfit & Fira Code) -->
+    <title>2026 숭의여자중학교 AI 창의 동아리 통합 포트폴리오 전시관</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome 6 CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- ==========================================================================
-         [1] 화이트 & 파스텔 디자인 시스템 스타일시트
-         ========================================================================== -->
     <style>
         :root {
-            /* Base Theme (Pure White & Elegant Pastels) */
-            --bg-main: #FFFFFF !important;
-            --bg-subtle: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --bg-glass: rgba(255, 255, 255, 0.95);
-
-            /* Typography Colors */
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-            --text-light: #64748B;
-
-            /* 8대 프로젝트 테마 파스텔 컬러셋 */
+            --bg-main: #FFFFFF; --bg-subtle: #F8FAFC; --bg-card: #FFFFFF;
+            --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
             --p-image-bg: #FFF1F2; --p-image-border: #FFE4E6; --p-image-text: #E11D48; --p-image-accent: #FB7185;
             --p-quiz-bg: #F5F3FF; --p-quiz-border: #EDE9FE; --p-quiz-text: #7C3AED; --p-quiz-accent: #A78BFA;
             --p-game-bg: #ECFDF5; --p-game-border: #D1FAE5; --p-game-text: #059669; --p-game-accent: #34D399;
@@ -42,1443 +20,546 @@
             --p-meal-bg: #FEFCE8; --p-meal-border: #FEF08A; --p-meal-text: #CA8A04; --p-meal-accent: #FACC15;
             --p-pingpong-bg: #F0FDFA; --p-pingpong-border: #CCFBF1; --p-pingpong-text: #0D9488; --p-pingpong-accent: #2DD4BF;
             --p-piebrain-bg: #EEF2FF; --p-piebrain-border: #E0E7FF; --p-piebrain-text: #4F46E5; --p-piebrain-accent: #818CF8;
-
-            /* Shadow & Border Systems */
-            --border-subtle: #E2E8F0;
-            --border-focus: #CBD5E1;
-            --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
-            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12);
-            --shadow-lg: 0 16px 36px rgba(148, 163, 184, 0.16);
-
-            /* Radiuses */
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --radius-full: 9999px;
-
-            /* Transitions */
-            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-subtle: #E2E8F0; --shadow-sm: 0 2px 8px rgba(148, 163, 184, 0.08);
+            --shadow-md: 0 8px 24px rgba(148, 163, 184, 0.12); --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.22);
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 9999px;
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: 'Noto Sans KR', sans-serif; color: var(--text-primary); background-color: var(--bg-main); }
-        body { font-family: 'Noto Sans KR', sans-serif; background: #FFFFFF !important; background-color: #FFFFFF !important; color: #1E293B !important; line-height: 1.6; padding: 20px 14px; }
+        html, body { width: 100%; background: #FFFFFF; color: #1E293B; font-family: 'Noto Sans KR', sans-serif; line-height: 1.6; min-height: 100vh; }
+        body { padding: 30px 16px; }
         a { text-decoration: none; color: inherit; }
-        button { font-family: inherit; cursor: pointer; border: none; outline: none; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* Navbar */
-        .navbar {
-            position: sticky; top: 0; z-index: 1000;
-            background: var(--bg-glass); backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .nav-container {
-            display: flex; align-items: center; justify-content: space-between;
-            height: 70px; max-width: 1240px; margin: 0 auto; padding: 0 20px;
-        }
-        .nav-brand { display: flex; align-items: center; gap: 12px; }
-        .brand-icon {
-            width: 42px; height: 42px; border-radius: var(--radius-md);
-            background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); display: flex; align-items: center; justify-content: center;
-            font-size: 1.25rem; box-shadow: var(--shadow-sm);
-        }
-        .brand-title { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
-        .brand-sub { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
-        .nav-menu { display: flex; align-items: center; list-style: none; gap: 8px; }
-        .nav-link {
-            display: flex; align-items: center; gap: 6px; padding: 8px 16px;
-            border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 500;
-            color: var(--text-secondary); transition: var(--transition-fast);
-        }
-        .nav-link:hover { background-color: var(--p-video-bg); color: var(--p-video-text); }
-        .nav-link.active { background-color: var(--p-quiz-bg); color: var(--p-quiz-text); font-weight: 600; }
-        .nav-actions { display: flex; align-items: center; gap: 10px; }
-
-        /* Buttons & Badges */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.86rem; font-weight: 600; transition: var(--transition-smooth);
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent));
-            color: #FFFFFF; box-shadow: 0 4px 14px rgba(251, 113, 133, 0.25);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(251, 113, 133, 0.35); }
-        .btn-secondary { background-color: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
-        .btn-secondary:hover { background-color: var(--p-quiz-border); }
-        .btn-outline { background-color: #FFFFFF; color: var(--text-secondary); border: 1px solid var(--border-subtle); }
-        .btn-outline:hover { background-color: var(--bg-subtle); color: var(--text-primary); }
-        .btn-sm { padding: 5px 12px; font-size: 0.8rem; }
-        .btn-lg { padding: 12px 24px; font-size: 0.98rem; }
-
-        .badge-pill {
-            display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
-            border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;
-            background-color: var(--p-image-bg); color: var(--p-image-text); border: 1px solid var(--p-image-border);
-        }
-
-        /* 8대 프로젝트 파스텔 칩 태그 스타일 */
-        .topic-chip {
-            padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.74rem; font-weight: 600;
-            display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-fast);
-        }
-        .chip-ai-image { background: var(--p-image-bg); color: var(--p-image-text); border: 1px solid var(--p-image-border); }
-        .chip-quiz { background: var(--p-quiz-bg); color: var(--p-quiz-text); border: 1px solid var(--p-quiz-border); }
-        .chip-game { background: var(--p-game-bg); color: var(--p-game-text); border: 1px solid var(--p-game-border); }
-        .chip-ai-video { background: var(--p-video-bg); color: var(--p-video-text); border: 1px solid var(--p-video-border); }
-        .chip-ai-slide { background: var(--p-slide-bg); color: var(--p-slide-text); border: 1px solid var(--p-slide-border); }
-        .chip-meal-app { background: var(--p-meal-bg); color: var(--p-meal-text); border: 1px solid var(--p-meal-border); }
-        .chip-pingpong { background: var(--p-pingpong-bg); color: var(--p-pingpong-text); border: 1px solid var(--p-pingpong-border); }
-        .chip-piebrain { background: var(--p-piebrain-bg); color: var(--p-piebrain-text); border: 1px solid var(--p-piebrain-border); }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative; padding: 44px 0 36px;
-            background: radial-gradient(circle at 15% 20%, #FFF5F7 0%, #FFFFFF 50%, #F5F7FF 100%);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .hero-container {
-            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; align-items: center;
-            max-width: 1200px; margin: 0 auto; padding: 0 20px;
-        }
-        .hero-content { display: flex; flex-direction: column; gap: 14px; }
-        .hero-title { font-size: 2.2rem; font-weight: 800; line-height: 1.28; letter-spacing: -1px; color: var(--text-primary); }
-        .gradient-text {
-            background: linear-gradient(135deg, #FF6B8B, #8B5CF6, #0284C7);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
-        .hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-
-        .hero-stats {
-            display: flex; align-items: center; gap: 16px; margin-top: 8px; padding: 12px 18px;
-            background: var(--bg-card); border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm); width: fit-content;
-        }
-        .stat-item { display: flex; flex-direction: column; }
-        .stat-num { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--p-quiz-text); }
-        .stat-label { font-size: 0.76rem; color: var(--text-muted); }
-        .stat-divider { width: 1px; height: 28px; background-color: var(--border-subtle); }
-
-        .hero-card-banner {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 22px; box-shadow: var(--shadow-md);
-        }
-        .hero-banner-badge { display: flex; align-items: center; gap: 8px; color: var(--p-image-text); font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; }
-        .hero-banner-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
-        .hero-banner-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px; }
-        .hero-quick-topics { display: flex; flex-wrap: wrap; gap: 6px; }
-
-        /* Sections */
-        .section { padding: 50px 0; }
-        .section-alt { background-color: var(--bg-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-        .section-header { text-align: center; max-width: 720px; margin: 0 auto 32px; }
-        .section-badge { margin-bottom: 8px; }
-        .section-title { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); margin-bottom: 8px; }
-        .section-sub { font-size: 0.92rem; color: var(--text-secondary); }
-
-        /* 1. Projects Hub */
-        .project-tabs-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-        .project-tab-btn {
-            display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full);
-            font-size: 0.86rem; font-weight: 600; background: #FFFFFF; border: 1px solid var(--border-subtle);
-            color: var(--text-secondary); transition: var(--transition-fast); box-shadow: var(--shadow-sm);
-        }
-        .project-tab-btn:hover { transform: translateY(-2px); border-color: var(--p-quiz-accent); color: var(--text-primary); }
-        .project-tab-btn.active {
-            background: linear-gradient(135deg, var(--p-quiz-bg), var(--p-video-bg));
-            border-color: var(--p-quiz-border); color: var(--p-quiz-text);
-            box-shadow: 0 4px 14px rgba(167, 139, 250, 0.2);
-        }
-        .tab-count { padding: 1px 7px; border-radius: var(--radius-full); font-size: 0.72rem; background: rgba(0, 0, 0, 0.06); }
-        .project-tab-btn.active .tab-count { background: var(--p-quiz-text); color: #FFFFFF; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-
-        /* Project Card with Live Result Preview Screen */
-        .project-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 18px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 12px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); position: relative;
-        }
-        .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--p-quiz-border); }
-
-        .project-card-header { display: flex; justify-content: space-between; align-items: center; }
-        .project-author-info { display: flex; align-items: center; gap: 10px; }
-        .author-avatar {
-            width: 38px; height: 38px; border-radius: 50%; background: var(--p-video-bg);
-            color: var(--p-video-text); display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.95rem; border: 1px solid var(--p-video-border);
-        }
-        .author-name { font-size: 0.96rem; font-weight: 700; color: var(--text-primary); }
-        .author-id { font-size: 0.78rem; color: var(--text-muted); }
-        .project-card-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.38; margin-top: 4px; }
-
-        /* Live Preview Container (실제 동작하는 결과물/이미지/앱 화면) */
-        .live-preview-container {
-            width: 100%; height: 240px; background: #FAFAFC; border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle); overflow: hidden; position: relative;
-            margin-top: 6px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
-        }
-        .live-preview-frame { width: 100%; height: 100%; border: none; background: #FFFFFF; }
-        .preview-top-badge {
-            position: absolute; top: 8px; right: 8px; background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(4px); padding: 3px 9px; border-radius: var(--radius-full);
-            font-size: 0.7rem; font-weight: 700; color: var(--p-quiz-text);
-            border: 1px solid var(--p-quiz-border); z-index: 5; pointer-events: none;
-        }
-
-        .project-card-footer {
-            display: flex; align-items: center; justify-content: space-between;
-            padding-top: 10px; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 6px;
-        }
-        .project-links-group { display: flex; gap: 6px; align-items: center; }
-
-        /* 2. Student Portfolios Grid & Filter */
-        .student-search-bar {
-            display: flex; align-items: center; gap: 12px; max-width: 600px; margin: 0 auto 20px;
-            background: #FFFFFF; padding: 10px 20px; border-radius: var(--radius-full);
-            border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);
-        }
-        .student-search-bar i { color: var(--text-muted); font-size: 1.1rem; }
-        .student-search-input { flex: 1; border: none; outline: none; font-size: 0.92rem; font-family: inherit; color: var(--text-primary); }
-
-        .grade-filter-group { display: flex; justify-content: center; gap: 8px; margin-bottom: 26px; }
-        .grade-btn {
-            padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;
-            background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-secondary); transition: var(--transition-fast);
-        }
-        .grade-btn.active { background: var(--p-image-bg); color: var(--p-image-text); border-color: var(--p-image-border); }
-
-        .students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .student-card {
-            background: #FFFFFF; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);
-            padding: 18px; display: flex; flex-direction: column; justify-content: space-between;
-            gap: 12px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth);
-        }
-        .student-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--p-video-border); }
-
+        .main-container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+        .hero-banner { background: linear-gradient(135deg, #FFF1F2 0%, #F5F3FF 50%, #EFF6FF 100%); border-radius: 24px; border: 1px solid var(--border-subtle); padding: 36px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-sm); }
+        .hero-info h1 { font-size: 1.8rem; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
+        .hero-info p { font-size: 0.98rem; color: var(--text-secondary); max-width: 700px; }
+        .badge-portal { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFF; padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+        .filter-nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .filter-btn { padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--border-subtle); background: #FFF; font-size: 0.88rem; font-weight: 700; color: var(--text-secondary); cursor: pointer; transition: var(--transition-smooth); }
+        .filter-btn.active, .filter-btn:hover { background: var(--p-quiz-bg); color: var(--p-quiz-text); border-color: var(--p-quiz-border); transform: translateY(-2px); }
+        .students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
+        .student-card { background: #FFFFFF; border-radius: 20px; border: 1px solid var(--border-subtle); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); }
+        .student-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--p-quiz-accent); }
         .student-header { display: flex; align-items: center; justify-content: space-between; }
-        .student-profile-left { display: flex; align-items: center; gap: 10px; }
-        .student-avatar {
-            width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center;
-        }
-        .student-meta h4 { font-size: 1.02rem; font-weight: 700; color: var(--text-primary); }
-        .student-meta span { font-size: 0.78rem; color: var(--text-muted); }
-
-        /* 8대 프로젝트 바로가기 미니 칩 목록 (학생 페이지 내 각 섹션과 1:1 연동) */
-        .student-topics-nav { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
-        .student-topic-link {
-            font-size: 0.7rem; padding: 2px 7px; border-radius: var(--radius-full);
-            background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border-subtle);
-            transition: var(--transition-fast); display: inline-flex; align-items: center; gap: 3px;
-        }
-        .student-topic-link:hover { background: var(--p-quiz-bg); color: var(--p-quiz-text); border-color: var(--p-quiz-border); }
-        .student-topic-link.has-content { background: var(--p-game-bg); color: var(--p-game-text); border-color: var(--p-game-border); font-weight: 600; }
-
-        .student-card-actions { display: grid; grid-template-columns: 1.2fr 1fr; gap: 8px; margin-top: 8px; }
-
-        /* Mentor Area */
-        .mentor-section {
-            background: linear-gradient(135deg, #FFF9FA, #F5F7FF); border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle); padding: 42px 0;
-        }
-        .mentor-card {
-            background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);
-            padding: 24px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; box-shadow: var(--shadow-sm);
-        }
-        .mentor-avatar-box {
-            width: 64px; height: 64px; border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, var(--p-video-border), var(--p-quiz-border));
-            color: var(--p-quiz-text); font-size: 1.7rem; display: flex; align-items: center; justify-content: center;
-        }
-        .mentor-info h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 4px; }
-        .mentor-badge { margin-bottom: 6px; }
-        .mentor-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
-
-        /* Modals */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.48); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px;
-        }
-        .modal-overlay.active { display: flex; animation: modalFadeIn 0.22s ease-out; }
-        @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-
-        .modal-container {
-            background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 640px;
-            max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-subtle); display: flex; flex-direction: column;
-        }
-        .modal-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; border-bottom: 1px solid var(--border-subtle);
-            position: sticky; top: 0; background: #FFFFFF; z-index: 10;
-        }
-        .modal-title { font-size: 1.15rem; font-weight: 700; }
-        .modal-close-btn { background: none; font-size: 1.2rem; color: var(--text-muted); padding: 4px; border-radius: 50%; transition: var(--transition-fast); }
-        .modal-close-btn:hover { background: var(--bg-subtle); color: var(--text-primary); }
-        .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
-        .modal-footer {
-            display: flex; align-items: center; justify-content: flex-end; gap: 8px;
-            padding: 12px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-subtle);
-        }
-
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .form-group { display: flex; flex-direction: column; gap: 5px; }
-        .form-label { font-size: 0.84rem; font-weight: 600; color: var(--text-primary); }
-        .form-control {
-            width: 100%; padding: 9px 12px; border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); font-family: inherit; font-size: 0.88rem;
-            color: var(--text-primary); background-color: #FFFFFF; transition: var(--transition-fast);
-        }
-        .form-control:focus { border-color: var(--p-quiz-accent); box-shadow: 0 0 0 3px var(--p-quiz-border); }
-        .form-textarea-code { font-family: 'Fira Code', monospace; font-size: 0.82rem; min-height: 130px; resize: vertical; background-color: #F8FAFC; line-height: 1.45; }
-
-        /* Toast Alert */
-        .toast-container {
-            position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFFFFF;
-            padding: 10px 18px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;
-            box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 8px; z-index: 3000;
-            opacity: 0; transform: translateY(20px); transition: var(--transition-smooth); pointer-events: none;
-        }
-        .toast-container.active { opacity: 1; transform: translateY(0); }
-
-        /* Footer */
-        .footer { background-color: #FFFFFF; border-top: 1px solid var(--border-subtle); padding: 32px 0; font-size: 0.85rem; color: var(--text-muted); }
-        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero-container { grid-template-columns: 1fr; }
-            .hero-title { font-size: 1.85rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .mentor-card { grid-template-columns: 1fr; text-align: center; }
-            .mentor-avatar-box { margin: 0 auto; }
-            .student-card-actions { grid-template-columns: 1fr; }
-        }
+        .student-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--p-image-border), var(--p-quiz-border)); color: var(--p-quiz-text); font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .student-title-box h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); }
+        .student-title-box p { font-size: 0.82rem; color: var(--text-muted); }
+        .topics-tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+        .topic-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.76rem; font-weight: 700; }
+        .btn-enter-portfolio { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: var(--radius-full); background: #F8FAFC; border: 1px solid var(--border-subtle); color: var(--text-primary); font-weight: 700; font-size: 0.9rem; transition: var(--transition-smooth); }
+        .btn-enter-portfolio:hover { background: linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); color: #FFF; border-color: transparent; box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3); transform: translateY(-2px); }
     </style>
 </head>
 <body>
-
-    <!-- 1. Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-brand" target="_self">
-                <div class="brand-icon">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div class="brand-text">
-                    <span class="brand-title">숭의여중 AI 창의 동아리</span>
-                    <span class="brand-sub">2026 Student Creative Portfolio Hub</span>
-                </div>
-            </a>
-
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="#home" class="nav-link active" target="_self"><i class="fa-solid fa-house"></i> 홈</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link" target="_self"><i class="fa-solid fa-layer-group"></i> 8대 프로젝트 갤러리</a></li>
-                <li class="nav-item"><a href="#students" class="nav-link" target="_self"><i class="fa-solid fa-users-viewfinder"></i> 학생별 포트폴리오</a></li>
-                <li class="nav-item"><a href="#mentor" class="nav-link" target="_self"><i class="fa-solid fa-chalkboard-user"></i> 강사 안내 & 동기화</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="btn btn-secondary" id="syncAllPagesBtn" title="학생 페이지의 최신 결과물을 메인 홈으로 즉시 동기화합니다">
-                    <i class="fa-solid fa-rotate"></i> 학생 페이지 실시간 동기화
-                </button>
-                <button class="btn btn-primary" id="openAddModalBtn">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> 새 결과물 업로드
-                </button>
+    <div class="main-container">
+        <header class="hero-banner">
+            <div class="hero-info">
+                <span class="badge-portal"><i class="fa-solid fa-sparkles"></i> 2026 숭의여자중학교 AI 창의 동아리</span>
+                <h1>21인 창작 포트폴리오 통합 전시관</h1>
+                <p>학생들이 직접 AI 프롬프트와 웹 코딩으로 제작한 퀴즈 모의고사, 게임, 학교 급식앱, AI 슬라이드 및 이미지 창작 결과물을 실시간으로 열람하고 직접 체험해보세요.</p>
             </div>
+        </header>
+
+        <div class="filter-nav">
+            <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-secondary); margin-right: 6px;"><i class="fa-solid fa-filter"></i> 학년별 필터:</span>
+            <button class="filter-btn active" onclick="filterGrade('all', this)">전체 학생 (21명)</button>
+            <button class="filter-btn" onclick="filterGrade(1, this)">1학년 (2명)</button>
+            <button class="filter-btn" onclick="filterGrade(2, this)">2학년 (6명)</button>
+            <button class="filter-btn" onclick="filterGrade(3, this)">3학년 (13명)</button>
         </div>
-    </nav>
 
-    <!-- 2. Hero Section (화이트 & 파스텔 무드) -->
-    <header class="hero-section" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="badge-pill">
-                    <i class="fa-solid fa-sparkles"></i> 2026학년도 숭의여자중학교 AI 프로젝트 통합 전시관
-                </div>
-                <h1 class="hero-title">
-                    학생들의 AI 창작 결과물이<br>
-                    <span class="gradient-text">하나로 모여 살아 움직이는 갤러리</span>
-                </h1>
-                <p class="hero-description">
-                    제미나이와 캔바로 완성한 8대 프로젝트(AI 이미지, 퀴즈, 게임, AI 동영상, AI 슬라이드, 급식앱, 핑퐁로봇, 파이브레인) 결과물이 학생 개인 페이지와 1:1로 직결되어 실시간으로 동작합니다.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary btn-lg" target="_self">
-                        <i class="fa-solid fa-play"></i> 8대 프로젝트 둘러보기
-                    </a>
-                    <a href="#students" class="btn btn-outline btn-lg" target="_self">
-                        <i class="fa-solid fa-users"></i> 학생별 포트폴리오
-                    </a>
-                </div>
-
-                <!-- 통계 지표 -->
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-num" id="statProjects">19개</div>
-                        <div class="stat-label">등록된 결과물</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <div class="stat-num" id="statStudents">21명</div>
-                        <div class="stat-label">참여 학생</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <div class="stat-num" id="statTopics">8개</div>
-                        <div class="stat-label">수업 프로젝트 주제</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="hero-card-banner">
-                    <div class="hero-banner-badge">
-                        <i class="fa-solid fa-cubes"></i> 8대 핵심 프로젝트 주제
-                    </div>
-                    <h3 class="hero-banner-title">수업 커리큘럼 프로젝트</h3>
-                    <p class="hero-banner-text">
-                        학생 페이지에 등록된 8개 주제 결과물을 카드 안에서 직접 조작하고, [학생 페이지 열기]를 통해 구글 사이트 해당 위치로 직결됩니다.
-                    </p>
-                    <div class="hero-quick-topics">
-                        <span class="topic-chip chip-ai-image"><i class="fa-solid fa-image"></i> AI 이미지</span>
-                        <span class="topic-chip chip-quiz"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
-                        <span class="topic-chip chip-game"><i class="fa-solid fa-gamepad"></i> 게임</span>
-                        <span class="topic-chip chip-ai-video"><i class="fa-solid fa-video"></i> AI 동영상</span>
-                        <span class="topic-chip chip-ai-slide"><i class="fa-solid fa-file-powerpoint"></i> AI 슬라이드</span>
-                        <span class="topic-chip chip-meal-app"><i class="fa-solid fa-utensils"></i> 급식앱</span>
-                        <span class="topic-chip chip-pingpong"><i class="fa-solid fa-robot"></i> 핑퐁로봇</span>
-                        <span class="topic-chip chip-piebrain"><i class="fa-solid fa-microchip"></i> 파이브레인</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- 3. Feature 1: 프로젝트(주제)별 실제 결과물 갤러리 허브 (Live Preview) -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <div class="badge-pill section-badge">
-                    <i class="fa-solid fa-layer-group"></i> Feature 1
-                </div>
-                <h2 class="section-title">8대 프로젝트별 학생 결과물 갤러리</h2>
-                <p class="section-sub">프로젝트 탭을 클릭하여 해당 주제에 참여한 학생들의 <strong>실제 작동하는 완성 작품</strong>을 바로 체험해보세요.</p>
-            </div>
-
-            <!-- 8개 프로젝트 파스텔 주제 탭 -->
-            <div class="project-tabs-wrapper" id="projectTopicTabs">
-                <!-- Javascript Dynamic Render -->
-            </div>
-
-            <!-- 프로젝트 카드 그리드 (실제 렌더링된 결과물 화면) -->
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Javascript Dynamic Render -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Feature 2: 학생별 개인 페이지 바로가기 & 자료 업로드 관리 -->
-    <section class="section section-alt" id="students">
-        <div class="container">
-            <div class="section-header">
-                <div class="badge-pill section-badge">
-                    <i class="fa-solid fa-address-book"></i> Feature 2
-                </div>
-                <h2 class="section-title">학생별 포트폴리오 & 8대 주제 연동</h2>
-                <p class="section-sub">학생 카드의 <strong>[전체 페이지]</strong> 버튼이나 태그를 누르면 해당 학생의 깃허브 전용 포트폴리오로 바로 이동합니다.</p>
-            </div>
-
-            <!-- 검색 바 -->
-            <div class="student-search-bar">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="studentSearchInput" class="student-search-input" placeholder="학생 이름 또는 학년·반을 검색하세요 (예: 박채연, 김민솔, 3학년, 1반)...">
-            </div>
-
-            <!-- 학년 필터 버튼 -->
-            <div class="grade-filter-group">
-                <button class="grade-btn active" data-grade="all">전체 학년</button>
-                <button class="grade-btn" data-grade="1">1학년</button>
-                <button class="grade-btn" data-grade="2">2학년</button>
-                <button class="grade-btn" data-grade="3">3학년</button>
-            </div>
-
-            <!-- 학생 카드 그리드 -->
-            <div class="students-grid" id="studentsGrid">
-                <!-- Javascript Dynamic Render -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. 지도교사 및 강사 예제 영역 (양은선 강사님) -->
-    <section class="mentor-section" id="mentor">
-        <div class="container">
-            <div class="mentor-card">
-                <div class="mentor-avatar-box">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                </div>
-                <div class="mentor-info">
-                    <div class="badge-pill mentor-badge">
-                        <i class="fa-solid fa-award"></i> 동아리 지도 & 멘토링
-                    </div>
-                    <h3>지도강사 양은선 선생님</h3>
-                    <p class="mentor-desc">
-                        각 학생 페이지에 구성된 8대 프로젝트가 메인 페이지와 완벽히 연동되어, 결과물을 즉시 실행하거나 해당 학생 페이지로 이동할 수 있습니다.
-                    </p>
-                </div>
-                <div class="mentor-actions" style="display:flex; gap:6px; flex-wrap:wrap;">
-                    <button class="btn btn-primary" id="mentorSyncBtn">
-                        <i class="fa-solid fa-arrows-rotate"></i> 학생 페이지 전체 동기화
-                    </button>
-                    <button class="btn btn-outline" id="exportDataBtn">
-                        <i class="fa-solid fa-file-export"></i> 데이터 백업
-                    </button>
-                    <button class="btn btn-outline" id="resetDataBtn" title="기본 데이터 복원">
-                        <i class="fa-solid fa-rotate-left"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <p><strong>2026 숭의여자중학교 학생 동아리 창작 포트폴리오 허브</strong></p>
-            <p>Google Sites 학생별 페이지 1:1 연동 및 실시간 결과물 렌더링 시스템</p>
-        </div>
-    </footer>
-
-    <!-- ==========================================================================
-         MODAL 1: 학생 포트폴리오 상세 및 관리 모달
-         ========================================================================== -->
-    <div class="modal-overlay" id="studentDetailModal">
-        <div class="modal-container">
-            <div class="modal-header">
+        <div class="students-grid" id="studentsGrid">
+            <div class="student-card" data-grade="3">
                 <div>
-                    <h3 class="modal-title" id="studentModalTitle">학생 포트폴리오</h3>
-                    <span id="studentModalMeta" style="font-size: 0.85rem; color: var(--text-muted);"></span>
-                </div>
-                <button class="modal-close-btn modal-close-trigger" aria-label="닫기">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                    <h4 style="font-size: 0.95rem; font-weight: 700;">등록된 결과물 목록</h4>
-                    <div style="display: flex; gap: 8px;">
-                        <a href="#" id="studentModalSiteLink" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> 학생 페이지 전체 보기
-                        </a>
-                        <button class="btn btn-primary btn-sm" id="addProjectForStudentBtn">
-                            <i class="fa-solid fa-plus"></i> 새 결과물 업로드
-                        </button>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">김</div>
+                            <div class="student-title-box">
+                                <h3>김민솔</h3>
+                                <p>3학년 1반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
                     </div>
                 </div>
-                <div id="studentModalProjectList" style="display: flex; flex-direction: column; gap: 14px;">
-                    <!-- Javascript Dynamic Render -->
-                </div>
-            </div>
 
-            <div class="modal-footer">
-                <button class="btn btn-outline modal-close-trigger">닫기</button>
+                <a href="minsol.html" class="btn-enter-portfolio">
+                    <span>김민솔 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">박</div>
+                            <div class="student-title-box">
+                                <h3>박채연</h3>
+                                <p>3학년 6반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="chaeyeon.html" class="btn-enter-portfolio">
+                    <span>박채연 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">김</div>
+                            <div class="student-title-box">
+                                <h3>김서현</h3>
+                                <p>2학년 1반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                        <span class="topic-chip" style="background:var(--p-slide-bg); color:var(--p-slide-text); border:1px solid var(--p-slide-border);"><i class="fa-solid fa-file-powerpoint"></i> 슬라이드</span>
+                    </div>
+                </div>
+
+                <a href="seohyun.html" class="btn-enter-portfolio">
+                    <span>김서현 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">박</div>
+                            <div class="student-title-box">
+                                <h3>박하은</h3>
+                                <p>3학년 2반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="haeun.html" class="btn-enter-portfolio">
+                    <span>박하은 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">최</div>
+                            <div class="student-title-box">
+                                <h3>최소윤</h3>
+                                <p>3학년 3반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                    </div>
+                </div>
+
+                <a href="soyoon.html" class="btn-enter-portfolio">
+                    <span>최소윤 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">채</div>
+                            <div class="student-title-box">
+                                <h3>채슬온</h3>
+                                <p>2학년 2반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                    </div>
+                </div>
+
+                <a href="seulon.html" class="btn-enter-portfolio">
+                    <span>채슬온 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">김</div>
+                            <div class="student-title-box">
+                                <h3>김효윤</h3>
+                                <p>3학년 5반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                    </div>
+                </div>
+
+                <a href="hyoyoon.html" class="btn-enter-portfolio">
+                    <span>김효윤 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">신</div>
+                            <div class="student-title-box">
+                                <h3>신세영</h3>
+                                <p>2학년 3반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="seyeoung.html" class="btn-enter-portfolio">
+                    <span>신세영 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">임</div>
+                            <div class="student-title-box">
+                                <h3>임지우</h3>
+                                <p>2학년 4반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="jiwoo.html" class="btn-enter-portfolio">
+                    <span>임지우 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="1">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">김</div>
+                            <div class="student-title-box">
+                                <h3>김희정</h3>
+                                <p>1학년 2반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                    </div>
+                </div>
+
+                <a href="heejung.html" class="btn-enter-portfolio">
+                    <span>김희정 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="1">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">박</div>
+                            <div class="student-title-box">
+                                <h3>박채희</h3>
+                                <p>1학년 2반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="chaehee.html" class="btn-enter-portfolio">
+                    <span>박채희 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">최</div>
+                            <div class="student-title-box">
+                                <h3>최윤하</h3>
+                                <p>2학년 5반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="yoonha.html" class="btn-enter-portfolio">
+                    <span>최윤하 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="2">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">장</div>
+                            <div class="student-title-box">
+                                <h3>장현아</h3>
+                                <p>2학년 6반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="hyuna.html" class="btn-enter-portfolio">
+                    <span>장현아 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">김</div>
+                            <div class="student-title-box">
+                                <h3>김수아</h3>
+                                <p>3학년 1반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="sua.html" class="btn-enter-portfolio">
+                    <span>김수아 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">문</div>
+                            <div class="student-title-box">
+                                <h3>문예린</h3>
+                                <p>3학년 4반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="yerin.html" class="btn-enter-portfolio">
+                    <span>문예린 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">엄</div>
+                            <div class="student-title-box">
+                                <h3>엄채윤</h3>
+                                <p>3학년 5반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="chaeyoon.html" class="btn-enter-portfolio">
+                    <span>엄채윤 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">이</div>
+                            <div class="student-title-box">
+                                <h3>이아연</h3>
+                                <p>3학년 2반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                    </div>
+                </div>
+
+                <a href="ayeon.html" class="btn-enter-portfolio">
+                    <span>이아연 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">인</div>
+                            <div class="student-title-box">
+                                <h3>인하윤</h3>
+                                <p>3학년 3반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="hayoon.html" class="btn-enter-portfolio">
+                    <span>인하윤 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">최</div>
+                            <div class="student-title-box">
+                                <h3>최윤아</h3>
+                                <p>3학년 6반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                        <span class="topic-chip" style="background:var(--p-quiz-bg); color:var(--p-quiz-text); border:1px solid var(--p-quiz-border);"><i class="fa-solid fa-circle-question"></i> 퀴즈</span>
+                        <span class="topic-chip" style="background:var(--p-game-bg); color:var(--p-game-text); border:1px solid var(--p-game-border);"><i class="fa-solid fa-gamepad"></i> 게임</span>
+                        <span class="topic-chip" style="background:var(--p-meal-bg); color:var(--p-meal-text); border:1px solid var(--p-meal-border);"><i class="fa-solid fa-utensils"></i> 급식앱</span>
+                    </div>
+                </div>
+
+                <a href="yoona.html" class="btn-enter-portfolio">
+                    <span>최윤아 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">송</div>
+                            <div class="student-title-box">
+                                <h3>송영현</h3>
+                                <p>3학년 6반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                    </div>
+                </div>
+
+                <a href="younghyun.html" class="btn-enter-portfolio">
+                    <span>송영현 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="student-card" data-grade="3">
+                <div>
+                    <div class="student-header">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div class="student-avatar">박</div>
+                            <div class="student-title-box">
+                                <h3>박채현</h3>
+                                <p>3학년 6반</p>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--p-quiz-text); background:var(--p-quiz-bg); border:1px solid var(--p-quiz-border); padding:3px 10px; border-radius:var(--radius-full);">포트폴리오</span>
+                    </div>
+
+                    <div class="topics-tag-list" style="margin-top:16px;">
+                    </div>
+                </div>
+
+                <a href="chaehyun.html" class="btn-enter-portfolio">
+                    <span>박채현 학생 포트폴리오 바로가기</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- ==========================================================================
-         MODAL 2: 초간소화된 소스코드 업로드 / 수정 모달 (입력 항목 최소화)
-         ========================================================================== -->
-    <div class="modal-overlay" id="projectEditorModal">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3 class="modal-title" id="editorModalTitle">결과물 간편 업로드</h3>
-                <button class="modal-close-btn modal-close-trigger" aria-label="닫기">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <form id="projectEditorForm">
-                <input type="hidden" id="editProjectId" value="">
-
-                <div class="modal-body">
-                    <!-- 1. 학생 & 주제 선택 -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="projectStudentSelect">학생 선택 *</label>
-                            <select id="projectStudentSelect" class="form-control" required>
-                                <!-- Javascript Dropdown Options -->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="projectTopicSelect">프로젝트 주제 *</label>
-                            <select id="projectTopicSelect" class="form-control" required>
-                                <option value="ai-image">AI 이미지</option>
-                                <option value="quiz">퀴즈</option>
-                                <option value="game">게임</option>
-                                <option value="ai-video">AI 동영상</option>
-                                <option value="ai-slide">AI 슬라이드</option>
-                                <option value="meal-app">급식앱</option>
-                                <option value="pingpong-robot">피지컬AI - 핑퐁로봇</option>
-                                <option value="piebrain">피지컬AI - 파이브레인</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- 2. 자료 제목 -->
-                    <div class="form-group">
-                        <label class="form-label" for="projectTitleInput">자료 제목 *</label>
-                        <input type="text" id="projectTitleInput" class="form-control" placeholder="예: 중학교 과학 환경 모의고사 20제 인터랙티브 퀴즈" required>
-                    </div>
-
-                    <!-- 3. 핵심: 소스코드 복사/붙여넣기 영역 -->
-                    <div class="form-group">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <label class="form-label" for="projectSourceInput">소스코드 / 이미지 태그 / 캔바 링크 붙여넣기 *</label>
-                            <span style="font-size:0.75rem; color:var(--p-quiz-text); font-weight:600;">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> 화면에 실제 결과물로 바로 나타납니다
-                            </span>
-                        </div>
-                        <textarea id="projectSourceInput" class="form-control form-textarea-code" placeholder="<!DOCTYPE html>&#10;<html>... 제미나이 캔버스나 캔바에서 복사한 코드 또는 이미지 태그를 여기에 붙여넣기(Ctrl+V)하세요."></textarea>
-                    </div>
-
-                    <!-- 4. 학생 페이지 링크 -->
-                    <div class="form-group">
-                        <label class="form-label" for="projectLinkInput" style="color: var(--text-secondary);">
-                            학생 페이지 및 해당 섹션 링크 URL
-                        </label>
-                        <input type="url" id="projectLinkInput" class="form-control" placeholder="https://sites.google.com/view/26sgrils/홈/...">
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline modal-close-trigger">취소</button>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa-solid fa-check"></i> 바로 등록하기
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- ==========================================================================
-         MODAL 3: 실시간 동기화 진행 상태 모달
-         ========================================================================== -->
-    <div class="modal-overlay" id="syncProgressModal">
-        <div class="modal-container" style="max-width:480px; text-align:center; padding:30px 20px;">
-            <div style="font-size:2.5rem; color:var(--p-quiz-accent); margin-bottom:14px;" id="syncModalIcon">
-                <i class="fa-solid fa-circle-notch fa-spin"></i>
-            </div>
-            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;" id="syncModalTitle">학생 페이지 실시간 동기화 중...</h3>
-            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;" id="syncModalDesc">
-                21명 학생의 구글 사이트 개별 페이지를 순회하며 최신 결과물(급식/슬라이드/게임/퀴즈)을 가져오고 있습니다.
-            </p>
-            <div style="background:var(--bg-subtle); border-radius:var(--radius-full); height:10px; width:100%; overflow:hidden; border:1px solid var(--border-subtle); margin-bottom:12px;">
-                <div id="syncProgressBar" style="background:linear-gradient(135deg, var(--p-image-accent), var(--p-quiz-accent)); height:100%; width:0%; transition:width 0.3s ease;"></div>
-            </div>
-            <div style="font-size:0.82rem; color:var(--text-muted); font-weight:600;" id="syncModalStatus">
-                준비 중... (0 / 21)
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div class="toast-container" id="toastBox">
-        <i class="fa-solid fa-check-circle" style="color: #34D399;"></i>
-        <span id="toastMsg">성공적으로 처리되었습니다!</span>
-    </div>
-
-    <!-- ==========================================================================
-         [2] 통합 스크립트 로직 (JavaScript 통합)
-         ========================================================================== -->
     <script>
-        // 1. 수업에서 준비하고 있는 8대 프로젝트 주제 및 구글 사이트 섹션 앵커 ID 정의
-        const PROJECT_TOPICS = [
-            { id: 'all', name: '전체 보기', icon: 'fa-solid fa-border-all', chipClass: '', color: '#8B5CF6' },
-            { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', chipClass: 'chip-ai-image', color: '#E11D48', anchor: 'h.uuaslyvlw6ut' },
-            { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', chipClass: 'chip-quiz', color: '#7C3AED', anchor: 'h.tuo65nfbe6qn' },
-            { id: 'game', name: '게임', icon: 'fa-solid fa-gamepad', chipClass: 'chip-game', color: '#059669', anchor: 'h.vzms1tna0qj6' },
-            { id: 'ai-video', name: 'AI 동영상', icon: 'fa-solid fa-video', chipClass: 'chip-ai-video', color: '#0284C7', anchor: 'h.o7w6qllitpsw' },
-            { id: 'ai-slide', name: 'AI 슬라이드', icon: 'fa-solid fa-file-powerpoint', chipClass: 'chip-ai-slide', color: '#EA580C', anchor: 'h.q73szsmlozq3' },
-            { id: 'meal-app', name: '급식앱', icon: 'fa-solid fa-utensils', chipClass: 'chip-meal-app', color: '#CA8A04', anchor: 'h.o26s0h3155b8' },
-            { id: 'pingpong-robot', name: '피지컬AI - 핑퐁로봇', icon: 'fa-solid fa-robot', chipClass: 'chip-pingpong', color: '#0D9488', anchor: 'h.uyzkqrk21s3h' },
-            { id: 'piebrain', name: '피지컬AI - 파이브레인', icon: 'fa-solid fa-microchip', chipClass: 'chip-piebrain', color: '#4F46E5', anchor: 'h.ez3rq5olvozi' }
-        ];
-
-        // 2. 숭의여자중학교 21명 학생 목록 및 구글 사이트 실제 URL 매핑
-        const STUDENTS_MASTER = [
-            { id: 's_3_1_minsol', name: '김민솔', grade: 3, classNum: 1, siteUrl: 'minsol.html' },
-            { id: 's_3_6_chaeyeon', name: '박채연', grade: 3, classNum: 6, siteUrl: 'chaeyeon.html' },
-            { id: 's_2_1_seohyun', name: '김서현', grade: 2, classNum: 1, siteUrl: 'seohyun.html' },
-            { id: 's_3_2_haeun', name: '박하은', grade: 3, classNum: 2, siteUrl: 'haeun.html' },
-            { id: 's_3_3_soyoon', name: '최소윤', grade: 3, classNum: 3, siteUrl: 'soyoon.html' },
-            { id: 's_2_2_seulon', name: '채슬온', grade: 2, classNum: 2, siteUrl: 'seulon.html' },
-            { id: 's_3_5_hyoyoon', name: '김효윤', grade: 3, classNum: 5, siteUrl: 'hyoyoon.html' },
-            { id: 's_2_3_seyeoung', name: '신세영', grade: 2, classNum: 3, siteUrl: 'seyeoung.html' },
-            { id: 's_2_4_jiwoo', name: '임지우', grade: 2, classNum: 4, siteUrl: 'jiwoo.html' },
-            { id: 's_1_2_heejung', name: '김희정', grade: 1, classNum: 2, siteUrl: 'heejung.html' },
-            { id: 's_1_2_chaehee', name: '박채희', grade: 1, classNum: 2, siteUrl: 'chaehee.html' },
-            { id: 's_2_5_yoonha', name: '최윤하', grade: 2, classNum: 5, siteUrl: 'yoonha.html' },
-            { id: 's_2_6_hyuna', name: '장현아', grade: 2, classNum: 6, siteUrl: 'hyuna.html' },
-            { id: 's_3_1_sua', name: '김수아', grade: 3, classNum: 1, siteUrl: 'sua.html' },
-            { id: 's_3_4_yerin', name: '문예린', grade: 3, classNum: 4, siteUrl: 'yerin.html' },
-            { id: 's_3_5_chaeyoon', name: '엄채윤', grade: 3, classNum: 5, siteUrl: 'chaeyoon.html' },
-            { id: 's_3_2_ayeon', name: '이아연', grade: 3, classNum: 2, siteUrl: 'ayeon.html' },
-            { id: 's_3_3_hayoon', name: '인하윤', grade: 3, classNum: 3, siteUrl: 'hayoon.html' },
-            { id: 's_3_6_yoona', name: '최윤아', grade: 3, classNum: 6, siteUrl: 'yoona.html' },
-            { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6, siteUrl: 'younghyun.html' },
-            { id: 's_3_6_chaehyun', name: '박채현', grade: 3, classNum: 6, siteUrl: 'chaehyun.html' }
-        ];
-
-        // 3. 실제 학생 페이지에서 스크랩한 진짜 결과물 데이터셋
-        // (자바스크립트 내장 로드)
-        let projects = [];
-        let currentTopicFilter = 'all';
-        let currentGradeFilter = 'all';
-        let studentSearchQuery = '';
-
-        // DOM Initialization
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadProjectsData();
-            renderTopicTabs();
-            renderProjectsGrid();
-            renderStudentsGrid();
-            setupEventListeners();
-            updateStatsCounter();
-            populateStudentSelectDropdown();
-        });
-
-        async function loadProjectsData() {
-            const saved = localStorage.getItem('2026sy_projects_exact_v5');
-            if (saved) {
-                try {
-                    projects = JSON.parse(saved);
-                    return;
-                } catch (e) {
-                    console.error('Error parsing localStorage:', e);
-                }
-            }
-            
-            // Default built-in fallback data from real scrape
-            projects = [
-                {
-                    id: 'p-chaeyeon',
-                    studentId: 's_3_6_chaeyeon',
-                    studentName: '박채연',
-                    grade: 3,
-                    classNum: 6,
-                    topic: 'quiz',
-                    title: '중3 과학 [운동과 에너지] 1학기 기말고사 20제 모의고사 (풀이/채점 앱)',
-                    sourceCode: `<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:sans-serif;margin:0;padding:16px;background:#F8FAFC;color:#1E293B;}.box{background:#FFF;padding:16px;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 2px 8px rgba(0,0,0,0.05);}.badge{background:#2563EB;color:#FFF;font-size:11px;padding:3px 8px;border-radius:6px;font-weight:bold;margin-bottom:8px;display:inline-block;}h3{margin:6px 0 10px 0;font-size:14px;}.btn{width:100%;text-align:left;padding:8px 12px;margin:5px 0;border-radius:8px;border:1px solid #CBD5E1;background:#F1F5F9;font-size:12px;cursor:pointer;}.res{margin-top:10px;padding:8px;background:#ECFDF5;color:#065F46;border-radius:6px;font-size:12px;font-weight:bold;display:none;}</style></head><body><div class="box"><span class="badge">박채연 대표작</span><h3>Q1. 어떤 물체가 일정한 방향으로 일정한 속력으로 움직이고 있다. 옳은 설명은?</h3><button class="btn" onclick="document.getElementById('r').style.display='block'">1. 물체의 속력이 시간에 비례하여 증가한다.</button><button class="btn" onclick="document.getElementById('r').style.display='block'">2. 물체에 작용하는 알짜힘(합력)은 0이다. (정답)</button><div id="r" class="res">🎉 정답입니다! 등속 직선 운동을 하는 물체의 알짜힘은 0입니다.</div></div></body></html>`,
-                    link: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EB%B0%95%EC%B1%84%EC%97%B0',
-                    updatedAt: '2026-07-01'
-                },
-                {
-                    id: 'p-minsol',
-                    studentId: 's_3_1_minsol',
-                    studentName: '김민솔',
-                    grade: 3,
-                    classNum: 1,
-                    topic: 'quiz',
-                    title: '중학교 환경 교과 기말고사 모의고사 (20문제 풀이/해설 앱)',
-                    sourceCode: `<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:sans-serif;margin:0;padding:16px;background:#F8FAFC;color:#1E293B;}.box{background:#FFF;padding:16px;border-radius:12px;border:1px solid #E2E8F0;}h3{margin:0 0 10px 0;font-size:14px;color:#7C3AED;}.btn{width:100%;text-align:left;padding:8px 12px;margin:5px 0;border-radius:8px;border:1px solid #EDE9FE;background:#F5F3FF;font-size:12px;cursor:pointer;}</style></head><body><div class="box"><h3>🌱 중학교 환경 모의고사</h3><p style="font-size:12px;color:#475569;">생태계 평형과 지구 온난화 방지를 위한 20문제 실전 풀이 프로그램입니다.</p><button class="btn" onclick="alert('정답입니다!')">① 생산자: 광합성을 통해 유기물을 합성하는 식물</button></div></body></html>`,
-                    link: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%EB%AF%BC%EC%86%94',
-                    updatedAt: '2026-07-01'
-                },
-                {
-                    id: 'p-hyoyoon',
-                    studentId: 's_3_5_hyoyoon',
-                    studentName: '김효윤',
-                    grade: 3,
-                    classNum: 5,
-                    topic: 'game',
-                    title: '네온 테트리스 게임 (Neon Tetris)',
-                    sourceCode: `<!DOCTYPE html><html><head><style>body{font-family:sans-serif;margin:0;padding:16px;background:#0F172A;color:#FFF;text-align:center;}h3{color:#38BDF8;margin-bottom:8px;font-size:15px;}.game-box{background:#1E293B;border:1px solid #334155;border-radius:12px;padding:20px;display:inline-block;}.block{font-size:24px;margin:4px;}button{padding:6px 14px;background:#38BDF8;color:#0F172A;border:none;border-radius:6px;font-weight:bold;cursor:pointer;}</style></head><body><div class="game-box"><h3>🕹️ NEON TETRIS</h3><div class="block">🟨🟨 🟦🟦 🟩🟩</div><p style="font-size:12px;color:#94A3B8;margin-bottom:10px;">키보드 방향키로 블록을 회전하고 줄을 맞춰보세요!</p><button onclick="alert('게임이 시작되었습니다!')">GAME START</button></div></body></html>`,
-                    link: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%ED%9A%A8%EC%9C%A4',
-                    updatedAt: '2026-07-01'
-                },
-                {
-                    id: 'p-seohyun',
-                    studentId: 's_2_1_seohyun',
-                    studentName: '김서현',
-                    grade: 2,
-                    classNum: 1,
-                    topic: 'quiz',
-                    title: '중2 과학 1학기 기말고사 모의고사',
-                    sourceCode: `<!DOCTYPE html><html><head><style>body{font-family:sans-serif;margin:0;padding:16px;background:#F0FDF4;}.card{background:#FFF;padding:14px;border-radius:10px;border:1px solid #BBF7D0;}h3{color:#15803D;font-size:14px;}</style></head><body><div class="card"><h3>🔬 중2 과학 모의고사</h3><p style="font-size:12px;color:#374151;">물질의 구성 및 빛과 파동 단원 실전 문제 풀이 앱</p></div></body></html>`,
-                    link: 'https://sites.google.com/view/26sgrils/%ED%99%88/%EA%B9%80%EC%84%9C%ED%98%84',
-                    updatedAt: '2026-07-01'
-                }
-            ];
-            saveProjectsData();
-        }
-
-        function saveProjectsData() {
-            localStorage.setItem('2026sy_projects_exact_v5', JSON.stringify(projects));
-        }
-
-        // 1. 프로젝트 주제별 탭 & 실시간 결과물 카드 렌더링
-        function renderTopicTabs() {
-            const tabsWrapper = document.getElementById('projectTopicTabs');
-            if (!tabsWrapper) return;
-            tabsWrapper.innerHTML = '';
-
-            PROJECT_TOPICS.forEach(topic => {
-                const count = topic.id === 'all' 
-                    ? projects.length 
-                    : projects.filter(p => p.topic === topic.id).length;
-
-                const btn = document.createElement('button');
-                btn.className = `project-tab-btn ${currentTopicFilter === topic.id ? 'active' : ''}`;
-                btn.innerHTML = `
-                    <i class="${topic.icon}"></i>
-                    <span>${topic.name}</span>
-                    <span class="tab-count">${count}</span>
-                `;
-                btn.addEventListener('click', () => {
-                    currentTopicFilter = topic.id;
-                    renderTopicTabs();
-                    renderProjectsGrid();
-                });
-                tabsWrapper.appendChild(btn);
-            });
-        }
-
-        function renderProjectsGrid() {
-            const grid = document.getElementById('projectsGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-
-            const filtered = projects.filter(p => {
-                if (currentTopicFilter === 'all') return true;
-                return p.topic === currentTopicFilter;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
-                        <i class="fa-solid fa-play" style="font-size: 3rem; margin-bottom: 14px; color: var(--p-quiz-accent);"></i>
-                        <p style="font-size: 1.05rem; font-weight: 600;">선택하신 주제에 등록된 결과물이 아직 없습니다.</p>
-                        <p style="font-size: 0.88rem; margin-top: 6px;">상단의 [학생 페이지 실시간 동기화] 또는 [+ 새 결과물 업로드]를 눌러보세요!</p>
-                    </div>
-                `;
-                return;
-            }
-
-            filtered.forEach(project => {
-                const topicMeta = PROJECT_TOPICS.find(t => t.id === project.topic) || { name: '프로젝트', chipClass: 'chip-quiz', icon: 'fa-solid fa-cube', anchor: '' };
-                const studentObj = STUDENTS_MASTER.find(s => s.id === project.studentId || s.name === project.studentName);
-                
-                const directStudentSectionUrl = (studentObj && topicMeta.anchor) 
-                    ? `${studentObj.siteUrl}#${topicMeta.anchor}` 
-                    : (project.link || (studentObj ? studentObj.siteUrl : 'https://sites.google.com/view/26sgrils/홈'));
-
-                const rawCode = project.sourceCode || '<div style="padding:20px; text-align:center; color:#94A3B8;">작품 준비 중</div>';
-
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.innerHTML = `
-                    <div>
-                        <div class="project-card-header">
-                            <div class="project-author-info">
-                                <div class="author-avatar">${project.studentName.charAt(0)}</div>
-                                <div>
-                                    <div class="author-name">${project.studentName}</div>
-                                    <div class="author-id">${project.grade}학년 ${project.classNum}반</div>
-                                </div>
-                            </div>
-                            <a href="${directStudentSectionUrl}" target="_blank" rel="noopener noreferrer" class="topic-chip ${topicMeta.chipClass}" title="학생 페이지의 ${topicMeta.name} 섹션으로 이동">
-                                <i class="${topicMeta.icon}"></i> ${topicMeta.name} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem; margin-left:2px;"></i>
-                            </a>
-                        </div>
-
-                        <h3 class="project-card-title">${escapeHtml(project.title)}</h3>
-
-                        <!-- 핵심: 실제 살아 움직이는 결과물 화면 (Live Preview iframe) -->
-                        <div class="live-preview-container">
-                            <span class="preview-top-badge"><i class="fa-solid fa-bolt"></i> Live Result</span>
-                            <iframe class="live-preview-frame" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(rawCode)}"></iframe>
-                        </div>
-                    </div>
-
-                    <div class="project-card-footer">
-                        <span style="font-size: 0.76rem; color: var(--text-muted);">
-                            <i class="fa-regular fa-clock"></i> ${project.updatedAt || '최근 등록'}
-                        </span>
-                        <div class="project-links-group">
-                            <button class="btn btn-outline btn-sm copy-source-btn" data-code="${encodeURIComponent(project.sourceCode || '')}" title="원본 소스코드 복사">
-                                <i class="fa-regular fa-copy"></i> 소스 복사
-                            </button>
-                            <a href="${directStudentSectionUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" title="학생 페이지의 결과물 섹션으로 바로가기">
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i> 학생 페이지 열기
-                            </a>
-                            <button class="btn btn-outline btn-sm edit-project-btn" data-id="${project.id}" title="내용 수정">
-                                <i class="fa-solid fa-pen"></i> 수정
-                            </button>
-                        </div>
-                    </div>
-                `;
-
-                const copyBtn = card.querySelector('.copy-source-btn');
-                if (copyBtn) {
-                    copyBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        copyToClipboard(decodeURIComponent(copyBtn.dataset.code));
-                    });
-                }
-
-                card.querySelector('.edit-project-btn').addEventListener('click', () => {
-                    openEditModal(project.id);
-                });
-
-                grid.appendChild(card);
-            });
-        }
-
-        // 2. 학생별 포트폴리오 갤러리 렌더링
-        function renderStudentsGrid() {
-            const grid = document.getElementById('studentsGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-
-            const filtered = STUDENTS_MASTER.filter(student => {
-                const matchesGrade = (currentGradeFilter === 'all') || (student.grade === parseInt(currentGradeFilter));
-                const query = studentSearchQuery.trim().toLowerCase();
-                const classStr = `${student.grade}학년 ${student.classNum}반`;
-                const matchesSearch = !query || 
-                    student.name.toLowerCase().includes(query) ||
-                    classStr.includes(query) ||
-                    `${student.classNum}반`.includes(query);
-                    
-                return matchesGrade && matchesSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 40px 20px; color: var(--text-muted);">
-                        <i class="fa-solid fa-user-xmark" style="font-size: 2.2rem; margin-bottom: 10px; color: var(--p-image-accent);"></i>
-                        <p style="font-weight: 600;">검색어 "${studentSearchQuery}"와 일치하는 학생이 없습니다.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            filtered.forEach(student => {
-                const studentProjects = projects.filter(p => p.studentId === student.id || p.studentName === student.name);
-                const totalCount = studentProjects.length;
-
-                const topicsNavHtml = PROJECT_TOPICS.filter(t => t.id !== 'all').map(topic => {
-                    const hasProject = studentProjects.some(p => p.topic === topic.id);
-                    const directUrl = `${student.siteUrl}#${topic.anchor}`;
-                    return `
-                        <a href="${directUrl}" target="_blank" rel="noopener noreferrer" class="student-topic-link ${hasProject ? 'has-content' : ''}" title="${student.name} 학생의 [${topic.name}] 섹션으로 이동">
-                            <i class="${topic.icon}"></i> ${topic.name.replace('피지컬AI - ', '')}
-                        </a>
-                    `;
-                }).join('');
-
-                const card = document.createElement('div');
-                card.className = 'student-card';
-                card.innerHTML = `
-                    <div>
-                        <div class="student-header">
-                            <div class="student-profile-left">
-                                <div class="student-avatar">${student.name.charAt(0)}</div>
-                                <div class="student-meta">
-                                    <h4>${student.name}</h4>
-                                    <span>${student.grade}학년 ${student.classNum}반</span>
-                                </div>
-                            </div>
-                            <span class="topic-chip ${totalCount > 0 ? 'chip-game' : 'chip-ai-video'}" style="font-size: 0.72rem;">
-                                ${totalCount}개 결과물 등록
-                            </span>
-                        </div>
-
-                        <div style="margin-top: 12px;">
-                            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">
-                                8대 프로젝트 바로가기:
-                            </div>
-                            <div class="student-topics-nav">
-                                ${topicsNavHtml}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="student-card-actions">
-                        <a href="${student.siteUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="학생 깃허브 포트폴리오 열기">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> 전체 페이지
-                        </a>
-                        <button class="btn btn-primary btn-sm upload-for-student-btn" data-id="${student.id}" title="새 결과물 등록하기">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> 업로드
-                        </button>
-                    </div>
-                `;
-
-                card.querySelector('.upload-for-student-btn').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openAddModalForStudent(student.id);
-                });
-
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('a') || e.target.closest('button')) return;
-                    openStudentDetailModal(student);
-                });
-
-                grid.appendChild(card);
-            });
-        }
-
-        // 3. 실시간 학생 페이지 동기화 스크랩 엔진
-        async function syncAllStudentPages() {
-            openModal('syncProgressModal');
-            const iconEl = document.getElementById('syncModalIcon');
-            const titleEl = document.getElementById('syncModalTitle');
-            const descEl = document.getElementById('syncModalDesc');
-            const barEl = document.getElementById('syncProgressBar');
-            const statusEl = document.getElementById('syncModalStatus');
-
-            iconEl.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
-            titleEl.textContent = '학생 페이지 실시간 동기화 중...';
-            descEl.textContent = '21명 학생의 구글 사이트 개별 페이지에서 최신 결과물 소스코드를 가져옵니다.';
-            barEl.style.width = '0%';
-
-            const proxyList = [
-                (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-                (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-                (url) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
-            ];
-
-            let updatedCount = 0;
-            const newProjects = [];
-            const total = STUDENTS_MASTER.length;
-
-            for (let i = 0; i < total; i++) {
-                const student = STUDENTS_MASTER[i];
-                const progressPct = Math.round(((i + 1) / total) * 100);
-                barEl.style.width = `${progressPct}%`;
-                statusEl.textContent = `[${i + 1}/${total}] ${student.name} 학생 (${student.grade}학년 ${student.classNum}반) 조회 중...`;
-
-                let htmlContent = '';
-                for (const getProxyUrl of proxyList) {
-                    try {
-                        const targetUrl = student.siteUrl;
-                        const proxyUrl = getProxyUrl(targetUrl);
-                        const resp = await fetch(proxyUrl, { cache: 'no-cache' });
-                        if (resp.ok) {
-                            htmlContent = await resp.text();
-                            if (htmlContent && htmlContent.length > 5000) {
-                                break;
-                            }
-                        }
-                    } catch (err) {}
-                }
-
-                if (htmlContent) {
-                    const studentItems = extractStudentProjectsFromHtml(htmlContent, student);
-                    if (studentItems.length > 0) {
-                        const chosen = studentItems.find(p => p.topic === 'quiz')
-                                    || studentItems.find(p => p.topic === 'game')
-                                    || studentItems.find(p => p.topic === 'meal-app')
-                                    || studentItems.find(p => p.topic === 'ai-slide')
-                                    || studentItems.find(p => p.topic === 'ai-image')
-                                    || studentItems[0];
-                        newProjects.push(chosen);
-                        updatedCount++;
-                    }
+        function filterGrade(grade, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.student-card').forEach(card => {
+                if (grade === 'all' || card.dataset.grade === String(grade)) {
+                    card.style.display = 'flex';
                 } else {
-                    const existing = projects.find(p => p.studentId === student.id || p.studentName === student.name);
-                    if (existing) newProjects.push(existing);
+                    card.style.display = 'none';
                 }
-            }
-
-            barEl.style.width = '100%';
-            iconEl.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#34D399;"></i>';
-            titleEl.textContent = '동기화 완료!';
-            descEl.textContent = `총 ${updatedCount}명의 학생 최신 결과물이 메인 홈에 반영되었습니다.`;
-            statusEl.textContent = '화면을 갱신합니다...';
-
-            if (newProjects.length > 0) {
-                projects = newProjects;
-                saveProjectsData();
-                renderTopicTabs();
-                renderProjectsGrid();
-                renderStudentsGrid();
-                updateStatsCounter();
-            }
-
-            setTimeout(() => {
-                closeModal('syncProgressModal');
-                showToast(`학생 페이지 최신 자료(${updatedCount}건) 동기화 완료!`);
-            }, 1200);
-        }
-
-        function extractStudentProjectsFromHtml(html, student) {
-            const items = [];
-            const regex = /(&lt;!DOCTYPE[\s\S]*?&lt;\/html&gt;)|(<!DOCTYPE[\s\S]*?<\/html>)/gi;
-            let match;
-            let idx = 0;
-
-            while ((match = regex.exec(html)) !== null) {
-                let code = match[0];
-                if (code.startsWith('&lt;')) {
-                    const doc = new DOMParser().parseFromString(code, 'text/html');
-                    code = doc.documentElement.textContent || code;
-                }
-
-                if (code.length < 100) continue;
-                idx++;
-
-                let title = '프로젝트 결과물';
-                const titleMatch = code.match(/<title>([\s\S]*?)<\/title>/i);
-                if (titleMatch && titleMatch[1]) {
-                    title = titleMatch[1].trim();
-                }
-
-                let topic = 'game';
-                const lower = code.toLowerCase();
-                if (code.includes('모의고사') || code.includes('퀴즈') || lower.includes('quiz')) {
-                    topic = 'quiz';
-                } else if (code.includes('급식') || lower.includes('meal') || lower.includes('식단')) {
-                    topic = 'meal-app';
-                } else if (code.includes('슬라이드') || lower.includes('slide') || lower.includes('ppt')) {
-                    topic = 'ai-slide';
-                } else if (code.includes('게임') || lower.includes('game') || lower.includes('tetris') || lower.includes('champion')) {
-                    topic = 'game';
-                } else if (code.includes('이미지') || lower.includes('image')) {
-                    topic = 'ai-image';
-                } else if (lower.includes('pingpong') || lower.includes('로봇')) {
-                    topic = 'pingpong-robot';
-                } else if (lower.includes('piebrain') || lower.includes('파이브레인')) {
-                    topic = 'piebrain';
-                }
-
-                items.push({
-                    id: `p-${student.id}-${idx}`,
-                    studentId: student.id,
-                    studentName: student.name,
-                    grade: student.grade,
-                    classNum: student.classNum,
-                    topic: topic,
-                    title: title,
-                    sourceCode: code,
-                    link: student.siteUrl,
-                    updatedAt: new Date().toISOString().split('T')[0]
-                });
-            }
-            return items;
-        }
-
-        // 4. 모달 & 폼 제어
-        function openStudentDetailModal(student) {
-            const modal = document.getElementById('studentDetailModal');
-            const modalTitle = document.getElementById('studentModalTitle');
-            const modalMeta = document.getElementById('studentModalMeta');
-            const projectList = document.getElementById('studentModalProjectList');
-            const siteLink = document.getElementById('studentModalSiteLink');
-            
-            modalTitle.textContent = `${student.name} 학생 결과물 갤러리`;
-            modalMeta.textContent = `${student.grade}학년 ${student.classNum}반`;
-            siteLink.href = student.siteUrl;
-
-            const studentProjects = projects.filter(p => p.studentId === student.id || p.studentName === student.name);
-            projectList.innerHTML = '';
-
-            if (studentProjects.length === 0) {
-                projectList.innerHTML = `
-                    <div style="text-align:center; padding: 28px 10px; color: var(--text-muted);">
-                        <p>등록된 결과물이 없습니다.</p>
-                        <button class="btn btn-primary btn-sm" style="margin-top: 10px;" onclick="openAddModalForStudent('${student.id}')">
-                            <i class="fa-solid fa-plus"></i> 첫 결과물 업로드하기
-                        </button>
-                    </div>
-                `;
-            } else {
-                studentProjects.forEach(p => {
-                    const topic = PROJECT_TOPICS.find(t => t.id === p.topic) || { name: '프로젝트', chipClass: 'chip-quiz', anchor: '' };
-                    const directUrl = `${student.siteUrl}#${topic.anchor}`;
-                    const rawCode = p.sourceCode || '';
-
-                    const item = document.createElement('div');
-                    item.style.cssText = 'background:var(--bg-subtle); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:14px; display:flex; flex-direction:column; gap:8px;';
-                    item.innerHTML = `
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <span class="topic-chip ${topic.chipClass}">
-                                <i class="${topic.icon || 'fa-solid fa-cube'}"></i> ${topic.name}
-                            </span>
-                            <span style="font-size:0.75rem; color:var(--text-muted);">${p.updatedAt || ''}</span>
-                        </div>
-                        <h4 style="font-size: 1rem; font-weight: 700; margin-top: 2px;">${escapeHtml(p.title)}</h4>
-                        
-                        <div class="live-preview-container" style="height:180px;">
-                            <iframe class="live-preview-frame" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(rawCode)}"></iframe>
-                        </div>
-
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; flex-wrap: wrap; gap: 6px;">
-                            <div>
-                                <a href="${directUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 학생 페이지 섹션 링크
-                                </a>
-                            </div>
-                            <div style="display:flex; gap:6px;">
-                                <button class="btn btn-outline btn-sm modal-copy-btn" data-code="${encodeURIComponent(p.sourceCode || '')}">
-                                    <i class="fa-regular fa-copy"></i> 소스 복사
-                                </button>
-                                <button class="btn btn-outline btn-sm" onclick="openEditModal('${p.id}')">
-                                    <i class="fa-solid fa-pen"></i> 수정
-                                </button>
-                                <button class="btn btn-outline btn-sm" style="color: var(--p-image-text);" onclick="deleteProject('${p.id}')">
-                                    <i class="fa-solid fa-trash"></i> 삭제
-                                </button>
-                            </div>
-                        </div>
-                    `;
-
-                    const modalCopyBtn = item.querySelector('.modal-copy-btn');
-                    if (modalCopyBtn) {
-                        modalCopyBtn.addEventListener('click', () => {
-                            copyToClipboard(decodeURIComponent(modalCopyBtn.dataset.code));
-                        });
-                    }
-
-                    projectList.appendChild(item);
-                });
-            }
-
-            document.getElementById('addProjectForStudentBtn').onclick = () => {
-                closeModal('studentDetailModal');
-                openAddModalForStudent(student.id);
-            };
-
-            openModal('studentDetailModal');
-        }
-
-        function populateStudentSelectDropdown() {
-            const select = document.getElementById('projectStudentSelect');
-            if (!select) return;
-            select.innerHTML = '<option value="">-- 학생 선택 --</option>';
-            STUDENTS_MASTER.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = `${s.grade}학년 ${s.classNum}반 ${s.name}`;
-                select.appendChild(opt);
             });
-        }
-
-        function openAddModalForStudent(studentId = '') {
-            document.getElementById('editorModalTitle').textContent = '새 결과물 업로드';
-            document.getElementById('editProjectId').value = '';
-            populateStudentSelectDropdown();
-            if (studentId) {
-                document.getElementById('projectStudentSelect').value = studentId;
-                const studentObj = STUDENTS_MASTER.find(s => s.id === studentId);
-                if (studentObj) document.getElementById('projectLinkInput').value = studentObj.siteUrl;
-            } else {
-                document.getElementById('projectLinkInput').value = '';
-            }
-            document.getElementById('projectTopicSelect').value = 'quiz';
-            document.getElementById('projectTitleInput').value = '';
-            document.getElementById('projectSourceInput').value = '';
-            openModal('projectEditorModal');
-        }
-
-        function openEditModal(projectId) {
-            const project = projects.find(p => p.id === projectId);
-            if (!project) return;
-            populateStudentSelectDropdown();
-            document.getElementById('editorModalTitle').textContent = '결과물 내용 수정';
-            document.getElementById('editProjectId').value = project.id;
-            document.getElementById('projectStudentSelect').value = project.studentId;
-            document.getElementById('projectTopicSelect').value = project.topic;
-            document.getElementById('projectTitleInput').value = project.title;
-            document.getElementById('projectSourceInput').value = project.sourceCode || '';
-            document.getElementById('projectLinkInput').value = project.link || '';
-            closeModal('studentDetailModal');
-            openModal('projectEditorModal');
-        }
-
-        function handleSaveProject(e) {
-            e.preventDefault();
-            const editId = document.getElementById('editProjectId').value;
-            const studentId = document.getElementById('projectStudentSelect').value;
-            const topic = document.getElementById('projectTopicSelect').value;
-            const title = document.getElementById('projectTitleInput').value.trim();
-            const sourceCode = document.getElementById('projectSourceInput').value.trim();
-            let link = document.getElementById('projectLinkInput').value.trim();
-
-            if (!studentId || !title) {
-                alert('학생과 결과물 제목을 입력해주세요.');
-                return;
-            }
-
-            const studentObj = STUDENTS_MASTER.find(s => s.id === studentId);
-            const studentName = studentObj ? studentObj.name : '동아리 학생';
-            const grade = studentObj ? studentObj.grade : 1;
-            const classNum = studentObj ? studentObj.classNum : 1;
-            const now = new Date().toISOString().split('T')[0];
-
-            if (!link && studentObj) {
-                const topicMeta = PROJECT_TOPICS.find(t => t.id === topic);
-                link = topicMeta && topicMeta.anchor ? `${studentObj.siteUrl}#${topicMeta.anchor}` : studentObj.siteUrl;
-            }
-
-            if (editId) {
-                const idx = projects.findIndex(p => p.id === editId);
-                if (idx !== -1) {
-                    projects[idx] = { ...projects[idx], studentId, studentName, grade, classNum, topic, title, sourceCode, link, updatedAt: now };
-                }
-            } else {
-                projects.unshift({ id: 'p-' + Date.now(), studentId, studentName, grade, classNum, topic, title, sourceCode, link, updatedAt: now });
-            }
-
-            saveProjectsData();
-            closeModal('projectEditorModal');
-            renderTopicTabs();
-            renderProjectsGrid();
-            renderStudentsGrid();
-            updateStatsCounter();
-            showToast('결과물이 성공적으로 등록되었습니다!');
-        }
-
-        function deleteProject(projectId) {
-            if (!confirm('정말로 이 결과물을 삭제하시겠습니까?')) return;
-            projects = projects.filter(p => p.id !== projectId);
-            saveProjectsData();
-            closeModal('studentDetailModal');
-            renderTopicTabs();
-            renderProjectsGrid();
-            renderStudentsGrid();
-            updateStatsCounter();
-            showToast('삭제되었습니다.');
-        }
-
-        function setupEventListeners() {
-            const searchInput = document.getElementById('studentSearchInput');
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    studentSearchQuery = e.target.value;
-                    renderStudentsGrid();
-                });
-            }
-
-            const gradeButtons = document.querySelectorAll('.grade-btn');
-            gradeButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    gradeButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentGradeFilter = btn.dataset.grade;
-                    renderStudentsGrid();
-                });
-            });
-
-            const syncBtn = document.getElementById('syncAllPagesBtn');
-            if (syncBtn) syncBtn.addEventListener('click', syncAllStudentPages);
-
-            const mentorSyncBtn = document.getElementById('mentorSyncBtn');
-            if (mentorSyncBtn) mentorSyncBtn.addEventListener('click', syncAllStudentPages);
-
-            const openAddBtn = document.getElementById('openAddModalBtn');
-            if (openAddBtn) openAddBtn.addEventListener('click', () => openAddModalForStudent());
-
-            const projectForm = document.getElementById('projectEditorForm');
-            if (projectForm) projectForm.addEventListener('submit', handleSaveProject);
-
-            document.querySelectorAll('.modal-close-trigger').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const modalId = btn.closest('.modal-overlay').id;
-                    closeModal(modalId);
-                });
-            });
-
-            const exportBtn = document.getElementById('exportDataBtn');
-            if (exportBtn) exportBtn.addEventListener('click', exportDataJson);
-            
-            const resetBtn = document.getElementById('resetDataBtn');
-            if (resetBtn) resetBtn.addEventListener('click', resetToDefaultData);
-        }
-
-        function updateStatsCounter() {
-            const statProjects = document.getElementById('statProjects');
-            const statStudents = document.getElementById('statStudents');
-            const statTopics = document.getElementById('statTopics');
-
-            if (statProjects) statProjects.textContent = `${projects.length}개`;
-            if (statStudents) statStudents.textContent = `${STUDENTS_MASTER.length}명`;
-            if (statTopics) statTopics.textContent = `${PROJECT_TOPICS.length - 1}개`;
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.add('active');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.remove('active');
-        }
-
-        function copyToClipboard(text) {
-            if (!text) return;
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('소스코드가 클립보드에 복사되었습니다!');
-            }).catch(() => {
-                const tempTextarea = document.createElement('textarea');
-                tempTextarea.value = text;
-                document.body.appendChild(tempTextarea);
-                tempTextarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextarea);
-                showToast('소스코드가 복사되었습니다!');
-            });
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toastBox');
-            const toastMsg = document.getElementById('toastMsg');
-            if (!toast || !toastMsg) return;
-            toastMsg.textContent = msg;
-            toast.classList.add('active');
-            setTimeout(() => { toast.classList.remove('active'); }, 2600);
-        }
-
-        function exportDataJson() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projects, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "2026_sy_club_projects.json");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-        }
-
-        function resetToDefaultData() {
-            if (confirm('모든 데이터를 초기 기본값으로 복원하시겠습니까?')) {
-                loadProjectsData();
-                renderTopicTabs();
-                renderProjectsGrid();
-                renderStudentsGrid();
-                updateStatsCounter();
-                showToast('기본 데이터로 초기화되었습니다.');
-            }
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
-
-        function escapeHtmlAttr(str) {
-            if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
     </script>
 </body>
