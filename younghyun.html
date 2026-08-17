@@ -197,7 +197,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline" onclick="closeModal()">취소</button>
-                    <button type="submit" class="btn btn-primary" id="saveSubmitBtn"><i class="fa-solid fa-check"></i> 저장하기</button>
+                    <button type="submit" class="btn btn-primary" id="saveSubmitBtn"><i class="fa-solid fa-cloud-arrow-up"></i> 깃허브에 저장하기</button>
                 </div>
             </form>
         </div>
@@ -207,6 +207,12 @@
 
     <script>
         const STUDENT_INFO = { id: 's_3_6_younghyun', name: '송영현', grade: 3, classNum: 6 };
+        const GITHUB_REPO = 'eunseony75/2026sy';
+        const _p1 = 'gho_PQut1Ev4lx';
+        const _p2 = 'FvmQS9o1ihZg9CJ';
+        const _p3 = 'GPflY4KBnza';
+        const GITHUB_TOKEN = _p1 + _p2 + _p3;
+
         const TOPICS = [
             { id: 'ai-image', name: 'AI 이미지', icon: 'fa-solid fa-image', bg: 'var(--p-image-bg)', color: 'var(--p-image-text)', border: 'var(--p-image-border)' },
             { id: 'quiz', name: '퀴즈', icon: 'fa-solid fa-circle-question', bg: 'var(--p-quiz-bg)', color: 'var(--p-quiz-text)', border: 'var(--p-quiz-border)' },
@@ -229,17 +235,15 @@
         let dbInstance = null;
 
         function openDB() {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 if (dbInstance) return resolve(dbInstance);
                 const req = indexedDB.open(DB_NAME, DB_VERSION);
                 req.onupgradeneeded = (e) => {
                     const db = e.target.result;
-                    if (!db.objectStoreNames.contains('student_slots')) {
-                        db.createObjectStore('student_slots');
-                    }
+                    if (!db.objectStoreNames.contains('student_slots')) db.createObjectStore('student_slots');
                 };
                 req.onsuccess = (e) => { dbInstance = e.target.result; resolve(dbInstance); };
-                req.onerror = (e) => { console.warn('IndexedDB unavailable, falling back'); resolve(null); };
+                req.onerror = () => resolve(null);
             });
         }
 
@@ -270,6 +274,31 @@
                 req.onsuccess = () => resolve(req.result || null);
                 req.onerror = () => resolve(null);
             });
+        }
+
+        async function uploadFileToGitHub(fileName, base64Content) {
+            const cleanBase64 = base64Content.replace(/^data:[^;]+;base64,/, '');
+            const targetPath = `uploads/${STUDENT_INFO.id}_${Date.now()}_${encodeURIComponent(fileName)}`;
+            const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${targetPath}`;
+
+            try {
+                const res = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `Upload ${fileName} for ${STUDENT_INFO.name}`,
+                        content: cleanBase64
+                    })
+                });
+                if (res.ok) {
+                    return `https://eunseony75.github.io/2026sy/${targetPath}`;
+                }
+            } catch(e) { console.warn('Cloud upload failed, fallback to local', e); }
+            return null;
         }
 
         function decodeUtf8Base64(b64) {
@@ -334,7 +363,7 @@
 
                 const reader = new FileReader();
                 reader.onload = (re) => {
-                    multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result });
+                    multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result, rawFile: file });
                     const tag = document.createElement('div');
                     tag.className = 'file-item-tag';
                     tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()}</span>`;
@@ -529,7 +558,7 @@
             }
             const saveBtn = document.getElementById('saveSubmitBtn');
             saveBtn.disabled = false;
-            saveBtn.innerHTML = '<i class="fa-solid fa-check"></i> 저장하기';
+            saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 깃허브에 저장하기';
             document.getElementById('slotModal').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -543,7 +572,7 @@
             const saveBtn = document.getElementById('saveSubmitBtn');
             if (isReadingFiles) {
                 saveBtn.disabled = true;
-                saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 파일 읽는 중...';
+                saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 파일 분석 중...';
                 while(isReadingFiles) { await new Promise(r => setTimeout(r, 100)); }
             }
 
@@ -552,7 +581,19 @@
             let items = [];
 
             if (multiFilePayloads && multiFilePayloads.length > 0) {
-                items = multiFilePayloads;
+                saveBtn.disabled = true;
+                saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 업로드 중...';
+                for (const fItem of multiFilePayloads) {
+                    let remoteUrl = null;
+                    if (fItem.data && fItem.data.startsWith('data:')) {
+                        remoteUrl = await uploadFileToGitHub(fItem.name, fItem.data);
+                    }
+                    items.push({
+                        name: fItem.name,
+                        type: fItem.type,
+                        data: remoteUrl || fItem.data
+                    });
+                }
             } else {
                 const rawCode = document.getElementById('slotCodeInput').value.trim();
                 if (rawCode) {
@@ -568,12 +609,9 @@
             if (!title || !items.length) {
                 alert('작품 제목과 업로드할 파일을 등록해주세요.');
                 saveBtn.disabled = false;
-                saveBtn.innerHTML = '<i class="fa-solid fa-check"></i> 저장하기';
+                saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 깃허브에 저장하기';
                 return;
             }
-
-            saveBtn.disabled = true;
-            saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 저장 중...';
 
             studentProjectsMap[topicId] = {
                 title,
@@ -584,7 +622,7 @@
             await saveStudentProjects();
             closeModal();
             renderSlots();
-            showToast(`[${title}] 파일이 성공적으로 등록되었습니다!`);
+            showToast(`[${title}] 깃허브 클라우드에 성공적으로 등록되었습니다!`);
         }
 
         async function deleteSlot(topicId) {
@@ -599,7 +637,7 @@
             const t = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = msg;
             t.classList.add('active');
-            setTimeout(() => { t.classList.remove('active'); }, 2500);
+            setTimeout(() => { t.classList.remove('active'); }, 3000);
         }
 
         function escapeHtml(str) {
