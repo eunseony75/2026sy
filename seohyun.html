@@ -299,10 +299,8 @@
                         content: cleanBase64
                     })
                 });
-                if (res.ok) {
-                    return `https://eunseony75.github.io/2026sy/${targetPath}`;
-                }
-            } catch(e) { console.warn('Cloud upload failed, fallback to local', e); }
+                if (res.ok) return `https://eunseony75.github.io/2026sy/${targetPath}`;
+            } catch(e) { console.warn('Background sync failed', e); }
             return null;
         }
 
@@ -321,19 +319,17 @@
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeFullscreen(); closeModal(); } });
             document.getElementById('fullscreenNewTabBtn').addEventListener('click', () => {
                 if (!currentFullscreenItem) return;
-                if (currentFullscreenItem.data && currentFullscreenItem.data.startsWith('http')) {
-                    window.open(currentFullscreenItem.data, '_blank');
+                const d = currentFullscreenItem.data || '';
+                if (d.startsWith('data:')) {
+                    const a = document.createElement('a');
+                    a.href = d;
+                    a.download = currentFullscreenItem.name || 'presentation';
+                    a.click();
+                } else if (d.startsWith('http')) {
+                    window.open(d, '_blank');
                 } else {
                     const newWin = window.open('', '_blank');
-                    if (currentFullscreenItem.type === 'image') {
-                        newWin.document.write('<img src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;">');
-                    } else if (currentFullscreenItem.type === 'video') {
-                        newWin.document.write('<video controls autoplay src="' + currentFullscreenItem.data + '" style="max-width:100%;height:auto;margin:auto;display:block;"></video>');
-                    } else if (currentFullscreenItem.type === 'pdf') {
-                        newWin.location.href = currentFullscreenItem.data;
-                    } else {
-                        newWin.document.write(currentFullscreenItem.data);
-                    }
+                    newWin.document.write(d);
                     newWin.document.close();
                 }
             });
@@ -375,7 +371,7 @@
                     multiFilePayloads.push({ name: file.name, type: fType, data: re.target.result, rawFile: file });
                     const tag = document.createElement('div');
                     tag.className = 'file-item-tag';
-                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()} (바로보기 지원)</span>`;
+                    tag.innerHTML = `<span><i class="fa-solid fa-check-circle"></i> ${file.name} (${(file.size/1024).toFixed(1)} KB)</span> <span style="font-size:0.75rem; font-weight:800;">${fType.toUpperCase()} (즉시 바로보기)</span>`;
                     listContainer.appendChild(tag);
                     readCount++;
                     if (readCount === files.length) isReadingFiles = false;
@@ -445,24 +441,32 @@
         }
 
         function getDocumentViewerHtml(item) {
-            if (item.type === 'pdf' || (typeof item.data === 'string' && (item.data.startsWith('data:application/pdf') || item.data.toLowerCase().endsWith('.pdf')))) {
-                return `<iframe class="slot-iframe" src="${item.data}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
+            const d = item.data || '';
+            const isPdf = item.type === 'pdf' || d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf');
+            const isPptx = item.type === 'pptx' || d.includes('presentationml') || d.toLowerCase().match(/\.pptx?/);
+            const isImage = item.type === 'image' || d.startsWith('data:image/') || d.match(/\.(jpeg|jpg|gif|png|webp)/i);
+            const isVideo = item.type === 'video' || d.startsWith('data:video/') || d.match(/\.(mp4|webm|mov)/i);
+
+            if (isPdf) {
+                return `<iframe class="slot-iframe" src="${d}#toolbar=0&navpanes=0&scrollbar=1"></iframe>`;
             }
-            if (item.type === 'pptx' || (typeof item.data === 'string' && item.data.toLowerCase().match(/\.pptx?/))) {
-                if (item.data.startsWith('http')) {
-                    const msViewerUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(item.data);
-                    return `<iframe class="slot-iframe" src="${msViewerUrl}"></iframe>`;
-                } else {
-                    return `<div style="text-align:center; padding:30px 16px; background:#FFF7ED; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;"><i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:#EA580C;"></i><p style="font-weight:800; font-size:1.05rem; color:#1E293B;">${escapeHtml(item.name || '파워포인트 슬라이드')}</p><span style="font-size:0.82rem; color:#C2410C; font-weight:600;">PPTX 슬라이드쇼 바로보기 준비 완료</span></div>`;
-                }
+            if (isPptx) {
+                return `
+                    <div style="text-align:center; padding:24px 16px; background:#FFF7ED; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+                        <i class="fa-solid fa-file-powerpoint" style="font-size:3.5rem; color:#EA580C;"></i>
+                        <h4 style="font-weight:800; font-size:0.98rem; color:#1E293B; word-break:break-all;">${escapeHtml(item.name || '파워포인트 슬라이드')}</h4>
+                        <span style="font-size:0.8rem; color:#C2410C; font-weight:700;">PPTX 슬라이드쇼 등록됨</span>
+                        <a href="${d}" download="${escapeHtmlAttr(item.name || 'presentation.pptx')}" class="btn btn-primary btn-sm" style="margin-top:6px;"><i class="fa-solid fa-download"></i> 슬라이드 다운로드 / 열기</a>
+                    </div>
+                `;
             }
-            if (item.type === 'image' || (typeof item.data === 'string' && (item.data.startsWith('data:image/') || item.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
-                return `<img src="${item.data}" alt="${escapeHtmlAttr(item.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
+            if (isImage) {
+                return `<img src="${d}" alt="${escapeHtmlAttr(item.name)}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
             }
-            if (item.type === 'video' || (typeof item.data === 'string' && (item.data.startsWith('data:video/') || item.data.match(/\.(mp4|webm|mov)/i)))) {
-                return `<video controls style="width:100%; max-height:100%;" src="${item.data}"></video>`;
+            if (isVideo) {
+                return `<video controls style="width:100%; max-height:100%;" src="${d}"></video>`;
             }
-            return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(item.data)}"></iframe>`;
+            return `<iframe class="slot-iframe" sandbox="allow-scripts allow-forms allow-modals" srcdoc="${escapeHtmlAttr(d)}"></iframe>`;
         }
 
         function renderSlots() {
@@ -574,24 +578,34 @@
             const fsBody = document.getElementById('fullscreenBody');
             fsBody.innerHTML = '';
 
-            if (activeItem.type === 'pdf' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:application/pdf') || activeItem.data.toLowerCase().endsWith('.pdf')))) {
-                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${activeItem.data}"></iframe>`;
-            } else if (activeItem.type === 'pptx' || (typeof activeItem.data === 'string' && activeItem.data.toLowerCase().match(/\.pptx?/))) {
-                if (activeItem.data.startsWith('http')) {
-                    const msViewerUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(activeItem.data);
-                    fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${msViewerUrl}"></iframe>`;
-                } else {
-                    fsBody.innerHTML = `<div style="text-align:center; padding:40px;"><i class="fa-solid fa-file-powerpoint" style="font-size:5rem; color:#EA580C; margin-bottom:16px;"></i><h2>${escapeHtml(activeItem.name || project.title)}</h2><p style="margin:16px 0; color:#475569;">파워포인트 슬라이드 파일이 안전하게 등록되었습니다.</p><a href="${activeItem.data}" download="${escapeHtmlAttr(activeItem.name || 'presentation.pptx')}" class="btn btn-primary"><i class="fa-solid fa-download"></i> PPTX 슬라이드 다운로드 및 열기</a></div>`;
-                }
-            } else if (activeItem.type === 'image' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:image/') || activeItem.data.match(/\.(jpeg|jpg|gif|png|webp)/i)))) {
-                fsBody.innerHTML = `<img src="${activeItem.data}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
-            } else if (activeItem.type === 'video' || (typeof activeItem.data === 'string' && (activeItem.data.startsWith('data:video/') || activeItem.data.match(/\.(mp4|webm|mov)/i)))) {
-                fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${activeItem.data}"></video>`;
+            const d = activeItem.data || '';
+            const isPdf = activeItem.type === 'pdf' || d.startsWith('data:application/pdf') || d.toLowerCase().endsWith('.pdf');
+            const isPptx = activeItem.type === 'pptx' || d.includes('presentationml') || d.toLowerCase().match(/\.pptx?/);
+            const isImage = activeItem.type === 'image' || d.startsWith('data:image/') || d.match(/\.(jpeg|jpg|gif|png|webp)/i);
+            const isVideo = activeItem.type === 'video' || d.startsWith('data:video/') || d.match(/\.(mp4|webm|mov)/i);
+
+            if (isPdf) {
+                fsBody.innerHTML = `<iframe class="fullscreen-iframe" src="${d}"></iframe>`;
+            } else if (isPptx) {
+                fsBody.innerHTML = `
+                    <div style="text-align:center; padding:40px;">
+                        <i class="fa-solid fa-file-powerpoint" style="font-size:5.5rem; color:#EA580C; margin-bottom:16px;"></i>
+                        <h2 style="color:#1E293B;">${escapeHtml(activeItem.name || project.title)}</h2>
+                        <p style="margin:16px 0; color:#475569; font-size:1.05rem;">파워포인트 슬라이드 파일이 성공적으로 등록되었습니다.</p>
+                        <a href="${d}" download="${escapeHtmlAttr(activeItem.name || 'presentation.pptx')}" class="btn btn-primary" style="padding:12px 24px; font-size:1rem;">
+                            <i class="fa-solid fa-download"></i> PPTX 슬라이드 다운로드 및 열기
+                        </a>
+                    </div>
+                `;
+            } else if (isImage) {
+                fsBody.innerHTML = `<img src="${d}" style="max-width:96%; max-height:96%; object-fit:contain; margin:auto;">`;
+            } else if (isVideo) {
+                fsBody.innerHTML = `<video controls autoplay style="max-width:96%; max-height:96%; margin:auto;" src="${d}"></video>`;
             } else {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'fullscreen-iframe';
                 iframe.sandbox = 'allow-scripts allow-forms allow-modals allow-same-origin';
-                iframe.srcdoc = activeItem.data;
+                iframe.srcdoc = d;
                 fsBody.appendChild(iframe);
             }
             document.getElementById('fullscreenModal').classList.add('active');
@@ -646,14 +660,14 @@
                 saveBtn.disabled = true;
                 saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> 깃허브 클라우드 업로드 중...';
                 for (const fItem of multiFilePayloads) {
-                    let remoteUrl = null;
+                    // Keep local Base64 for instant zero-delay rendering, while uploading to GitHub in background!
                     if (fItem.data && fItem.data.startsWith('data:')) {
-                        remoteUrl = await uploadFileToGitHub(fItem.name, fItem.data);
+                        uploadFileToGitHub(fItem.name, fItem.data); // non-blocking background upload
                     }
                     items.push({
                         name: fItem.name,
                         type: fItem.type,
-                        data: remoteUrl || fItem.data
+                        data: fItem.data
                     });
                 }
             } else {
@@ -663,7 +677,7 @@
                     if (rawCode.match(/\.(jpeg|jpg|gif|png|webp)/i) || rawCode.startsWith('data:image/')) fType = 'image';
                     else if (rawCode.match(/\.(mp4|webm|mov)/i) || rawCode.startsWith('data:video/')) fType = 'video';
                     else if (rawCode.match(/\.pdf/i) || rawCode.startsWith('data:application/pdf')) fType = 'pdf';
-                    else if (rawCode.match(/\.pptx?/i)) fType = 'pptx';
+                    else if (rawCode.match(/\.pptx?/i) || rawCode.includes('presentationml')) fType = 'pptx';
                     items.push({ name: title, type: fType, data: rawCode });
                 }
             }
